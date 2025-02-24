@@ -1,7 +1,3 @@
-Below is an updated README.md that reflects all the modifications and improvements made so far:
-
----
-
 # FinReport: Explainable Stock Earnings Forecasting via News Factor Analyzing Model
 
 ## Overview
@@ -193,10 +189,6 @@ This script loads data, applies preprocessing (including technical column renami
 
 - **Automated Data Updates:**  
   Build a pipeline to automatically fetch and preprocess new data so the system remains current.
-
-## License
-
-*Include your license information here.*
 
 ## Contact
 
