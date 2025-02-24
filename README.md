@@ -42,8 +42,7 @@ The final output is a polished HTML report that presents predictions, risk asses
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/frinkleko/FinReport.git
-   cd FinReport
+   git clone https://github.com/Kanishk1420/FinReport-Explainable-Stock-Earnings-Forecasting-via-News-Factor
    ```
 
 2. **Install Dependencies:**
@@ -130,12 +129,6 @@ This script loads data, applies preprocessing (including technical column renami
   - Computes news factors (sentiment, events) and extra technical factors.
   - Computes advanced risk metrics (volatility via EGARCH, maximum drawdown, CVaR, risk-adjusted ratio).
   - Generates an HTML report for each stock with detailed, styled output.
-
-- **Dynamic Multi-Stock Report Generation:**
-
-  ```bash
-  python src/multi_eval.py
-  ```
 
   This script aggregates individual stock reports into a single HTML page.
 
