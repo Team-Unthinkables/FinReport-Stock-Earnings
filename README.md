@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Below is an updated README.md that reflects all the modifications and improvements made so far:
 
 ---
@@ -205,3 +206,7 @@ For any questions or feedback, please contact:
 **Kanishkgupta2003@outlook.com**
 
 ---
+=======
+# FinReport-Explainable-Stock-Earnings-Forecasting-via-News-Factor
+FinReport is a research-oriented system designed to forecast stock earnings by analyzing both technical indicators and financial news. It leverages a multi-factor model implemented in PyTorch that integrates three key modules:
+>>>>>>> 81b1395df15908f1f46b9052b55ba8816c9072d3
