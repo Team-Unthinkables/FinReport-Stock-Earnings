@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FinReport for {{ stock_symbol }}</title>
+    <link rel="stylesheet" href="report_style.css">
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; color: #000; }
+      .header { margin-bottom: 20px; }
+      .news-header { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
+      .news-content { font-size: 1em; margin-bottom: 10px; }
+      .source { font-style: italic; color: #555; margin-bottom: 20px; }
+      .section { margin-bottom: 20px; }
+      .section-title { font-weight: bold; margin-bottom: 5px; }
+      ul { list-style-type: disc; margin-left: 20px; }
+      .label-blue { color: rgb(0, 112, 192); font-weight: bold; }
+      .normal-text { color: #000; }
+      .positive { color: rgb(3, 177, 82); }
+      .negative { color: rgb(255, 19, 19); }
+      .disclaimer { font-size: 0.9em; color: #777; border-top: 1px solid #ccc; padding-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+      <h1>FinReport for {{ stock_symbol }}</h1>
+      <p>{{ date_str }}</p>
+    </div>
+    <div class="section">
+      <div class="news-header">
+         Analyze stock {{ stock_symbol }}, {{ date_str }}, the following news has emerged:
+      </div>
+      <div class="news-content">
+         {{ news_summary }}
+      </div>
+      <div class="source">
+         <strong>Source:</strong> {{ news_source }}
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Return Forecast</div>
+      <ul>
+         <li>
+           <span class="label-blue">Market Factor:</span>
+           <span class="normal-text">{{ market_factor.desc_base }}</span>
+           <span class="{% if market_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+             {{ market_factor.desc_highlight }}
+           </span>
+         </li>
+         <li>
+           <span class="label-blue">Size Factor:</span>
+           <span class="normal-text">{{ size_factor.desc_base }}</span>
+           <span class="{% if size_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+             {{ size_factor.desc_highlight }}
+           </span>
+         </li>
+         <li>
+           <span class="label-blue">Valuation Factor:</span>
+           <span class="normal-text">{{ valuation_factor.desc_base }}</span>
+           <span class="{% if valuation_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+             {{ valuation_factor.desc_highlight }}
+           </span>
+         </li>
+         <li>
+           <span class="label-blue">Profitability Factor:</span>
+           <span class="normal-text">{{ profitability_factor.desc_base }}</span>
+           <span class="{% if profitability_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+             {{ profitability_factor.desc_highlight }}
+           </span>
+         </li>
+         <li>
+           <span class="label-blue">Investment Factor:</span>
+           <span class="normal-text">{{ investment_factor.desc_base }}</span>
+           <span class="{% if investment_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+             {{ investment_factor.desc_highlight }}
+           </span>
+         </li>
+         <li>
+           <span class="label-blue">News Effect Factor:</span>
+           <span class="normal-text">{{ news_effect_factor.desc_base }}</span>
+           <span class="{% if news_effect_score >= 0 %}positive{% else %}negative{% endif %}">
+             {{ news_effect_factor.desc_highlight }}
+           </span>
+         </li>
+         <li>
+           <span class="label-blue">Event Factor:</span>
+           <span class="normal-text">{{ event_factor.desc_base }}</span>
+           <span class="{% if event_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+             {{ event_factor.desc_highlight }}
+           </span>
+         </li>
+         {% if rsi_factor.desc != "RSI data unavailable." %}
+         <li>
+           <span class="label-blue">RSI Factor:</span>
+           <span class="normal-text">{{ rsi_factor.desc }}</span>
+         </li>
+         {% endif %}
+         {% if mfi_factor.desc != "MFI data unavailable." %}
+         <li>
+           <span class="label-blue">MFI Factor:</span>
+           <span class="normal-text">{{ mfi_factor.desc }}</span>
+         </li>
+         {% endif %}
+         {% if bias_factor.desc != "BIAS data unavailable." %}
+         <li>
+           <span class="label-blue">BIAS Factor:</span>
+           <span class="normal-text">{{ bias_factor.desc }}</span>
+         </li>
+         {% endif %}
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Risk Assessment</div>
+      <p>{{ risk_assessment }}</p>
+      {% if risk_metrics %}
+      <ul>
+        <li><strong>Conditional Volatility:</strong> {{ risk_metrics.volatility }}</li>
+        <li><strong>VaR (95%):</strong> {{ risk_metrics.var_95 }}</li>
+        <li><strong>Max Drawdown:</strong> {{ risk_metrics.max_drawdown }}</li>
+        <li><strong>CVaR (Expected Shortfall):</strong> {{ risk_metrics.cvar }}</li>
+        <li><strong>Risk-Adjusted Ratio:</strong> {{ risk_metrics.risk_adjusted_ratio }}</li>
+      </ul>
+      {% endif %}
+    </div>
+    <div class="section">
+      <div class="section-title">Overall Trend Prognosis</div>
+      <p>{{ overall_trend }}</p>
+    </div>
+    <div class="disclaimer">
+      <p>Disclaimer: This is a research-based forecast. Kindly exercise caution and acknowledge personal risks.</p>
+    </div>
+</body>
+</html>
