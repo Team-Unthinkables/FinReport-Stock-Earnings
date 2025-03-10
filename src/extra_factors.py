@@ -83,9 +83,45 @@ def compute_size_factor(df):
 
 def compute_valuation_factor(df):
     """
-    For demonstration, return a fixed effect.
+    Compute the valuation factor dynamically using the value_factor_Book_to_Market_Equity column.
+    We use the median of the column as a benchmark, calculate the percentage difference, 
+    then scale it down to get a small effect (e.g., around 0.5%).
     """
-    return {"value": +0.5, "desc_base": "Enhances valuation, potentially increasing PIE ratio by ", "desc_highlight": "0.5%."}
+    col = "value_factor_Book_to_Market_Equity"  # Ensure this column exists and is numeric.
+    if col not in df.columns or df[col].isnull().all():
+        return {"value": 0.0, "desc_base": "Valuation data unavailable.", "desc_highlight": ""}
+    
+    # Use the median of the column as a benchmark
+    benchmark = df[col].mean()
+    # Get the latest value
+    current_val = df[col].iloc[-1]
+    # Calculate the percentage difference from the benchmark
+    diff_ratio = (current_val - benchmark) / benchmark * 100  # e.g., 95.6 means 95.6%
+    
+    # Apply a scaling factor to bring the effect to a smaller magnitude (e.g., 0.005)
+    scaling_factor = 0.05
+    scaled_effect = diff_ratio * scaling_factor  # e.g., 95.6 * 0.005 ≈ 0.478%
+
+    print(f"DEBUG: current_val={current_val}, benchmark={benchmark}, diff_ratio={diff_ratio:.2f}%, scaled_effect={scaled_effect:.2f}%")
+
+    if scaled_effect > 0:
+        return {
+            "value": scaled_effect,
+            "desc_base": "The announcement enhances valuation, potentially <span style='color:rgb(3, 177, 82);'>increasing</span> PIE ratio by ",
+            "desc_highlight": f"<span style='color: rgb(3, 177, 82);'>{scaled_effect:.1f}%</span>."
+        }
+    elif scaled_effect < 0:
+        return {
+            "value": scaled_effect,
+            "desc_base": "The announcement diminishes valuation, potentially <span style='color:rgb(255, 19, 19);'>decreasing</span> PIE ratio by ",
+            "desc_highlight": f"<span style='color: rgb(255, 19, 19);'>{abs(scaled_effect):.1f}%</span>."
+        }
+    else:
+        return {
+            "value": 0.0,
+            "desc_base": "Valuation remains stable.",
+            "desc_highlight": ""
+        }
 
 def compute_profitability_factor(df):
     """

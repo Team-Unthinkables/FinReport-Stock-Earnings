@@ -39,6 +39,16 @@ num_layers  = model_config.get('num_layers', 1)
 dropout     = model_config.get('dropout', 0.0)
 
 df = load_data(data_path)
+
+# If you’re using the rename_technical_columns function in preprocessing,
+# call it here to verify the column names:
+from preprocessing import rename_technical_columns
+df = rename_technical_columns(df)
+
+# Print the list of columns to check if the valuation column is present
+print("Columns after renaming:")
+print(list(df.columns))
+
 stock_list = df['ts_code'].unique()
 
 model = FinReportModel(input_size=input_size, hidden_size=hidden_size, num_layers=num_layers)
