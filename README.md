@@ -5,56 +5,56 @@
 FinReport is a research-oriented system designed to forecast stock earnings by analyzing both technical indicators and financial news. It leverages a multi-factor model implemented in PyTorch that integrates three key modules:
 
 - **News Factorization:**  
-  Extracts and processes features from financial news—including sentiment analysis using FinBERT and event extraction using AllenNLP (augmented with domain-specific keyword rules). It also supports aggregation of multiple news items (with a basic temporal analysis) to compute an overall news factor.
+  Extracts and processes features from financial news—including sentiment analysis using FinBERT and event extraction via AllenNLP with domain-specific keyword rules. The system also supports (optional) aggregation of multiple news items over time to yield an overall news factor.
 
 - **Return Forecasting:**  
-  Uses historical stock data and technical indicators (both standard and domain-specific) to predict returns via an LSTM model. Internal proxies (e.g., market value for Size Factor) are used as substitutes for external classical factors like Fama–French.
+  Uses historical stock data (with automatically renamed technical indicator columns) and domain-specific proxies (e.g., market value for size) to predict returns via an LSTM model. The model hyperparameters (including sequence length, hidden size, dropout, etc.) are loaded from a YAML configuration file.
 
 - **Risk Assessment:**  
-  Evaluates risk using advanced metrics including EGARCH-based volatility forecasting, maximum drawdown, and Conditional Value at Risk (CVaR). A simple integrated risk-adjusted ratio (expected return divided by volatility) is also computed.
+  Evaluates risk using advanced metrics. It computes EGARCH-based volatility estimates, maximum drawdown, and Conditional Value at Risk (CVaR) via historical simulation. A combined risk-adjusted ratio (expected return divided by volatility) is also computed to assess performance from a risk perspective.
 
-The final output is a polished HTML report that presents predictions, risk assessments, detailed technical factors (with conditional styling), and source attributions. In addition, the system prints comprehensive performance metrics (both regression and binary classification metrics) in a tabular format on the terminal for further analysis.
+Additionally, the system computes both regression metrics (MSE, RMSE, MAE) and binary classification metrics (Accuracy, Precision, Recall, F1-score, AUC, AUPR, Error Rate) using a dynamic threshold (based on the interquartile midpoint) for binarization. Confusion matrices are logged for each stock to better understand misclassifications.
+
+The final output is a polished HTML report that presents predictions, detailed technical factors (with conditional styling for key numeric values), and risk metrics. In parallel, comprehensive performance metrics are printed in the terminal and saved in heatmaps for further analysis.
 
 ## Features
 
 - **Data Integration:**  
-  - Combines historical stock data (including numerous technical indicators) with processed news text.  
-  - Automatically renames technical indicator columns (e.g., converting tuple-like strings to underscore-separated names) for consistency.
+  Combines historical stock data with technical indicators (whose column names are automatically renamed for consistency) and processed news text.
 
 - **Model Training & Evaluation:**  
-  - Trains an LSTM-based model in PyTorch using time-series data with a fixed sequence length.  
-  - Hyperparameters (such as batch size, sequence length, learning rate, and model architecture) are loaded from a YAML configuration file to ensure consistency between training and evaluation.
+  Trains an LSTM-based model using time-series data with a fixed sequence length. Hyperparameters are loaded from a YAML file, and evaluation includes both regression and binary classification metrics.
 
 - **Enhanced Feature Engineering:**  
-  - **Sentiment Analysis:** Uses FinBERT (via Hugging Face) to compute a precise sentiment score from news text.  
-  - **Event Extraction:** Employs AllenNLP’s SRL model with domain-specific keyword rules to extract events and compute an event factor.  
-  - **Multi-Article Aggregation:** (Optional) Aggregates multiple news items per day using a dedicated module to compute an overall news effect factor.  
-  - **Internal Proxies for Classical Factors:** Derives factors (e.g., Size Factor) directly from CSV data such as market value, avoiding external data fetches.
-
-- **Dynamic Report Generation:**  
-  - Generates individual HTML reports for each stock and combines them into a single multi-stock HTML page.  
-  - Reports are styled with blue bullet labels; key numeric values (e.g., percentage changes) are highlighted in green (if positive) or red (if negative) while the remainder of the text remains black.  
-  - Detailed factors (Market, Size, Valuation, Profitability, Investment, News Effect, Event, and technical indicators like RSI/MFI/BIAS) are included.
+  - **Sentiment Analysis:** Uses FinBERT (via Hugging Face) to compute a sentiment score.
+  - **Event Extraction:** Uses AllenNLP’s SRL model (with domain-specific keyword rules) to compute an event factor.
+  - **Extra Factors:** Internal proxies (e.g., market value) are used to compute factors such as Market, Size, Valuation, Profitability, Investment, News Effect, and (if available) RSI, MFI, and BIAS factors.  
+  - **Dynamic Binarization:** A dynamic threshold—computed as the midpoint between the 25th and 75th percentiles of predicted returns—is used to binarize outputs for computing classification metrics.
 
 - **Advanced Risk Assessment:**  
-  - **EGARCH Volatility Forecasting:** Computes conditional volatility and an approximate 95% Value at Risk (VaR).  
-  - **Additional Risk Metrics:** Calculates maximum drawdown and CVaR (Expected Shortfall) using historical simulation.  
-  - **Risk-Adjusted Ratio:** Computes a simple ratio (predicted return divided by volatility) to assess risk-adjusted performance.
+  - **EGARCH Volatility Forecasting:** Computes conditional volatility and approximate VaR.
+  - **Additional Risk Metrics:** Calculates maximum drawdown and CVaR (Expected Shortfall) using historical simulation.
+  - **Risk-Adjusted Ratio:** A simple measure (expected return divided by volatility) is computed.
 
-- **Performance Metrics Reporting:**  
-  - Prints regression metrics (MSE, RMSE, MAE) and binary classification metrics (Accuracy, Precision, Recall, F1-score, AUC, AUPR, Error Rate, and Confusion Matrix components) in a tabular format on the terminal for deeper performance analysis.  
-  - Uses a hybrid approach by dynamically binarizing continuous return predictions (using a stock-specific threshold) to compute classification metrics alongside regression metrics.
+- **Dynamic Report Generation:**  
+  - Generates individual HTML reports for each stock and combines them into a single multi-stock HTML page.
+  - Reports use conditional styling: bullet labels are blue, while key numeric values (e.g., “1%”, “0.5%”) are highlighted in green (for positive effects) or red (for negative effects).
+
+- **Logging & Visualization:**  
+  - Detailed logging is implemented (row counts, class distributions, raw prediction statistics, confusion matrices) to aid in debugging and performance analysis.
+  - Terminal output includes a tabular summary of both regression and classification metrics.
+  - (Optional) Heatmaps of metrics (e.g., MSE, RMSE, MAE; AUC, AUPR) can be generated and saved as images for further analysis.
 
 - **Modular Design:**  
-  The code is organized into separate modules for data loading, preprocessing, model definition, training, evaluation, sentiment analysis, extra factor computation, risk modeling, and report generation.
+  The code is organized into modules for data loading, preprocessing, model definition, training, evaluation, sentiment analysis, extra factor computation, risk modeling, hyperparameter tuning, and report generation.
 
 ## Installation
 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/Kanishk1420/FinReport-Explainable-Stock-Earnings-Forecasting-via-News-Factor.git
-   cd FinReport-Explainable-Stock-Earnings-Forecasting-via-News-Factor
+   git clone https://github.com/Kanishk1420/FinReport-Explainable-Stock-Earnings-Forecasting-via-News-Factor
+   cd FinReport
    ```
 
 2. **Install Dependencies:**
@@ -65,7 +65,7 @@ The final output is a polished HTML report that presents predictions, risk asses
    pip install -r requirements.txt
    ```
 
-   Dependencies include: `pandas`, `numpy`, `torch`, `jinja2`, `pyyaml`, `transformers`, `arch`, `allennlp`, `allennlp-models`, and others as listed in `requirements.txt`.
+   Dependencies include: `pandas`, `numpy`, `torch`, `jinja2`, `pyyaml`, `transformers`, `arch`, `allennlp`, `allennlp-models`, `seaborn`, and others as listed in `requirements.txt`.
 
 3. **Project Structure:**
 
@@ -86,9 +86,9 @@ The final output is a polished HTML report that presents predictions, risk asses
    │   ├── preprocessing.py        # Feature extraction, technical column renaming, and normalization
    │   ├── model.py                # PyTorch LSTM model definition
    │   ├── train.py                # Script to train the model
-   │   ├── evalute.py              # Script to evaluate the model, compute performance metrics, and generate HTML reports (with risk metrics)
+   │   ├── evalute.py              # Script to evaluate the model and generate HTML reports with detailed metrics and logging
    │   ├── multi_eval.py           # Script to generate a combined HTML report for multiple stocks
-   │   ├── report_generator.py     # Generates HTML reports using Jinja2 (handles extra factors and risk metrics)
+   │   ├── report_generator.py     # Generates HTML reports using Jinja2 (handles extra factors, risk metrics, and conditional styling)
    │   ├── sentiment.py            # FinBERT-based sentiment analysis module
    │   ├── extra_factors.py        # Computes additional domain-specific technical indicators with split descriptions for styling
    │   ├── advanced_news.py        # SRL-based event extraction and event factor computation using AllenNLP
@@ -111,7 +111,7 @@ seq_len: 10
 learning_rate: 0.001
 num_epochs: 30
 model:
-  input_size: 59  # Update this number after renaming technical indicator columns
+  input_size: 59  # Update this number if technical indicator columns change
   hidden_size: 128
   num_layers: 2
   dropout: 0.2
@@ -135,67 +135,53 @@ This script loads data, applies preprocessing (including renaming technical indi
   python src/evalute.py
   ```
 
-  This script:
+  The evaluation script:
   - Loads the model and data.
-  - Processes each stock (logging row counts and market value details, and skipping stocks with insufficient data).
-  - Computes news factors (sentiment, events) and extra technical factors.
-  - Computes advanced risk metrics (EGARCH-based volatility, maximum drawdown, CVaR, risk-adjusted ratio).
-  - Binarizes predicted returns using a dynamic threshold to calculate classification metrics (accuracy, precision, recall, specificity, F1-score, AUC, AUPR, error rate, and confusion matrix components), which are printed in a well-formatted table in the terminal.
-  - Generates an HTML report for each stock with detailed, styled output.
-  - Aggregates individual reports into a single HTML page.
+  - Processes each stock (skipping those with insufficient data).
+  - Computes raw predictions, then applies a **dynamic threshold** (the midpoint between the 25th and 75th percentiles) to binarize both predictions and true labels.
+  - Logs detailed statistics (row counts, class distributions, raw predictions, confusion matrices, and target return distributions).
+  - Computes both regression metrics (MSE, RMSE, MAE) and classification metrics (Accuracy, Precision, Recall, F1-score, AUC, AUPR, Error Rate).
+  - Generates individual HTML reports (with styled extra factors and risk metrics) and combines them into one multi-stock HTML page.
+  - Saves additional performance visualizations (e.g., heatmaps) if configured.
 
-- **Combined Report Generation:**
-
-  ```bash
-  python src/multi_eval.py
-  ```
-
-  This script combines individual stock reports into one comprehensive HTML report.
-
-- **Hyperparameter Tuning (Optional):**
+- **Hyperparameter Tuning:**
 
   ```bash
   python src/hyperparameter.py
   ```
 
-  This script performs grid search using time-series cross-validation and outputs the best configuration.
+  This script performs grid search using time-series cross-validation over various hyperparameter combinations (learning rate, hidden size, number of layers, sequence length, dropout) and outputs the best configuration based on average validation loss.
 
-## Debugging & Improvements
+## Performance & Debugging
 
-- **Data Quantity:**  
-  Stocks with fewer than the required number of rows (based on `seq_len`) are skipped. You can increase the dataset size or reduce `seq_len` if necessary.
+- **Dynamic Thresholding:**  
+  Instead of hardcoding a 0 threshold, the evaluation script calculates a dynamic binarization threshold using the midpoint of the 25th and 75th percentiles of the predicted returns. This helps adjust for class imbalances in each stock.
 
-- **Class Imbalance:**  
-  Some stocks have imbalanced true label distributions, causing metrics like AUC to be undefined. Consider using a dynamic threshold or resampling techniques.
+- **Logging and Metrics:**  
+  The evaluation script logs raw prediction distributions, confusion matrices, and detailed descriptive statistics (mean, median, variance) for target returns. These logs help diagnose if the model struggles on certain stocks due to insufficient data or class imbalance.
 
-- **Risk Model Warnings:**  
-  You may receive a DataScaleWarning from the EGARCH model. Consider rescaling the returns series (e.g., multiplying by 10) or setting `rescale=False` in the `arch_model` initialization.
+- **Fallbacks for Undefined Metrics:**  
+  For stocks with only one class present, fallback values (e.g., AUC = 0.5) are used to prevent errors during metric computation.
 
-- **Logging:**  
-  Additional logging (e.g., printing row counts, latest and average market values) is added to help verify data quality and factor calculations.
+- **Visualization:**  
+  (Optional) Heatmaps for regression and classification metrics can be generated and saved as images for visual performance analysis.
 
-- **Conditional Styling:**  
-  The HTML templates use conditional styling to highlight key numeric values in green (for positive effects) or red (for negative effects).
-
-- **Hybrid Metrics Reporting:**  
-  Both regression metrics (MSE, RMSE, MAE) and binary classification metrics (Accuracy, Precision, Recall, F1-score, AUC, AUPR, Error Rate, and confusion matrix components) are printed in the terminal in a tabular format.
-
-## Future Improvements and Next Steps
+## Future Improvements
 
 - **Return Forecasting Enhancements:**  
-  Experiment with integrating classical multi-factor models (e.g., Fama–French factors) and alternative architectures (e.g., Transformers for time series).
+  Integrate classical multi-factor approaches (e.g., Fama–French factors) or alternative architectures (e.g., Transformers) for improved return predictions.
 
-- **Enhanced Risk Modeling:**  
-  Refine risk metrics by experimenting with alternative distributions (e.g., Student’s t) in the EGARCH model or adding additional risk measures such as drawdown-based metrics.
+- **Risk Modeling Refinements:**  
+  Experiment with alternative distributions in the EGARCH model, incorporate additional risk metrics, or visualize risk dynamics over time.
 
-- **Improved News Aggregation:**  
-  Enhance the aggregation strategy for multiple news items, possibly incorporating temporal weights for consecutive news events.
+- **Improved Class Balancing:**  
+  Consider dynamic binarization thresholds, resampling techniques, or a hybrid approach combining regression and classification metrics to address class imbalances.
 
 - **Interactive Dashboard:**  
-  Develop a web-based dashboard (using Flask, Django, or Streamlit) for real-time report generation and interactive visualizations.
+  Develop a web-based dashboard for real-time analysis and interactive visualization of model performance and risk metrics.
 
-- **Automated Data Updates:**  
-  Build a pipeline to automatically fetch and preprocess new data so that the model and reports remain current.
+- **Automated Data Pipeline:**  
+  Build a pipeline to automatically update and preprocess new stock data to keep the model and reports current.
 
 ## Contact
 
