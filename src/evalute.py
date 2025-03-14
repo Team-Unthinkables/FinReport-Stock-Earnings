@@ -20,6 +20,8 @@ from sklearn.metrics import (accuracy_score, roc_auc_score, f1_score, average_pr
                              precision_score, recall_score, confusion_matrix)
 from jinja2 import Environment, FileSystemLoader
 from news_aggregator import aggregate_news_factors
+import matplotlib.pyplot as plt        # NEW CODE: Import for plotting
+import seaborn as sns                  # NEW CODE: Import for plotting
 
 # ----- Set Up Logging to File and Terminal -----
 logging.basicConfig(
@@ -83,6 +85,8 @@ class FinDataset(Dataset):
 # ----- Initialize Lists for Metrics and Reports -----
 all_metrics = []
 all_reports = []
+
+os.makedirs('img', exist_ok=True)
 
 # ----- Process Each Stock -----
 for stock in stock_list:
@@ -152,25 +156,32 @@ for stock in stock_list:
     unique_preds, counts_preds = np.unique(binary_preds, return_counts=True)
     logger.info(f"Binary Predictions Distribution for {stock}: {dict(zip(unique_preds, counts_preds))}")
 
-    unique_labels = np.unique(binary_true)
+    unique_labels = np.unique(binary_true)  # NEW CODE: Check unique labels
     if len(unique_labels) < 2:
         logger.info(f"Warning: Only one class present in y_true for stock {stock}.")
-        auc = 0.5  # fallback value (random performance)
-        aupr = 0.5
+        auc = 0.5  # fallback value for AUC (random performance)
+        aupr = 0.5 # fallback value for AUPR
         tn, fp, fn, tp = 0, 0, 0, 0
     else:
         auc = roc_auc_score(binary_true, all_predictions)
         aupr = average_precision_score(binary_true, all_predictions)
+        # Compute confusion matrix
         cm = confusion_matrix(binary_true, binary_preds, labels=[0, 1])
-        # D. NEW CODE: Print confusion matrix in tabular format
+        logger.info(f"Confusion Matrix for stock {stock}:\n{cm}")
         if cm.shape == (2, 2):
             tn, fp, fn, tp = cm.ravel()
-            logger.info(f"Confusion Matrix for stock {stock}:")
-            logger.info(f"{'':<15}{'Predicted 0':<15}{'Predicted 1':<15}")
-            logger.info(f"{'Actual 0':<15}{tn:<15}{fp:<15}")
-            logger.info(f"{'Actual 1':<15}{fn:<15}{tp:<15}")
+            # Plot and save confusion matrix as an image
+            plt.figure(figsize=(4, 3))
+            sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=[0, 1], yticklabels=[0, 1])
+            plt.xlabel("Predicted")
+            plt.ylabel("True")
+            plt.title(f"Confusion Matrix for stock {stock}")
+            image_filename = os.path.join('img', f'confusion_matrix_{stock}.png')
+            plt.savefig(image_filename)
+            plt.close()
+            logger.info(f"Confusion matrix image saved as {image_filename}")
         else:
-            logger.warning("Confusion Matrix not 2x2 due to class imbalance. Using fallback values.")
+            logger.warning(f"Confusion Matrix for stock {stock} is not 2x2 due to class imbalance. Using fallback values.")
             tn, fp, fn, tp = 0, 0, 0, 0
 
     accuracy = accuracy_score(binary_true, binary_preds)
@@ -286,6 +297,29 @@ if all_metrics:
     df_metrics = pd.DataFrame(all_metrics)
     logger.info("\nOverall Performance Metrics for All Stocks:")
     logger.info(df_metrics.to_string(index=False))
+    
+    # ----- Generate Heatmap for Regression Metrics (MSE, RMSE, MAE) -----
+    regression_metrics = df_metrics[['Stock', 'MSE', 'RMSE', 'MAE']]
+    regression_metrics.set_index('Stock', inplace=True)
+    plt.figure(figsize=(10, len(regression_metrics) * 0.5))
+    sns.heatmap(regression_metrics, annot=True, fmt=".3f", cmap="YlGnBu")
+    plt.title("Regression Metrics (MSE, RMSE, MAE) for Each Stock")
+    heatmap_reg_filename = os.path.join('img', "regression_metrics_heatmap.png")
+    plt.savefig(heatmap_reg_filename)
+    plt.close()
+    logger.info(f"Regression metrics heatmap saved as {heatmap_reg_filename}")
+    
+    # ----- Generate Heatmap for Classification Metrics (AUC, AUPR) -----
+    classification_metrics = df_metrics[['Stock', 'AUC', 'AUPR']]
+    classification_metrics.set_index('Stock', inplace=True)
+    
+    plt.figure(figsize=(10, len(classification_metrics) * 0.5))
+    sns.heatmap(classification_metrics, annot=True, fmt=".3f", cmap="coolwarm")
+    plt.title("Classification Metrics (AUC, AUPR) for Each Stock")
+    heatmap_class_filename = os.path.join('img', "classification_metrics_heatmap.png")
+    plt.savefig(heatmap_class_filename)
+    plt.close()
+    logger.info(f"Classification metrics heatmap saved as {heatmap_class_filename}")
 else:
     logger.info("No performance metrics were computed.")
 

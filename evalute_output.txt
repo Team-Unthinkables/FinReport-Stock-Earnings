@@ -215,9 +215,9 @@ First 10 Raw Predictions for 000876.SZ: [1.8408417 1.2006217]
 First 10 True Labels for 000876.SZ: [1. 2.]
 Binary Predictions Distribution for 000876.SZ: {0: 1, 1: 1}
 Confusion Matrix for stock 000876.SZ:
-               Predicted 0    Predicted 1    
-Actual 0       0              1              
-Actual 1       1              0              
+[[0 1]
+ [1 0]]
+Confusion matrix image saved as img\confusion_matrix_000876.SZ.png
 Sentiment Score for 000876.SZ: -0.9638
 Report for 000876.SZ generated.
 Target Return Distribution - Mean: 1.521, Median: 1.521, Variance: 0.102
@@ -337,9 +337,9 @@ First 10 Raw Predictions for 002594.SZ: [1.6342629 1.0681196 0.8418064 0.4803726
 First 10 True Labels for 002594.SZ: [0. 1. 1. 1. 1. 2.]
 Binary Predictions Distribution for 002594.SZ: {0: 4, 1: 2}
 Confusion Matrix for stock 002594.SZ:
-               Predicted 0    Predicted 1    
-Actual 0       4              1              
-Actual 1       0              1              
+[[4 1]
+ [0 1]]
+Confusion matrix image saved as img\confusion_matrix_002594.SZ.png
 Sentiment Score for 002594.SZ: -0.9612
 Report for 002594.SZ generated.
 Target Return Distribution - Mean: 1.119, Median: 1.095, Variance: 0.159
@@ -884,9 +884,9 @@ First 10 Raw Predictions for 000625.SZ: [1.2040724 1.8220469 1.3678439]
 First 10 True Labels for 000625.SZ: [2. 2. 1.]
 Binary Predictions Distribution for 000625.SZ: {0: 2, 1: 1}
 Confusion Matrix for stock 000625.SZ:
-               Predicted 0    Predicted 1    
-Actual 0       1              0              
-Actual 1       1              1              
+[[1 0]
+ [1 1]]
+Confusion matrix image saved as img\confusion_matrix_000625.SZ.png
 Sentiment Score for 000625.SZ: -0.9640
 Report for 000625.SZ generated.
 Target Return Distribution - Mean: 1.465, Median: 1.368, Variance: 0.068
@@ -3179,9 +3179,9 @@ First 10 Raw Predictions for 300750.SZ: [0.7276069  0.7276069  0.7276069  0.7276
 First 10 True Labels for 300750.SZ: [0. 0. 0. 0. 0. 0. 2. 1. 0. 2.]
 Binary Predictions Distribution for 300750.SZ: {0: 9, 1: 1}
 Confusion Matrix for stock 300750.SZ:
-               Predicted 0    Predicted 1    
-Actual 0       6              1              
-Actual 1       3              0              
+[[6 1]
+ [3 0]]
+Confusion matrix image saved as img\confusion_matrix_300750.SZ.png
 Sentiment Score for 300750.SZ: -0.9640
 Report for 300750.SZ generated.
 Target Return Distribution - Mean: 0.723, Median: 0.728, Variance: 0.074
@@ -4248,9 +4248,9 @@ First 10 Raw Predictions for 000591.SZ: [0.77860606 1.1177406  1.4384798  1.2408
 First 10 True Labels for 000591.SZ: [2. 0. 0. 2. 2. 0.]
 Binary Predictions Distribution for 000591.SZ: {0: 4, 1: 2}
 Confusion Matrix for stock 000591.SZ:
-               Predicted 0    Predicted 1    
-Actual 0       1              2              
-Actual 1       3              0              
+[[1 2]
+ [3 0]]
+Confusion matrix image saved as img\confusion_matrix_000591.SZ.png
 Sentiment Score for 000591.SZ: -0.9635
 Report for 000591.SZ generated.
 Target Return Distribution - Mean: 1.256, Median: 1.199, Variance: 0.098
@@ -11246,4 +11246,6 @@ Overall Performance Metrics for All Stocks:
 300014.SZ  1.000000        0.0     0.0     0.000000  0.000000 0.500000 0.500000    0.000000 0.454702 0.674316 0.674316
 300750.SZ  0.600000        0.0     0.0     0.857143  0.000000 0.142857 0.215741    0.400000 1.021016 1.010453 0.919043
 000591.SZ  0.166667        0.0     0.0     0.333333  0.000000 0.222222 0.444444    0.833333 1.557479 1.247990 1.197004
+Regression metrics heatmap saved as img\regression_metrics_heatmap.png
+Classification metrics heatmap saved as img\classification_metrics_heatmap.png
 Evaluation completed.
