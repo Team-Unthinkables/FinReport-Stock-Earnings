@@ -9,6 +9,7 @@ from sklearn.model_selection import TimeSeriesSplit
 from model import FinReportModel
 from data_loader import load_data
 from preprocessing import select_features, normalize_features
+from tqdm import tqdm  # For progress tracking
 
 # Define a simple dataset for sequence data
 class FinDataset(Dataset):
@@ -35,16 +36,14 @@ def create_dataloaders(features, labels, seq_len, batch_size, train_idx, val_idx
     train_dataset = FinDataset(train_features, train_labels, seq_len)
     val_dataset = FinDataset(val_features, val_labels, seq_len)
     
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+    # Shuffle training data for better optimization
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     return train_loader, val_loader
 
 # Training and evaluation function that returns average validation loss
 def train_and_evaluate(train_loader, val_loader, input_size, hidden_size, num_layers, dropout, learning_rate, num_epochs):
     model = FinReportModel(input_size=input_size, hidden_size=hidden_size, num_layers=num_layers)
-    # If you want dropout, you can modify your model to include a dropout layer.
-    # For now, assume dropout is used within your model if needed.
-    
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     
@@ -58,7 +57,7 @@ def train_and_evaluate(train_loader, val_loader, input_size, hidden_size, num_la
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
-        # Optionally, you could print progress here.
+        # Optionally, print epoch progress:
         # print(f"Epoch {epoch+1}/{num_epochs}, Loss: {total_loss/len(train_loader):.4f}")
     
     model.eval()
@@ -71,7 +70,6 @@ def train_and_evaluate(train_loader, val_loader, input_size, hidden_size, num_la
     avg_val_loss = val_loss / len(val_loader)
     return avg_val_loss, model
 
-# Main grid search routine
 def main():
     # Load configuration from config.yaml (for default values and paths)
     with open('src/config.yaml', 'r') as f:
@@ -87,50 +85,57 @@ def main():
     features, labels = select_features(df)
     features, scaler = normalize_features(features)
     
-    # Convert to numpy arrays if not already
     features = np.array(features)
     labels = np.array(labels)
     
-    # Define hyperparameter grids for grid search
-    learning_rates = [0.001, 0.0005]
-    hidden_sizes = [64, 128]
-    num_layers_options = [1, 2]
-    seq_lengths = [5, 10]  # You can experiment with different sequence lengths
-    dropouts = [0.0, 0.2]  # Note: if your model doesn't support dropout, ignore or update model definition
+    # Extend hyperparameter grids:
+    learning_rates = [0.001, 0.0005, 0.0001]
+    hidden_sizes = [64, 128, 256]
+    num_layers_options = [1, 2, 3]
+    seq_lengths = [5, 10, 15]
+    dropouts = [0.0, 0.2, 0.4]
     num_epochs = config['num_epochs']
-    batch_size = default_batch_size  # Using default batch size from config
+    batch_size = default_batch_size
     
     best_val_loss = float('inf')
     best_params = None
+    results = []
     
-    # Use TimeSeriesSplit for time-series cross-validation
     tscv = TimeSeriesSplit(n_splits=3)
     
-    # Grid search over hyperparameters
-    for lr in learning_rates:
+    # Grid search over hyperparameters using tqdm for progress
+    for lr in tqdm(learning_rates, desc="Learning Rates"):
         for hidden in hidden_sizes:
             for layers in num_layers_options:
                 for seq_len in seq_lengths:
                     for dropout in dropouts:
                         val_losses = []
-                        # Loop over the splits
                         for train_idx, val_idx in tscv.split(features):
-                            # Skip if not enough data in this split
                             if len(train_idx) <= seq_len or len(val_idx) <= seq_len:
                                 continue
                             
                             train_loader, val_loader = create_dataloaders(features, labels, seq_len, batch_size, train_idx, val_idx)
-                            avg_val_loss, _ = train_and_evaluate(train_loader, val_loader,
-                                                                 input_size=features.shape[1],
-                                                                 hidden_size=hidden,
-                                                                 num_layers=layers,
-                                                                 dropout=dropout,
-                                                                 learning_rate=lr,
-                                                                 num_epochs=num_epochs)
+                            avg_val_loss, _ = train_and_evaluate(
+                                train_loader, val_loader,
+                                input_size=features.shape[1],
+                                hidden_size=hidden,
+                                num_layers=layers,
+                                dropout=dropout,
+                                learning_rate=lr,
+                                num_epochs=num_epochs
+                            )
                             val_losses.append(avg_val_loss)
-                        if len(val_losses) > 0:
+                        if val_losses:
                             avg_loss = np.mean(val_losses)
                             print(f"lr: {lr}, hidden: {hidden}, layers: {layers}, seq_len: {seq_len}, dropout: {dropout}, avg_val_loss: {avg_loss:.4f}")
+                            results.append({
+                                'learning_rate': lr,
+                                'hidden_size': hidden,
+                                'num_layers': layers,
+                                'seq_len': seq_len,
+                                'dropout': dropout,
+                                'avg_val_loss': avg_loss
+                            })
                             if avg_loss < best_val_loss:
                                 best_val_loss = avg_loss
                                 best_params = {
@@ -146,6 +151,11 @@ def main():
     print("\nBest Hyperparameters Found:")
     print(best_params)
     print("Best Validation Loss:", best_val_loss)
-
+    
+    import pandas as pd
+    results_df = pd.DataFrame(results)
+    print("\nGrid Search Results:")
+    print(results_df.sort_values(by='avg_val_loss'))
+    
 if __name__ == "__main__":
     main()

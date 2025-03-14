@@ -190,6 +190,8 @@ Not enough data for stock 300315.SZ (requires > 10 rows). Skipping.
 Processing stock: 000876.SZ
 Stock 000876.SZ has 59 rows.
 For stock 000876.SZ: Latest market value = 64829991211.38, Average = 92900475420.82492, Difference = -30.2%
+True label distribution: {0.0: 5, 1.0: 6, 2.0: 1}
+Target Return Distribution - Mean: 0.667, Median: 1.000, Variance: 0.389
 Shape of features: (12, 59)
 First row of features: [ 1.50700000e+01  1.47000000e+01  1.50800000e+01  1.46900000e+01
   3.88770700e+07  5.76077930e+08 -2.45520902e-02  6.62266067e+10
@@ -206,6 +208,16 @@ First row of features: [ 1.50700000e+01  1.47000000e+01  1.50800000e+01  1.46900
   1.26175025e-01 -3.79291475e-01  3.76139302e-02 -6.65474201e-01
   1.33839354e+00  1.73537879e+00 -1.91872250e+00 -5.89105644e-01
  -2.31902031e-01  4.08276594e-02 -9.58761309e-01]
+Raw predicted values distribution: {1.2006217: 1, 1.8408417: 1}
+Mean predicted value: 1.521, Median: 1.521
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.521
+First 10 Raw Predictions for 000876.SZ: [1.8408417 1.2006217]
+First 10 True Labels for 000876.SZ: [1. 2.]
+Binary Predictions Distribution for 000876.SZ: {0: 1, 1: 1}
+Confusion Matrix for stock 000876.SZ:
+               Predicted 0    Predicted 1    
+Actual 0       0              1              
+Actual 1       1              0              
 Sentiment Score for 000876.SZ: -0.9638
 Report for 000876.SZ generated.
 Target Return Distribution - Mean: 1.521, Median: 1.521, Variance: 0.102
@@ -300,6 +312,8 @@ Not enough test data for stock 002252.SZ (requires > 10 rows). Skipping.
 Processing stock: 002594.SZ
 Stock 002594.SZ has 78 rows.
 For stock 002594.SZ: Latest market value = 860998104515.0, Average = 440326125712.73267, Difference = 95.5%
+True label distribution: {0.0: 9, 1.0: 4, 2.0: 3}
+Target Return Distribution - Mean: 0.625, Median: 0.000, Variance: 0.609
 Shape of features: (16, 59)
 First row of features: [ 2.66927950e+02  2.54031915e+02  2.70916724e+02  2.50323055e+02
   2.87964130e+07  7.42040893e+09 -4.83127973e-02  6.82312967e+11
@@ -316,6 +330,16 @@ First row of features: [ 2.66927950e+02  2.54031915e+02  2.70916724e+02  2.50323
  -1.29907591e+00  2.65459638e+00 -3.30312806e-01  3.31234547e-01
  -1.59897447e+00 -4.54487933e-01  4.01408263e-02 -1.03390164e+00
  -4.76105653e-01  7.82419843e-01 -1.12304103e+00]
+Raw predicted values distribution: {0.4803726: 1, 0.8418064: 1, 1.0681196: 1, 1.120951: 1, 1.5658762: 1, 1.6342629: 1}
+Mean predicted value: 1.119, Median: 1.095
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.177
+First 10 Raw Predictions for 002594.SZ: [1.6342629 1.0681196 0.8418064 0.4803726 1.120951  1.5658762]
+First 10 True Labels for 002594.SZ: [0. 1. 1. 1. 1. 2.]
+Binary Predictions Distribution for 002594.SZ: {0: 4, 1: 2}
+Confusion Matrix for stock 002594.SZ:
+               Predicted 0    Predicted 1    
+Actual 0       4              1              
+Actual 1       0              1              
 Sentiment Score for 002594.SZ: -0.9612
 Report for 002594.SZ generated.
 Target Return Distribution - Mean: 1.119, Median: 1.095, Variance: 0.159
@@ -606,6 +630,8 @@ Not enough test data for stock 601088.SH (requires > 10 rows). Skipping.
 Processing stock: 600276.SH
 Stock 600276.SH has 69 rows.
 For stock 600276.SH: Latest market value = 317442838214.28, Average = 427354496169.1956, Difference = -25.7%
+True label distribution: {0.0: 8, 1.0: 3, 2.0: 3}
+Target Return Distribution - Mean: 0.643, Median: 0.000, Variance: 0.658
 Shape of features: (14, 59)
 First row of features: [ 4.68273041e+01  4.51339108e+01  4.69169543e+01  4.50741440e+01
   8.04365210e+07  3.68610765e+09 -3.61625186e-02  2.89869710e+11
@@ -622,6 +648,13 @@ First row of features: [ 4.68273041e+01  4.51339108e+01  4.69169543e+01  4.50741
  -1.29878854e+00 -1.00003968e+00 -9.84026619e-01 -1.75887818e-01
   8.84328801e-01 -7.03229921e-01 -1.37180334e+00 -1.90254877e+00
   8.19720606e-01  4.69435701e-01 -1.57438472e+00]
+Raw predicted values distribution: {1.1820929: 1, 1.45596: 1, 1.6292602: 1, 1.8331007: 1}
+Mean predicted value: 1.525, Median: 1.543
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.534
+First 10 Raw Predictions for 600276.SH: [1.1820929 1.45596   1.6292602 1.8331007]
+First 10 True Labels for 600276.SH: [0. 0. 1. 0.]
+Binary Predictions Distribution for 600276.SH: {0: 2, 1: 2}
+Warning: Only one class present in y_true for stock 600276.SH.
 Sentiment Score for 600276.SH: -0.9406
 Report for 600276.SH generated.
 Target Return Distribution - Mean: 1.525, Median: 1.543, Variance: 0.057
@@ -826,6 +859,8 @@ Not enough test data for stock 000783.SZ (requires > 10 rows). Skipping.
 Processing stock: 000625.SZ
 Stock 000625.SZ has 61 rows.
 For stock 000625.SZ: Latest market value = 137491374803.666, Average = 70303118204.12779, Difference = 95.6%
+True label distribution: {0.0: 1, 1.0: 4, 2.0: 8}
+Target Return Distribution - Mean: 1.538, Median: 2.000, Variance: 0.402
 Shape of features: (13, 59)
 First row of features: [ 8.91233961e+00  8.91233961e+00  9.05201462e+00  8.70282711e+00
   1.35211744e+08  2.23184602e+09  0.00000000e+00  8.00089786e+10
@@ -842,6 +877,16 @@ First row of features: [ 8.91233961e+00  8.91233961e+00  9.05201462e+00  8.70282
  -1.20947672e+00  2.60873508e+00  7.10472622e-01  1.15807054e+00
   1.37777600e+00  4.97301678e-01  1.05106033e+00  1.54515384e+00
   7.33017832e-01  2.89890136e+00 -7.46163556e-03]
+Raw predicted values distribution: {1.2040724: 1, 1.3678439: 1, 1.8220469: 1}
+Mean predicted value: 1.465, Median: 1.368
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.440
+First 10 Raw Predictions for 000625.SZ: [1.2040724 1.8220469 1.3678439]
+First 10 True Labels for 000625.SZ: [2. 2. 1.]
+Binary Predictions Distribution for 000625.SZ: {0: 2, 1: 1}
+Confusion Matrix for stock 000625.SZ:
+               Predicted 0    Predicted 1    
+Actual 0       1              0              
+Actual 1       1              1              
 Sentiment Score for 000625.SZ: -0.9640
 Report for 000625.SZ generated.
 Target Return Distribution - Mean: 1.465, Median: 1.368, Variance: 0.068
@@ -1209,6 +1254,8 @@ Not enough data for stock 002671.SZ (requires > 10 rows). Skipping.
 Processing stock: 600196.SH
 Stock 600196.SH has 53 rows.
 For stock 600196.SH: Latest market value = 112449237899.052, Average = 120415515716.33582, Difference = -6.6%
+True label distribution: {0.0: 3, 1.0: 4, 2.0: 4}
+Target Return Distribution - Mean: 1.091, Median: 1.000, Variance: 0.628
 Shape of features: (11, 59)
 First row of features: [ 6.84564965e+01  6.53376596e+01  6.99764360e+01  6.52093530e+01
   5.98712290e+07  4.06321819e+09 -4.55594002e-02  1.58515711e+11
@@ -1225,6 +1272,13 @@ First row of features: [ 6.84564965e+01  6.53376596e+01  6.99764360e+01  6.52093
  -1.00638272e+00 -2.75640106e-01  5.94244113e-01 -3.28661691e-02
  -2.12630748e+00 -5.81968809e-01  4.19884416e-01 -3.39244170e-01
   4.38167129e-01  1.16654232e+00 -1.15564688e+00]
+Raw predicted values distribution: {0.77528733: 1}
+Mean predicted value: 0.775, Median: 0.775
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 0.775
+First 10 Raw Predictions for 600196.SH: [0.77528733]
+First 10 True Labels for 600196.SH: [0.]
+Binary Predictions Distribution for 600196.SH: {0: 1}
+Warning: Only one class present in y_true for stock 600196.SH.
 Sentiment Score for 600196.SH: -0.9592
 Report for 600196.SH generated.
 Target Return Distribution - Mean: 0.775, Median: 0.775, Variance: 0.000
@@ -1265,6 +1319,8 @@ Not enough data for stock 600335.SH (requires > 10 rows). Skipping.
 Processing stock: 600418.SH
 Stock 600418.SH has 52 rows.
 For stock 600418.SH: Latest market value = 28229283664.47, Average = 16533348061.702497, Difference = 70.7%
+True label distribution: {0.0: 5, 2.0: 6}
+Target Return Distribution - Mean: 1.091, Median: 2.000, Variance: 0.992
 Shape of features: (11, 59)
 First row of features: [ 8.75825271e+00  9.17626023e+00  9.37531143e+00  8.65872711e+00
   1.19013293e+08  1.08193312e+09  4.77272727e-02  1.74563377e+10
@@ -1281,6 +1337,13 @@ First row of features: [ 8.75825271e+00  9.17626023e+00  9.37531143e+00  8.65872
   3.96015594e-01  2.61532739e+00  1.52338981e-01  1.75882908e-01
   6.01720297e-01  2.69828508e+00 -1.23874567e+00  1.61125011e-01
  -9.63097839e-01  1.10461906e+00  2.49337807e-01]
+Raw predicted values distribution: {1.1941552: 1}
+Mean predicted value: 1.194, Median: 1.194
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.194
+First 10 Raw Predictions for 600418.SH: [1.1941552]
+First 10 True Labels for 600418.SH: [0.]
+Binary Predictions Distribution for 600418.SH: {0: 1}
+Warning: Only one class present in y_true for stock 600418.SH.
 Sentiment Score for 600418.SH: -0.9631
 Report for 600418.SH generated.
 Target Return Distribution - Mean: 1.194, Median: 1.194, Variance: 0.000
@@ -1449,6 +1512,8 @@ Not enough test data for stock 600104.SH (requires > 10 rows). Skipping.
 Processing stock: 601988.SH
 Stock 601988.SH has 62 rows.
 For stock 601988.SH: Latest market value = 837563591086.735, Average = 988394958279.9944, Difference = -15.3%
+True label distribution: {1.0: 13}
+Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.000
 Shape of features: (13, 59)
 First row of features: [ 2.90039879e+00  2.90039879e+00  2.91792386e+00  2.89163625e+00
   1.21782580e+08  4.03174548e+08  0.00000000e+00  9.00040788e+11
@@ -1465,6 +1530,13 @@ First row of features: [ 2.90039879e+00  2.90039879e+00  2.91792386e+00  2.89163
   2.85673015e-01 -1.66734005e+00 -1.46391354e+00  9.92166443e-02
   5.76561303e-01  2.31078147e-02  1.15284645e+00 -6.48913632e-02
   1.07190997e+00 -1.17181404e+00  7.54613307e-01]
+Raw predicted values distribution: {0.84376: 1, 1.1434712: 1, 1.3263303: 1}
+Mean predicted value: 1.105, Median: 1.143
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.114
+First 10 Raw Predictions for 601988.SH: [1.3263303 0.84376   1.1434712]
+First 10 True Labels for 601988.SH: [1. 1. 1.]
+Binary Predictions Distribution for 601988.SH: {0: 1, 1: 2}
+Warning: Only one class present in y_true for stock 601988.SH.
 Sentiment Score for 601988.SH: -0.9640
 Report for 601988.SH generated.
 Target Return Distribution - Mean: 1.105, Median: 1.143, Variance: 0.040
@@ -2128,6 +2200,8 @@ Not enough data for stock 002856.SZ (requires > 10 rows). Skipping.
 Processing stock: 300014.SZ
 Stock 300014.SZ has 51 rows.
 For stock 300014.SZ: Latest market value = 215367040191.42, Average = 129917622035.58745, Difference = 65.8%
+True label distribution: {0.0: 6, 1.0: 5}
+Target Return Distribution - Mean: 0.455, Median: 0.000, Variance: 0.248
 Shape of features: (11, 59)
 First row of features: [ 1.15831523e+02  1.16200954e+02  1.18297723e+02  1.12826154e+02
   4.05776790e+07  4.68812336e+09  3.18938023e-03  2.20627686e+11
@@ -2144,6 +2218,13 @@ First row of features: [ 1.15831523e+02  1.16200954e+02  1.18297723e+02  1.12826
  -1.15400079e+00 -6.59347863e-01  2.54326006e-01 -1.39772155e-01
  -1.98746964e+00 -7.91631390e-01  5.03877000e-01 -9.71826579e-01
   2.86442583e-01  5.97541775e-02 -3.09348319e-01]
+Raw predicted values distribution: {0.6743158: 1}
+Mean predicted value: 0.674, Median: 0.674
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 0.674
+First 10 Raw Predictions for 300014.SZ: [0.6743158]
+First 10 True Labels for 300014.SZ: [0.]
+Binary Predictions Distribution for 300014.SZ: {0: 1}
+Warning: Only one class present in y_true for stock 300014.SZ.
 Sentiment Score for 300014.SZ: -0.9640
 Report for 300014.SZ generated.
 Target Return Distribution - Mean: 0.674, Median: 0.674, Variance: 0.000
@@ -3072,6 +3153,8 @@ Not enough data for stock 600713.SH (requires > 10 rows). Skipping.
 Processing stock: 300750.SZ
 Stock 300750.SZ has 99 rows.
 For stock 300750.SZ: Latest market value = 1432432958542.08, Average = 864521385696.8243, Difference = 65.7%
+True label distribution: {0.0: 17, 1.0: 1, 2.0: 2}
+Target Return Distribution - Mean: 0.250, Median: 0.000, Variance: 0.388
 Shape of features: (20, 59)
 First row of features: [ 5.20790646e+02  5.04235738e+02  5.21829072e+02  4.98125000e+02
   9.59068300e+06  4.87952981e+09 -3.17880287e-02  1.17614894e+12
@@ -3088,6 +3171,17 @@ First row of features: [ 5.20790646e+02  5.04235738e+02  5.21829072e+02  4.98125
  -1.02012912e+00 -1.33917334e+00  3.18274649e-01  5.89643670e-01
  -6.74053021e-03 -7.04884753e-01 -1.08272121e-01 -2.44727801e-01
  -9.03871999e-01  4.84461511e-01 -3.36995852e-01]
+Raw predicted values distribution: {0.12982802: 1, 0.6599941: 1, 0.7276069: 7, 1.3422208: 1}
+Mean predicted value: 0.723, Median: 0.728
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 0.728
+First 10 Raw Predictions for 300750.SZ: [0.7276069  0.7276069  0.7276069  0.7276069  0.7276069  0.7276069
+ 0.7276069  0.6599941  1.3422208  0.12982802]
+First 10 True Labels for 300750.SZ: [0. 0. 0. 0. 0. 0. 2. 1. 0. 2.]
+Binary Predictions Distribution for 300750.SZ: {0: 9, 1: 1}
+Confusion Matrix for stock 300750.SZ:
+               Predicted 0    Predicted 1    
+Actual 0       6              1              
+Actual 1       3              0              
 Sentiment Score for 300750.SZ: -0.9640
 Report for 300750.SZ generated.
 Target Return Distribution - Mean: 0.723, Median: 0.728, Variance: 0.074
@@ -4129,6 +4223,8 @@ Not enough test data for stock 603378.SH (requires > 10 rows). Skipping.
 Processing stock: 000591.SZ
 Stock 000591.SZ has 77 rows.
 For stock 000591.SZ: Latest market value = 28507289343.36, Average = 18408516874.59532, Difference = 54.9%
+True label distribution: {0.0: 8, 1.0: 1, 2.0: 7}
+Target Return Distribution - Mean: 0.938, Median: 0.500, Variance: 0.934
 Shape of features: (16, 59)
 First row of features: [ 6.30629357e+00  6.11284898e+00  6.31596580e+00  6.05481560e+00
   6.70449670e+07  4.24751453e+08 -3.06748466e-02  1.90048596e+10
@@ -4145,6 +4241,16 @@ First row of features: [ 6.30629357e+00  6.11284898e+00  6.31596580e+00  6.05481
  -1.28238955e+00  2.54090561e-01 -6.33554086e-01  1.05846841e+00
  -7.48826319e-01 -4.77839916e-01  1.43178397e-01 -6.67841912e-01
  -2.38722241e-01  4.96390825e-01 -4.85276586e-01]
+Raw predicted values distribution: {0.77860606: 1, 1.1177406: 1, 1.1566687: 1, 1.240867: 1, 1.4384798: 1, 1.8019463: 1}
+Mean predicted value: 1.256, Median: 1.199
+Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): 1.258
+First 10 Raw Predictions for 000591.SZ: [0.77860606 1.1177406  1.4384798  1.240867   1.1566687  1.8019463 ]
+First 10 True Labels for 000591.SZ: [2. 0. 0. 2. 2. 0.]
+Binary Predictions Distribution for 000591.SZ: {0: 4, 1: 2}
+Confusion Matrix for stock 000591.SZ:
+               Predicted 0    Predicted 1    
+Actual 0       1              2              
+Actual 1       3              0              
 Sentiment Score for 000591.SZ: -0.9635
 Report for 000591.SZ generated.
 Target Return Distribution - Mean: 1.256, Median: 1.199, Variance: 0.098
@@ -11129,15 +11235,15 @@ Stock 300900.SZ has 1 rows.
 Not enough data for stock 300900.SZ (requires > 10 rows). Skipping.
 
 Overall Performance Metrics for All Stocks:
-    Stock  Accuracy  Precision   Recall  Specificity  F1-score      AUC     AUPR  Error Rate      MSE     RMSE      MAE
-000876.SZ  0.000000       0.00 0.000000     0.000000  0.000000 0.000000 0.500000    1.000000 0.673010 0.820372 0.820110
-002594.SZ  0.500000       0.25 1.000000     0.400000  0.400000 0.800000 0.500000    0.500000 0.528931 0.727276 0.489213
-600276.SH  0.250000       0.25 1.000000     0.000000  0.400000 0.666667 0.500000    0.750000 1.818347 1.348461 1.275103
-000625.SZ  1.000000       0.00 0.000000     1.000000  0.000000      NaN 0.000000    0.000000 0.266826 0.516552 0.447242
-600196.SH  0.000000       0.00 0.000000     0.000000  0.000000      NaN 0.000000    1.000000 0.601070 0.775287 0.775287
-600418.SH  0.000000       0.00 0.000000     0.000000  0.000000      NaN 0.000000    1.000000 1.426007 1.194155 1.194155
-601988.SH  0.333333       0.00 0.000000     0.333333  0.000000      NaN 0.000000    0.666667 0.050495 0.224712 0.208681
-300014.SZ  0.000000       0.00 0.000000     0.000000  0.000000      NaN 0.000000    1.000000 0.454702 0.674316 0.674316
-300750.SZ  0.300000       0.30 1.000000     0.000000  0.461538 0.142857 0.215741    0.700000 1.021016 1.010453 0.919043
-000591.SZ  0.333333       0.40 0.666667     0.000000  0.500000 0.222222 0.444444    0.666667 1.557479 1.247990 1.197004
+    Stock  Accuracy  Precision  Recall  Specificity  F1-score      AUC     AUPR  Error Rate      MSE     RMSE      MAE
+000876.SZ  0.000000        0.0     0.0     0.000000  0.000000 0.000000 0.500000    1.000000 0.673010 0.820372 0.820110
+002594.SZ  0.833333        0.5     1.0     0.800000  0.666667 0.800000 0.500000    0.166667 0.528931 0.727276 0.489213
+600276.SH  0.500000        0.0     0.0     0.000000  0.000000 0.500000 0.500000    0.500000 1.818347 1.348461 1.275103
+000625.SZ  0.666667        1.0     0.5     1.000000  0.666667 0.500000 0.833333    0.333333 0.266826 0.516552 0.447242
+600196.SH  1.000000        0.0     0.0     0.000000  0.000000 0.500000 0.500000    0.000000 0.601070 0.775287 0.775287
+600418.SH  1.000000        0.0     0.0     0.000000  0.000000 0.500000 0.500000    0.000000 1.426007 1.194155 1.194155
+601988.SH  0.333333        0.0     0.0     0.000000  0.000000 0.500000 0.500000    0.666667 0.050495 0.224712 0.208681
+300014.SZ  1.000000        0.0     0.0     0.000000  0.000000 0.500000 0.500000    0.000000 0.454702 0.674316 0.674316
+300750.SZ  0.600000        0.0     0.0     0.857143  0.000000 0.142857 0.215741    0.400000 1.021016 1.010453 0.919043
+000591.SZ  0.166667        0.0     0.0     0.333333  0.000000 0.222222 0.444444    0.833333 1.557479 1.247990 1.197004
 Evaluation completed.

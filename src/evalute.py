@@ -106,6 +106,12 @@ for stock in stock_list:
         continue
 
     test_features, test_labels = select_features(test_df)
+    unique, counts = np.unique(test_labels, return_counts=True)
+    logger.info("True label distribution: " + str(dict(zip(unique, counts))))
+    mean_val = np.mean(test_labels)
+    median_val = np.median(test_labels)
+    variance_val = np.var(test_labels)
+    logger.info(f"Target Return Distribution - Mean: {mean_val:.3f}, Median: {median_val:.3f}, Variance: {variance_val:.3f}")
     logger.info("Shape of features: " + str(test_features.shape))
     logger.info("First row of features: " + str(test_features[0]))
     test_features, scaler = normalize_features(test_features)
@@ -121,33 +127,71 @@ for stock in stock_list:
             preds = model(x_batch)
             all_predictions.extend(preds.cpu().numpy().flatten())
     all_predictions = np.array(all_predictions)
+
+    # NEW CODE: Log raw prediction statistics.
+    unique_preds, counts_preds = np.unique(all_predictions, return_counts=True)
+    logger.info(f"Raw predicted values distribution: {dict(zip(unique_preds, counts_preds))}")
+    logger.info(f"Mean predicted value: {np.mean(all_predictions):.3f}, Median: {np.median(all_predictions):.3f}")
+
     predicted_return = all_predictions[0]
 
-    # --- Hybrid Binarization: use dynamic threshold (e.g., median) ---
-    dynamic_threshold = np.median(test_labels[seq_len:])
-    binary_preds = (all_predictions > dynamic_threshold).astype(int)
-    binary_true = (test_labels[seq_len:] > dynamic_threshold).astype(int)
+    # --- UPDATED CODE: Compute Classification Metrics using Dynamic Threshold ---
+    q25, q75 = np.percentile(all_predictions, [25, 75])
+    threshold = (q25 + q75) / 2
+    logger.info(f"Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): {threshold:.3f}")
+    
+    # NEW CODE: Log Raw Predictions and True Labels before binarization
+    logger.info(f"First 10 Raw Predictions for {stock}: {all_predictions[:10]}")
+    logger.info(f"First 10 True Labels for {stock}: {test_labels[seq_len:seq_len+10]}")
+    
+    # Use the same threshold for both predictions and true labels
+    binary_preds = (all_predictions > threshold).astype(int)
+    binary_true = (test_labels[seq_len:] > threshold).astype(int)
 
-    # Compute binary metrics
+    # NEW CODE: Log binary predictions distribution.
+    unique_preds, counts_preds = np.unique(binary_preds, return_counts=True)
+    logger.info(f"Binary Predictions Distribution for {stock}: {dict(zip(unique_preds, counts_preds))}")
+
+    unique_labels = np.unique(binary_true)
+    if len(unique_labels) < 2:
+        logger.info(f"Warning: Only one class present in y_true for stock {stock}.")
+        auc = 0.5  # fallback value (random performance)
+        aupr = 0.5
+        tn, fp, fn, tp = 0, 0, 0, 0
+    else:
+        auc = roc_auc_score(binary_true, all_predictions)
+        aupr = average_precision_score(binary_true, all_predictions)
+        cm = confusion_matrix(binary_true, binary_preds, labels=[0, 1])
+        # D. NEW CODE: Print confusion matrix in tabular format
+        if cm.shape == (2, 2):
+            tn, fp, fn, tp = cm.ravel()
+            logger.info(f"Confusion Matrix for stock {stock}:")
+            logger.info(f"{'':<15}{'Predicted 0':<15}{'Predicted 1':<15}")
+            logger.info(f"{'Actual 0':<15}{tn:<15}{fp:<15}")
+            logger.info(f"{'Actual 1':<15}{fn:<15}{tp:<15}")
+        else:
+            logger.warning("Confusion Matrix not 2x2 due to class imbalance. Using fallback values.")
+            tn, fp, fn, tp = 0, 0, 0, 0
+
     accuracy = accuracy_score(binary_true, binary_preds)
     precision = precision_score(binary_true, binary_preds, zero_division=0)
     recall = recall_score(binary_true, binary_preds, zero_division=0)
     f1 = f1_score(binary_true, binary_preds, zero_division=0)
-    try:
-        auc = roc_auc_score(binary_true, all_predictions)
-    except ValueError:
-        auc = float('nan')
-    aupr = average_precision_score(binary_true, all_predictions)
     error_rate = 1 - accuracy
+    specificity = tn / (tn + fp) if (tn + fp) > 0 else 0
 
-    # Handle confusion matrix safely
-    cm = confusion_matrix(binary_true, binary_preds, labels=[0, 1])
-    if cm.size == 4:
-        tn, fp, fn, tp = cm.ravel()
-        specificity = tn / (tn + fp) if (tn + fp) > 0 else 0
-    else:
-        tn, fp, fn, tp = 0, 0, 0, 0
-        specificity = None
+    print("----------------------------------------------------------")
+    print(f"{'Metric':<20} | {'Value':>8}")
+    print("----------------------------------------------------------")
+    print(f"{'Accuracy':<20} | {accuracy:>8.3f}")
+    print(f"{'Precision':<20} | {precision:>8.3f}")
+    print(f"{'Recall (Sensitivity)':<20} | {recall:>8.3f}")
+    print(f"{'Specificity':<20} | {specificity:>8.3f}")
+    print(f"{'F1-score':<20} | {f1:>8.3f}")
+    print(f"{'AUC':<20} | {auc:>8.3f}")
+    print(f"{'AUPR':<20} | {aupr:>8.3f}")
+    print(f"{'Error Rate':<20} | {error_rate:>8.3f}")
+    print("----------------------------------------------------------")
 
     # Compute regression metrics
     from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -161,7 +205,7 @@ for stock in stock_list:
         'Accuracy': accuracy,
         'Precision': precision,
         'Recall': recall,
-        'Specificity': specificity if specificity is not None else "N/A",
+        'Specificity': specificity,
         'F1-score': f1,
         'AUC': auc,
         'AUPR': aupr,
