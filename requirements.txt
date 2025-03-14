@@ -5,4 +5,8 @@ torchvision
 transformers
 stockstats
 PyYAML
-ast  # part of Python standard library, but note it here if you use it extensively
+jinja2
+arch
+allennlp
+allennlp-models
+seaborn
