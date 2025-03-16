@@ -1,10 +1,10 @@
 data_path: "src/stock_data.csv"
 batch_size: 32
-seq_len: 10
-learning_rate: 0.001
+seq_len: 15
+learning_rate: 0.0005
 num_epochs: 30
 model:
   input_size: 59
-  hidden_size: 128
-  num_layers: 2
-  dropout: 0.2
+  hidden_size:  256
+  num_layers: 3
+  dropout: 0.0
