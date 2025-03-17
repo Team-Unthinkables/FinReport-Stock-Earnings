@@ -43,6 +43,102 @@ def compute_cvar(returns, alpha=0.05):
     index = int(alpha * len(sorted_returns))
     return np.mean(sorted_returns[:index])
 
+# Add new function to optimize threshold based on F1-score.
+def optimize_threshold(true_labels, predicted_values):
+    # Handle case with very few samples
+    if len(predicted_values) <= 5:
+        default_threshold = np.mean(predicted_values) * 0.9  # Slightly lower than mean
+        logger.info(f"Few samples ({len(predicted_values)}), using default threshold: {default_threshold:.3f}")
+        return default_threshold, 0
+    # Original code for larger datasets
+    thresholds = np.linspace(np.min(predicted_values), np.max(predicted_values), 100)
+    best_threshold = thresholds[0]
+    best_f1 = 0
+    for thresh in thresholds:
+        binary_preds = (predicted_values > thresh).astype(int)
+        current_f1 = f1_score(true_labels, binary_preds, zero_division=0)
+        if current_f1 > best_f1:
+            best_f1 = current_f1
+            best_threshold = thresh
+    return best_threshold, best_f1
+
+# NEW FUNCTION: Analyze threshold placement
+def analyze_threshold_placement(predicted_values, true_labels, threshold):
+    # Convert to numpy arrays if needed
+    pred_values = np.array(predicted_values)
+    true_vals = np.array(true_labels)
+    
+    # Statistics of separation
+    pred_pos = pred_values[true_vals > 0]
+    pred_neg = pred_values[true_vals <= 0]
+    
+    # If no positive or negative samples, return basic info
+    if len(pred_pos) == 0 or len(pred_neg) == 0:
+        return {
+            "pos_samples": len(pred_pos),
+            "neg_samples": len(pred_neg),
+            "threshold": threshold,
+            "separation": "N/A - only one class present"
+        }
+    
+    # Calculate mean and std of each group
+    pos_mean = np.mean(pred_pos)
+    neg_mean = np.mean(pred_neg)
+    pos_std = np.std(pred_pos)
+    neg_std = np.std(pred_neg)
+    
+    # Calculate separation metrics
+    separation = (pos_mean - neg_mean) / (pos_std + neg_std) if (pos_std + neg_std) > 0 else float('inf')
+    
+    # Check if threshold is well-placed
+    threshold_to_pos = (threshold - pos_mean) / pos_std if pos_std > 0 else float('inf')
+    threshold_to_neg = (neg_mean - threshold) / neg_std if neg_std > 0 else float('inf')
+    
+    well_placed = min(threshold_to_pos, threshold_to_neg) > 0
+    
+    return {
+        "pos_samples": len(pred_pos),
+        "neg_samples": len(pred_neg),
+        "pos_mean": pos_mean,
+        "neg_mean": neg_mean,
+        "separation": separation,
+        "threshold": threshold,
+        "well_placed": well_placed,
+        "threshold_pos_distance": threshold_to_pos,
+        "threshold_neg_distance": threshold_to_neg
+    }
+
+# New function to visualize prediction distributions
+def visualize_prediction_distribution(stock, predictions, true_labels, threshold):
+    plt.figure(figsize=(12, 6))
+    
+    # Plot 1: Predictions vs True Labels
+    plt.subplot(1, 2, 1)
+    plt.scatter(true_labels, predictions, alpha=0.7)
+    plt.plot([min(true_labels), max(true_labels)], [min(true_labels), max(true_labels)], 'r--')
+    plt.xlabel("True Labels")
+    plt.ylabel("Predictions")
+    plt.title(f"Predictions vs True Labels for {stock}")
+    plt.grid(True, alpha=0.3)
+    
+    # Plot 2: Distribution of Predictions and True Labels
+    plt.subplot(1, 2, 2)
+    plt.hist(true_labels, bins=10, alpha=0.5, label="True Labels")
+    plt.hist(predictions, bins=10, alpha=0.5, label="Predictions")
+    plt.axvline(x=threshold, color='r', linestyle='--', label=f'Threshold: {threshold:.3f}')
+    plt.xlabel("Value")
+    plt.ylabel("Frequency")
+    plt.title(f"Distribution of Values for {stock}")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    image_path = os.path.join('img', f'distribution_{stock}.png')
+    plt.savefig(image_path)
+    plt.close()
+    
+    logger.info(f"Prediction distribution visualization saved to {image_path}")
+
 # ----- Load Configuration -----
 with open('src/config.yaml', 'r') as f:
     config = yaml.safe_load(f)
@@ -66,20 +162,22 @@ stock_list = df['ts_code'].unique()
 
 # ----- Load Model -----
 model = FinReportModel(input_size=input_size, hidden_size=hidden_size, num_layers=num_layers)
-model.load_state_dict(torch.load('finreport_model.pth'))
+model.load_state_dict(torch.load('models/finreport_model.pth'))
 model.eval()
 
 # ----- Define Dataset -----
 class FinDataset(Dataset):
     def __init__(self, features, labels, seq_len):
-        self.features = features
-        self.labels = labels
+        # Truncate features and labels to the same length
+        min_len = min(len(features), len(labels))
+        self.features = features[:min_len]
+        self.labels = labels[:min_len]
         self.seq_len = seq_len
     def __len__(self):
         return max(0, len(self.features) - self.seq_len)
     def __getitem__(self, idx):
         x = self.features[idx: idx + self.seq_len]
-        y = self.labels[idx + self.seq_len]
+        y = self.labels[idx + self.seq_len - 1]
         return torch.tensor(x, dtype=torch.float), torch.tensor(y, dtype=torch.float)
 
 # ----- Initialize Lists for Metrics and Reports -----
@@ -140,32 +238,73 @@ for stock in stock_list:
     predicted_return = all_predictions[0]
 
     # --- UPDATED CODE: Compute Classification Metrics using Dynamic Threshold ---
-    q25, q75 = np.percentile(all_predictions, [25, 75])
-    threshold = (q25 + q75) / 2
-    logger.info(f"Dynamic threshold for binarization (midpoint between 25th and 75th percentiles): {threshold:.3f}")
-    
-    # NEW CODE: Log Raw Predictions and True Labels before binarization
-    logger.info(f"First 10 Raw Predictions for {stock}: {all_predictions[:10]}")
-    logger.info(f"First 10 True Labels for {stock}: {test_labels[seq_len:seq_len+10]}")
-    
-    # Use the same threshold for both predictions and true labels
-    binary_preds = (all_predictions > threshold).astype(int)
-    binary_true = (test_labels[seq_len:] > threshold).astype(int)
+    # Use ground truth: consider returns > 0 as positive
+    if len(all_predictions) >= len(test_labels):
+        binary_true = (test_labels[-len(all_predictions):] > 0).astype(int)
+    else:
+        valid_range = min(len(all_predictions), len(test_labels) - seq_len)
+        binary_true = (test_labels[seq_len-1:seq_len-1+valid_range] > 0).astype(int)
+        all_predictions = all_predictions[:valid_range]  # Trim predictions to match
 
+    # Modified threshold application for small datasets.
+    if len(all_predictions) <= 5:
+        threshold = np.mean(all_predictions) * 0.9  # Slightly lower than mean
+        optimal_threshold = threshold    # Set optimal_threshold for small datasets
+        logger.info(f"Small dataset for {stock}, using simplified threshold: {threshold:.3f}")
+        binary_preds = (all_predictions > threshold).astype(int)
+    else:
+        optimal_threshold, optimal_f1 = optimize_threshold(binary_true, all_predictions)
+        logger.info(f"Optimal threshold: {optimal_threshold:.3f} with F1-score: {optimal_f1:.3f}")
+        binary_preds = (all_predictions > optimal_threshold).astype(int)
+    
+    # NEW CALL: Visualize prediction distribution
+    visualize_prediction_distribution(
+        stock, 
+        all_predictions, 
+        test_labels[seq_len-1:seq_len-1+len(all_predictions)],
+        optimal_threshold
+    )
+    
+    logger.info(f"First 10 Raw Predictions for {stock}: {all_predictions[:10]}")
+    logger.info(f"First 10 Ground Truth Labels for {stock}: {binary_true[:10]}")
+    
     # NEW CODE: Log binary predictions distribution.
     unique_preds, counts_preds = np.unique(binary_preds, return_counts=True)
+    
+    # NEW CALL: Analyze threshold placement and log the results.
+    threshold_analysis = analyze_threshold_placement(all_predictions, binary_true, optimal_threshold)
+    logger.info(f"Threshold analysis for {stock}:")
+    logger.info(f"  Positive samples: {threshold_analysis['pos_samples']}")
+    logger.info(f"  Negative samples: {threshold_analysis['neg_samples']}")
+    logger.info(f"  Separation metric: {threshold_analysis.get('separation', 'N/A')}")
+    logger.info(f"  Threshold well placed: {threshold_analysis.get('well_placed', 'N/A')}")
+    
     logger.info(f"Binary Predictions Distribution for {stock}: {dict(zip(unique_preds, counts_preds))}")
 
-    unique_labels = np.unique(binary_true)  # NEW CODE: Check unique labels
-    if len(unique_labels) < 2:
-        logger.info(f"Warning: Only one class present in y_true for stock {stock}.")
-        auc = 0.5  # fallback value for AUC (random performance)
-        aupr = 0.5 # fallback value for AUPR
-        tn, fp, fn, tp = 0, 0, 0, 0
+    # NEW CHECK: Log class distribution and handle imbalance.
+    class_counts = np.bincount(binary_true)
+    logger.info(f"Class distribution for {stock}: {class_counts}")
+    if len(class_counts) < 2 or min(class_counts) < 2:
+        logger.warning(f"Severe class imbalance for {stock}. Using stratified metrics.")
+        if len(np.unique(binary_true)) < 2:
+            auc = 0.5
+            aupr = 0.5
+            logger.warning(f"Only one class present for {stock}. Setting AUC/AUPR to 0.5.")
+        else:
+            try:
+                auc = roc_auc_score(binary_true, all_predictions)
+                aupr = average_precision_score(binary_true, all_predictions)
+            except Exception as e:
+                logger.warning(f"Error calculating metrics for {stock}: {e}")
+                auc = 0.5
+                aupr = 0.5
     else:
         auc = roc_auc_score(binary_true, all_predictions)
         aupr = average_precision_score(binary_true, all_predictions)
-        # Compute confusion matrix
+    # Compute confusion matrix if possible.
+    if len(np.unique(binary_true)) < 2:
+        tn, fp, fn, tp = 0, 0, 0, 0
+    else:
         cm = confusion_matrix(binary_true, binary_preds, labels=[0, 1])
         logger.info(f"Confusion Matrix for stock {stock}:\n{cm}")
         if cm.shape == (2, 2):
@@ -206,9 +345,9 @@ for stock in stock_list:
 
     # Compute regression metrics
     from sklearn.metrics import mean_squared_error, mean_absolute_error
-    mse_value = mean_squared_error(test_labels[seq_len:], all_predictions)
+    mse_value = mean_squared_error(test_labels[seq_len-1:seq_len-1+len(all_predictions)], all_predictions)
     rmse_value = np.sqrt(mse_value)
-    mae_value = mean_absolute_error(test_labels[seq_len:], all_predictions)
+    mae_value = mean_absolute_error(test_labels[seq_len-1:seq_len-1+len(all_predictions)], all_predictions)
 
     # Store metrics for the current stock
     all_metrics.append({

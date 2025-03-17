@@ -15,7 +15,7 @@ def load_data(csv_path):
     df['announcement'] = df['announcement'].apply(try_literal_eval)
     return df
 
-def split_data(df, train_ratio=0.8):
+def split_data(df, train_ratio=0.7):
     train_size = int(len(df) * train_ratio)
     train_df = df.iloc[:train_size]
     test_df = df.iloc[train_size:]

@@ -1,10 +1,10 @@
 data_path: "src/stock_data.csv"
 batch_size: 32
-seq_len: 15
-learning_rate: 0.0005
-num_epochs: 30
+seq_len: 10  # Optimal from hyperparameter search
+learning_rate: 0.0010  # Optimal from hyperparameter search
+num_epochs: 50  # Increased to allow for early stopping
 model:
   input_size: 59
-  hidden_size:  256
-  num_layers: 3
-  dropout: 0.0
+  hidden_size: 128  # Optimal from hyperparameter search
+  num_layers: 3  # Optimal from hyperparameter search
+  dropout: 0.2  # Optimal from hyperparameter search

@@ -38,6 +38,10 @@ def select_features(df):
     numeric_cols = df[feature_cols].select_dtypes(include=['number']).columns.tolist()
     features = df[numeric_cols].values
     targets = df['label'].values  # assuming 'label' is numeric
+    
+    # Ensure features and labels arrays are created from the same rows.
+    assert len(features) == len(targets), "Features and labels must have the same length"
+    
     return features, targets
 
 def normalize_features(features):
