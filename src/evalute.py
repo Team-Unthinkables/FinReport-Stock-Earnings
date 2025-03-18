@@ -22,6 +22,11 @@ from jinja2 import Environment, FileSystemLoader
 from news_aggregator import aggregate_news_factors
 import matplotlib.pyplot as plt        # NEW CODE: Import for plotting
 import seaborn as sns                  # NEW CODE: Import for plotting
+import sys
+sys.path.append('.')  # Make sure current directory is in path
+from improved_metrics import (evaluate_binary_classification, 
+                              aggregate_stock_metrics, 
+                              create_metrics_heatmap)
 
 # ----- Set Up Logging to File and Terminal -----
 logging.basicConfig(
@@ -183,6 +188,7 @@ class FinDataset(Dataset):
 # ----- Initialize Lists for Metrics and Reports -----
 all_metrics = []
 all_reports = []
+all_detailed_metrics = []  # New list to store detailed metrics
 
 os.makedirs('img', exist_ok=True)
 
@@ -203,6 +209,22 @@ for stock in stock_list:
     logger.info(f"For stock {stock}: Latest market value = {latest_val}, Average = {avg_val}, Difference = {diff_percent:.1f}%")
     
     _, test_df = split_data(df_stock)
+    # Prepare training data for calibration
+    train_df, _ = split_data(df_stock, train_ratio=0.6)  # Use same ratio as before
+    train_features, train_labels = select_features(train_df)
+    train_features, _ = normalize_features(train_features)
+    train_dataset = FinDataset(train_features, train_labels, seq_len)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+
+    # Get training predictions for calibration
+    train_predictions = []
+    train_true_labels = []
+    with torch.no_grad():
+        for x_batch, y_batch in train_loader:
+            preds = model(x_batch)
+            train_predictions.extend(preds.cpu().numpy().flatten())
+            train_true_labels.extend(y_batch.numpy())
+    
     if len(test_df) <= seq_len:
         logger.info(f"Not enough test data for stock {stock} (requires > {seq_len} rows). Skipping.")
         continue
@@ -237,42 +259,61 @@ for stock in stock_list:
 
     predicted_return = all_predictions[0]
 
-    # --- UPDATED CODE: Compute Classification Metrics using Dynamic Threshold ---
-    # Use ground truth: consider returns > 0 as positive
-    if len(all_predictions) >= len(test_labels):
-        binary_true = (test_labels[-len(all_predictions):] > 0).astype(int)
-    else:
-        valid_range = min(len(all_predictions), len(test_labels) - seq_len)
-        binary_true = (test_labels[seq_len-1:seq_len-1+valid_range] > 0).astype(int)
-        all_predictions = all_predictions[:valid_range]  # Trim predictions to match
+    # --- Replace Classification Metrics Section ---
+    # Get the true labels corresponding to predictions
+    true_labels = test_labels[seq_len-1:seq_len-1+len(all_predictions)]
 
-    # Modified threshold application for small datasets.
-    if len(all_predictions) <= 5:
-        threshold = np.mean(all_predictions) * 0.9  # Slightly lower than mean
-        optimal_threshold = threshold    # Set optimal_threshold for small datasets
-        logger.info(f"Small dataset for {stock}, using simplified threshold: {threshold:.3f}")
-        binary_preds = (all_predictions > threshold).astype(int)
-    else:
-        optimal_threshold, optimal_f1 = optimize_threshold(binary_true, all_predictions)
-        logger.info(f"Optimal threshold: {optimal_threshold:.3f} with F1-score: {optimal_f1:.3f}")
-        binary_preds = (all_predictions > optimal_threshold).astype(int)
+    # Get improved classification metrics
+    classification_metrics = evaluate_binary_classification(
+        predictions=all_predictions,
+        true_labels=true_labels,
+        stock_name=stock,
+        train_preds=np.array(train_predictions),
+        train_labels=np.array(train_true_labels),
+        calibrate=True,
+        plot=True
+    )
+
+    # Compute consistent binary true labels for metrics
+    binary_true = (true_labels > 0).astype(int)
+    accuracy = accuracy_score(binary_true, classification_metrics['binary_preds'])
+    precision = precision_score(binary_true, classification_metrics['binary_preds'], zero_division=0)
+    recall = recall_score(binary_true, classification_metrics['binary_preds'], zero_division=0)
+    f1 = f1_score(binary_true, classification_metrics['binary_preds'], zero_division=0)
+    auc = classification_metrics['auc']
+    aupr = classification_metrics['aupr']
+    error_rate = 1 - accuracy
+    specificity = classification_metrics.get('specificity', 0)
+    
+    print("----------------------------------------------------------")
+    print(f"{'Metric':<20} | {'Value':>8}")
+    print("----------------------------------------------------------")
+    print(f"{'Accuracy':<20} | {accuracy:>8.3f}")
+    print(f"{'Precision':<20} | {precision:>8.3f}")
+    print(f"{'Recall (Sensitivity)':<20} | {recall:>8.3f}")
+    print(f"{'Specificity':<20} | {specificity:>8.3f}")
+    print(f"{'F1-score':<20} | {f1:>8.3f}")
+    print(f"{'AUC':<20} | {auc:>8.3f}")
+    print(f"{'AUPR':<20} | {aupr:>8.3f}")
+    print(f"{'Error Rate':<20} | {error_rate:>8.3f}")
+    print("----------------------------------------------------------")
     
     # NEW CALL: Visualize prediction distribution
     visualize_prediction_distribution(
         stock, 
         all_predictions, 
         test_labels[seq_len-1:seq_len-1+len(all_predictions)],
-        optimal_threshold
+        classification_metrics['threshold']
     )
     
     logger.info(f"First 10 Raw Predictions for {stock}: {all_predictions[:10]}")
-    logger.info(f"First 10 Ground Truth Labels for {stock}: {binary_true[:10]}")
+    logger.info(f"First 10 Ground Truth Labels for {stock}: {true_labels[:10]}")
     
     # NEW CODE: Log binary predictions distribution.
-    unique_preds, counts_preds = np.unique(binary_preds, return_counts=True)
+    unique_preds, counts_preds = np.unique(classification_metrics['binary_preds'], return_counts=True)
     
     # NEW CALL: Analyze threshold placement and log the results.
-    threshold_analysis = analyze_threshold_placement(all_predictions, binary_true, optimal_threshold)
+    threshold_analysis = analyze_threshold_placement(all_predictions, true_labels, classification_metrics['threshold'])
     logger.info(f"Threshold analysis for {stock}:")
     logger.info(f"  Positive samples: {threshold_analysis['pos_samples']}")
     logger.info(f"  Negative samples: {threshold_analysis['neg_samples']}")
@@ -282,30 +323,38 @@ for stock in stock_list:
     logger.info(f"Binary Predictions Distribution for {stock}: {dict(zip(unique_preds, counts_preds))}")
 
     # NEW CHECK: Log class distribution and handle imbalance.
-    class_counts = np.bincount(binary_true)
+    class_counts = np.bincount(true_labels.astype(int))
     logger.info(f"Class distribution for {stock}: {class_counts}")
     if len(class_counts) < 2 or min(class_counts) < 2:
         logger.warning(f"Severe class imbalance for {stock}. Using stratified metrics.")
-        if len(np.unique(binary_true)) < 2:
+        if len(np.unique(true_labels)) < 2:
             auc = 0.5
             aupr = 0.5
             logger.warning(f"Only one class present for {stock}. Setting AUC/AUPR to 0.5.")
         else:
             try:
-                auc = roc_auc_score(binary_true, all_predictions)
-                aupr = average_precision_score(binary_true, all_predictions)
+                auc = roc_auc_score(true_labels, all_predictions)
+                aupr = average_precision_score(true_labels, all_predictions)
             except Exception as e:
                 logger.warning(f"Error calculating metrics for {stock}: {e}")
                 auc = 0.5
                 aupr = 0.5
     else:
-        auc = roc_auc_score(binary_true, all_predictions)
-        aupr = average_precision_score(binary_true, all_predictions)
+        # NEW CHANGE: Replace multiclass metric calculation with binary conversion for consistency.
+        binary_true = (true_labels > 0).astype(int)
+        try:
+            auc = roc_auc_score(binary_true, all_predictions)
+            aupr = average_precision_score(binary_true, all_predictions)
+        except Exception as e:
+            logger.warning(f"Error calculating metrics for {stock}: {e}")
+            auc = 0.5
+            aupr = 0.5
     # Compute confusion matrix if possible.
-    if len(np.unique(binary_true)) < 2:
+    if len(np.unique(true_labels)) < 2:
         tn, fp, fn, tp = 0, 0, 0, 0
     else:
-        cm = confusion_matrix(binary_true, binary_preds, labels=[0, 1])
+        binary_true = (true_labels > 0).astype(int)   # NEW: Convert continuous true labels to binary
+        cm = confusion_matrix(binary_true, classification_metrics['binary_preds'], labels=[0, 1])
         logger.info(f"Confusion Matrix for stock {stock}:\n{cm}")
         if cm.shape == (2, 2):
             tn, fp, fn, tp = cm.ravel()
@@ -322,26 +371,6 @@ for stock in stock_list:
         else:
             logger.warning(f"Confusion Matrix for stock {stock} is not 2x2 due to class imbalance. Using fallback values.")
             tn, fp, fn, tp = 0, 0, 0, 0
-
-    accuracy = accuracy_score(binary_true, binary_preds)
-    precision = precision_score(binary_true, binary_preds, zero_division=0)
-    recall = recall_score(binary_true, binary_preds, zero_division=0)
-    f1 = f1_score(binary_true, binary_preds, zero_division=0)
-    error_rate = 1 - accuracy
-    specificity = tn / (tn + fp) if (tn + fp) > 0 else 0
-
-    print("----------------------------------------------------------")
-    print(f"{'Metric':<20} | {'Value':>8}")
-    print("----------------------------------------------------------")
-    print(f"{'Accuracy':<20} | {accuracy:>8.3f}")
-    print(f"{'Precision':<20} | {precision:>8.3f}")
-    print(f"{'Recall (Sensitivity)':<20} | {recall:>8.3f}")
-    print(f"{'Specificity':<20} | {specificity:>8.3f}")
-    print(f"{'F1-score':<20} | {f1:>8.3f}")
-    print(f"{'AUC':<20} | {auc:>8.3f}")
-    print(f"{'AUPR':<20} | {aupr:>8.3f}")
-    print(f"{'Error Rate':<20} | {error_rate:>8.3f}")
-    print("----------------------------------------------------------")
 
     # Compute regression metrics
     from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -361,6 +390,24 @@ for stock in stock_list:
         'AUPR': aupr,
         'Error Rate': error_rate,
         'MSE': mse_value,   # regression metrics stored here
+        'RMSE': rmse_value,
+        'MAE': mae_value
+    })
+    
+    # Also store detailed metrics for enhanced reporting
+    all_detailed_metrics.append({
+        'Stock': stock,
+        'Samples': classification_metrics['samples'],
+        'Class_Balance': classification_metrics['class_balance'],
+        'Confidence': classification_metrics.get('confidence', 0),
+        'Threshold': classification_metrics['threshold'],
+        'Accuracy': accuracy,
+        'Precision': precision,
+        'Recall': recall,
+        'F1-score': f1,
+        'AUC': auc,
+        'AUPR': aupr,
+        'MSE': mse_value,
         'RMSE': rmse_value,
         'MAE': mae_value
     })
@@ -437,28 +484,42 @@ if all_metrics:
     logger.info("\nOverall Performance Metrics for All Stocks:")
     logger.info(df_metrics.to_string(index=False))
     
-    # ----- Generate Heatmap for Regression Metrics (MSE, RMSE, MAE) -----
-    regression_metrics = df_metrics[['Stock', 'MSE', 'RMSE', 'MAE']]
-    regression_metrics.set_index('Stock', inplace=True)
-    plt.figure(figsize=(10, len(regression_metrics) * 0.5))
-    sns.heatmap(regression_metrics, annot=True, fmt=".3f", cmap="YlGnBu")
-    plt.title("Regression Metrics (MSE, RMSE, MAE) for Each Stock")
-    heatmap_reg_filename = os.path.join('img', "regression_metrics_heatmap.png")
-    plt.savefig(heatmap_reg_filename)
-    plt.close()
-    logger.info(f"Regression metrics heatmap saved as {heatmap_reg_filename}")
+    # Create enhanced metrics DataFrame
+    df_detailed = pd.DataFrame(all_detailed_metrics)
     
-    # ----- Generate Heatmap for Classification Metrics (AUC, AUPR) -----
-    classification_metrics = df_metrics[['Stock', 'AUC', 'AUPR']]
-    classification_metrics.set_index('Stock', inplace=True)
+    # Add reliability flag
+    df_detailed['Reliable'] = (df_detailed['Samples'] >= 20) & (df_detailed['Class_Balance'] >= 0.2)
     
-    plt.figure(figsize=(10, len(classification_metrics) * 0.5))
-    sns.heatmap(classification_metrics, annot=True, fmt=".3f", cmap="coolwarm")
-    plt.title("Classification Metrics (AUC, AUPR) for Each Stock")
-    heatmap_class_filename = os.path.join('img', "classification_metrics_heatmap.png")
-    plt.savefig(heatmap_class_filename)
-    plt.close()
-    logger.info(f"Classification metrics heatmap saved as {heatmap_class_filename}")
+    # Enhanced heatmap for classification metrics
+    create_metrics_heatmap(
+        df_detailed, 
+        ['AUC', 'AUPR', 'F1-score', 'Accuracy'],
+        "Classification Metrics with Reliability Indicators", 
+        os.path.join('img', "enhanced_classification_metrics.png")
+    )
+    
+    # Enhanced heatmap for regression metrics
+    create_metrics_heatmap(
+        df_detailed,
+        ['MSE', 'RMSE', 'MAE'],
+        "Regression Metrics by Stock",
+        os.path.join('img', "enhanced_regression_metrics.png")
+    )
+    
+    # Create a summary report with weighted averages
+    _, weighted_metrics = aggregate_stock_metrics(
+        df_detailed.to_dict('records'), 
+        df_detailed['Stock'].tolist()
+    )
+    
+    # Print weighted averages (more reliable than simple means)
+    logger.info("\nWeighted Metric Averages (adjusted for sample size and class balance):")
+    for metric, value in weighted_metrics.items():
+        logger.info(f"{metric}: {value:.4f}")
+    
+    # Save detailed metrics to CSV
+    df_detailed.to_csv('enhanced_evaluation_results.csv', index=False)
+    logger.info("Enhanced evaluation results saved to enhanced_evaluation_results.csv")
 else:
     logger.info("No performance metrics were computed.")
 
