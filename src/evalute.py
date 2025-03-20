@@ -16,17 +16,10 @@ from extra_factors import (compute_market_factor, compute_size_factor, compute_v
                            compute_rsi_factor, compute_mfi_factor, compute_bias_factor)
 from risk_model import compute_max_drawdown, compute_volatility
 from advanced_news import compute_event_factor
-from sklearn.metrics import (accuracy_score, roc_auc_score, f1_score, average_precision_score,
-                             precision_score, recall_score, confusion_matrix)
-from jinja2 import Environment, FileSystemLoader
-from news_aggregator import aggregate_news_factors
-import matplotlib.pyplot as plt        # NEW CODE: Import for plotting
-import seaborn as sns                  # NEW CODE: Import for plotting
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import matplotlib.pyplot as plt
 import sys
 sys.path.append('.')  # Make sure current directory is in path
-from improved_metrics import (evaluate_binary_classification, 
-                              aggregate_stock_metrics, 
-                              create_metrics_heatmap)
 
 # ----- Set Up Logging to File and Terminal -----
 logging.basicConfig(
@@ -48,89 +41,28 @@ def compute_cvar(returns, alpha=0.05):
     index = int(alpha * len(sorted_returns))
     return np.mean(sorted_returns[:index])
 
-# Add new function to optimize threshold based on F1-score.
-def optimize_threshold(true_labels, predicted_values):
-    # Handle case with very few samples
-    if len(predicted_values) <= 5:
-        default_threshold = np.mean(predicted_values) * 0.9  # Slightly lower than mean
-        logger.info(f"Few samples ({len(predicted_values)}), using default threshold: {default_threshold:.3f}")
-        return default_threshold, 0
-    # Original code for larger datasets
-    thresholds = np.linspace(np.min(predicted_values), np.max(predicted_values), 100)
-    best_threshold = thresholds[0]
-    best_f1 = 0
-    for thresh in thresholds:
-        binary_preds = (predicted_values > thresh).astype(int)
-        current_f1 = f1_score(true_labels, binary_preds, zero_division=0)
-        if current_f1 > best_f1:
-            best_f1 = current_f1
-            best_threshold = thresh
-    return best_threshold, best_f1
-
-# NEW FUNCTION: Analyze threshold placement
-def analyze_threshold_placement(predicted_values, true_labels, threshold):
-    # Convert to numpy arrays if needed
-    pred_values = np.array(predicted_values)
-    true_vals = np.array(true_labels)
-    
-    # Statistics of separation
-    pred_pos = pred_values[true_vals > 0]
-    pred_neg = pred_values[true_vals <= 0]
-    
-    # If no positive or negative samples, return basic info
-    if len(pred_pos) == 0 or len(pred_neg) == 0:
-        return {
-            "pos_samples": len(pred_pos),
-            "neg_samples": len(pred_neg),
-            "threshold": threshold,
-            "separation": "N/A - only one class present"
-        }
-    
-    # Calculate mean and std of each group
-    pos_mean = np.mean(pred_pos)
-    neg_mean = np.mean(pred_neg)
-    pos_std = np.std(pred_pos)
-    neg_std = np.std(pred_neg)
-    
-    # Calculate separation metrics
-    separation = (pos_mean - neg_mean) / (pos_std + neg_std) if (pos_std + neg_std) > 0 else float('inf')
-    
-    # Check if threshold is well-placed
-    threshold_to_pos = (threshold - pos_mean) / pos_std if pos_std > 0 else float('inf')
-    threshold_to_neg = (neg_mean - threshold) / neg_std if neg_std > 0 else float('inf')
-    
-    well_placed = min(threshold_to_pos, threshold_to_neg) > 0
-    
-    return {
-        "pos_samples": len(pred_pos),
-        "neg_samples": len(pred_neg),
-        "pos_mean": pos_mean,
-        "neg_mean": neg_mean,
-        "separation": separation,
-        "threshold": threshold,
-        "well_placed": well_placed,
-        "threshold_pos_distance": threshold_to_pos,
-        "threshold_neg_distance": threshold_to_neg
-    }
-
-# New function to visualize prediction distributions
-def visualize_prediction_distribution(stock, predictions, true_labels, threshold):
+# Function to visualize regression predictions
+def visualize_regression_predictions(stock, predictions, true_values):
     plt.figure(figsize=(12, 6))
     
-    # Plot 1: Predictions vs True Labels
+    # Plot 1: Predictions vs True Values
     plt.subplot(1, 2, 1)
-    plt.scatter(true_labels, predictions, alpha=0.7)
-    plt.plot([min(true_labels), max(true_labels)], [min(true_labels), max(true_labels)], 'r--')
-    plt.xlabel("True Labels")
+    plt.scatter(true_values, predictions, alpha=0.7)
+    
+    # Add diagonal line for perfect predictions
+    min_val = min(min(true_values), min(predictions))
+    max_val = max(max(true_values), max(predictions))
+    plt.plot([min_val, max_val], [min_val, max_val], 'r--')
+    
+    plt.xlabel("True Values")
     plt.ylabel("Predictions")
-    plt.title(f"Predictions vs True Labels for {stock}")
+    plt.title(f"Predictions vs True Values for {stock}")
     plt.grid(True, alpha=0.3)
     
-    # Plot 2: Distribution of Predictions and True Labels
+    # Plot 2: Distribution of Predictions and True Values
     plt.subplot(1, 2, 2)
-    plt.hist(true_labels, bins=10, alpha=0.5, label="True Labels")
+    plt.hist(true_values, bins=10, alpha=0.5, label="True Values")
     plt.hist(predictions, bins=10, alpha=0.5, label="Predictions")
-    plt.axvline(x=threshold, color='r', linestyle='--', label=f'Threshold: {threshold:.3f}')
     plt.xlabel("Value")
     plt.ylabel("Frequency")
     plt.title(f"Distribution of Values for {stock}")
@@ -138,11 +70,168 @@ def visualize_prediction_distribution(stock, predictions, true_labels, threshold
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    image_path = os.path.join('img', f'distribution_{stock}.png')
+    image_path = os.path.join('img', f'regression_distribution_{stock}.png')
     plt.savefig(image_path)
     plt.close()
     
-    logger.info(f"Prediction distribution visualization saved to {image_path}")
+    logger.info(f"Regression prediction visualization saved to {image_path}")
+    
+    return predictions, true_values
+
+# New function to create aggregate visualization of all stocks
+def create_aggregate_visualization(all_metrics, all_predictions_dict, all_true_values_dict):
+    """
+    Create a comprehensive visualization that aggregates results from all stocks.
+    
+    Args:
+        all_metrics: List of dictionaries containing metrics for each stock
+        all_predictions_dict: Dictionary mapping stock symbols to prediction arrays
+        all_true_values_dict: Dictionary mapping stock symbols to true value arrays
+    """
+    plt.figure(figsize=(18, 14))  # Increased height for better spacing
+    
+    # Plot 1: Scatter plot of all predictions vs true values (colored by stock)
+    plt.subplot(2, 1, 1)
+    
+    # Create a colormap with enough distinct colors
+    import matplotlib.cm as cm
+    
+    # Create color map with enough colors for all stocks
+    num_stocks = len(all_predictions_dict)
+    cmap = plt.get_cmap('tab20', num_stocks)
+    
+    # Combine all predictions and true values for correlation calculation
+    all_preds = []
+    all_trues = []
+    
+    # Plot each stock with different color
+    for i, (stock, preds) in enumerate(all_predictions_dict.items()):
+        true_vals = all_true_values_dict[stock]
+        plt.scatter(true_vals, preds, label=stock, color=cmap(i), alpha=0.6, s=30)
+        all_preds.extend(preds)
+        all_trues.extend(true_vals)
+    
+    # Add perfect prediction line
+    all_preds = np.array(all_preds)
+    all_trues = np.array(all_trues)
+    
+    min_val = min(np.min(all_trues), np.min(all_preds))
+    max_val = max(np.max(all_trues), np.max(all_preds))
+    plt.plot([min_val, max_val], [min_val, max_val], 'r--', linewidth=2)
+    
+    # Calculate overall correlation
+    from scipy.stats import pearsonr
+    if len(all_preds) > 1:
+        corr, _ = pearsonr(all_trues, all_preds)
+        plt.title(f'All Stocks: Predictions vs True Values (r = {corr:.3f})', fontsize=14)
+    else:
+        plt.title('All Stocks: Predictions vs True Values', fontsize=14)
+    
+    plt.xlabel('True Values', fontsize=12)
+    plt.ylabel('Predicted Values', fontsize=12)
+    plt.grid(True, alpha=0.3)
+    
+    # Create a legend with smaller font size and place it outside the plot
+    if num_stocks > 20:
+        # If too many stocks, don't show the legend
+        logger.info(f"Too many stocks ({num_stocks}) to display in legend")
+    else:
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), 
+                  fancybox=True, shadow=True, ncol=min(5, num_stocks))
+    
+    # Plot 2: Error Distribution
+    plt.subplot(2, 2, 3)
+    errors = []
+    for stock in all_predictions_dict:
+        stock_errors = np.array(all_predictions_dict[stock]) - np.array(all_true_values_dict[stock])
+        errors.extend(stock_errors)
+    
+    plt.hist(errors, bins=30, alpha=0.7, color='skyblue')
+    plt.axvline(x=0, color='r', linestyle='--', linewidth=2)
+    mean_error = np.mean(errors)
+    plt.axvline(x=mean_error, color='g', linestyle='-', 
+                label=f'Mean Error: {mean_error:.3f}')
+    
+    plt.xlabel('Prediction Error', fontsize=12)
+    plt.ylabel('Frequency', fontsize=12)
+    plt.title('Distribution of All Prediction Errors', fontsize=14)
+    
+    # Fix for y-axis label overlap - format with integers only
+    ax = plt.gca()
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: f"{int(x)}"))
+    
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    # Top performing stocks by RMSE
+    plt.subplot(2, 2, 4)
+    
+    metrics_df = pd.DataFrame(all_metrics)
+    
+    # Limit to top 10 stocks by RMSE for clarity
+    top_n = min(10, len(metrics_df))
+    top_metrics = metrics_df.sort_values('RMSE').head(top_n)
+    
+    x = np.arange(len(top_metrics))
+    width = 0.2
+    
+    # Plot each metric as a separate bar series
+    plt.bar(x - width*1.5, top_metrics['RMSE'], width, label='RMSE')
+    plt.bar(x - width*0.5, top_metrics['MAE'], width, label='MAE')
+    plt.bar(x + width*0.5, top_metrics['MSE']/10, width, label='MSE/10')  # Scaled for visibility
+    plt.bar(x + width*1.5, top_metrics['R2'], width, label='R²')
+    
+    plt.xlabel('Stock', fontsize=12)
+    plt.ylabel('Metric Value', fontsize=12)
+    plt.title(f'Top {top_n} Stocks by Performance', fontsize=14)
+    
+    # Improved x-axis label formatting
+    plt.xticks(x, top_metrics['Stock'], rotation=45)
+    ax = plt.gca()
+    # Adjust tick labels alignment
+    plt.setp(ax.get_xticklabels(), ha="right", rotation_mode="anchor")
+    
+    plt.legend(loc='upper right')
+    plt.grid(True, alpha=0.3)
+    
+    # Add overall metrics as text
+    plt.figtext(0.5, 0.01, 
+               f"Overall Statistics: Avg RMSE={np.mean(metrics_df['RMSE']):.4f}, "
+               f"Avg MAE={np.mean(metrics_df['MAE']):.4f}, "
+               f"Avg R²={np.mean(metrics_df['R2']):.4f}",
+               ha='center', fontsize=12, bbox=dict(facecolor='white', alpha=0.8))
+    
+    plt.tight_layout(rect=[0, 0.03, 1, 0.95])  # Adjust rect to make more room
+    image_path = os.path.join('img', 'aggregate_regression_summary.png')
+    plt.savefig(image_path, dpi=120)  # Increased DPI for better text rendering
+    plt.close()
+    
+    logger.info(f"Aggregate regression summary visualization saved to {image_path}")
+    return image_path
+
+# New function to create a regression performance heatmap
+def create_regression_metrics_heatmap(metrics_df, output_path):
+    """
+    Create a heatmap visualization for regression metrics.
+    """
+    # Extract only necessary columns
+    plot_df = metrics_df[['Stock', 'MSE', 'RMSE', 'MAE', 'R2']].copy()
+    plot_df.set_index('Stock', inplace=True)
+    
+    plt.figure(figsize=(10, max(8, len(plot_df) * 0.3)))
+    
+    # Create the heatmap
+    cmap = 'coolwarm'
+    sns.heatmap(plot_df, annot=True, fmt=".3f", cmap=cmap, linewidths=.5)
+    
+    plt.title("Regression Metrics by Stock")
+    plt.tight_layout()
+    plt.savefig(output_path)
+    plt.close()
+    
+    logger.info(f"Regression metrics heatmap saved to {output_path}")
+    
+    return output_path
 
 # ----- Load Configuration -----
 with open('src/config.yaml', 'r') as f:
@@ -188,7 +277,8 @@ class FinDataset(Dataset):
 # ----- Initialize Lists for Metrics and Reports -----
 all_metrics = []
 all_reports = []
-all_detailed_metrics = []  # New list to store detailed metrics
+all_predictions_dict = {}  # Dictionary to store predictions for each stock
+all_true_values_dict = {}  # Dictionary to store true values for each stock
 
 os.makedirs('img', exist_ok=True)
 
@@ -209,33 +299,14 @@ for stock in stock_list:
     logger.info(f"For stock {stock}: Latest market value = {latest_val}, Average = {avg_val}, Difference = {diff_percent:.1f}%")
     
     _, test_df = split_data(df_stock)
-    # Prepare training data for calibration
-    train_df, _ = split_data(df_stock, train_ratio=0.6)  # Use same ratio as before
-    train_features, train_labels = select_features(train_df)
-    train_features, _ = normalize_features(train_features)
-    train_dataset = FinDataset(train_features, train_labels, seq_len)
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+    # Prepare training data 
+    train_df, _ = split_data(df_stock, train_ratio=0.6)
 
-    # Get training predictions for calibration
-    train_predictions = []
-    train_true_labels = []
-    with torch.no_grad():
-        for x_batch, y_batch in train_loader:
-            preds = model(x_batch)
-            train_predictions.extend(preds.cpu().numpy().flatten())
-            train_true_labels.extend(y_batch.numpy())
-    
     if len(test_df) <= seq_len:
         logger.info(f"Not enough test data for stock {stock} (requires > {seq_len} rows). Skipping.")
         continue
 
     test_features, test_labels = select_features(test_df)
-    unique, counts = np.unique(test_labels, return_counts=True)
-    logger.info("True label distribution: " + str(dict(zip(unique, counts))))
-    mean_val = np.mean(test_labels)
-    median_val = np.median(test_labels)
-    variance_val = np.var(test_labels)
-    logger.info(f"Target Return Distribution - Mean: {mean_val:.3f}, Median: {median_val:.3f}, Variance: {variance_val:.3f}")
     logger.info("Shape of features: " + str(test_features.shape))
     logger.info("First row of features: " + str(test_features[0]))
     test_features, scaler = normalize_features(test_features)
@@ -252,164 +323,52 @@ for stock in stock_list:
             all_predictions.extend(preds.cpu().numpy().flatten())
     all_predictions = np.array(all_predictions)
 
-    # NEW CODE: Log raw prediction statistics.
-    unique_preds, counts_preds = np.unique(all_predictions, return_counts=True)
-    logger.info(f"Raw predicted values distribution: {dict(zip(unique_preds, counts_preds))}")
+    # Log prediction statistics
     logger.info(f"Mean predicted value: {np.mean(all_predictions):.3f}, Median: {np.median(all_predictions):.3f}")
 
     predicted_return = all_predictions[0]
 
-    # --- Replace Classification Metrics Section ---
     # Get the true labels corresponding to predictions
     true_labels = test_labels[seq_len-1:seq_len-1+len(all_predictions)]
-
-    # Get improved classification metrics
-    classification_metrics = evaluate_binary_classification(
-        predictions=all_predictions,
-        true_labels=true_labels,
-        stock_name=stock,
-        train_preds=np.array(train_predictions),
-        train_labels=np.array(train_true_labels),
-        calibrate=True,
-        plot=True
-    )
-
-    # Compute consistent binary true labels for metrics
-    binary_true = (true_labels > 0).astype(int)
-    accuracy = accuracy_score(binary_true, classification_metrics['binary_preds'])
-    precision = precision_score(binary_true, classification_metrics['binary_preds'], zero_division=0)
-    recall = recall_score(binary_true, classification_metrics['binary_preds'], zero_division=0)
-    f1 = f1_score(binary_true, classification_metrics['binary_preds'], zero_division=0)
-    auc = classification_metrics['auc']
-    aupr = classification_metrics['aupr']
-    error_rate = 1 - accuracy
-    specificity = classification_metrics.get('specificity', 0)
     
+    # Log first few predictions and true values
+    logger.info(f"First 10 Predictions for {stock}: {all_predictions[:10]}")
+    logger.info(f"First 10 True Values for {stock}: {true_labels[:10]}")
+    
+    # Compute regression metrics
+    mse_value = mean_squared_error(true_labels, all_predictions)
+    rmse_value = np.sqrt(mse_value)
+    mae_value = mean_absolute_error(true_labels, all_predictions)
+    r2_value = r2_score(true_labels, all_predictions)
+
+    # Print regression metrics
     print("----------------------------------------------------------")
-    print(f"{'Metric':<20} | {'Value':>8}")
+    print(f"{'Regression Metric':<20} | {'Value':>8}")
     print("----------------------------------------------------------")
-    print(f"{'Accuracy':<20} | {accuracy:>8.3f}")
-    print(f"{'Precision':<20} | {precision:>8.3f}")
-    print(f"{'Recall (Sensitivity)':<20} | {recall:>8.3f}")
-    print(f"{'Specificity':<20} | {specificity:>8.3f}")
-    print(f"{'F1-score':<20} | {f1:>8.3f}")
-    print(f"{'AUC':<20} | {auc:>8.3f}")
-    print(f"{'AUPR':<20} | {aupr:>8.3f}")
-    print(f"{'Error Rate':<20} | {error_rate:>8.3f}")
+    print(f"{'MSE':<20} | {mse_value:>8.4f}")
+    print(f"{'RMSE':<20} | {rmse_value:>8.4f}")
+    print(f"{'MAE':<20} | {mae_value:>8.4f}")
+    print(f"{'R-squared':<20} | {r2_value:>8.4f}")
     print("----------------------------------------------------------")
     
-    # NEW CALL: Visualize prediction distribution
-    visualize_prediction_distribution(
+    # Visualize regression predictions
+    preds, true_vals = visualize_regression_predictions(
         stock, 
         all_predictions, 
-        test_labels[seq_len-1:seq_len-1+len(all_predictions)],
-        classification_metrics['threshold']
+        true_labels
     )
     
-    logger.info(f"First 10 Raw Predictions for {stock}: {all_predictions[:10]}")
-    logger.info(f"First 10 Ground Truth Labels for {stock}: {true_labels[:10]}")
+    # Store predictions and true values for aggregate visualization
+    all_predictions_dict[stock] = preds
+    all_true_values_dict[stock] = true_vals
     
-    # NEW CODE: Log binary predictions distribution.
-    unique_preds, counts_preds = np.unique(classification_metrics['binary_preds'], return_counts=True)
-    
-    # NEW CALL: Analyze threshold placement and log the results.
-    threshold_analysis = analyze_threshold_placement(all_predictions, true_labels, classification_metrics['threshold'])
-    logger.info(f"Threshold analysis for {stock}:")
-    logger.info(f"  Positive samples: {threshold_analysis['pos_samples']}")
-    logger.info(f"  Negative samples: {threshold_analysis['neg_samples']}")
-    logger.info(f"  Separation metric: {threshold_analysis.get('separation', 'N/A')}")
-    logger.info(f"  Threshold well placed: {threshold_analysis.get('well_placed', 'N/A')}")
-    
-    logger.info(f"Binary Predictions Distribution for {stock}: {dict(zip(unique_preds, counts_preds))}")
-
-    # NEW CHECK: Log class distribution and handle imbalance.
-    class_counts = np.bincount(true_labels.astype(int))
-    logger.info(f"Class distribution for {stock}: {class_counts}")
-    if len(class_counts) < 2 or min(class_counts) < 2:
-        logger.warning(f"Severe class imbalance for {stock}. Using stratified metrics.")
-        if len(np.unique(true_labels)) < 2:
-            auc = 0.5
-            aupr = 0.5
-            logger.warning(f"Only one class present for {stock}. Setting AUC/AUPR to 0.5.")
-        else:
-            try:
-                auc = roc_auc_score(true_labels, all_predictions)
-                aupr = average_precision_score(true_labels, all_predictions)
-            except Exception as e:
-                logger.warning(f"Error calculating metrics for {stock}: {e}")
-                auc = 0.5
-                aupr = 0.5
-    else:
-        # NEW CHANGE: Replace multiclass metric calculation with binary conversion for consistency.
-        binary_true = (true_labels > 0).astype(int)
-        try:
-            auc = roc_auc_score(binary_true, all_predictions)
-            aupr = average_precision_score(binary_true, all_predictions)
-        except Exception as e:
-            logger.warning(f"Error calculating metrics for {stock}: {e}")
-            auc = 0.5
-            aupr = 0.5
-    # Compute confusion matrix if possible.
-    if len(np.unique(true_labels)) < 2:
-        tn, fp, fn, tp = 0, 0, 0, 0
-    else:
-        binary_true = (true_labels > 0).astype(int)   # NEW: Convert continuous true labels to binary
-        cm = confusion_matrix(binary_true, classification_metrics['binary_preds'], labels=[0, 1])
-        logger.info(f"Confusion Matrix for stock {stock}:\n{cm}")
-        if cm.shape == (2, 2):
-            tn, fp, fn, tp = cm.ravel()
-            # Plot and save confusion matrix as an image
-            plt.figure(figsize=(4, 3))
-            sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=[0, 1], yticklabels=[0, 1])
-            plt.xlabel("Predicted")
-            plt.ylabel("True")
-            plt.title(f"Confusion Matrix for stock {stock}")
-            image_filename = os.path.join('img', f'confusion_matrix_{stock}.png')
-            plt.savefig(image_filename)
-            plt.close()
-            logger.info(f"Confusion matrix image saved as {image_filename}")
-        else:
-            logger.warning(f"Confusion Matrix for stock {stock} is not 2x2 due to class imbalance. Using fallback values.")
-            tn, fp, fn, tp = 0, 0, 0, 0
-
-    # Compute regression metrics
-    from sklearn.metrics import mean_squared_error, mean_absolute_error
-    mse_value = mean_squared_error(test_labels[seq_len-1:seq_len-1+len(all_predictions)], all_predictions)
-    rmse_value = np.sqrt(mse_value)
-    mae_value = mean_absolute_error(test_labels[seq_len-1:seq_len-1+len(all_predictions)], all_predictions)
-
     # Store metrics for the current stock
     all_metrics.append({
         'Stock': stock,
-        'Accuracy': accuracy,
-        'Precision': precision,
-        'Recall': recall,
-        'Specificity': specificity,
-        'F1-score': f1,
-        'AUC': auc,
-        'AUPR': aupr,
-        'Error Rate': error_rate,
-        'MSE': mse_value,   # regression metrics stored here
-        'RMSE': rmse_value,
-        'MAE': mae_value
-    })
-    
-    # Also store detailed metrics for enhanced reporting
-    all_detailed_metrics.append({
-        'Stock': stock,
-        'Samples': classification_metrics['samples'],
-        'Class_Balance': classification_metrics['class_balance'],
-        'Confidence': classification_metrics.get('confidence', 0),
-        'Threshold': classification_metrics['threshold'],
-        'Accuracy': accuracy,
-        'Precision': precision,
-        'Recall': recall,
-        'F1-score': f1,
-        'AUC': auc,
-        'AUPR': aupr,
         'MSE': mse_value,
         'RMSE': rmse_value,
-        'MAE': mae_value
+        'MAE': mae_value,
+        'R2': r2_value
     })
 
     news_summary = str(test_df.iloc[-1]["announcement"])
@@ -484,42 +443,38 @@ if all_metrics:
     logger.info("\nOverall Performance Metrics for All Stocks:")
     logger.info(df_metrics.to_string(index=False))
     
-    # Create enhanced metrics DataFrame
-    df_detailed = pd.DataFrame(all_detailed_metrics)
+    # Create regression metrics heatmap
+    try:
+        import seaborn as sns
+        create_regression_metrics_heatmap(
+            df_metrics,
+            os.path.join('img', "regression_metrics_heatmap.png")
+        )
+    except ImportError:
+        logger.info("Seaborn not installed, skipping heatmap generation")
     
-    # Add reliability flag
-    df_detailed['Reliable'] = (df_detailed['Samples'] >= 20) & (df_detailed['Class_Balance'] >= 0.2)
-    
-    # Enhanced heatmap for classification metrics
-    create_metrics_heatmap(
-        df_detailed, 
-        ['AUC', 'AUPR', 'F1-score', 'Accuracy'],
-        "Classification Metrics with Reliability Indicators", 
-        os.path.join('img', "enhanced_classification_metrics.png")
+    # Create aggregate visualization
+    create_aggregate_visualization(
+        all_metrics,
+        all_predictions_dict,
+        all_true_values_dict
     )
     
-    # Enhanced heatmap for regression metrics
-    create_metrics_heatmap(
-        df_detailed,
-        ['MSE', 'RMSE', 'MAE'],
-        "Regression Metrics by Stock",
-        os.path.join('img', "enhanced_regression_metrics.png")
-    )
+    # Calculate and print average metrics
+    avg_metrics = {
+        'MSE': df_metrics['MSE'].mean(),
+        'RMSE': df_metrics['RMSE'].mean(),
+        'MAE': df_metrics['MAE'].mean(),
+        'R2': df_metrics['R2'].mean()
+    }
     
-    # Create a summary report with weighted averages
-    _, weighted_metrics = aggregate_stock_metrics(
-        df_detailed.to_dict('records'), 
-        df_detailed['Stock'].tolist()
-    )
-    
-    # Print weighted averages (more reliable than simple means)
-    logger.info("\nWeighted Metric Averages (adjusted for sample size and class balance):")
-    for metric, value in weighted_metrics.items():
+    logger.info("\nAverage Regression Metrics:")
+    for metric, value in avg_metrics.items():
         logger.info(f"{metric}: {value:.4f}")
     
     # Save detailed metrics to CSV
-    df_detailed.to_csv('enhanced_evaluation_results.csv', index=False)
-    logger.info("Enhanced evaluation results saved to enhanced_evaluation_results.csv")
+    df_metrics.to_csv('regression_evaluation_results.csv', index=False)
+    logger.info("Regression evaluation results saved to regression_evaluation_results.csv")
 else:
     logger.info("No performance metrics were computed.")
 

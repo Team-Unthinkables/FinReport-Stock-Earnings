@@ -16,8 +16,6 @@ Not enough data for stock 002111.SZ (requires > 10 rows). Skipping.
 Processing stock: 000063.SZ
 Stock 000063.SZ has 27 rows.
 For stock 000063.SZ: Latest market value = 147938706912.665, Average = 138163862671.20834, Difference = 7.1%
-True label distribution: {0.0: 4, 1.0: 3, 2.0: 4}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.727
 Shape of features: (11, 59)
 First row of features: [ 3.27758531e+01  3.38654367e+01  3.39930456e+01  3.25991638e+01
   4.93340540e+07  1.68309165e+09  3.32434861e-02  1.59163504e+11
@@ -34,20 +32,10 @@ First row of features: [ 3.27758531e+01  3.38654367e+01  3.39930456e+01  3.25991
  -1.03166836e+00 -5.36606759e-01  1.45174347e-01 -3.65372239e-01
   4.62038063e-01 -7.79023989e-03 -2.75289510e-01  9.76245908e-02
  -1.09069896e+00  2.89353164e-01 -8.90568115e-01]
-Raw predicted values distribution: {1.0427816: 1}
 Mean predicted value: 1.043, Median: 1.043
-Prediction distribution visualization saved to img\distribution_000063.SZ.png
-First 10 Raw Predictions for 000063.SZ: [1.0427816]
-First 10 Ground Truth Labels for 000063.SZ: [1.]
-Threshold analysis for 000063.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 000063.SZ: {0: 1}
-Class distribution for 000063.SZ: [0 1]
-Severe class imbalance for 000063.SZ. Using stratified metrics.
-Only one class present for 000063.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 000063.SZ: [1.0427816]
+First 10 True Values for 000063.SZ: [1.]
+Regression prediction visualization saved to img\regression_distribution_000063.SZ.png
 Sentiment Score for 000063.SZ: -0.9640
 Report for 000063.SZ generated.
 Target Return Distribution - Mean: 1.043, Median: 1.043, Variance: 0.000
@@ -81,8 +69,6 @@ Not enough data for stock 300091.SZ (requires > 10 rows). Skipping.
 Processing stock: 000333.SZ
 Stock 000333.SZ has 31 rows.
 For stock 000333.SZ: Latest market value = 476544123056.46, Average = 426259863752.0588, Difference = 11.8%
-True label distribution: {0.0: 5, 1.0: 4, 2.0: 4}
-Target Return Distribution - Mean: 0.923, Median: 1.000, Variance: 0.686
 Shape of features: (13, 59)
 First row of features: [ 8.59973689e+01  8.60923936e+01  8.62729406e+01  8.38403078e+01
   2.82238430e+07  2.53691394e+09  1.10497238e-03  6.36544642e+11
@@ -99,24 +85,10 @@ First row of features: [ 8.59973689e+01  8.60923936e+01  8.62729406e+01  8.38403
  -1.22457526e+00 -7.69866437e-01  1.35589002e+00 -6.84749544e-02
  -1.30908652e+00 -2.05230908e-01  1.43479708e+00  1.84124571e+00
   3.68268948e-02  4.71287093e-01  1.32313907e+00]
-Raw predicted values distribution: {0.06646225: 1, 1.0811293: 1, 1.9940941: 1}
 Mean predicted value: 1.047, Median: 1.081
-Prediction distribution visualization saved to img\distribution_000333.SZ.png
-First 10 Raw Predictions for 000333.SZ: [1.9940941  1.0811293  0.06646225]
-First 10 Ground Truth Labels for 000333.SZ: [2. 1. 0.]
-Threshold analysis for 000333.SZ:
-  Positive samples: 2
-  Negative samples: 1
-  Separation metric: 3.2227954864501953
-  Threshold well placed: False
-Binary Predictions Distribution for 000333.SZ: {0: 3}
-Class distribution for 000333.SZ: [1 1 1]
-Severe class imbalance for 000333.SZ. Using stratified metrics.
-Error calculating metrics for 000333.SZ: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 000333.SZ:
-[[1 0]
- [2 0]]
-Confusion matrix image saved as img\confusion_matrix_000333.SZ.png
+First 10 Predictions for 000333.SZ: [1.9940941  1.0811293  0.06646225]
+First 10 True Values for 000333.SZ: [2. 1. 0.]
+Regression prediction visualization saved to img\regression_distribution_000333.SZ.png
 Sentiment Score for 000333.SZ: -0.9568
 Report for 000333.SZ generated.
 Target Return Distribution - Mean: 1.047, Median: 1.081, Variance: 0.620
@@ -202,8 +174,6 @@ Not enough data for stock 000838.SZ (requires > 10 rows). Skipping.
 Processing stock: 600340.SH
 Stock 600340.SH has 27 rows.
 For stock 600340.SH: Latest market value = 14285079248.3, Average = 43049384832.74629, Difference = -66.8%
-True label distribution: {0.0: 1, 1.0: 8, 2.0: 2}
-Target Return Distribution - Mean: 1.091, Median: 1.000, Variance: 0.264
 Shape of features: (11, 59)
 First row of features: [ 6.17000000e+00  6.19000000e+00  6.27000000e+00  6.15000000e+00
   3.42544060e+07  2.12832791e+08  3.24149109e-03  2.42259289e+10
@@ -220,20 +190,10 @@ First row of features: [ 6.17000000e+00  6.19000000e+00  6.27000000e+00  6.15000
   9.49435077e-01 -4.14990418e-01 -2.20544761e+00  1.90880273e-01
  -1.01382722e-01  4.99023216e+00 -2.55942768e-01 -6.45216732e-01
   2.19107657e+00 -1.85189528e+00 -1.54108784e+00]
-Raw predicted values distribution: {-0.317771: 1}
 Mean predicted value: -0.318, Median: -0.318
-Prediction distribution visualization saved to img\distribution_600340.SH.png
-First 10 Raw Predictions for 600340.SH: [-0.317771]
-First 10 Ground Truth Labels for 600340.SH: [0.]
-Threshold analysis for 600340.SH:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600340.SH: {0: 1}
-Class distribution for 600340.SH: [1]
-Severe class imbalance for 600340.SH. Using stratified metrics.
-Only one class present for 600340.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600340.SH: [-0.317771]
+First 10 True Values for 600340.SH: [0.]
+Regression prediction visualization saved to img\regression_distribution_600340.SH.png
 Sentiment Score for 600340.SH: -0.9640
 Report for 600340.SH generated.
 Target Return Distribution - Mean: -0.318, Median: -0.318, Variance: 0.000
@@ -296,8 +256,6 @@ Not enough data for stock 300315.SZ (requires > 10 rows). Skipping.
 Processing stock: 000876.SZ
 Stock 000876.SZ has 59 rows.
 For stock 000876.SZ: Latest market value = 64829991211.38, Average = 92900475420.82492, Difference = -30.2%
-True label distribution: {0.0: 14, 1.0: 7, 2.0: 3}
-Target Return Distribution - Mean: 0.542, Median: 0.000, Variance: 0.498
 Shape of features: (24, 59)
 First row of features: [ 2.71100000e+01  2.71600000e+01  2.74700000e+01  2.68000000e+01
   3.10655200e+07  8.44031018e+08  1.84433788e-03  1.22359712e+11
@@ -314,23 +272,11 @@ First row of features: [ 2.71100000e+01  2.71600000e+01  2.74700000e+01  2.68000
   9.40741665e-01 -5.54823207e-01  3.47758723e-02 -6.51194450e-01
  -1.06603916e-01  3.24732733e-01 -7.45847515e-01 -5.77057300e-01
  -7.31091472e-01  5.28068739e-01  1.83458851e-01]
-Raw predicted values distribution: {0.29116678: 1, 0.29202235: 1, 0.31324354: 1, 0.32037133: 1, 0.32678857: 1, 0.3305525: 1, 0.36477458: 1, 0.39674148: 1, 1.5561451: 1, 1.5786606: 1, 1.5996948: 1, 1.5998024: 1, 1.6051487: 1, 1.6099148: 1}
 Mean predicted value: 0.870, Median: 0.381
-Prediction distribution visualization saved to img\distribution_000876.SZ.png
-First 10 Raw Predictions for 000876.SZ: [0.29116678 0.31324354 0.32037133 0.32678857 0.3305525  0.29202235
+First 10 Predictions for 000876.SZ: [0.29116678 0.31324354 0.32037133 0.32678857 0.3305525  0.29202235
  1.6099148  1.6051487  1.5998024  1.5996948 ]
-First 10 Ground Truth Labels for 000876.SZ: [0. 0. 0. 0. 0. 0. 1. 1. 1. 1.]
-Threshold analysis for 000876.SZ:
-  Positive samples: 6
-  Negative samples: 8
-  Separation metric: 24.208162307739258
-  Threshold well placed: False
-Binary Predictions Distribution for 000876.SZ: {0: 14}
-Class distribution for 000876.SZ: [8 6]
-Confusion Matrix for stock 000876.SZ:
-[[8 0]
- [6 0]]
-Confusion matrix image saved as img\confusion_matrix_000876.SZ.png
+First 10 True Values for 000876.SZ: [0. 0. 0. 0. 0. 0. 1. 1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_000876.SZ.png
 Sentiment Score for 000876.SZ: -0.9638
 Report for 000876.SZ generated.
 Target Return Distribution - Mean: 0.870, Median: 0.381, Variance: 0.391
@@ -370,8 +316,6 @@ Not enough data for stock 300337.SZ (requires > 10 rows). Skipping.
 Processing stock: 300676.SZ
 Stock 300676.SZ has 43 rows.
 For stock 300676.SZ: Latest market value = 37024636371.25, Average = 44609033479.906975, Difference = -17.0%
-True label distribution: {0.0: 9, 1.0: 5, 2.0: 4}
-Target Return Distribution - Mean: 0.722, Median: 0.500, Variance: 0.645
 Shape of features: (18, 59)
 First row of features: [ 1.40373448e+02  1.37030278e+02  1.40462731e+02  1.35542220e+02
   5.72318200e+06  7.91304154e+08 -2.38162544e-02  5.52658130e+10
@@ -388,23 +332,11 @@ First row of features: [ 1.40373448e+02  1.37030278e+02  1.40462731e+02  1.35542
   1.32034828e+00  2.02152303e-01 -2.98609659e-01  2.02184049e-01
  -7.64146515e-01 -6.69830159e-01  5.77678825e-02 -4.97745772e-01
  -5.02144791e-01  1.51984495e+00 -4.17831183e-01]
-Raw predicted values distribution: {0.20239522: 1, 0.22449024: 1, 0.22724459: 1, 0.23091528: 1, 0.24647734: 1, 1.3308921: 1, 1.3350363: 1, 1.3395482: 1}
 Mean predicted value: 0.642, Median: 0.239
-Prediction distribution visualization saved to img\distribution_300676.SZ.png
-First 10 Raw Predictions for 300676.SZ: [0.20239522 1.3350363  0.22724459 0.22449024 0.24647734 1.3308921
+First 10 Predictions for 300676.SZ: [0.20239522 1.3350363  0.22724459 0.22449024 0.24647734 1.3308921
  0.23091528 1.3395482 ]
-First 10 Ground Truth Labels for 300676.SZ: [0. 1. 0. 0. 0. 1. 0. 1.]
-Threshold analysis for 300676.SZ:
-  Positive samples: 3
-  Negative samples: 5
-  Separation metric: 62.62754821777344
-  Threshold well placed: False
-Binary Predictions Distribution for 300676.SZ: {0: 5, 1: 3}
-Class distribution for 300676.SZ: [5 3]
-Confusion Matrix for stock 300676.SZ:
-[[5 0]
- [0 3]]
-Confusion matrix image saved as img\confusion_matrix_300676.SZ.png
+First 10 True Values for 300676.SZ: [0. 1. 0. 0. 0. 1. 0. 1.]
+Regression prediction visualization saved to img\regression_distribution_300676.SZ.png
 Sentiment Score for 300676.SZ: -0.9602
 Report for 300676.SZ generated.
 Target Return Distribution - Mean: 0.642, Median: 0.239, Variance: 0.288
@@ -421,8 +353,6 @@ Not enough test data for stock 002027.SZ (requires > 10 rows). Skipping.
 Processing stock: 002352.SZ
 Stock 002352.SZ has 40 rows.
 For stock 002352.SZ: Latest market value = 294482746606.65, Average = 232649789069.60504, Difference = 26.6%
-True label distribution: {0.0: 5, 1.0: 5, 2.0: 6}
-Target Return Distribution - Mean: 1.062, Median: 1.000, Variance: 0.684
 Shape of features: (16, 59)
 First row of features: [ 6.58376919e+01  6.80484742e+01  6.91885637e+01  6.47769129e+01
   2.32221560e+07  1.57675220e+09  3.35792802e-02  3.12754073e+11
@@ -439,32 +369,16 @@ First row of features: [ 6.58376919e+01  6.80484742e+01  6.91885637e+01  6.47769
   1.41237028e+00 -1.15273112e-01 -4.23887372e-01 -5.24718321e-01
  -1.84999196e+00 -2.85149006e-01  5.02587233e-01 -4.90087295e-01
  -3.06548708e-01 -1.09414262e-01 -7.02124388e-01]
-Raw predicted values distribution: {-0.040380884: 1, -0.02317011: 1, 0.8914582: 1, 0.9026194: 1, 0.95647997: 1, 1.9445876: 1}
 Mean predicted value: 0.772, Median: 0.897
-Prediction distribution visualization saved to img\distribution_002352.SZ.png
-First 10 Raw Predictions for 002352.SZ: [ 0.8914582   0.95647997  1.9445876  -0.04038088  0.9026194  -0.02317011]
-First 10 Ground Truth Labels for 002352.SZ: [1. 1. 2. 0. 1. 0.]
-Threshold analysis for 002352.SZ:
-  Positive samples: 4
-  Negative samples: 2
-  Separation metric: 2.6536319255828857
-  Threshold well placed: False
-Binary Predictions Distribution for 002352.SZ: {0: 3, 1: 3}
-Class distribution for 002352.SZ: [2 3 1]
-Severe class imbalance for 002352.SZ. Using stratified metrics.
-Error calculating metrics for 002352.SZ: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 002352.SZ:
-[[2 0]
- [1 3]]
-Confusion matrix image saved as img\confusion_matrix_002352.SZ.png
+First 10 Predictions for 002352.SZ: [ 0.8914582   0.95647997  1.9445876  -0.04038088  0.9026194  -0.02317011]
+First 10 True Values for 002352.SZ: [1. 1. 2. 0. 1. 0.]
+Regression prediction visualization saved to img\regression_distribution_002352.SZ.png
 Sentiment Score for 002352.SZ: -0.9637
 Report for 002352.SZ generated.
 Target Return Distribution - Mean: 0.772, Median: 0.897, Variance: 0.455
 Processing stock: 600521.SH
 Stock 600521.SH has 27 rows.
 For stock 600521.SH: Latest market value = 28238937123.63, Average = 31597488704.113705, Difference = -10.6%
-True label distribution: {0.0: 7, 2.0: 4}
-Target Return Distribution - Mean: 0.727, Median: 0.000, Variance: 0.926
 Shape of features: (11, 59)
 First row of features: [ 3.30684927e+01  3.14712667e+01  3.30684927e+01  3.01599639e+01
   4.77734440e+07  1.49320960e+09 -4.83005367e-02  4.64310889e+10
@@ -481,28 +395,16 @@ First row of features: [ 3.30684927e+01  3.14712667e+01  3.30684927e+01  3.01599
  -1.28463923e+00 -2.45112532e-01 -6.34940741e-01 -2.49436038e-01
  -2.14720291e+00 -6.77999780e-01 -7.35019215e-01 -1.01743495e+00
  -7.16202869e-01  9.60104777e-01 -1.36106704e+00]
-Raw predicted values distribution: {0.38921067: 1}
 Mean predicted value: 0.389, Median: 0.389
-Prediction distribution visualization saved to img\distribution_600521.SH.png
-First 10 Raw Predictions for 600521.SH: [0.38921067]
-First 10 Ground Truth Labels for 600521.SH: [0.]
-Threshold analysis for 600521.SH:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600521.SH: {0: 1}
-Class distribution for 600521.SH: [1]
-Severe class imbalance for 600521.SH. Using stratified metrics.
-Only one class present for 600521.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600521.SH: [0.38921067]
+First 10 True Values for 600521.SH: [0.]
+Regression prediction visualization saved to img\regression_distribution_600521.SH.png
 Sentiment Score for 600521.SH: -0.9515
 Report for 600521.SH generated.
 Target Return Distribution - Mean: 0.389, Median: 0.389, Variance: 0.000
 Processing stock: 300207.SZ
 Stock 300207.SZ has 27 rows.
 For stock 300207.SZ: Latest market value = 66521868517.7, Average = 38554797486.39777, Difference = 72.5%
-True label distribution: {0.0: 4, 1.0: 1, 2.0: 6}
-Target Return Distribution - Mean: 1.182, Median: 2.000, Variance: 0.876
 Shape of features: (11, 59)
 First row of features: [ 2.68309686e+01  2.79659335e+01  2.83243435e+01  2.63829561e+01
   6.34188250e+07  1.75843254e+09  4.23005566e-02  4.42080299e+10
@@ -519,20 +421,10 @@ First row of features: [ 2.68309686e+01  2.79659335e+01  2.83243435e+01  2.63829
  -1.01432409e+00  1.35140770e+00  2.63245684e-01  3.59907985e-01
   7.34682445e-01  1.96750728e-01  3.25898444e-01  1.89454858e+00
  -8.89206550e-02  5.63038881e-01  1.21106970e+00]
-Raw predicted values distribution: {-0.03483731: 1}
 Mean predicted value: -0.035, Median: -0.035
-Prediction distribution visualization saved to img\distribution_300207.SZ.png
-First 10 Raw Predictions for 300207.SZ: [-0.03483731]
-First 10 Ground Truth Labels for 300207.SZ: [0.]
-Threshold analysis for 300207.SZ:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 300207.SZ: {0: 1}
-Class distribution for 300207.SZ: [1]
-Severe class imbalance for 300207.SZ. Using stratified metrics.
-Only one class present for 300207.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 300207.SZ: [-0.03483731]
+First 10 True Values for 300207.SZ: [0.]
+Regression prediction visualization saved to img\regression_distribution_300207.SZ.png
 Sentiment Score for 300207.SZ: -0.9639
 Report for 300207.SZ generated.
 Target Return Distribution - Mean: -0.035, Median: -0.035, Variance: 0.000
@@ -549,8 +441,6 @@ Not enough data for stock 601028.SH (requires > 10 rows). Skipping.
 Processing stock: 600673.SH
 Stock 600673.SH has 26 rows.
 For stock 600673.SH: Latest market value = 31495226356.55, Average = 19393593459.34269, Difference = 62.4%
-True label distribution: {0.0: 1, 1.0: 7, 2.0: 3}
-Target Return Distribution - Mean: 1.182, Median: 1.000, Variance: 0.331
 Shape of features: (11, 59)
 First row of features: [ 4.95736306e+00  4.96712165e+00  5.02567318e+00  4.91832870e+00
   1.58508280e+07  8.07945797e+07  1.96850394e-03  1.53407370e+10
@@ -567,20 +457,10 @@ First row of features: [ 4.95736306e+00  4.96712165e+00  5.02567318e+00  4.91832
   1.15832302e+00 -4.04577813e-01  2.64705198e-01 -6.84463420e-01
   5.37337764e-01  2.97794680e-01 -1.07729299e+00  7.76953006e-01
  -2.45801561e-01 -7.41609791e-01  1.15972444e+00]
-Raw predicted values distribution: {2.0924802: 1}
 Mean predicted value: 2.092, Median: 2.092
-Prediction distribution visualization saved to img\distribution_600673.SH.png
-First 10 Raw Predictions for 600673.SH: [2.0924802]
-First 10 Ground Truth Labels for 600673.SH: [2.]
-Threshold analysis for 600673.SH:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600673.SH: {0: 1}
-Class distribution for 600673.SH: [0 0 1]
-Severe class imbalance for 600673.SH. Using stratified metrics.
-Only one class present for 600673.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600673.SH: [2.0924802]
+First 10 True Values for 600673.SH: [2.]
+Regression prediction visualization saved to img\regression_distribution_600673.SH.png
 Sentiment Score for 600673.SH: -0.9639
 Report for 600673.SH generated.
 Target Return Distribution - Mean: 2.092, Median: 2.092, Variance: 0.000
@@ -594,8 +474,6 @@ Not enough test data for stock 300551.SZ (requires > 10 rows). Skipping.
 Processing stock: 000002.SZ
 Stock 000002.SZ has 27 rows.
 For stock 000002.SZ: Latest market value = 205409825795.962, Average = 302813236515.14197, Difference = -32.2%
-True label distribution: {0.0: 1, 1.0: 8, 2.0: 2}
-Target Return Distribution - Mean: 1.091, Median: 1.000, Variance: 0.264
 Shape of features: (11, 59)
 First row of features: [ 2.24991418e+01  2.25506665e+01  2.26279537e+01  2.22844553e+01
   9.23064980e+07  2.40941111e+09  2.29007634e-03  2.96794275e+11
@@ -612,28 +490,16 @@ First row of features: [ 2.24991418e+01  2.25506665e+01  2.26279537e+01  2.22844
   1.12445918e+00 -1.13254903e+00 -1.98561947e-01 -4.87833612e-01
  -2.91343051e-01  9.47324366e-01  8.51878271e-01 -3.88771319e-01
   1.09120384e-01 -1.14863194e+00 -9.42925932e-02]
-Raw predicted values distribution: {-0.35272756: 1}
 Mean predicted value: -0.353, Median: -0.353
-Prediction distribution visualization saved to img\distribution_000002.SZ.png
-First 10 Raw Predictions for 000002.SZ: [-0.35272756]
-First 10 Ground Truth Labels for 000002.SZ: [0.]
-Threshold analysis for 000002.SZ:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 000002.SZ: {0: 1}
-Class distribution for 000002.SZ: [1]
-Severe class imbalance for 000002.SZ. Using stratified metrics.
-Only one class present for 000002.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 000002.SZ: [-0.35272756]
+First 10 True Values for 000002.SZ: [0.]
+Regression prediction visualization saved to img\regression_distribution_000002.SZ.png
 Sentiment Score for 000002.SZ: -0.9640
 Report for 000002.SZ generated.
 Target Return Distribution - Mean: -0.353, Median: -0.353, Variance: 0.000
 Processing stock: 002252.SZ
 Stock 002252.SZ has 27 rows.
 For stock 002252.SZ: Latest market value = 54061119014.14, Average = 57418536541.17296, Difference = -5.8%
-True label distribution: {0.0: 4, 1.0: 2, 2.0: 5}
-Target Return Distribution - Mean: 1.091, Median: 1.000, Variance: 0.810
 Shape of features: (11, 59)
 First row of features: [ 9.65629113e+00  9.13084613e+00  9.65629113e+00  9.13084613e+00
   6.03604690e+07  5.70637907e+08 -5.44147844e-02  4.58162695e+10
@@ -650,28 +516,16 @@ First row of features: [ 9.65629113e+00  9.13084613e+00  9.65629113e+00  9.13084
  -1.22600438e+00 -2.46613819e-01  3.86458653e-02 -4.00399610e-01
  -6.51117575e-01 -8.07870743e-01 -3.91653239e-01 -5.22361267e-01
   2.12822099e+00  4.01311903e-01 -6.40471055e-01]
-Raw predicted values distribution: {0.019635882: 1}
 Mean predicted value: 0.020, Median: 0.020
-Prediction distribution visualization saved to img\distribution_002252.SZ.png
-First 10 Raw Predictions for 002252.SZ: [0.01963588]
-First 10 Ground Truth Labels for 002252.SZ: [0.]
-Threshold analysis for 002252.SZ:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002252.SZ: {0: 1}
-Class distribution for 002252.SZ: [1]
-Severe class imbalance for 002252.SZ. Using stratified metrics.
-Only one class present for 002252.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002252.SZ: [0.01963588]
+First 10 True Values for 002252.SZ: [0.]
+Regression prediction visualization saved to img\regression_distribution_002252.SZ.png
 Sentiment Score for 002252.SZ: -0.9640
 Report for 002252.SZ generated.
 Target Return Distribution - Mean: 0.020, Median: 0.020, Variance: 0.000
 Processing stock: 002594.SZ
 Stock 002594.SZ has 78 rows.
 For stock 002594.SZ: Latest market value = 860998104515.0, Average = 440326125712.73267, Difference = 95.5%
-True label distribution: {0.0: 18, 1.0: 6, 2.0: 8}
-Target Return Distribution - Mean: 0.688, Median: 0.000, Variance: 0.715
 Shape of features: (32, 59)
 First row of features: [ 1.96341222e+02  1.97110600e+02  2.03835162e+02  1.93843242e+02
   5.03616020e+07  9.97874577e+09  3.91857506e-03  5.30139068e+11
@@ -688,23 +542,11 @@ First row of features: [ 1.96341222e+02  1.97110600e+02  2.03835162e+02  1.93843
  -1.26031295e+00 -8.82378332e-01 -9.96174501e-01  4.24059295e-01
   7.68890478e-01 -4.79775714e-01  3.09225444e-01 -1.65829810e+00
   4.83538312e-01  2.54575991e+00 -1.28915345e+00]
-Raw predicted values distribution: {0.25932038: 1, 0.2642594: 1, 0.26499838: 1, 0.2675411: 1, 0.26948166: 1, 0.27315104: 1, 0.27561265: 1, 0.27742273: 1, 0.28044492: 1, 0.28184545: 1, 0.28224272: 1, 0.29287502: 1, 0.31222808: 1, 1.3501053: 1, 1.3657681: 1, 1.3677717: 1, 1.3708202: 1, 2.0483649: 1, 2.1221032: 1, 2.1486354: 1, 2.1550224: 1, 2.1735537: 1}
 Mean predicted value: 0.896, Median: 0.288
-Prediction distribution visualization saved to img\distribution_002594.SZ.png
-First 10 Raw Predictions for 002594.SZ: [0.31222808 0.28044492 2.0483649  2.1486354  2.1550224  0.26499838
+First 10 Predictions for 002594.SZ: [0.31222808 0.28044492 2.0483649  2.1486354  2.1550224  0.26499838
  0.28224272 0.27742273 0.27315104 0.26948166]
-First 10 Ground Truth Labels for 002594.SZ: [0. 0. 2. 2. 2. 0. 0. 0. 0. 0.]
-Threshold analysis for 002594.SZ:
-  Positive samples: 9
-  Negative samples: 13
-  Separation metric: 3.8238883018493652
-  Threshold well placed: False
-Binary Predictions Distribution for 002594.SZ: {0: 22}
-Class distribution for 002594.SZ: [13  4  5]
-Confusion Matrix for stock 002594.SZ:
-[[13  0]
- [ 9  0]]
-Confusion matrix image saved as img\confusion_matrix_002594.SZ.png
+First 10 True Values for 002594.SZ: [0. 0. 2. 2. 2. 0. 0. 0. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_002594.SZ.png
 Sentiment Score for 002594.SZ: -0.9612
 Report for 002594.SZ generated.
 Target Return Distribution - Mean: 0.896, Median: 0.288, Variance: 0.613
@@ -754,8 +596,6 @@ Not enough test data for stock 600572.SH (requires > 10 rows). Skipping.
 Processing stock: 601669.SH
 Stock 601669.SH has 28 rows.
 For stock 601669.SH: Latest market value = 109082119721.12, Average = 82374375722.08, Difference = 32.4%
-True label distribution: {0.0: 5, 1.0: 2, 2.0: 5}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.833
 Shape of features: (12, 59)
 First row of features: [ 3.92476986e+00  3.85726768e+00  3.93441303e+00  3.83798134e+00
   1.26632450e+08  5.08766532e+08 -1.71990172e-02  6.11961401e+10
@@ -772,24 +612,10 @@ First row of features: [ 3.92476986e+00  3.85726768e+00  3.93441303e+00  3.83798
  -9.80267615e-01  1.12756933e-01  5.99164535e-01 -5.28854035e-01
  -2.41971529e-01  1.51073187e-01  7.99483613e-01  2.21008808e-01
   6.42004216e-01 -1.01864773e+00  7.99563834e-01]
-Raw predicted values distribution: {0.08538354: 1, 1.8696338: 1}
 Mean predicted value: 0.978, Median: 0.978
-Prediction distribution visualization saved to img\distribution_601669.SH.png
-First 10 Raw Predictions for 601669.SH: [0.08538354 1.8696338 ]
-First 10 Ground Truth Labels for 601669.SH: [0. 2.]
-Threshold analysis for 601669.SH:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 601669.SH: {0: 1, 1: 1}
-Class distribution for 601669.SH: [1 0 1]
-Severe class imbalance for 601669.SH. Using stratified metrics.
-Error calculating metrics for 601669.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 601669.SH:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_601669.SH.png
+First 10 Predictions for 601669.SH: [0.08538354 1.8696338 ]
+First 10 True Values for 601669.SH: [0. 2.]
+Regression prediction visualization saved to img\regression_distribution_601669.SH.png
 Sentiment Score for 601669.SH: -0.9638
 Report for 601669.SH generated.
 Target Return Distribution - Mean: 0.978, Median: 0.978, Variance: 0.796
@@ -819,8 +645,6 @@ Not enough test data for stock 300601.SZ (requires > 10 rows). Skipping.
 Processing stock: 002548.SZ
 Stock 002548.SZ has 26 rows.
 For stock 002548.SZ: Latest market value = 4075309607.8, Average = 4526302738.42577, Difference = -10.0%
-True label distribution: {0.0: 3, 1.0: 4, 2.0: 4}
-Target Return Distribution - Mean: 1.091, Median: 1.000, Variance: 0.628
 Shape of features: (11, 59)
 First row of features: [ 1.12302645e+01  1.18867724e+01  1.20160846e+01  1.10910052e+01
   7.69419710e+07  8.97631853e+08  5.84588131e-02  6.72167650e+09
@@ -837,20 +661,10 @@ First row of features: [ 1.12302645e+01  1.18867724e+01  1.20160846e+01  1.10910
   1.43475491e+00  2.08759600e+00  1.49999276e+00  3.86362541e+00
  -1.24006622e+00 -3.47201457e-01  1.38627542e+00  1.98906886e+00
   3.75946669e+00 -3.70929530e-01  8.01308049e-01]
-Raw predicted values distribution: {1.8995477: 1}
 Mean predicted value: 1.900, Median: 1.900
-Prediction distribution visualization saved to img\distribution_002548.SZ.png
-First 10 Raw Predictions for 002548.SZ: [1.8995477]
-First 10 Ground Truth Labels for 002548.SZ: [2.]
-Threshold analysis for 002548.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002548.SZ: {0: 1}
-Class distribution for 002548.SZ: [0 0 1]
-Severe class imbalance for 002548.SZ. Using stratified metrics.
-Only one class present for 002548.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002548.SZ: [1.8995477]
+First 10 True Values for 002548.SZ: [2.]
+Regression prediction visualization saved to img\regression_distribution_002548.SZ.png
 Sentiment Score for 002548.SZ: -0.9640
 Report for 002548.SZ generated.
 Target Return Distribution - Mean: 1.900, Median: 1.900, Variance: 0.000
@@ -913,8 +727,6 @@ Not enough data for stock 600998.SH (requires > 10 rows). Skipping.
 Processing stock: 002422.SZ
 Stock 002422.SZ has 29 rows.
 For stock 002422.SZ: Latest market value = 26042475688.74, Average = 32920705395.462757, Difference = -20.9%
-True label distribution: {0.0: 5, 1.0: 4, 2.0: 3}
-Target Return Distribution - Mean: 0.833, Median: 1.000, Variance: 0.639
 Shape of features: (12, 59)
 First row of features: [ 1.74570852e+01  1.75531616e+01  1.76204151e+01  1.73417934e+01
   8.15265800e+06  1.48594803e+08  5.50357733e-03  2.62848750e+10
@@ -931,23 +743,10 @@ First row of features: [ 1.74570852e+01  1.75531616e+01  1.76204151e+01  1.73417
   3.27606613e-01 -3.35600179e-01 -5.21662906e-01 -2.07826873e-01
   5.52272731e-01  3.55138375e-02 -2.19019639e+00 -6.43338155e-01
  -2.37816838e-01 -1.30922350e+00 -7.13960479e-01]
-Raw predicted values distribution: {0.12536193: 1, 1.2034165: 1}
 Mean predicted value: 0.664, Median: 0.664
-Prediction distribution visualization saved to img\distribution_002422.SZ.png
-First 10 Raw Predictions for 002422.SZ: [0.12536193 1.2034165 ]
-First 10 Ground Truth Labels for 002422.SZ: [0. 1.]
-Threshold analysis for 002422.SZ:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 002422.SZ: {0: 1, 1: 1}
-Class distribution for 002422.SZ: [1 1]
-Severe class imbalance for 002422.SZ. Using stratified metrics.
-Confusion Matrix for stock 002422.SZ:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_002422.SZ.png
+First 10 Predictions for 002422.SZ: [0.12536193 1.2034165 ]
+First 10 True Values for 002422.SZ: [0. 1.]
+Regression prediction visualization saved to img\regression_distribution_002422.SZ.png
 Sentiment Score for 002422.SZ: -0.9640
 Report for 002422.SZ generated.
 Target Return Distribution - Mean: 0.664, Median: 0.664, Variance: 0.291
@@ -978,8 +777,6 @@ Not enough data for stock 300450.SZ (requires > 10 rows). Skipping.
 Processing stock: 600309.SH
 Stock 600309.SH has 35 rows.
 For stock 600309.SH: Latest market value = 328103522417.0, Average = 241323194937.99484, Difference = 36.0%
-True label distribution: {0.0: 7, 1.0: 3, 2.0: 4}
-Target Return Distribution - Mean: 0.786, Median: 0.500, Variance: 0.740
 Shape of features: (14, 59)
 First row of features: [ 1.12782303e+02  1.08454833e+02  1.13395042e+02  1.06367690e+02
   2.94936750e+07  3.37174487e+09 -3.83701188e-02  3.55670498e+11
@@ -996,23 +793,10 @@ First row of features: [ 1.12782303e+02  1.08454833e+02  1.13395042e+02  1.06367
  -1.16845442e+00 -1.22366978e+00 -1.66090899e+00 -1.25379964e-01
  -1.69970322e+00 -5.67299038e-01 -3.67203985e-01 -2.35597148e+00
   1.09813616e+00  7.77996335e-01 -1.45562307e+00]
-Raw predicted values distribution: {1.3201739: 1, 2.0719295: 1, 2.0738084: 1, 2.0857987: 1}
 Mean predicted value: 1.888, Median: 2.073
-Prediction distribution visualization saved to img\distribution_600309.SH.png
-First 10 Raw Predictions for 600309.SH: [1.3201739 2.0738084 2.0857987 2.0719295]
-First 10 Ground Truth Labels for 600309.SH: [1. 2. 2. 2.]
-Threshold analysis for 600309.SH:
-  Positive samples: 4
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600309.SH: {0: 4}
-Class distribution for 600309.SH: [0 1 3]
-Severe class imbalance for 600309.SH. Using stratified metrics.
-Confusion Matrix for stock 600309.SH:
-[[0 0]
- [4 0]]
-Confusion matrix image saved as img\confusion_matrix_600309.SH.png
+First 10 Predictions for 600309.SH: [1.3201739 2.0738084 2.0857987 2.0719295]
+First 10 True Values for 600309.SH: [1. 2. 2. 2.]
+Regression prediction visualization saved to img\regression_distribution_600309.SH.png
 Sentiment Score for 600309.SH: -0.9639
 Report for 600309.SH generated.
 Target Return Distribution - Mean: 1.888, Median: 2.073, Variance: 0.107
@@ -1079,8 +863,6 @@ Not enough data for stock 300603.SZ (requires > 10 rows). Skipping.
 Processing stock: 000157.SZ
 Stock 000157.SZ has 31 rows.
 For stock 000157.SZ: Latest market value = 60593650164.9213, Average = 64306461822.832924, Difference = -5.8%
-True label distribution: {0.0: 11, 1.0: 1, 2.0: 1}
-Target Return Distribution - Mean: 0.231, Median: 0.000, Variance: 0.331
 Shape of features: (13, 59)
 First row of features: [ 1.12718578e+01  1.15737825e+01  1.16744241e+01  1.12718578e+01
   8.96069250e+07  1.12532085e+09  2.67857143e-02  1.05195804e+11
@@ -1097,20 +879,10 @@ First row of features: [ 1.12718578e+01  1.15737825e+01  1.16744241e+01  1.12718
  -1.25409171e+00 -6.37000619e-01 -7.50171105e-01 -1.11884324e-01
  -1.99691985e+00 -1.10372860e-01  2.47236730e-01 -5.67381080e-01
   3.48239683e-01  1.99095899e+00 -5.57308956e-01]
-Raw predicted values distribution: {0.62679493: 1, 0.62726796: 1, 0.63466614: 1}
 Mean predicted value: 0.630, Median: 0.627
-Prediction distribution visualization saved to img\distribution_000157.SZ.png
-First 10 Raw Predictions for 000157.SZ: [0.63466614 0.62726796 0.62679493]
-First 10 Ground Truth Labels for 000157.SZ: [0. 0. 0.]
-Threshold analysis for 000157.SZ:
-  Positive samples: 0
-  Negative samples: 3
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 000157.SZ: {0: 2, 1: 1}
-Class distribution for 000157.SZ: [3]
-Severe class imbalance for 000157.SZ. Using stratified metrics.
-Only one class present for 000157.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 000157.SZ: [0.63466614 0.62726796 0.62679493]
+First 10 True Values for 000157.SZ: [0. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_000157.SZ.png
 Sentiment Score for 000157.SZ: -0.9639
 Report for 000157.SZ generated.
 Target Return Distribution - Mean: 0.630, Median: 0.627, Variance: 0.000
@@ -1123,8 +895,6 @@ Not enough data for stock 600889.SH (requires > 10 rows). Skipping.
 Processing stock: 600519.SH
 Stock 600519.SH has 37 rows.
 For stock 600519.SH: Latest market value = 2388032017800.0, Average = 1819117009825.946, Difference = 31.3%
-True label distribution: {0.0: 6, 1.0: 3, 2.0: 6}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.800
 Shape of features: (15, 59)
 First row of features: [ 1.86021444e+03  1.80499577e+03  1.86826103e+03  1.78477637e+03
   4.77060900e+06  8.90100226e+09 -2.96840342e-02  2.31347668e+12
@@ -1141,24 +911,10 @@ First row of features: [ 1.86021444e+03  1.80499577e+03  1.86826103e+03  1.78477
   1.26082518e+00 -5.41974722e+00  4.85290512e-01  1.87123408e+00
   2.75957884e+00 -6.71339899e-01  2.21151326e-01  5.98564148e-02
  -2.10356105e-01 -1.01431406e+00  2.90319723e-01]
-Raw predicted values distribution: {0.06557597: 1, 0.066482365: 1, 0.067864604: 1, 0.08331035: 1, 1.9337032: 1}
 Mean predicted value: 0.443, Median: 0.068
-Prediction distribution visualization saved to img\distribution_600519.SH.png
-First 10 Raw Predictions for 600519.SH: [0.0678646  0.06557597 0.06648237 0.08331035 1.9337032 ]
-First 10 Ground Truth Labels for 600519.SH: [0. 0. 0. 0. 2.]
-Threshold analysis for 600519.SH:
-  Positive samples: 1
-  Negative samples: 4
-  Separation metric: 256.4589538574219
-  Threshold well placed: False
-Binary Predictions Distribution for 600519.SH: {0: 3, 1: 2}
-Class distribution for 600519.SH: [4 0 1]
-Severe class imbalance for 600519.SH. Using stratified metrics.
-Error calculating metrics for 600519.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 600519.SH:
-[[3 1]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_600519.SH.png
+First 10 Predictions for 600519.SH: [0.0678646  0.06557597 0.06648237 0.08331035 1.9337032 ]
+First 10 True Values for 600519.SH: [0. 0. 0. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_600519.SH.png
 Sentiment Score for 600519.SH: -0.9639
 Report for 600519.SH generated.
 Target Return Distribution - Mean: 0.443, Median: 0.068, Variance: 0.555
@@ -1195,8 +951,6 @@ Not enough data for stock 300409.SZ (requires > 10 rows). Skipping.
 Processing stock: 601238.SH
 Stock 601238.SH has 34 rows.
 For stock 601238.SH: Latest market value = 148528679164.26, Average = 118961375092.15866, Difference = 24.9%
-True label distribution: {0.0: 3, 1.0: 6, 2.0: 5}
-Target Return Distribution - Mean: 1.143, Median: 1.000, Variance: 0.551
 Shape of features: (14, 59)
 First row of features: [ 1.03639463e+01  1.01700465e+01  1.04027263e+01  1.01700465e+01
   2.54829400e+07  2.69730913e+08 -1.87090739e-02  9.42829378e+10
@@ -1213,23 +967,10 @@ First row of features: [ 1.03639463e+01  1.01700465e+01  1.04027263e+01  1.01700
   9.28089916e-01  1.86636881e+00  3.72973179e-01 -7.54496774e-01
  -1.97760918e-01 -6.89440562e-02 -1.30940551e+00 -2.60732893e-01
  -2.23929899e-01  1.46491583e-02 -9.33808754e-01]
-Raw predicted values distribution: {0.7989181: 1, 1.9584183: 1, 1.9592459: 1, 1.9624515: 1}
 Mean predicted value: 1.670, Median: 1.959
-Prediction distribution visualization saved to img\distribution_601238.SH.png
-First 10 Raw Predictions for 601238.SH: [1.9624515 1.9592459 1.9584183 0.7989181]
-First 10 Ground Truth Labels for 601238.SH: [2. 2. 2. 1.]
-Threshold analysis for 601238.SH:
-  Positive samples: 4
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 601238.SH: {0: 2, 1: 2}
-Class distribution for 601238.SH: [0 1 3]
-Severe class imbalance for 601238.SH. Using stratified metrics.
-Confusion Matrix for stock 601238.SH:
-[[0 0]
- [2 2]]
-Confusion matrix image saved as img\confusion_matrix_601238.SH.png
+First 10 Predictions for 601238.SH: [1.9624515 1.9592459 1.9584183 0.7989181]
+First 10 True Values for 601238.SH: [2. 2. 2. 1.]
+Regression prediction visualization saved to img\regression_distribution_601238.SH.png
 Sentiment Score for 601238.SH: -0.9640
 Report for 601238.SH generated.
 Target Return Distribution - Mean: 1.670, Median: 1.959, Variance: 0.253
@@ -1242,8 +983,6 @@ Not enough data for stock 000572.SZ (requires > 10 rows). Skipping.
 Processing stock: 002415.SZ
 Stock 002415.SZ has 27 rows.
 For stock 002415.SZ: Latest market value = 517577090960.16, Average = 299738168489.18, Difference = 72.7%
-True label distribution: {0.0: 7, 1.0: 3, 2.0: 1}
-Target Return Distribution - Mean: 0.455, Median: 0.000, Variance: 0.430
 Shape of features: (11, 59)
 First row of features: [ 2.90779726e+01  2.85067145e+01  2.91154321e+01  2.83287817e+01
   3.44625670e+07  1.05420930e+09 -1.96457327e-02  2.84462126e+11
@@ -1260,20 +999,10 @@ First row of features: [ 2.90779726e+01  2.85067145e+01  2.91154321e+01  2.83287
  -8.24543102e-01 -9.39081179e-01 -1.54504948e+00 -2.45810760e-01
  -3.44294143e-01 -5.67074181e-01 -9.90527124e-01 -1.29553230e+00
  -3.47881618e-01 -5.10693813e-01 -1.01260859e+00]
-Raw predicted values distribution: {1.7430865: 1}
 Mean predicted value: 1.743, Median: 1.743
-Prediction distribution visualization saved to img\distribution_002415.SZ.png
-First 10 Raw Predictions for 002415.SZ: [1.7430865]
-First 10 Ground Truth Labels for 002415.SZ: [1.]
-Threshold analysis for 002415.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002415.SZ: {0: 1}
-Class distribution for 002415.SZ: [0 1]
-Severe class imbalance for 002415.SZ. Using stratified metrics.
-Only one class present for 002415.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002415.SZ: [1.7430865]
+First 10 True Values for 002415.SZ: [1.]
+Regression prediction visualization saved to img\regression_distribution_002415.SZ.png
 Sentiment Score for 002415.SZ: -0.9640
 Report for 002415.SZ generated.
 Target Return Distribution - Mean: 1.743, Median: 1.743, Variance: 0.000
@@ -1284,8 +1013,6 @@ Not enough test data for stock 601088.SH (requires > 10 rows). Skipping.
 Processing stock: 600276.SH
 Stock 600276.SH has 69 rows.
 For stock 600276.SH: Latest market value = 317442838214.28, Average = 427354496169.1956, Difference = -25.7%
-True label distribution: {0.0: 13, 1.0: 6, 2.0: 9}
-Target Return Distribution - Mean: 0.857, Median: 1.000, Variance: 0.765
 Shape of features: (28, 59)
 First row of features: [ 6.58372548e+01  6.93237308e+01  6.93982636e+01  6.57130336e+01
   3.87986730e+07  3.18769692e+09  5.29559748e-02  4.46318034e+11
@@ -1302,23 +1029,11 @@ First row of features: [ 6.58372548e+01  6.93237308e+01  6.93982636e+01  6.57130
  -2.83258191e-03 -1.44702419e+00 -5.42899544e-01 -1.22716792e-01
   2.55926809e-01 -7.47862521e-01 -8.21905266e-01 -3.02296239e-01
   8.46212200e-01 -1.16386761e-01 -2.49550035e-01]
-Raw predicted values distribution: {0.12047435: 1, 0.14005859: 1, 0.14366883: 1, 0.14774351: 1, 0.1484836: 1, 0.15288475: 1, 0.18295829: 1, 0.18671344: 1, 0.20532121: 1, 1.1197617: 1, 1.1502085: 1, 1.1553315: 1, 1.1705588: 1, 1.983992: 1, 2.013527: 1, 2.0186315: 1, 2.0214117: 1, 2.0272949: 1}
 Mean predicted value: 0.894, Median: 0.663
-Prediction distribution visualization saved to img\distribution_600276.SH.png
-First 10 Raw Predictions for 600276.SH: [2.0272949  0.14366883 1.983992   1.1197617  0.12047435 0.14005859
+First 10 Predictions for 600276.SH: [2.0272949  0.14366883 1.983992   1.1197617  0.12047435 0.14005859
  0.14774351 0.15288475 2.013527   0.1484836 ]
-First 10 Ground Truth Labels for 600276.SH: [2. 0. 2. 1. 0. 0. 0. 0. 2. 0.]
-Threshold analysis for 600276.SH:
-  Positive samples: 9
-  Negative samples: 9
-  Separation metric: 3.230468511581421
-  Threshold well placed: False
-Binary Predictions Distribution for 600276.SH: {0: 18}
-Class distribution for 600276.SH: [9 4 5]
-Confusion Matrix for stock 600276.SH:
-[[9 0]
- [9 0]]
-Confusion matrix image saved as img\confusion_matrix_600276.SH.png
+First 10 True Values for 600276.SH: [2. 0. 2. 1. 0. 0. 0. 0. 2. 0.]
+Regression prediction visualization saved to img\regression_distribution_600276.SH.png
 Sentiment Score for 600276.SH: -0.9406
 Report for 600276.SH generated.
 Target Return Distribution - Mean: 0.894, Median: 0.663, Variance: 0.633
@@ -1335,8 +1050,6 @@ Not enough data for stock 300378.SZ (requires > 10 rows). Skipping.
 Processing stock: 601727.SH
 Stock 601727.SH has 29 rows.
 For stock 601727.SH: Latest market value = 65467798506.7768, Average = 68030410831.29868, Difference = -3.8%
-True label distribution: {0.0: 11, 1.0: 1}
-Target Return Distribution - Mean: 0.083, Median: 0.000, Variance: 0.076
 Shape of features: (12, 59)
 First row of features: [ 3.71846512e+00  3.62993023e+00  3.73813953e+00  3.57090698e+00
   7.52640100e+07  2.78024255e+08 -2.38095238e-02  5.13639364e+10
@@ -1353,23 +1066,10 @@ First row of features: [ 3.71846512e+00  3.62993023e+00  3.73813953e+00  3.57090
   1.00978890e+00  1.33621673e-01 -9.71967903e-01 -7.85839683e-01
   1.61295440e-01  2.83184298e+00 -1.88595678e+00 -4.45574824e-01
  -4.66791891e-01 -1.55285807e+00 -1.19690510e+00]
-Raw predicted values distribution: {0.680003: 1, 2.4248292: 1}
 Mean predicted value: 1.552, Median: 1.552
-Prediction distribution visualization saved to img\distribution_601727.SH.png
-First 10 Raw Predictions for 601727.SH: [0.680003  2.4248292]
-First 10 Ground Truth Labels for 601727.SH: [0. 1.]
-Threshold analysis for 601727.SH:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 601727.SH: {0: 1, 1: 1}
-Class distribution for 601727.SH: [1 1]
-Severe class imbalance for 601727.SH. Using stratified metrics.
-Confusion Matrix for stock 601727.SH:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_601727.SH.png
+First 10 Predictions for 601727.SH: [0.680003  2.4248292]
+First 10 True Values for 601727.SH: [0. 1.]
+Regression prediction visualization saved to img\regression_distribution_601727.SH.png
 Sentiment Score for 601727.SH: -0.9640
 Report for 601727.SH generated.
 Target Return Distribution - Mean: 1.552, Median: 1.552, Variance: 0.761
@@ -1393,8 +1093,6 @@ Not enough data for stock 601958.SH (requires > 10 rows). Skipping.
 Processing stock: 002714.SZ
 Stock 002714.SZ has 36 rows.
 For stock 002714.SZ: Latest market value = 306362863177.15, Average = 219584489336.8478, Difference = 39.5%
-True label distribution: {0.0: 9, 1.0: 1, 2.0: 5}
-Target Return Distribution - Mean: 0.733, Median: 0.000, Variance: 0.862
 Shape of features: (15, 59)
 First row of features: [ 6.29595657e+01  6.60935530e+01  6.60935530e+01  6.29595657e+01
   3.59436780e+07  3.34041116e+09  4.97777778e-02  3.54095370e+11
@@ -1411,24 +1109,10 @@ First row of features: [ 6.29595657e+01  6.60935530e+01  6.60935530e+01  6.29595
  -2.09873236e-01 -8.13321421e-01  1.70694825e+00 -2.26094916e-01
  -1.20771861e+00 -7.08408462e-01  1.51556404e+00  2.26237101e+00
   2.68836801e-03  2.35514550e-01  1.43489238e+00]
-Raw predicted values distribution: {0.28541365: 1, 0.29064342: 1, 0.29131606: 1, 0.33765215: 1, 2.0293653: 1}
 Mean predicted value: 0.647, Median: 0.291
-Prediction distribution visualization saved to img\distribution_002714.SZ.png
-First 10 Raw Predictions for 002714.SZ: [0.28541365 0.29131606 0.33765215 2.0293653  0.29064342]
-First 10 Ground Truth Labels for 002714.SZ: [0. 0. 0. 2. 0.]
-Threshold analysis for 002714.SZ:
-  Positive samples: 1
-  Negative samples: 4
-  Separation metric: 81.7575912475586
-  Threshold well placed: True
-Binary Predictions Distribution for 002714.SZ: {0: 3, 1: 2}
-Class distribution for 002714.SZ: [4 0 1]
-Severe class imbalance for 002714.SZ. Using stratified metrics.
-Error calculating metrics for 002714.SZ: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 002714.SZ:
-[[3 1]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_002714.SZ.png
+First 10 Predictions for 002714.SZ: [0.28541365 0.29131606 0.33765215 2.0293653  0.29064342]
+First 10 True Values for 002714.SZ: [0. 0. 0. 2. 0.]
+Regression prediction visualization saved to img\regression_distribution_002714.SZ.png
 Sentiment Score for 002714.SZ: -0.9639
 Report for 002714.SZ generated.
 Target Return Distribution - Mean: 0.647, Median: 0.291, Variance: 0.478
@@ -1482,8 +1166,6 @@ Not enough test data for stock 002624.SZ (requires > 10 rows). Skipping.
 Processing stock: 002653.SZ
 Stock 002653.SZ has 29 rows.
 For stock 002653.SZ: Latest market value = 18516556832.8, Average = 21826102744.910347, Difference = -15.2%
-True label distribution: {0.0: 7, 1.0: 2, 2.0: 3}
-Target Return Distribution - Mean: 0.667, Median: 0.000, Variance: 0.722
 Shape of features: (12, 59)
 First row of features: [ 2.54148917e+01  2.60190800e+01  2.61165298e+01  2.48789181e+01
   3.50034500e+06  9.18246620e+07  2.37730061e-02  2.86886059e+10
@@ -1500,24 +1182,10 @@ First row of features: [ 2.54148917e+01  2.60190800e+01  2.61165298e+01  2.48789
   2.92528400e-01 -4.75122632e-01 -1.85006677e-01 -4.84396689e-01
  -1.15991446e+00 -6.99492371e-01  7.72967746e-01  3.47212917e-01
   9.06243217e-01 -2.37900465e-02 -1.83550617e-01]
-Raw predicted values distribution: {0.27503794: 1, 2.11924: 1}
 Mean predicted value: 1.197, Median: 1.197
-Prediction distribution visualization saved to img\distribution_002653.SZ.png
-First 10 Raw Predictions for 002653.SZ: [2.11924    0.27503794]
-First 10 Ground Truth Labels for 002653.SZ: [2. 0.]
-Threshold analysis for 002653.SZ:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 002653.SZ: {0: 1, 1: 1}
-Class distribution for 002653.SZ: [1 0 1]
-Severe class imbalance for 002653.SZ. Using stratified metrics.
-Error calculating metrics for 002653.SZ: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 002653.SZ:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_002653.SZ.png
+First 10 Predictions for 002653.SZ: [2.11924    0.27503794]
+First 10 True Values for 002653.SZ: [2. 0.]
+Regression prediction visualization saved to img\regression_distribution_002653.SZ.png
 Sentiment Score for 002653.SZ: -0.9610
 Report for 002653.SZ generated.
 Target Return Distribution - Mean: 1.197, Median: 1.197, Variance: 0.850
@@ -1584,8 +1252,6 @@ Not enough test data for stock 300595.SZ (requires > 10 rows). Skipping.
 Processing stock: 600030.SH
 Stock 600030.SH has 46 rows.
 For stock 600030.SH: Latest market value = 299668697389.038, Average = 277475215330.72345, Difference = 8.0%
-True label distribution: {0.0: 4, 1.0: 12, 2.0: 3}
-Target Return Distribution - Mean: 0.947, Median: 1.000, Variance: 0.366
 Shape of features: (19, 59)
 First row of features: [ 2.77386984e+01  2.97644586e+01  3.04219421e+01  2.77386984e+01
   6.90476416e+08  2.24861666e+10  7.30301089e-02  4.33046997e+11
@@ -1602,24 +1268,11 @@ First row of features: [ 2.77386984e+01  2.97644586e+01  3.04219421e+01  2.77386
   2.69523409e-01 -6.76341014e-01  1.81521576e+00  2.00590051e+00
  -3.51790695e-02 -6.90928076e-01  1.28760284e+00  3.36385743e+00
   1.60812801e+00  2.59074893e+00  1.74303317e+00]
-Raw predicted values distribution: {-0.16508727: 1, 1.0486068: 1, 1.0834557: 1, 1.0870645: 1, 1.0894091: 1, 1.0931361: 1, 1.0942049: 1, 1.0956646: 1, 1.1027814: 1}
 Mean predicted value: 0.948, Median: 1.089
-Prediction distribution visualization saved to img\distribution_600030.SH.png
-First 10 Raw Predictions for 600030.SH: [ 1.0834557   1.1027814   1.0870645   1.0894091   1.0931361   1.0942049
+First 10 Predictions for 600030.SH: [ 1.0834557   1.1027814   1.0870645   1.0894091   1.0931361   1.0942049
   1.0956646  -0.16508727  1.0486068 ]
-First 10 Ground Truth Labels for 600030.SH: [1. 1. 1. 1. 1. 1. 1. 0. 1.]
-Threshold analysis for 600030.SH:
-  Positive samples: 8
-  Negative samples: 1
-  Separation metric: 81.10989379882812
-  Threshold well placed: False
-Binary Predictions Distribution for 600030.SH: {0: 9}
-Class distribution for 600030.SH: [1 8]
-Severe class imbalance for 600030.SH. Using stratified metrics.
-Confusion Matrix for stock 600030.SH:
-[[1 0]
- [8 0]]
-Confusion matrix image saved as img\confusion_matrix_600030.SH.png
+First 10 True Values for 600030.SH: [1. 1. 1. 1. 1. 1. 1. 0. 1.]
+Regression prediction visualization saved to img\regression_distribution_600030.SH.png
 Sentiment Score for 600030.SH: -0.9640
 Report for 600030.SH generated.
 Target Return Distribution - Mean: 0.948, Median: 1.089, Variance: 0.155
@@ -1656,8 +1309,6 @@ Not enough data for stock 000635.SZ (requires > 10 rows). Skipping.
 Processing stock: 001979.SZ
 Stock 001979.SZ has 31 rows.
 For stock 001979.SZ: Latest market value = 74636945216.64, Average = 126069645180.7958, Difference = -40.8%
-True label distribution: {0.0: 2, 1.0: 9, 2.0: 2}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.308
 Shape of features: (13, 59)
 First row of features: [ 1.37594918e+01  1.37504335e+01  1.38681909e+01  1.37413753e+01
   9.14866600e+06  1.39381987e+08 -6.58327847e-04  1.20260779e+11
@@ -1674,23 +1325,10 @@ First row of features: [ 1.37594918e+01  1.37504335e+01  1.38681909e+01  1.37413
   1.14330010e+00  6.28224120e-01 -3.10837710e+00 -8.15818305e-01
  -3.22757170e-01  4.10269312e-01 -2.31661105e+00 -6.56426848e-01
  -4.40771062e-01 -1.03981813e+00 -1.71992833e+00]
-Raw predicted values distribution: {-0.29180214: 1, 0.91117316: 1, 0.995901: 1}
 Mean predicted value: 0.538, Median: 0.911
-Prediction distribution visualization saved to img\distribution_001979.SZ.png
-First 10 Raw Predictions for 001979.SZ: [ 0.995901   -0.29180214  0.91117316]
-First 10 Ground Truth Labels for 001979.SZ: [1. 0. 1.]
-Threshold analysis for 001979.SZ:
-  Positive samples: 2
-  Negative samples: 1
-  Separation metric: 29.396228790283203
-  Threshold well placed: False
-Binary Predictions Distribution for 001979.SZ: {0: 2, 1: 1}
-Class distribution for 001979.SZ: [1 2]
-Severe class imbalance for 001979.SZ. Using stratified metrics.
-Confusion Matrix for stock 001979.SZ:
-[[1 0]
- [1 1]]
-Confusion matrix image saved as img\confusion_matrix_001979.SZ.png
+First 10 Predictions for 001979.SZ: [ 0.995901   -0.29180214  0.91117316]
+First 10 True Values for 001979.SZ: [1. 0. 1.]
+Regression prediction visualization saved to img\regression_distribution_001979.SZ.png
 Sentiment Score for 001979.SZ: -0.9639
 Report for 001979.SZ generated.
 Target Return Distribution - Mean: 0.538, Median: 0.911, Variance: 0.346
@@ -1711,8 +1349,6 @@ Not enough test data for stock 000783.SZ (requires > 10 rows). Skipping.
 Processing stock: 000625.SZ
 Stock 000625.SZ has 61 rows.
 For stock 000625.SZ: Latest market value = 137491374803.666, Average = 70303118204.12779, Difference = 95.6%
-True label distribution: {0.0: 7, 1.0: 7, 2.0: 11}
-Target Return Distribution - Mean: 1.160, Median: 1.000, Variance: 0.694
 Shape of features: (25, 59)
 First row of features: [ 8.59538480e+00  8.28380210e+00  8.68133865e+00  8.21396460e+00
   7.01655880e+07  1.10029386e+09 -3.62500000e-02  7.40568400e+10
@@ -1729,23 +1365,11 @@ First row of features: [ 8.59538480e+00  8.28380210e+00  8.68133865e+00  8.21396
  -8.00020133e-01  9.11259052e-01 -6.36337483e-01 -4.22254271e-01
  -1.82124122e+00  5.77493591e-01  9.31452102e-01  2.08041850e-01
   5.64443220e-01 -9.55790028e-01  3.64427282e-01]
-Raw predicted values distribution: {-0.083944425: 1, -0.025237586: 1, -0.018768493: 1, 0.7767663: 1, 0.80235183: 1, 0.80750316: 1, 0.8082939: 1, 1.8380711: 1, 1.843754: 1, 1.8749509: 1, 1.879971: 1, 1.881076: 1, 1.881623: 1, 1.8831075: 1, 1.8882568: 1}
 Mean predicted value: 1.203, Median: 1.838
-Prediction distribution visualization saved to img\distribution_000625.SZ.png
-First 10 Raw Predictions for 000625.SZ: [-0.02523759 -0.01876849  0.80750316  0.80235183  1.8380711  -0.08394442
+First 10 Predictions for 000625.SZ: [-0.02523759 -0.01876849  0.80750316  0.80235183  1.8380711  -0.08394442
   0.8082939   0.7767663   1.843754    1.8882568 ]
-First 10 Ground Truth Labels for 000625.SZ: [0. 0. 1. 1. 2. 0. 1. 1. 2. 2.]
-Threshold analysis for 000625.SZ:
-  Positive samples: 12
-  Negative samples: 3
-  Separation metric: 2.9080495834350586
-  Threshold well placed: False
-Binary Predictions Distribution for 000625.SZ: {0: 4, 1: 11}
-Class distribution for 000625.SZ: [3 4 8]
-Confusion Matrix for stock 000625.SZ:
-[[ 3  0]
- [ 1 11]]
-Confusion matrix image saved as img\confusion_matrix_000625.SZ.png
+First 10 True Values for 000625.SZ: [0. 0. 1. 1. 2. 0. 1. 1. 2. 2.]
+Regression prediction visualization saved to img\regression_distribution_000625.SZ.png
 Sentiment Score for 000625.SZ: -0.9640
 Report for 000625.SZ generated.
 Target Return Distribution - Mean: 1.203, Median: 1.838, Variance: 0.593
@@ -1762,8 +1386,6 @@ Not enough data for stock 600851.SH (requires > 10 rows). Skipping.
 Processing stock: 601628.SH
 Stock 601628.SH has 44 rows.
 For stock 601628.SH: Latest market value = 749932818306.0, Average = 814866507152.5841, Difference = -8.0%
-True label distribution: {0.0: 5, 1.0: 11, 2.0: 2}
-Target Return Distribution - Mean: 0.833, Median: 1.000, Variance: 0.361
 Shape of features: (18, 59)
 First row of features: [ 2.86095529e+01  2.87411776e+01  2.90890427e+01  2.85531424e+01
   1.51400310e+07  4.62909256e+08  4.60072297e-03  8.64052032e+11
@@ -1780,23 +1402,11 @@ First row of features: [ 2.86095529e+01  2.87411776e+01  2.90890427e+01  2.85531
   1.31241557e+00 -4.27217374e-03 -1.14982923e-01  6.46545306e-02
   5.91243967e-01  4.04529945e-01  6.67140873e-02 -1.51069130e+00
   1.58763340e-01  4.68489676e-01 -7.42133452e-01]
-Raw predicted values distribution: {-0.084717155: 1, -0.065170616: 1, 1.2381173: 1, 1.2705312: 1, 1.2746247: 1, 1.2851753: 1, 1.2948207: 1, 1.2950984: 1}
 Mean predicted value: 0.939, Median: 1.273
-Prediction distribution visualization saved to img\distribution_601628.SH.png
-First 10 Raw Predictions for 601628.SH: [-0.08471715  1.2381173   1.2746247   1.2950984  -0.06517062  1.2705312
+First 10 Predictions for 601628.SH: [-0.08471715  1.2381173   1.2746247   1.2950984  -0.06517062  1.2705312
   1.2948207   1.2851753 ]
-First 10 Ground Truth Labels for 601628.SH: [0. 1. 1. 1. 0. 1. 1. 1.]
-Threshold analysis for 601628.SH:
-  Positive samples: 6
-  Negative samples: 2
-  Separation metric: 46.24661636352539
-  Threshold well placed: False
-Binary Predictions Distribution for 601628.SH: {0: 8}
-Class distribution for 601628.SH: [2 6]
-Confusion Matrix for stock 601628.SH:
-[[2 0]
- [6 0]]
-Confusion matrix image saved as img\confusion_matrix_601628.SH.png
+First 10 True Values for 601628.SH: [0. 1. 1. 1. 0. 1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_601628.SH.png
 Sentiment Score for 601628.SH: -0.9640
 Report for 601628.SH generated.
 Target Return Distribution - Mean: 0.939, Median: 1.273, Variance: 0.343
@@ -1824,8 +1434,6 @@ Not enough test data for stock 002114.SZ (requires > 10 rows). Skipping.
 Processing stock: 300003.SZ
 Stock 300003.SZ has 27 rows.
 For stock 300003.SZ: Latest market value = 37156325199.03, Average = 58379104345.39889, Difference = -36.4%
-True label distribution: {0.0: 2, 1.0: 2, 2.0: 7}
-Target Return Distribution - Mean: 1.455, Median: 2.000, Variance: 0.612
 Shape of features: (11, 59)
 First row of features: [ 2.98809431e+01  3.08101377e+01  3.08101377e+01  2.96853232e+01
   3.81206320e+07  1.18486736e+09  3.10965630e-02  5.68443052e+10
@@ -1842,20 +1450,10 @@ First row of features: [ 2.98809431e+01  3.08101377e+01  3.08101377e+01  2.96853
  -1.28750226e+00  1.36554575e+00 -6.35467227e-01 -8.81166145e-02
  -2.35522663e-01 -6.54153245e-01 -1.46309035e-01  1.77586983e-01
  -3.18803469e-01 -9.70432253e-01  7.86559316e-01]
-Raw predicted values distribution: {0.441203: 1}
 Mean predicted value: 0.441, Median: 0.441
-Prediction distribution visualization saved to img\distribution_300003.SZ.png
-First 10 Raw Predictions for 300003.SZ: [0.441203]
-First 10 Ground Truth Labels for 300003.SZ: [1.]
-Threshold analysis for 300003.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 300003.SZ: {0: 1}
-Class distribution for 300003.SZ: [0 1]
-Severe class imbalance for 300003.SZ. Using stratified metrics.
-Only one class present for 300003.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 300003.SZ: [0.441203]
+First 10 True Values for 300003.SZ: [1.]
+Regression prediction visualization saved to img\regression_distribution_300003.SZ.png
 Sentiment Score for 300003.SZ: -0.9635
 Report for 300003.SZ generated.
 Target Return Distribution - Mean: 0.441, Median: 0.441, Variance: 0.000
@@ -1915,8 +1513,6 @@ Not enough data for stock 002669.SZ (requires > 10 rows). Skipping.
 Processing stock: 601318.SH
 Stock 601318.SH has 34 rows.
 For stock 601318.SH: Latest market value = 916166447681.092, Average = 1272239264396.6323, Difference = -28.0%
-True label distribution: {0.0: 5, 1.0: 7, 2.0: 2}
-Target Return Distribution - Mean: 0.786, Median: 1.000, Variance: 0.454
 Shape of features: (14, 59)
 First row of features: [ 7.39963144e+01  7.23316260e+01  7.44902329e+01  7.18011209e+01
   1.26980032e+08  1.00987439e+10 -2.24969098e-02  1.42415847e+12
@@ -1933,23 +1529,10 @@ First row of features: [ 7.39963144e+01  7.23316260e+01  7.44902329e+01  7.18011
  -1.30780065e+00 -2.77956066e+00 -1.15363487e+00  8.89721582e-01
   1.20473492e+00  4.16831516e-01 -1.34826714e+00 -9.25363724e-01
   9.16890273e-01  1.22106946e-01 -1.79111772e+00]
-Raw predicted values distribution: {0.04630238: 1, 0.061513025: 1, 0.08308575: 1, 1.3099138: 1}
 Mean predicted value: 0.375, Median: 0.072
-Prediction distribution visualization saved to img\distribution_601318.SH.png
-First 10 Raw Predictions for 601318.SH: [1.3099138  0.04630238 0.06151303 0.08308575]
-First 10 Ground Truth Labels for 601318.SH: [1. 0. 0. 0.]
-Threshold analysis for 601318.SH:
-  Positive samples: 1
-  Negative samples: 3
-  Separation metric: 82.58193969726562
-  Threshold well placed: True
-Binary Predictions Distribution for 601318.SH: {0: 3, 1: 1}
-Class distribution for 601318.SH: [3 1]
-Severe class imbalance for 601318.SH. Using stratified metrics.
-Confusion Matrix for stock 601318.SH:
-[[3 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_601318.SH.png
+First 10 Predictions for 601318.SH: [1.3099138  0.04630238 0.06151303 0.08308575]
+First 10 True Values for 601318.SH: [1. 0. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_601318.SH.png
 Sentiment Score for 601318.SH: -0.9639
 Report for 601318.SH generated.
 Target Return Distribution - Mean: 0.375, Median: 0.072, Variance: 0.291
@@ -1978,8 +1561,6 @@ Not enough test data for stock 002612.SZ (requires > 10 rows). Skipping.
 Processing stock: 600029.SH
 Stock 600029.SH has 28 rows.
 For stock 600029.SH: Latest market value = 99786529791.3314, Average = 89624068609.09642, Difference = 11.3%
-True label distribution: {0.0: 5, 1.0: 5, 2.0: 2}
-Target Return Distribution - Mean: 0.750, Median: 1.000, Variance: 0.521
 Shape of features: (12, 59)
 First row of features: [ 6.30000000e+00  6.10000000e+00  6.40000000e+00  6.03000000e+00
   1.94551366e+08  1.20799389e+09 -3.17460317e-02  9.35087446e+10
@@ -1996,28 +1577,16 @@ First row of features: [ 6.30000000e+00  6.10000000e+00  6.40000000e+00  6.03000
   3.73302955e-01  4.41869418e-02 -4.12802453e-01 -4.70061382e-01
  -4.15336678e-01  7.37266965e-01 -1.13819491e+00 -4.06270859e-01
  -2.81487039e-01 -4.19210285e-01  2.10999755e-01]
-Raw predicted values distribution: {1.3105879: 1, 1.3399687: 1}
 Mean predicted value: 1.325, Median: 1.325
-Prediction distribution visualization saved to img\distribution_600029.SH.png
-First 10 Raw Predictions for 600029.SH: [1.3399687 1.3105879]
-First 10 Ground Truth Labels for 600029.SH: [1. 1.]
-Threshold analysis for 600029.SH:
-  Positive samples: 2
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600029.SH: {0: 1, 1: 1}
-Class distribution for 600029.SH: [0 2]
-Severe class imbalance for 600029.SH. Using stratified metrics.
-Only one class present for 600029.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600029.SH: [1.3399687 1.3105879]
+First 10 True Values for 600029.SH: [1. 1.]
+Regression prediction visualization saved to img\regression_distribution_600029.SH.png
 Sentiment Score for 600029.SH: -0.9640
 Report for 600029.SH generated.
 Target Return Distribution - Mean: 1.325, Median: 1.325, Variance: 0.000
 Processing stock: 601601.SH
 Stock 601601.SH has 26 rows.
 For stock 601601.SH: Latest market value = 242281275675.0, Average = 298745142866.19226, Difference = -18.9%
-True label distribution: {0.0: 7, 1.0: 3, 2.0: 1}
-Target Return Distribution - Mean: 0.455, Median: 0.000, Variance: 0.430
 Shape of features: (11, 59)
 First row of features: [ 2.53441366e+01  2.54539307e+01  2.57284159e+01  2.52251930e+01
   3.03151310e+07  8.45914033e+08  4.33212996e-03  2.52104840e+11
@@ -2034,20 +1603,10 @@ First row of features: [ 2.53441366e+01  2.54539307e+01  2.57284159e+01  2.52251
  -1.20875430e+00  2.70017152e+00 -8.40432210e-02 -5.88471231e-01
   7.97450532e-01  1.39763875e+00  1.37596009e-01  4.82391586e-01
  -6.28390676e-02 -2.32587955e-02 -1.10002256e-01]
-Raw predicted values distribution: {1.7240628: 1}
 Mean predicted value: 1.724, Median: 1.724
-Prediction distribution visualization saved to img\distribution_601601.SH.png
-First 10 Raw Predictions for 601601.SH: [1.7240628]
-First 10 Ground Truth Labels for 601601.SH: [1.]
-Threshold analysis for 601601.SH:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 601601.SH: {0: 1}
-Class distribution for 601601.SH: [0 1]
-Severe class imbalance for 601601.SH. Using stratified metrics.
-Only one class present for 601601.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 601601.SH: [1.7240628]
+First 10 True Values for 601601.SH: [1.]
+Regression prediction visualization saved to img\regression_distribution_601601.SH.png
 Sentiment Score for 601601.SH: -0.9639
 Report for 601601.SH generated.
 Target Return Distribution - Mean: 1.724, Median: 1.724, Variance: 0.000
@@ -2095,8 +1654,6 @@ Not enough data for stock 601326.SH (requires > 10 rows). Skipping.
 Processing stock: 300498.SZ
 Stock 300498.SZ has 34 rows.
 For stock 300498.SZ: Latest market value = 106583070968.16, Average = 147201883840.63385, Difference = -27.6%
-True label distribution: {0.0: 2, 1.0: 9, 2.0: 3}
-Target Return Distribution - Mean: 1.071, Median: 1.000, Variance: 0.352
 Shape of features: (14, 59)
 First row of features: [ 2.36336050e+01  2.47525839e+01  2.49358649e+01  2.36336050e+01
   9.56538540e+07  2.42621940e+09  4.73469388e-02  1.63552002e+11
@@ -2113,20 +1670,10 @@ First row of features: [ 2.36336050e+01  2.47525839e+01  2.49358649e+01  2.36336
   1.42062829e+00  7.64135636e+00  2.05335978e+00 -3.96509898e-01
   3.88256016e-01 -1.79099458e-01  8.95778719e-01  1.57331140e+00
   8.51287547e-01  7.03140912e-02  1.95558965e+00]
-Raw predicted values distribution: {0.86885524: 1, 0.88976675: 1, 0.90016836: 1, 0.9156357: 1}
 Mean predicted value: 0.894, Median: 0.895
-Prediction distribution visualization saved to img\distribution_300498.SZ.png
-First 10 Raw Predictions for 300498.SZ: [0.88976675 0.9156357  0.90016836 0.86885524]
-First 10 Ground Truth Labels for 300498.SZ: [1. 1. 1. 1.]
-Threshold analysis for 300498.SZ:
-  Positive samples: 4
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 300498.SZ: {0: 2, 1: 2}
-Class distribution for 300498.SZ: [0 4]
-Severe class imbalance for 300498.SZ. Using stratified metrics.
-Only one class present for 300498.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 300498.SZ: [0.88976675 0.9156357  0.90016836 0.86885524]
+First 10 True Values for 300498.SZ: [1. 1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_300498.SZ.png
 Sentiment Score for 300498.SZ: -0.9640
 Report for 300498.SZ generated.
 Target Return Distribution - Mean: 0.894, Median: 0.895, Variance: 0.000
@@ -2150,8 +1697,6 @@ Not enough data for stock 002702.SZ (requires > 10 rows). Skipping.
 Processing stock: 600267.SH
 Stock 600267.SH has 34 rows.
 For stock 600267.SH: Latest market value = 15335342484.84, Average = 14939559265.464708, Difference = 2.6%
-True label distribution: {0.0: 8, 1.0: 4, 2.0: 2}
-Target Return Distribution - Mean: 0.571, Median: 0.000, Variance: 0.531
 Shape of features: (14, 59)
 First row of features: [ 1.61032017e+01  1.69912459e+01  1.70208474e+01  1.59058585e+01
   1.92659090e+07  3.24509639e+08  5.51470588e-02  1.66264583e+10
@@ -2168,24 +1713,10 @@ First row of features: [ 1.61032017e+01  1.69912459e+01  1.70208474e+01  1.59058
   3.53274485e-01 -2.17429283e-01  4.01216855e-02  4.77062088e-02
  -1.21273604e-02  8.53890113e-02  8.62534846e-01  5.53440724e-01
  -1.05654355e+00 -1.76033153e+00 -7.55881327e-01]
-Raw predicted values distribution: {0.33490676: 1, 1.4838657: 1, 1.5399714: 1, 2.2610455: 1}
 Mean predicted value: 1.405, Median: 1.512
-Prediction distribution visualization saved to img\distribution_600267.SH.png
-First 10 Raw Predictions for 600267.SH: [0.33490676 1.4838657  2.2610455  1.5399714 ]
-First 10 Ground Truth Labels for 600267.SH: [0. 1. 2. 1.]
-Threshold analysis for 600267.SH:
-  Positive samples: 3
-  Negative samples: 1
-  Separation metric: 4.031607627868652
-  Threshold well placed: False
-Binary Predictions Distribution for 600267.SH: {0: 4}
-Class distribution for 600267.SH: [1 2 1]
-Severe class imbalance for 600267.SH. Using stratified metrics.
-Error calculating metrics for 600267.SH: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 600267.SH:
-[[1 0]
- [3 0]]
-Confusion matrix image saved as img\confusion_matrix_600267.SH.png
+First 10 Predictions for 600267.SH: [0.33490676 1.4838657  2.2610455  1.5399714 ]
+First 10 True Values for 600267.SH: [0. 1. 2. 1.]
+Regression prediction visualization saved to img\regression_distribution_600267.SH.png
 Sentiment Score for 600267.SH: -0.9640
 Report for 600267.SH generated.
 Target Return Distribution - Mean: 1.405, Median: 1.512, Variance: 0.476
@@ -2228,8 +1759,6 @@ Not enough data for stock 300578.SZ (requires > 10 rows). Skipping.
 Processing stock: 000016.SZ
 Stock 000016.SZ has 34 rows.
 For stock 000016.SZ: Latest market value = 13768268974.2408, Average = 12970508751.792309, Difference = 6.2%
-True label distribution: {0.0: 4, 1.0: 8, 2.0: 2}
-Target Return Distribution - Mean: 0.857, Median: 1.000, Variance: 0.408
 Shape of features: (14, 59)
 First row of features: [ 7.10033295e+00  6.94428168e+00  7.13934577e+00  6.93452847e+00
   3.93371970e+07  2.82284717e+08 -2.19780220e-02  1.71445713e+10
@@ -2246,23 +1775,10 @@ First row of features: [ 7.10033295e+00  6.94428168e+00  7.13934577e+00  6.93452
   1.35783148e+00 -3.67843619e-01 -8.57978538e-01  1.65705409e+00
   1.78421761e+00  3.55370753e+00  5.43779243e-01 -1.67859376e+00
   2.22917801e-01  9.44505555e-01 -1.25600130e+00]
-Raw predicted values distribution: {-0.017455947: 1, 1.2218212: 1, 1.2279971: 1, 1.2305423: 1}
 Mean predicted value: 0.916, Median: 1.225
-Prediction distribution visualization saved to img\distribution_000016.SZ.png
-First 10 Raw Predictions for 000016.SZ: [-0.01745595  1.2218212   1.2305423   1.2279971 ]
-First 10 Ground Truth Labels for 000016.SZ: [0. 1. 1. 1.]
-Threshold analysis for 000016.SZ:
-  Positive samples: 3
-  Negative samples: 1
-  Separation metric: 339.7920837402344
-  Threshold well placed: False
-Binary Predictions Distribution for 000016.SZ: {0: 2, 1: 2}
-Class distribution for 000016.SZ: [1 3]
-Severe class imbalance for 000016.SZ. Using stratified metrics.
-Confusion Matrix for stock 000016.SZ:
-[[1 0]
- [1 2]]
-Confusion matrix image saved as img\confusion_matrix_000016.SZ.png
+First 10 Predictions for 000016.SZ: [-0.01745595  1.2218212   1.2305423   1.2279971 ]
+First 10 True Values for 000016.SZ: [0. 1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_000016.SZ.png
 Sentiment Score for 000016.SZ: -0.9640
 Report for 000016.SZ generated.
 Target Return Distribution - Mean: 0.916, Median: 1.225, Variance: 0.290
@@ -2302,8 +1818,6 @@ Not enough data for stock 002164.SZ (requires > 10 rows). Skipping.
 Processing stock: 000538.SZ
 Stock 000538.SZ has 31 rows.
 For stock 000538.SZ: Latest market value = 115398197887.74, Average = 109269115690.49002, Difference = 5.6%
-True label distribution: {0.0: 2, 1.0: 1, 2.0: 10}
-Target Return Distribution - Mean: 1.615, Median: 2.000, Variance: 0.544
 Shape of features: (13, 59)
 First row of features: [ 5.15357697e+01  5.34440162e+01  5.36407426e+01  5.11488744e+01
   1.33940100e+07  1.08421375e+09  3.70276117e-02  1.04108370e+11
@@ -2320,24 +1834,10 @@ First row of features: [ 5.15357697e+01  5.34440162e+01  5.36407426e+01  5.11488
  -6.99165181e-01 -7.34425016e-01 -4.13338364e-01 -5.36902795e-01
   1.59604332e-01 -4.67341528e-01 -5.98081592e-01 -4.53175356e-01
   7.29052881e-01 -8.65023339e-01  7.32929404e-01]
-Raw predicted values distribution: {-0.3872231: 1, -0.33158514: 1, 1.4771622: 1}
 Mean predicted value: 0.253, Median: -0.332
-Prediction distribution visualization saved to img\distribution_000538.SZ.png
-First 10 Raw Predictions for 000538.SZ: [ 1.4771622  -0.3872231  -0.33158514]
-First 10 Ground Truth Labels for 000538.SZ: [2. 0. 0.]
-Threshold analysis for 000538.SZ:
-  Positive samples: 1
-  Negative samples: 2
-  Separation metric: 66.01847076416016
-  Threshold well placed: False
-Binary Predictions Distribution for 000538.SZ: {0: 2, 1: 1}
-Class distribution for 000538.SZ: [2 0 1]
-Severe class imbalance for 000538.SZ. Using stratified metrics.
-Error calculating metrics for 000538.SZ: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 000538.SZ:
-[[2 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_000538.SZ.png
+First 10 Predictions for 000538.SZ: [ 1.4771622  -0.3872231  -0.33158514]
+First 10 True Values for 000538.SZ: [2. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_000538.SZ.png
 Sentiment Score for 000538.SZ: -0.9640
 Report for 000538.SZ generated.
 Target Return Distribution - Mean: 0.253, Median: -0.332, Variance: 0.750
@@ -2436,8 +1936,6 @@ Not enough data for stock 002671.SZ (requires > 10 rows). Skipping.
 Processing stock: 600196.SH
 Stock 600196.SH has 53 rows.
 For stock 600196.SH: Latest market value = 112449237899.052, Average = 120415515716.33582, Difference = -6.6%
-True label distribution: {0.0: 3, 1.0: 11, 2.0: 8}
-Target Return Distribution - Mean: 1.227, Median: 1.000, Variance: 0.448
 Shape of features: (22, 59)
 First row of features: [ 4.46454363e+01  4.60093298e+01  4.65980609e+01  4.39487712e+01
   2.76861360e+07  1.28637438e+09  3.05494505e-02  1.11361396e+11
@@ -2454,31 +1952,17 @@ First row of features: [ 4.46454363e+01  4.60093298e+01  4.65980609e+01  4.39487
   1.30295009e-02 -4.57052585e-01  5.96628208e-01 -4.13405462e-01
  -1.77159217e-01 -5.06779489e-01 -5.85649368e-01 -7.42984078e-01
  -6.60787550e-01  2.44789381e-01 -1.03040035e+00]
-Raw predicted values distribution: {-0.2926862: 1, -0.29028946: 1, 0.6653578: 1, 0.6703454: 1, 0.6759528: 1, 0.67635125: 1, 0.6775895: 1, 1.9267044: 1, 1.9550889: 1, 1.9596353: 1, 1.9644911: 1, 1.9714632: 1}
 Mean predicted value: 1.047, Median: 0.677
-Prediction distribution visualization saved to img\distribution_600196.SH.png
-First 10 Raw Predictions for 600196.SH: [ 0.6775895   1.9550889  -0.29028946  1.9267044   1.9714632   1.9644911
+First 10 Predictions for 600196.SH: [ 0.6775895   1.9550889  -0.29028946  1.9267044   1.9714632   1.9644911
   1.9596353  -0.2926862   0.6703454   0.6653578 ]
-First 10 Ground Truth Labels for 600196.SH: [1. 2. 0. 2. 2. 2. 2. 0. 1. 1.]
-Threshold analysis for 600196.SH:
-  Positive samples: 10
-  Negative samples: 2
-  Separation metric: 2.4993650913238525
-  Threshold well placed: False
-Binary Predictions Distribution for 600196.SH: {0: 3, 1: 9}
-Class distribution for 600196.SH: [2 5 5]
-Confusion Matrix for stock 600196.SH:
-[[2 0]
- [1 9]]
-Confusion matrix image saved as img\confusion_matrix_600196.SH.png
+First 10 True Values for 600196.SH: [1. 2. 0. 2. 2. 2. 2. 0. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_600196.SH.png
 Sentiment Score for 600196.SH: -0.9592
 Report for 600196.SH generated.
 Target Return Distribution - Mean: 1.047, Median: 0.677, Variance: 0.701
 Processing stock: 002271.SZ
 Stock 002271.SZ has 28 rows.
 For stock 002271.SZ: Latest market value = 96904758220.8, Average = 103595378012.38249, Difference = -6.5%
-True label distribution: {0.0: 6, 1.0: 4, 2.0: 2}
-Target Return Distribution - Mean: 0.667, Median: 0.500, Variance: 0.556
 Shape of features: (12, 59)
 First row of features: [ 5.81131091e+01  5.64431354e+01  5.82514502e+01  5.64431354e+01
   1.99186310e+07  1.15164212e+09 -2.87366094e-02  1.44145828e+11
@@ -2495,20 +1979,10 @@ First row of features: [ 5.81131091e+01  5.64431354e+01  5.82514502e+01  5.64431
   2.89514111e-01 -8.15595895e-01  5.94970646e-01 -5.82363985e-01
  -1.42962789e+00 -6.12643408e-01  1.51496314e-01  1.89541039e-01
  -5.81510289e-01  1.63243542e-01  1.22609028e+00]
-Raw predicted values distribution: {0.22419195: 1, 0.2411958: 1}
 Mean predicted value: 0.233, Median: 0.233
-Prediction distribution visualization saved to img\distribution_002271.SZ.png
-First 10 Raw Predictions for 002271.SZ: [0.2411958  0.22419195]
-First 10 Ground Truth Labels for 002271.SZ: [0. 0.]
-Threshold analysis for 002271.SZ:
-  Positive samples: 0
-  Negative samples: 2
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002271.SZ: {0: 1, 1: 1}
-Class distribution for 002271.SZ: [2]
-Severe class imbalance for 002271.SZ. Using stratified metrics.
-Only one class present for 002271.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002271.SZ: [0.2411958  0.22419195]
+First 10 True Values for 002271.SZ: [0. 0.]
+Regression prediction visualization saved to img\regression_distribution_002271.SZ.png
 Sentiment Score for 002271.SZ: -0.9638
 Report for 002271.SZ generated.
 Target Return Distribution - Mean: 0.233, Median: 0.233, Variance: 0.000
@@ -2545,8 +2019,6 @@ Not enough data for stock 600335.SH (requires > 10 rows). Skipping.
 Processing stock: 600418.SH
 Stock 600418.SH has 52 rows.
 For stock 600418.SH: Latest market value = 28229283664.47, Average = 16533348061.702497, Difference = 70.7%
-True label distribution: {0.0: 8, 1.0: 2, 2.0: 11}
-Target Return Distribution - Mean: 1.143, Median: 2.000, Variance: 0.884
 Shape of features: (21, 59)
 First row of features: [ 1.02312316e+01  1.09378633e+01  1.09378633e+01  1.01217534e+01
   1.72575523e+08  1.82553712e+09  6.90661479e-02  2.08075002e+10
@@ -2563,25 +2035,11 @@ First row of features: [ 1.02312316e+01  1.09378633e+01  1.09378633e+01  1.01217
   1.33047854e+00  4.90013604e+00  1.52169548e-01  2.63688268e+00
   3.58637898e-01  2.63600279e+00  8.62799578e-01  1.82097608e+00
   1.51390856e+00  1.76046381e+00  1.64049477e-01]
-Raw predicted values distribution: {-0.028071772: 1, -0.0110058375: 1, 0.031697076: 1, 0.03431037: 1, 1.7682132: 1, 1.7903614: 1, 1.790698: 1, 1.7922151: 1, 1.8001419: 1, 1.8067255: 1, 1.8359815: 1}
 Mean predicted value: 1.146, Median: 1.790
-Prediction distribution visualization saved to img\distribution_600418.SH.png
-First 10 Raw Predictions for 600418.SH: [ 1.7922151   1.790698    1.7903614  -0.01100584  0.03169708  0.03431037
+First 10 Predictions for 600418.SH: [ 1.7922151   1.790698    1.7903614  -0.01100584  0.03169708  0.03431037
   1.7682132   1.8359815  -0.02807177  1.8067255 ]
-First 10 Ground Truth Labels for 600418.SH: [2. 2. 2. 0. 0. 0. 2. 2. 0. 2.]
-Threshold analysis for 600418.SH:
-  Positive samples: 7
-  Negative samples: 4
-  Separation metric: 38.870201110839844
-  Threshold well placed: False
-Binary Predictions Distribution for 600418.SH: {0: 11}
-Class distribution for 600418.SH: [4 0 7]
-Severe class imbalance for 600418.SH. Using stratified metrics.
-Error calculating metrics for 600418.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 600418.SH:
-[[4 0]
- [7 0]]
-Confusion matrix image saved as img\confusion_matrix_600418.SH.png
+First 10 True Values for 600418.SH: [2. 2. 2. 0. 0. 0. 2. 2. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_600418.SH.png
 Sentiment Score for 600418.SH: -0.9631
 Report for 600418.SH generated.
 Target Return Distribution - Mean: 1.146, Median: 1.790, Variance: 0.743
@@ -2746,8 +2204,6 @@ Not enough data for stock 600903.SH (requires > 10 rows). Skipping.
 Processing stock: 600104.SH
 Stock 600104.SH has 32 rows.
 For stock 600104.SH: Latest market value = 245352688665.0, Average = 272900099914.66406, Difference = -10.1%
-True label distribution: {0.0: 7, 1.0: 4, 2.0: 2}
-Target Return Distribution - Mean: 0.615, Median: 0.000, Variance: 0.544
 Shape of features: (13, 59)
 First row of features: [ 2.41063224e+01  2.32041954e+01  2.41063224e+01  2.29995892e+01
   8.38283210e+07  2.09968971e+09 -3.74228395e-02  2.91502361e+11
@@ -2764,31 +2220,16 @@ First row of features: [ 2.41063224e+01  2.32041954e+01  2.41063224e+01  2.29995
  -1.24849495e+00  3.30374525e-01  2.62241162e-02 -4.72762709e-01
  -1.69408224e+00  2.83034478e+00  1.04470383e+00 -2.44380681e-01
   2.15729885e+00  4.26020324e-01 -3.16870235e-01]
-Raw predicted values distribution: {1.4439875: 1, 1.4655182: 1, 2.2157342: 1}
 Mean predicted value: 1.708, Median: 1.466
-Prediction distribution visualization saved to img\distribution_600104.SH.png
-First 10 Raw Predictions for 600104.SH: [2.2157342 1.4439875 1.4655182]
-First 10 Ground Truth Labels for 600104.SH: [2. 1. 1.]
-Threshold analysis for 600104.SH:
-  Positive samples: 3
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600104.SH: {0: 3}
-Class distribution for 600104.SH: [0 2 1]
-Severe class imbalance for 600104.SH. Using stratified metrics.
-Confusion Matrix for stock 600104.SH:
-[[0 0]
- [3 0]]
-Confusion matrix image saved as img\confusion_matrix_600104.SH.png
+First 10 Predictions for 600104.SH: [2.2157342 1.4439875 1.4655182]
+First 10 True Values for 600104.SH: [2. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_600104.SH.png
 Sentiment Score for 600104.SH: -0.9640
 Report for 600104.SH generated.
 Target Return Distribution - Mean: 1.708, Median: 1.466, Variance: 0.129
 Processing stock: 601988.SH
 Stock 601988.SH has 62 rows.
 For stock 601988.SH: Latest market value = 837563591086.735, Average = 988394958279.9944, Difference = -15.3%
-True label distribution: {1.0: 25}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.000
 Shape of features: (25, 59)
 First row of features: [ 2.80401091e+00  2.81277345e+00  2.81277345e+00  2.79524838e+00
   5.41720560e+07  1.73406387e+08  3.12500000e-03  9.44984810e+11
@@ -2805,21 +2246,11 @@ First row of features: [ 2.80401091e+00  2.81277345e+00  2.81277345e+00  2.79524
  -1.99136817e-01  3.61489415e+00 -2.58877841e+00  1.52020656e-01
   6.53644848e-01  4.63507197e-02 -2.07731101e+00 -6.69497188e-01
   5.61221457e-01 -1.22569195e+00 -1.63666512e+00]
-Raw predicted values distribution: {0.9722056: 1, 0.9736171: 1, 0.9778583: 1, 0.9781486: 1, 0.97829056: 1, 0.98156273: 1, 0.9894449: 1, 0.9979189: 1, 1.0126199: 1, 1.0144312: 1, 1.0357333: 1, 1.0438178: 1, 1.0744663: 1, 1.0783882: 1, 1.1190546: 1}
 Mean predicted value: 1.015, Median: 0.998
-Prediction distribution visualization saved to img\distribution_601988.SH.png
-First 10 Raw Predictions for 601988.SH: [0.9894449  1.0783882  0.9736171  0.9778583  0.97829056 0.9781486
+First 10 Predictions for 601988.SH: [0.9894449  1.0783882  0.9736171  0.9778583  0.97829056 0.9781486
  1.0126199  0.9722056  0.9979189  1.1190546 ]
-First 10 Ground Truth Labels for 601988.SH: [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
-Threshold analysis for 601988.SH:
-  Positive samples: 15
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 601988.SH: {0: 8, 1: 7}
-Class distribution for 601988.SH: [ 0 15]
-Severe class imbalance for 601988.SH. Using stratified metrics.
-Only one class present for 601988.SH. Setting AUC/AUPR to 0.5.
+First 10 True Values for 601988.SH: [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_601988.SH.png
 Sentiment Score for 601988.SH: -0.9640
 Report for 601988.SH generated.
 Target Return Distribution - Mean: 1.015, Median: 0.998, Variance: 0.002
@@ -2846,8 +2277,6 @@ Not enough data for stock 600503.SH (requires > 10 rows). Skipping.
 Processing stock: 600009.SH
 Stock 600009.SH has 29 rows.
 For stock 600009.SH: Latest market value = 98101454587.68, Average = 120893386216.93794, Difference = -18.9%
-True label distribution: {0.0: 1, 1.0: 9, 2.0: 2}
-Target Return Distribution - Mean: 1.083, Median: 1.000, Variance: 0.243
 Shape of features: (12, 59)
 First row of features: [ 7.62900000e+01  7.83200000e+01  7.88000000e+01  7.60000000e+01
   2.24436530e+07  1.74340905e+09  2.66089920e-02  1.50919386e+11
@@ -2864,23 +2293,10 @@ First row of features: [ 7.62900000e+01  7.83200000e+01  7.88000000e+01  7.60000
   9.57696611e-01  3.17732644e-01  7.06887432e-01  2.09222580e-01
  -5.23208391e-01 -8.01294341e-01  6.20590426e-02  1.34528807e+00
   3.22484890e-01 -1.62450071e-01  1.62976908e+00]
-Raw predicted values distribution: {-0.33843884: 1, 0.85512036: 1}
 Mean predicted value: 0.258, Median: 0.258
-Prediction distribution visualization saved to img\distribution_600009.SH.png
-First 10 Raw Predictions for 600009.SH: [ 0.85512036 -0.33843884]
-First 10 Ground Truth Labels for 600009.SH: [1. 0.]
-Threshold analysis for 600009.SH:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 600009.SH: {0: 1, 1: 1}
-Class distribution for 600009.SH: [1 1]
-Severe class imbalance for 600009.SH. Using stratified metrics.
-Confusion Matrix for stock 600009.SH:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_600009.SH.png
+First 10 Predictions for 600009.SH: [ 0.85512036 -0.33843884]
+First 10 True Values for 600009.SH: [1. 0.]
+Regression prediction visualization saved to img\regression_distribution_600009.SH.png
 Sentiment Score for 600009.SH: -0.9640
 Report for 600009.SH generated.
 Target Return Distribution - Mean: 0.258, Median: 0.258, Variance: 0.356
@@ -3023,8 +2439,6 @@ Not enough test data for stock 002512.SZ (requires > 10 rows). Skipping.
 Processing stock: 601211.SH
 Stock 601211.SH has 45 rows.
 For stock 601211.SH: Latest market value = 143858924056.984, Average = 152801783727.6397, Difference = -5.9%
-True label distribution: {0.0: 2, 1.0: 6, 2.0: 10}
-Target Return Distribution - Mean: 1.444, Median: 2.000, Variance: 0.469
 Shape of features: (18, 59)
 First row of features: [ 1.62287237e+01  1.62287237e+01  1.64043193e+01  1.61640306e+01
   3.45577340e+07  6.07738405e+08  0.00000000e+00  1.46496854e+11
@@ -3041,21 +2455,11 @@ First row of features: [ 1.62287237e+01  1.62287237e+01  1.64043193e+01  1.61640
  -7.78245944e-01  5.14561720e+00  3.70333273e-01 -6.14196276e-01
  -6.76099264e-02 -5.34897811e-01 -7.85090998e-02  1.17802573e-01
   1.98613814e-01  2.03200398e-01 -4.01463042e-01]
-Raw predicted values distribution: {1.6867324: 1, 1.7475032: 1, 1.7476368: 1, 1.7477138: 1, 1.7477139: 1, 1.7478454: 1, 1.7479475: 1, 1.7515385: 1}
 Mean predicted value: 1.741, Median: 1.748
-Prediction distribution visualization saved to img\distribution_601211.SH.png
-First 10 Raw Predictions for 601211.SH: [1.7515385 1.7477138 1.7475032 1.7476368 1.7477139 1.7478454 1.7479475
+First 10 Predictions for 601211.SH: [1.7515385 1.7477138 1.7475032 1.7476368 1.7477139 1.7478454 1.7479475
  1.6867324]
-First 10 Ground Truth Labels for 601211.SH: [2. 2. 2. 2. 2. 2. 2. 2.]
-Threshold analysis for 601211.SH:
-  Positive samples: 8
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 601211.SH: {0: 8}
-Class distribution for 601211.SH: [0 0 8]
-Severe class imbalance for 601211.SH. Using stratified metrics.
-Only one class present for 601211.SH. Setting AUC/AUPR to 0.5.
+First 10 True Values for 601211.SH: [2. 2. 2. 2. 2. 2. 2. 2.]
+Regression prediction visualization saved to img\regression_distribution_601211.SH.png
 Sentiment Score for 601211.SH: -0.9640
 Report for 601211.SH generated.
 Target Return Distribution - Mean: 1.741, Median: 1.748, Variance: 0.000
@@ -3068,8 +2472,6 @@ Not enough data for stock 300288.SZ (requires > 10 rows). Skipping.
 Processing stock: 002120.SZ
 Stock 002120.SZ has 26 rows.
 For stock 002120.SZ: Latest market value = 54194641742.76, Average = 59786535819.49308, Difference = -9.4%
-True label distribution: {0.0: 4, 1.0: 3, 2.0: 4}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.727
 Shape of features: (11, 59)
 First row of features: [ 1.83143888e+01  1.89702486e+01  1.91590568e+01  1.82945143e+01
   2.75954220e+07  5.21763669e+08  3.58111774e-02  5.53466319e+10
@@ -3086,20 +2488,10 @@ First row of features: [ 1.83143888e+01  1.89702486e+01  1.91590568e+01  1.82945
  -2.46890452e-01 -6.87086995e-02 -7.47650759e-01 -6.71916354e-01
   2.38131177e-02  4.64533838e-03 -2.85591562e+00 -1.55374829e+00
   2.85888951e-01  7.10264467e-01 -1.37386015e+00]
-Raw predicted values distribution: {1.9292562: 1}
 Mean predicted value: 1.929, Median: 1.929
-Prediction distribution visualization saved to img\distribution_002120.SZ.png
-First 10 Raw Predictions for 002120.SZ: [1.9292562]
-First 10 Ground Truth Labels for 002120.SZ: [2.]
-Threshold analysis for 002120.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002120.SZ: {0: 1}
-Class distribution for 002120.SZ: [0 0 1]
-Severe class imbalance for 002120.SZ. Using stratified metrics.
-Only one class present for 002120.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002120.SZ: [1.9292562]
+First 10 True Values for 002120.SZ: [2.]
+Regression prediction visualization saved to img\regression_distribution_002120.SZ.png
 Sentiment Score for 002120.SZ: -0.9639
 Report for 002120.SZ generated.
 Target Return Distribution - Mean: 1.929, Median: 1.929, Variance: 0.000
@@ -3119,8 +2511,6 @@ Not enough data for stock 002899.SZ (requires > 10 rows). Skipping.
 Processing stock: 002460.SZ
 Stock 002460.SZ has 46 rows.
 For stock 002460.SZ: Latest market value = 220445265690.886, Average = 155294679354.2185, Difference = 42.0%
-True label distribution: {0.0: 8, 1.0: 5, 2.0: 6}
-Target Return Distribution - Mean: 0.895, Median: 1.000, Variance: 0.726
 Shape of features: (19, 59)
 First row of features: [ 1.17748969e+02  1.13870582e+02  1.18796989e+02  1.12501739e+02
   4.16878480e+07  6.74915971e+09 -3.29377573e-02  2.17492928e+11
@@ -3137,23 +2527,11 @@ First row of features: [ 1.17748969e+02  1.13870582e+02  1.18796989e+02  1.12501
  -1.02711224e+00 -2.83203866e-01  1.71385479e+00  7.01859614e-01
  -6.87840611e-01 -8.18397661e-01  2.58245727e-01  3.42662338e+00
   2.60141316e-01  3.26947083e+00  1.82396056e+00]
-Raw predicted values distribution: {0.10935962: 1, 0.11748552: 1, 0.119241774: 1, 0.12229714: 1, 0.14548428: 1, 1.1020875: 1, 1.1154412: 1, 1.9847835: 1, 2.0405884: 1}
 Mean predicted value: 0.762, Median: 0.145
-Prediction distribution visualization saved to img\distribution_002460.SZ.png
-First 10 Raw Predictions for 002460.SZ: [1.9847835  1.1020875  0.10935962 0.12229714 0.11924177 0.11748552
+First 10 Predictions for 002460.SZ: [1.9847835  1.1020875  0.10935962 0.12229714 0.11924177 0.11748552
  0.14548428 2.0405884  1.1154412 ]
-First 10 Ground Truth Labels for 002460.SZ: [2. 1. 0. 0. 0. 0. 0. 2. 1.]
-Threshold analysis for 002460.SZ:
-  Positive samples: 4
-  Negative samples: 5
-  Separation metric: 3.0953543186187744
-  Threshold well placed: False
-Binary Predictions Distribution for 002460.SZ: {0: 5, 1: 4}
-Class distribution for 002460.SZ: [5 2 2]
-Confusion Matrix for stock 002460.SZ:
-[[5 0]
- [0 4]]
-Confusion matrix image saved as img\confusion_matrix_002460.SZ.png
+First 10 True Values for 002460.SZ: [2. 1. 0. 0. 0. 0. 0. 2. 1.]
+Regression prediction visualization saved to img\regression_distribution_002460.SZ.png
 Sentiment Score for 002460.SZ: -0.9640
 Report for 002460.SZ generated.
 Target Return Distribution - Mean: 0.762, Median: 0.145, Variance: 0.602
@@ -3267,8 +2645,6 @@ Not enough test data for stock 300109.SZ (requires > 10 rows). Skipping.
 Processing stock: 601857.SH
 Stock 601857.SH has 29 rows.
 For stock 601857.SH: Latest market value = 947361345168.18, Average = 1028353244377.63, Difference = -7.9%
-True label distribution: {0.0: 5, 1.0: 5, 2.0: 2}
-Target Return Distribution - Mean: 0.750, Median: 1.000, Variance: 0.521
 Shape of features: (12, 59)
 First row of features: [ 3.74330791e+00  3.74330791e+00  3.76147930e+00  3.72513651e+00
   7.70213480e+07  3.17069850e+08  0.00000000e+00  7.54046429e+11
@@ -3285,20 +2661,10 @@ First row of features: [ 3.74330791e+00  3.74330791e+00  3.76147930e+00  3.72513
   1.16674665e+00 -1.35752807e+00 -1.56879140e+00 -8.36860022e-02
   5.44089853e-01  3.28006262e+00 -4.81976340e-01 -2.97897154e-01
  -6.21264421e-01 -1.18359154e+00 -3.87762551e-01]
-Raw predicted values distribution: {1.3006068: 1, 1.3235823: 1}
 Mean predicted value: 1.312, Median: 1.312
-Prediction distribution visualization saved to img\distribution_601857.SH.png
-First 10 Raw Predictions for 601857.SH: [1.3235823 1.3006068]
-First 10 Ground Truth Labels for 601857.SH: [1. 1.]
-Threshold analysis for 601857.SH:
-  Positive samples: 2
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 601857.SH: {0: 2}
-Class distribution for 601857.SH: [0 2]
-Severe class imbalance for 601857.SH. Using stratified metrics.
-Only one class present for 601857.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 601857.SH: [1.3235823 1.3006068]
+First 10 True Values for 601857.SH: [1. 1.]
+Regression prediction visualization saved to img\regression_distribution_601857.SH.png
 Sentiment Score for 601857.SH: -0.9640
 Report for 601857.SH generated.
 Target Return Distribution - Mean: 1.312, Median: 1.312, Variance: 0.000
@@ -3321,8 +2687,6 @@ Not enough data for stock 002383.SZ (requires > 10 rows). Skipping.
 Processing stock: 601688.SH
 Stock 601688.SH has 31 rows.
 For stock 601688.SH: Latest market value = 129616210125.501, Average = 166230335021.13727, Difference = -22.0%
-True label distribution: {0.0: 2, 1.0: 8, 2.0: 3}
-Target Return Distribution - Mean: 1.077, Median: 1.000, Variance: 0.379
 Shape of features: (13, 59)
 First row of features: [ 2.14573755e+01  2.23749911e+01  2.31721117e+01  2.14573755e+01
   2.83183056e+08  6.76496896e+09  4.27645788e-02  2.19110331e+11
@@ -3339,20 +2703,10 @@ First row of features: [ 2.14573755e+01  2.23749911e+01  2.31721117e+01  2.14573
   2.69935821e-01 -2.22349902e-01  2.05055078e+00  4.49838045e-01
  -1.40022289e-01 -6.87554933e-01  1.04160430e+00  2.76182034e+00
   1.11438157e+00  1.95709913e+00  1.62514683e+00]
-Raw predicted values distribution: {0.90194887: 1, 0.9078394: 1, 0.9079083: 1}
 Mean predicted value: 0.906, Median: 0.908
-Prediction distribution visualization saved to img\distribution_601688.SH.png
-First 10 Raw Predictions for 601688.SH: [0.90194887 0.9078394  0.9079083 ]
-First 10 Ground Truth Labels for 601688.SH: [1. 1. 1.]
-Threshold analysis for 601688.SH:
-  Positive samples: 3
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 601688.SH: {0: 2, 1: 1}
-Class distribution for 601688.SH: [0 3]
-Severe class imbalance for 601688.SH. Using stratified metrics.
-Only one class present for 601688.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 601688.SH: [0.90194887 0.9078394  0.9079083 ]
+First 10 True Values for 601688.SH: [1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_601688.SH.png
 Sentiment Score for 601688.SH: -0.9640
 Report for 601688.SH generated.
 Target Return Distribution - Mean: 0.906, Median: 0.908, Variance: 0.000
@@ -3366,8 +2720,6 @@ Not enough data for stock 000936.SZ (requires > 10 rows). Skipping.
 Processing stock: 000651.SZ
 Stock 000651.SZ has 43 rows.
 For stock 000651.SZ: Latest market value = 220476536678.7, Average = 327511778077.31024, Difference = -32.7%
-True label distribution: {0.0: 4, 1.0: 11, 2.0: 3}
-Target Return Distribution - Mean: 0.944, Median: 1.000, Variance: 0.386
 Shape of features: (18, 59)
 First row of features: [ 4.74734462e+01  4.66870509e+01  4.76803924e+01  4.60248232e+01
   6.16764960e+07  3.46893714e+09 -1.65649520e-02  3.39287222e+11
@@ -3384,25 +2736,11 @@ First row of features: [ 4.74734462e+01  4.66870509e+01  4.76803924e+01  4.60248
   1.30976199e+00 -1.26203172e+00  2.38081409e-02 -2.68545820e-01
   6.78812268e-01  2.68400375e-02 -4.94763171e-01  4.65056612e-01
   3.44666607e-01 -1.85696992e-01  3.50390957e-01]
-Raw predicted values distribution: {-0.14342622: 1, -0.13202344: 1, 1.0569836: 1, 1.0604784: 1, 1.0744759: 1, 1.0817211: 1, 1.132683: 1, 2.2074733: 1}
 Mean predicted value: 0.917, Median: 1.067
-Prediction distribution visualization saved to img\distribution_000651.SZ.png
-First 10 Raw Predictions for 000651.SZ: [ 1.132683   -0.13202344 -0.14342622  1.0817211   2.2074733   1.0604784
+First 10 Predictions for 000651.SZ: [ 1.132683   -0.13202344 -0.14342622  1.0817211   2.2074733   1.0604784
   1.0569836   1.0744759 ]
-First 10 Ground Truth Labels for 000651.SZ: [1. 0. 0. 1. 2. 1. 1. 1.]
-Threshold analysis for 000651.SZ:
-  Positive samples: 6
-  Negative samples: 2
-  Separation metric: 3.3009402751922607
-  Threshold well placed: False
-Binary Predictions Distribution for 000651.SZ: {0: 4, 1: 4}
-Class distribution for 000651.SZ: [2 5 1]
-Severe class imbalance for 000651.SZ. Using stratified metrics.
-Error calculating metrics for 000651.SZ: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 000651.SZ:
-[[2 0]
- [2 4]]
-Confusion matrix image saved as img\confusion_matrix_000651.SZ.png
+First 10 True Values for 000651.SZ: [1. 0. 0. 1. 2. 1. 1. 1.]
+Regression prediction visualization saved to img\regression_distribution_000651.SZ.png
 Sentiment Score for 000651.SZ: -0.9640
 Report for 000651.SZ generated.
 Target Return Distribution - Mean: 0.917, Median: 1.067, Variance: 0.504
@@ -3557,8 +2895,6 @@ Not enough data for stock 000521.SZ (requires > 10 rows). Skipping.
 Processing stock: 600039.SH
 Stock 600039.SH has 35 rows.
 For stock 600039.SH: Latest market value = 54201133780.15, Average = 34134765387.826847, Difference = 58.8%
-True label distribution: {0.0: 5, 1.0: 8, 2.0: 1}
-Target Return Distribution - Mean: 0.714, Median: 1.000, Variance: 0.347
 Shape of features: (14, 59)
 First row of features: [ 8.08926609e+00  8.08926609e+00  8.08926609e+00  8.08926609e+00
   0.00000000e+00  0.00000000e+00  0.00000000e+00  4.03046316e+10
@@ -3575,24 +2911,10 @@ First row of features: [ 8.08926609e+00  8.08926609e+00  8.08926609e+00  8.08926
   2.36436762e-01 -6.87036206e-01 -2.76755681e+00  4.43662470e-01
  -4.27434314e-01  1.79279859e+00  1.04879369e+00 -1.11626328e+00
   3.72648737e-01  5.48697778e-01 -9.85742926e-01]
-Raw predicted values distribution: {-0.0017000921: 1, 0.0012020431: 1, 0.008670028: 1, 2.2803376: 1}
 Mean predicted value: 0.572, Median: 0.005
-Prediction distribution visualization saved to img\distribution_600039.SH.png
-First 10 Raw Predictions for 600039.SH: [ 8.6700283e-03  1.2020431e-03 -1.7000921e-03  2.2803376e+00]
-First 10 Ground Truth Labels for 600039.SH: [0. 0. 0. 2.]
-Threshold analysis for 600039.SH:
-  Positive samples: 1
-  Negative samples: 3
-  Separation metric: 521.4047241210938
-  Threshold well placed: True
-Binary Predictions Distribution for 600039.SH: {0: 3, 1: 1}
-Class distribution for 600039.SH: [3 0 1]
-Severe class imbalance for 600039.SH. Using stratified metrics.
-Error calculating metrics for 600039.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 600039.SH:
-[[3 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_600039.SH.png
+First 10 Predictions for 600039.SH: [ 8.6700283e-03  1.2020431e-03 -1.7000921e-03  2.2803376e+00]
+First 10 True Values for 600039.SH: [0. 0. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_600039.SH.png
 Sentiment Score for 600039.SH: -0.9640
 Report for 600039.SH generated.
 Target Return Distribution - Mean: 0.572, Median: 0.005, Variance: 0.973
@@ -3648,8 +2970,6 @@ Not enough test data for stock 002458.SZ (requires > 10 rows). Skipping.
 Processing stock: 300024.SZ
 Stock 300024.SZ has 30 rows.
 For stock 300024.SZ: Latest market value = 15930046489.57, Average = 20142173375.597668, Difference = -20.9%
-True label distribution: {0.0: 4, 1.0: 8}
-Target Return Distribution - Mean: 0.667, Median: 1.000, Variance: 0.222
 Shape of features: (12, 59)
 First row of features: [ 1.12900000e+01  1.13300000e+01  1.13400000e+01  1.12200000e+01
   6.44522400e+06  7.27048490e+07  3.54295837e-03  1.76775149e+10
@@ -3666,20 +2986,10 @@ First row of features: [ 1.12900000e+01  1.13300000e+01  1.13400000e+01  1.12200
  -1.25423960e-01 -5.92972411e-01 -1.84449962e-01 -7.45015527e-01
   1.91701702e-01 -6.57637020e-01  2.60226642e-01 -7.53937997e-02
  -6.46455999e-01 -1.88787437e+00 -5.45085904e-01]
-Raw predicted values distribution: {-0.11167562: 1, -0.09361598: 1}
 Mean predicted value: -0.103, Median: -0.103
-Prediction distribution visualization saved to img\distribution_300024.SZ.png
-First 10 Raw Predictions for 300024.SZ: [-0.11167562 -0.09361598]
-First 10 Ground Truth Labels for 300024.SZ: [0. 0.]
-Threshold analysis for 300024.SZ:
-  Positive samples: 0
-  Negative samples: 2
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 300024.SZ: {0: 1, 1: 1}
-Class distribution for 300024.SZ: [2]
-Severe class imbalance for 300024.SZ. Using stratified metrics.
-Only one class present for 300024.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 300024.SZ: [-0.11167562 -0.09361598]
+First 10 True Values for 300024.SZ: [0. 0.]
+Regression prediction visualization saved to img\regression_distribution_300024.SZ.png
 Sentiment Score for 300024.SZ: -0.9640
 Report for 300024.SZ generated.
 Target Return Distribution - Mean: -0.103, Median: -0.103, Variance: 0.000
@@ -3727,8 +3037,6 @@ Not enough test data for stock 000688.SZ (requires > 10 rows). Skipping.
 Processing stock: 000661.SZ
 Stock 000661.SZ has 27 rows.
 For stock 000661.SZ: Latest market value = 126685545175.8, Average = 107881408944.47035, Difference = 17.4%
-True label distribution: {0.0: 3, 2.0: 8}
-Target Return Distribution - Mean: 1.455, Median: 2.000, Variance: 0.793
 Shape of features: (11, 59)
 First row of features: [ 3.22995237e+02  3.44382491e+02  3.47493184e+02  3.16545271e+02
   8.01807600e+06  2.71731029e+09  6.62153846e-02  1.40243675e+11
@@ -3745,20 +3053,10 @@ First row of features: [ 3.22995237e+02  3.44382491e+02  3.47493184e+02  3.16545
  -1.27001526e+00 -7.00455248e-01 -4.15165345e-01 -2.14362631e-01
  -1.02511423e+00 -7.79544496e-01 -6.05766376e-01 -4.51960218e-01
  -1.40886031e-02  5.95425688e-01 -9.44525785e-01]
-Raw predicted values distribution: {1.5591966: 1}
 Mean predicted value: 1.559, Median: 1.559
-Prediction distribution visualization saved to img\distribution_000661.SZ.png
-First 10 Raw Predictions for 000661.SZ: [1.5591966]
-First 10 Ground Truth Labels for 000661.SZ: [2.]
-Threshold analysis for 000661.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 000661.SZ: {0: 1}
-Class distribution for 000661.SZ: [0 0 1]
-Severe class imbalance for 000661.SZ. Using stratified metrics.
-Only one class present for 000661.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 000661.SZ: [1.5591966]
+First 10 True Values for 000661.SZ: [2.]
+Regression prediction visualization saved to img\regression_distribution_000661.SZ.png
 Sentiment Score for 000661.SZ: -0.9605
 Report for 000661.SZ generated.
 Target Return Distribution - Mean: 1.559, Median: 1.559, Variance: 0.000
@@ -3839,8 +3137,6 @@ Not enough data for stock 002856.SZ (requires > 10 rows). Skipping.
 Processing stock: 300014.SZ
 Stock 300014.SZ has 51 rows.
 For stock 300014.SZ: Latest market value = 215367040191.42, Average = 129917622035.58745, Difference = 65.8%
-True label distribution: {0.0: 8, 1.0: 8, 2.0: 5}
-Target Return Distribution - Mean: 0.857, Median: 1.000, Variance: 0.599
 Shape of features: (21, 59)
 First row of features: [ 1.02821412e+02  1.01024533e+02  1.05786263e+02  1.00086163e+02
   2.92136730e+07  3.01086984e+09 -1.74757282e-02  1.91112221e+11
@@ -3857,23 +3153,11 @@ First row of features: [ 1.02821412e+02  1.01024533e+02  1.05786263e+02  1.00086
  -2.23919191e-01 -6.34052744e-01 -1.93218722e-01 -3.32615080e-01
  -2.04857283e+00 -7.83695574e-01  6.56526224e-01  1.45113532e+00
  -2.09347328e-01  5.15975496e-02  1.32416017e+00]
-Raw predicted values distribution: {0.057652842: 1, 0.064302: 1, 0.068959646: 1, 0.096248776: 1, 0.10665441: 1, 1.1095936: 1, 1.1458268: 1, 1.1648358: 1, 1.1655753: 1, 1.1658567: 1, 1.1838105: 1}
 Mean predicted value: 0.666, Median: 1.110
-Prediction distribution visualization saved to img\distribution_300014.SZ.png
-First 10 Raw Predictions for 300014.SZ: [1.1838105  1.1655753  1.1658567  1.1648358  0.05765284 1.1458268
+First 10 Predictions for 300014.SZ: [1.1838105  1.1655753  1.1658567  1.1648358  0.05765284 1.1458268
  0.064302   0.06895965 0.09624878 0.10665441]
-First 10 Ground Truth Labels for 300014.SZ: [1. 1. 1. 1. 0. 1. 0. 0. 0. 0.]
-Threshold analysis for 300014.SZ:
-  Positive samples: 6
-  Negative samples: 5
-  Separation metric: 25.286766052246094
-  Threshold well placed: False
-Binary Predictions Distribution for 300014.SZ: {0: 11}
-Class distribution for 300014.SZ: [5 6]
-Confusion Matrix for stock 300014.SZ:
-[[5 0]
- [6 0]]
-Confusion matrix image saved as img\confusion_matrix_300014.SZ.png
+First 10 True Values for 300014.SZ: [1. 1. 1. 1. 0. 1. 0. 0. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_300014.SZ.png
 Sentiment Score for 300014.SZ: -0.9640
 Report for 300014.SZ generated.
 Target Return Distribution - Mean: 0.666, Median: 1.110, Variance: 0.288
@@ -4057,8 +3341,6 @@ Not enough data for stock 603589.SH (requires > 10 rows). Skipping.
 Processing stock: 600006.SH
 Stock 600006.SH has 31 rows.
 For stock 600006.SH: Latest market value = 13680000000.0, Average = 11774838709.67742, Difference = 16.2%
-True label distribution: {0.0: 3, 1.0: 2, 2.0: 8}
-Target Return Distribution - Mean: 1.385, Median: 2.000, Variance: 0.698
 Shape of features: (13, 59)
 First row of features: [ 6.69225649e+00  6.38806301e+00  6.71188188e+00  6.32918686e+00
   8.09935630e+07  5.34252705e+08 -4.54545455e-02  1.30200000e+10
@@ -4075,20 +3357,10 @@ First row of features: [ 6.69225649e+00  6.38806301e+00  6.71188188e+00  6.32918
  -1.23719416e+00  3.90006148e+00 -9.70029255e-01  6.17709058e-01
  -2.11971131e+00  6.58951909e-01  9.19030779e-01 -5.55546138e-02
   1.00454443e-01 -1.84872430e+00  5.33572897e-01]
-Raw predicted values distribution: {1.6654553: 1, 1.6668543: 1, 1.7150939: 1}
 Mean predicted value: 1.682, Median: 1.667
-Prediction distribution visualization saved to img\distribution_600006.SH.png
-First 10 Raw Predictions for 600006.SH: [1.6654553 1.7150939 1.6668543]
-First 10 Ground Truth Labels for 600006.SH: [2. 2. 2.]
-Threshold analysis for 600006.SH:
-  Positive samples: 3
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600006.SH: {0: 3}
-Class distribution for 600006.SH: [0 0 3]
-Severe class imbalance for 600006.SH. Using stratified metrics.
-Only one class present for 600006.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600006.SH: [1.6654553 1.7150939 1.6668543]
+First 10 True Values for 600006.SH: [2. 2. 2.]
+Regression prediction visualization saved to img\regression_distribution_600006.SH.png
 Sentiment Score for 600006.SH: -0.9640
 Report for 600006.SH generated.
 Target Return Distribution - Mean: 1.682, Median: 1.667, Variance: 0.001
@@ -4196,8 +3468,6 @@ Not enough test data for stock 300087.SZ (requires > 10 rows). Skipping.
 Processing stock: 002385.SZ
 Stock 002385.SZ has 27 rows.
 For stock 002385.SZ: Latest market value = 37685664862.3, Average = 30892973057.575188, Difference = 22.0%
-True label distribution: {0.0: 8, 1.0: 3}
-Target Return Distribution - Mean: 0.273, Median: 0.000, Variance: 0.198
 Shape of features: (11, 59)
 First row of features: [ 1.14394731e+01  1.11512500e+01  1.15786152e+01  1.09922304e+01
   2.07605805e+08  2.34536959e+09 -2.51954822e-02  4.70715969e+10
@@ -4214,20 +3484,10 @@ First row of features: [ 1.14394731e+01  1.11512500e+01  1.15786152e+01  1.09922
  -1.52189644e-01  3.49744499e+00  9.36656425e-01  1.71075479e+00
  -1.25600206e+00 -3.54345699e-01  7.46970518e-01  1.15210003e+00
   6.87741766e-01  4.00045346e-01  1.22271704e+00]
-Raw predicted values distribution: {2.1388369: 1}
 Mean predicted value: 2.139, Median: 2.139
-Prediction distribution visualization saved to img\distribution_002385.SZ.png
-First 10 Raw Predictions for 002385.SZ: [2.1388369]
-First 10 Ground Truth Labels for 002385.SZ: [1.]
-Threshold analysis for 002385.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002385.SZ: {0: 1}
-Class distribution for 002385.SZ: [0 1]
-Severe class imbalance for 002385.SZ. Using stratified metrics.
-Only one class present for 002385.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002385.SZ: [2.1388369]
+First 10 True Values for 002385.SZ: [1.]
+Regression prediction visualization saved to img\regression_distribution_002385.SZ.png
 Sentiment Score for 002385.SZ: -0.9590
 Report for 002385.SZ generated.
 Target Return Distribution - Mean: 2.139, Median: 2.139, Variance: 0.000
@@ -4364,8 +3624,6 @@ Not enough data for stock 002214.SZ (requires > 10 rows). Skipping.
 Processing stock: 002567.SZ
 Stock 002567.SZ has 26 rows.
 For stock 002567.SZ: Latest market value = 7585850339.18, Average = 8538066787.542692, Difference = -11.2%
-True label distribution: {0.0: 6, 1.0: 3, 2.0: 2}
-Target Return Distribution - Mean: 0.636, Median: 0.000, Variance: 0.595
 Shape of features: (11, 59)
 First row of features: [ 7.82529333e+00  7.87438551e+00  7.92347769e+00  7.64856149e+00
   1.86690950e+07  1.48424569e+08  6.27352572e-03  7.85220221e+09
@@ -4382,20 +3640,10 @@ First row of features: [ 7.82529333e+00  7.87438551e+00  7.92347769e+00  7.64856
  -1.27191995e+00  7.74033465e-02 -1.08202723e+00 -5.60174725e-01
   5.32385112e-02  2.08633097e+00 -2.42135784e+00 -6.16389294e-01
  -8.69148778e-01  2.21963214e-01 -1.46633511e+00]
-Raw predicted values distribution: {0.27576852: 1}
 Mean predicted value: 0.276, Median: 0.276
-Prediction distribution visualization saved to img\distribution_002567.SZ.png
-First 10 Raw Predictions for 002567.SZ: [0.27576852]
-First 10 Ground Truth Labels for 002567.SZ: [0.]
-Threshold analysis for 002567.SZ:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002567.SZ: {0: 1}
-Class distribution for 002567.SZ: [1]
-Severe class imbalance for 002567.SZ. Using stratified metrics.
-Only one class present for 002567.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002567.SZ: [0.27576852]
+First 10 True Values for 002567.SZ: [0.]
+Regression prediction visualization saved to img\regression_distribution_002567.SZ.png
 Sentiment Score for 002567.SZ: -0.9640
 Report for 002567.SZ generated.
 Target Return Distribution - Mean: 0.276, Median: 0.276, Variance: 0.000
@@ -4613,8 +3861,6 @@ Not enough test data for stock 600686.SH (requires > 10 rows). Skipping.
 Processing stock: 600745.SH
 Stock 600745.SH has 27 rows.
 For stock 600745.SH: Latest market value = 136657735329.92, Average = 99742316771.42181, Difference = 37.0%
-True label distribution: {0.0: 6, 1.0: 2, 2.0: 3}
-Target Return Distribution - Mean: 0.727, Median: 0.000, Variance: 0.744
 Shape of features: (11, 59)
 First row of features: [ 9.95287250e+01  9.77471608e+01  9.98273112e+01  9.68613552e+01
   6.70052600e+06  6.59938556e+08 -1.79000000e-02  1.22279215e+11
@@ -4631,20 +3877,10 @@ First row of features: [ 9.95287250e+01  9.77471608e+01  9.98273112e+01  9.68613
  -7.04952074e-01 -3.54510560e-01 -9.75553339e-01 -5.03459736e-01
   4.77394223e-02 -1.72387914e-01 -4.41194314e-01 -7.32846613e-01
  -7.91262386e-01  1.18388423e-01 -4.70537031e-01]
-Raw predicted values distribution: {2.1097908: 1}
 Mean predicted value: 2.110, Median: 2.110
-Prediction distribution visualization saved to img\distribution_600745.SH.png
-First 10 Raw Predictions for 600745.SH: [2.1097908]
-First 10 Ground Truth Labels for 600745.SH: [2.]
-Threshold analysis for 600745.SH:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600745.SH: {0: 1}
-Class distribution for 600745.SH: [0 0 1]
-Severe class imbalance for 600745.SH. Using stratified metrics.
-Only one class present for 600745.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600745.SH: [2.1097908]
+First 10 True Values for 600745.SH: [2.]
+Regression prediction visualization saved to img\regression_distribution_600745.SH.png
 Sentiment Score for 600745.SH: -0.9640
 Report for 600745.SH generated.
 Target Return Distribution - Mean: 2.110, Median: 2.110, Variance: 0.000
@@ -4700,8 +3936,6 @@ Not enough data for stock 603021.SH (requires > 10 rows). Skipping.
 Processing stock: 002100.SZ
 Stock 002100.SZ has 26 rows.
 For stock 002100.SZ: Latest market value = 10429679773.98, Average = 13328546853.581156, Difference = -21.7%
-True label distribution: {0.0: 4, 1.0: 3, 2.0: 4}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.727
 Shape of features: (11, 59)
 First row of features: [ 1.42797154e+01  1.50232520e+01  1.50327845e+01  1.41367276e+01
   3.41257810e+07  5.26432844e+08  5.20694259e-02  1.69441267e+10
@@ -4718,20 +3952,10 @@ First row of features: [ 1.42797154e+01  1.50232520e+01  1.50327845e+01  1.41367
   1.43228386e+00 -1.68903716e-01  4.89142638e-01 -3.56654363e-01
   1.14462295e-01 -5.67767742e-02 -2.37824793e+00 -7.52030638e-02
  -9.75650894e-01  7.49177419e-02  6.92542422e-01]
-Raw predicted values distribution: {1.9617894: 1}
 Mean predicted value: 1.962, Median: 1.962
-Prediction distribution visualization saved to img\distribution_002100.SZ.png
-First 10 Raw Predictions for 002100.SZ: [1.9617894]
-First 10 Ground Truth Labels for 002100.SZ: [2.]
-Threshold analysis for 002100.SZ:
-  Positive samples: 1
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002100.SZ: {0: 1}
-Class distribution for 002100.SZ: [0 0 1]
-Severe class imbalance for 002100.SZ. Using stratified metrics.
-Only one class present for 002100.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002100.SZ: [1.9617894]
+First 10 True Values for 002100.SZ: [2.]
+Regression prediction visualization saved to img\regression_distribution_002100.SZ.png
 Sentiment Score for 002100.SZ: -0.9640
 Report for 002100.SZ generated.
 Target Return Distribution - Mean: 1.962, Median: 1.962, Variance: 0.000
@@ -4765,8 +3989,6 @@ Not enough data for stock 002867.SZ (requires > 10 rows). Skipping.
 Processing stock: 002074.SZ
 Stock 002074.SZ has 29 rows.
 For stock 002074.SZ: Latest market value = 73874611570.41, Average = 48122407656.678955, Difference = 53.5%
-True label distribution: {0.0: 6, 2.0: 6}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 1.000
 Shape of features: (12, 59)
 First row of features: [ 3.89133334e+01  4.17769556e+01  4.17769556e+01  3.89133334e+01
   1.02849878e+08  4.22616055e+09  7.35897436e-02  5.36163978e+10
@@ -4783,28 +4005,16 @@ First row of features: [ 3.89133334e+01  4.17769556e+01  4.17769556e+01  3.89133
   1.27132086e+00  2.89521645e+00  1.04858478e+00  5.57125048e-01
   4.58026219e-01 -6.69124880e-01  3.66317117e-01  2.31521437e-01
  -1.51535760e-01  1.36004427e-02  7.84422442e-01]
-Raw predicted values distribution: {0.12256688: 1, 0.12719183: 1}
 Mean predicted value: 0.125, Median: 0.125
-Prediction distribution visualization saved to img\distribution_002074.SZ.png
-First 10 Raw Predictions for 002074.SZ: [0.12719183 0.12256688]
-First 10 Ground Truth Labels for 002074.SZ: [0. 0.]
-Threshold analysis for 002074.SZ:
-  Positive samples: 0
-  Negative samples: 2
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002074.SZ: {0: 1, 1: 1}
-Class distribution for 002074.SZ: [2]
-Severe class imbalance for 002074.SZ. Using stratified metrics.
-Only one class present for 002074.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002074.SZ: [0.12719183 0.12256688]
+First 10 True Values for 002074.SZ: [0. 0.]
+Regression prediction visualization saved to img\regression_distribution_002074.SZ.png
 Sentiment Score for 002074.SZ: -0.9640
 Report for 002074.SZ generated.
 Target Return Distribution - Mean: 0.125, Median: 0.125, Variance: 0.000
 Processing stock: 002466.SZ
 Stock 002466.SZ has 29 rows.
 For stock 002466.SZ: Latest market value = 139955166539.25, Average = 68152400637.463104, Difference = 105.4%
-True label distribution: {0.0: 4, 1.0: 2, 2.0: 6}
-Target Return Distribution - Mean: 1.167, Median: 1.500, Variance: 0.806
 Shape of features: (12, 59)
 First row of features: [ 6.64200000e+01  5.99500000e+01  6.70000000e+01  5.99400000e+01
   1.43482252e+08  8.85944198e+09 -9.74104185e-02  8.85521080e+10
@@ -4821,24 +4031,10 @@ First row of features: [ 6.64200000e+01  5.99500000e+01  6.70000000e+01  5.99400
  -7.57982774e-01  2.24860593e+00  1.38359621e+00  7.97517304e-01
   8.11173674e-02 -8.07604093e-01  1.36990577e+00  3.02007784e+00
   1.14235593e+00  2.74080763e+00  1.38594470e+00]
-Raw predicted values distribution: {-0.043400478: 1, 1.8077527: 1}
 Mean predicted value: 0.882, Median: 0.882
-Prediction distribution visualization saved to img\distribution_002466.SZ.png
-First 10 Raw Predictions for 002466.SZ: [-0.04340048  1.8077527 ]
-First 10 Ground Truth Labels for 002466.SZ: [0. 2.]
-Threshold analysis for 002466.SZ:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 002466.SZ: {0: 1, 1: 1}
-Class distribution for 002466.SZ: [1 0 1]
-Severe class imbalance for 002466.SZ. Using stratified metrics.
-Error calculating metrics for 002466.SZ: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 002466.SZ:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_002466.SZ.png
+First 10 Predictions for 002466.SZ: [-0.04340048  1.8077527 ]
+First 10 True Values for 002466.SZ: [0. 2.]
+Regression prediction visualization saved to img\regression_distribution_002466.SZ.png
 Sentiment Score for 002466.SZ: -0.9635
 Report for 002466.SZ generated.
 Target Return Distribution - Mean: 0.882, Median: 0.882, Variance: 0.857
@@ -5028,8 +4224,6 @@ Not enough data for stock 002298.SZ (requires > 10 rows). Skipping.
 Processing stock: 603259.SH
 Stock 603259.SH has 35 rows.
 For stock 603259.SH: Latest market value = 407341144967.856, Average = 295545094994.2506, Difference = 37.8%
-True label distribution: {0.0: 9, 2.0: 5}
-Target Return Distribution - Mean: 0.714, Median: 0.000, Variance: 0.918
 Shape of features: (14, 59)
 First row of features: [ 1.29361487e+02  1.32398374e+02  1.32398374e+02  1.27433435e+02
   2.04979080e+07  3.21092278e+09  2.34759803e-02  3.89465812e+11
@@ -5046,20 +4240,10 @@ First row of features: [ 1.29361487e+02  1.32398374e+02  1.32398374e+02  1.27433
   1.31231489e+00  5.16855231e-01  1.59290069e+00 -2.95518172e-01
  -1.37373031e+00 -7.84927767e-01  4.29656877e-01  9.38424835e-01
   1.45321598e-01  1.77449577e+00  1.45261766e+00]
-Raw predicted values distribution: {0.32612714: 1, 0.32788974: 1, 0.33031046: 1, 0.33347595: 1}
 Mean predicted value: 0.329, Median: 0.329
-Prediction distribution visualization saved to img\distribution_603259.SH.png
-First 10 Raw Predictions for 603259.SH: [0.32612714 0.32788974 0.33031046 0.33347595]
-First 10 Ground Truth Labels for 603259.SH: [0. 0. 0. 0.]
-Threshold analysis for 603259.SH:
-  Positive samples: 0
-  Negative samples: 4
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 603259.SH: {0: 2, 1: 2}
-Class distribution for 603259.SH: [4]
-Severe class imbalance for 603259.SH. Using stratified metrics.
-Only one class present for 603259.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 603259.SH: [0.32612714 0.32788974 0.33031046 0.33347595]
+First 10 True Values for 603259.SH: [0. 0. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_603259.SH.png
 Sentiment Score for 603259.SH: -0.9640
 Report for 603259.SH generated.
 Target Return Distribution - Mean: 0.329, Median: 0.329, Variance: 0.000
@@ -5078,8 +4262,6 @@ Not enough data for stock 600713.SH (requires > 10 rows). Skipping.
 Processing stock: 300750.SZ
 Stock 300750.SZ has 99 rows.
 For stock 300750.SZ: Latest market value = 1432432958542.08, Average = 864521385696.8243, Difference = 65.7%
-True label distribution: {0.0: 24, 1.0: 6, 2.0: 10}
-Target Return Distribution - Mean: 0.650, Median: 0.000, Variance: 0.728
 Shape of features: (40, 59)
 First row of features: [ 5.29217873e+02  5.54938888e+02  5.55238434e+02  5.25213942e+02
   1.82049110e+07  9.87862861e+09  4.86019395e-02  1.29441596e+12
@@ -5096,23 +4278,11 @@ First row of features: [ 5.29217873e+02  5.54938888e+02  5.55238434e+02  5.25213
   8.66998694e-01 -1.38444236e-01 -6.98038146e-01  6.77430095e-01
  -2.48741053e-01 -7.23181309e-01  7.07091691e-01  2.68857281e-01
  -8.05609015e-01  2.47846928e+00  1.36335458e-02]
-Raw predicted values distribution: {0.29178834: 1, 0.30708328: 1, 0.3083827: 1, 0.30839083: 1, 0.30852324: 1, 0.30855477: 1, 0.30862284: 1, 0.30867097: 1, 0.30877334: 7, 0.30880964: 1, 0.309943: 1, 0.31602693: 1, 0.31935835: 1, 0.33229342: 1, 0.34300065: 1, 1.3726996: 1, 1.3788143: 1, 1.3852602: 1, 1.385737: 1, 1.3869543: 1, 1.4012055: 1, 2.0838568: 1, 2.123203: 1, 2.1332328: 1}
 Mean predicted value: 0.706, Median: 0.309
-Prediction distribution visualization saved to img\distribution_300750.SZ.png
-First 10 Raw Predictions for 300750.SZ: [2.123203   0.29178834 0.34300065 1.3788143  1.4012055  1.3869543
+First 10 Predictions for 300750.SZ: [2.123203   0.29178834 0.34300065 1.3788143  1.4012055  1.3869543
  1.3852602  1.385737   0.33229342 2.1332328 ]
-First 10 Ground Truth Labels for 300750.SZ: [2. 0. 0. 1. 1. 1. 1. 1. 0. 2.]
-Threshold analysis for 300750.SZ:
-  Positive samples: 9
-  Negative samples: 21
-  Separation metric: 3.7243824005126953
-  Threshold well placed: False
-Binary Predictions Distribution for 300750.SZ: {0: 30}
-Class distribution for 300750.SZ: [21  6  3]
-Confusion Matrix for stock 300750.SZ:
-[[21  0]
- [ 9  0]]
-Confusion matrix image saved as img\confusion_matrix_300750.SZ.png
+First 10 True Values for 300750.SZ: [2. 0. 0. 1. 1. 1. 1. 1. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_300750.SZ.png
 Sentiment Score for 300750.SZ: -0.9640
 Report for 300750.SZ generated.
 Target Return Distribution - Mean: 0.706, Median: 0.309, Variance: 0.399
@@ -5615,8 +4785,6 @@ Not enough data for stock 600507.SH (requires > 10 rows). Skipping.
 Processing stock: 002468.SZ
 Stock 002468.SZ has 27 rows.
 For stock 002468.SZ: Latest market value = 11481016245.0, Average = 24821106676.042217, Difference = -53.7%
-True label distribution: {0.0: 7, 1.0: 3, 2.0: 1}
-Target Return Distribution - Mean: 0.455, Median: 0.000, Variance: 0.430
 Shape of features: (11, 59)
 First row of features: [ 1.61000000e+01  1.71100000e+01  1.71500000e+01  1.60700000e+01
   3.55401070e+07  5.99687518e+08  6.27329193e-02  2.61920251e+10
@@ -5633,20 +4801,10 @@ First row of features: [ 1.61000000e+01  1.71100000e+01  1.71500000e+01  1.60700
  -8.11172111e-01  1.84182187e+00 -6.33917465e-01 -4.38667225e-01
  -1.80237854e-01  3.79209293e-01 -1.29589304e+00 -7.44003271e-01
  -9.28061746e-02  3.95338299e-01 -5.12741409e-01]
-Raw predicted values distribution: {0.369073: 1}
 Mean predicted value: 0.369, Median: 0.369
-Prediction distribution visualization saved to img\distribution_002468.SZ.png
-First 10 Raw Predictions for 002468.SZ: [0.369073]
-First 10 Ground Truth Labels for 002468.SZ: [0.]
-Threshold analysis for 002468.SZ:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002468.SZ: {0: 1}
-Class distribution for 002468.SZ: [1]
-Severe class imbalance for 002468.SZ. Using stratified metrics.
-Only one class present for 002468.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002468.SZ: [0.369073]
+First 10 True Values for 002468.SZ: [0.]
+Regression prediction visualization saved to img\regression_distribution_002468.SZ.png
 Sentiment Score for 002468.SZ: -0.9639
 Report for 002468.SZ generated.
 Target Return Distribution - Mean: 0.369, Median: 0.369, Variance: 0.000
@@ -5675,8 +4833,6 @@ Not enough test data for stock 300471.SZ (requires > 10 rows). Skipping.
 Processing stock: 601066.SH
 Stock 601066.SH has 36 rows.
 For stock 601066.SH: Latest market value = 185289962866.736, Average = 257634062781.19482, Difference = -28.1%
-True label distribution: {0.0: 7, 1.0: 3, 2.0: 5}
-Target Return Distribution - Mean: 0.867, Median: 1.000, Variance: 0.782
 Shape of features: (15, 59)
 First row of features: [ 4.72761004e+01  5.13764791e+01  5.17368450e+01  4.63605764e+01
   8.89440590e+07  4.49299820e+09  8.67325917e-02  4.03346821e+11
@@ -5693,24 +4849,10 @@ First row of features: [ 4.72761004e+01  5.13764791e+01  5.17368450e+01  4.63605
   1.41663147e+00 -6.13314810e-01  1.32828577e-01  1.25773461e+00
  -6.31239114e-01 -7.91443670e-01  7.63764912e-01 -2.58099593e-02
  -2.59238776e-01  7.28528657e-01  7.50992557e-01]
-Raw predicted values distribution: {0.14238295: 1, 0.16264716: 1, 1.1091042: 1, 1.1639696: 1, 2.0025718: 1}
 Mean predicted value: 0.916, Median: 1.109
-Prediction distribution visualization saved to img\distribution_601066.SH.png
-First 10 Raw Predictions for 601066.SH: [1.1091042  0.14238295 1.1639696  0.16264716 2.0025718 ]
-First 10 Ground Truth Labels for 601066.SH: [1. 0. 1. 0. 2.]
-Threshold analysis for 601066.SH:
-  Positive samples: 3
-  Negative samples: 2
-  Separation metric: 3.037478446960449
-  Threshold well placed: False
-Binary Predictions Distribution for 601066.SH: {0: 5}
-Class distribution for 601066.SH: [2 2 1]
-Severe class imbalance for 601066.SH. Using stratified metrics.
-Error calculating metrics for 601066.SH: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 601066.SH:
-[[2 0]
- [3 0]]
-Confusion matrix image saved as img\confusion_matrix_601066.SH.png
+First 10 Predictions for 601066.SH: [1.1091042  0.14238295 1.1639696  0.16264716 2.0025718 ]
+First 10 True Values for 601066.SH: [1. 0. 1. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_601066.SH.png
 Sentiment Score for 601066.SH: -0.9640
 Report for 601066.SH generated.
 Target Return Distribution - Mean: 0.916, Median: 1.109, Variance: 0.489
@@ -5755,8 +4897,6 @@ Not enough data for stock 000713.SZ (requires > 10 rows). Skipping.
 Processing stock: 600438.SH
 Stock 600438.SH has 31 rows.
 For stock 600438.SH: Latest market value = 231694685030.48, Average = 149129389407.91293, Difference = 55.4%
-True label distribution: {0.0: 8, 2.0: 5}
-Target Return Distribution - Mean: 0.769, Median: 0.000, Variance: 0.947
 Shape of features: (13, 59)
 First row of features: [ 4.00290006e+01  3.77700057e+01  4.04184825e+01  3.77700057e+01
   1.66053455e+08  6.53293149e+09 -5.64339577e-02  1.74615054e+11
@@ -5773,24 +4913,10 @@ First row of features: [ 4.00290006e+01  3.77700057e+01  4.04184825e+01  3.77700
   3.26928060e-01  2.20540761e+00  7.05689393e-01  3.84995945e-02
  -2.99985181e+00 -5.16228585e-01  6.58067572e-01 -4.26615272e-01
   4.84566704e-01  1.35558675e+00 -1.05042376e+00]
-Raw predicted values distribution: {0.30162427: 1, 1.9612501: 1, 2.0177298: 1}
 Mean predicted value: 1.427, Median: 1.961
-Prediction distribution visualization saved to img\distribution_600438.SH.png
-First 10 Raw Predictions for 600438.SH: [2.0177298  0.30162427 1.9612501 ]
-First 10 Ground Truth Labels for 600438.SH: [2. 0. 2.]
-Threshold analysis for 600438.SH:
-  Positive samples: 2
-  Negative samples: 1
-  Separation metric: 59.76893615722656
-  Threshold well placed: False
-Binary Predictions Distribution for 600438.SH: {0: 3}
-Class distribution for 600438.SH: [1 0 2]
-Severe class imbalance for 600438.SH. Using stratified metrics.
-Error calculating metrics for 600438.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 600438.SH:
-[[1 0]
- [2 0]]
-Confusion matrix image saved as img\confusion_matrix_600438.SH.png
+First 10 Predictions for 600438.SH: [2.0177298  0.30162427 1.9612501 ]
+First 10 True Values for 600438.SH: [2. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_600438.SH.png
 Sentiment Score for 600438.SH: -0.9640
 Report for 600438.SH generated.
 Target Return Distribution - Mean: 1.427, Median: 1.961, Variance: 0.634
@@ -6250,8 +5376,6 @@ Not enough data for stock 603520.SH (requires > 10 rows). Skipping.
 Processing stock: 601633.SH
 Stock 601633.SH has 35 rows.
 For stock 601633.SH: Latest market value = 470719600246.51, Average = 216887962182.7554, Difference = 117.0%
-True label distribution: {0.0: 3, 1.0: 1, 2.0: 10}
-Target Return Distribution - Mean: 1.500, Median: 2.000, Variance: 0.679
 Shape of features: (14, 59)
 First row of features: [ 2.80612875e+01  3.07432512e+01  3.07432512e+01  2.80612875e+01
   4.39391140e+07  1.32116361e+09  9.55752212e-02  2.45179840e+11
@@ -6268,24 +5392,10 @@ First row of features: [ 2.80612875e+01  3.07432512e+01  3.07432512e+01  2.80612
  -1.28146207e-01  6.98977256e-01  9.26640184e-01 -5.37205000e-01
  -1.32688696e+00 -3.64851921e-01 -1.62151588e+00 -6.34412648e-01
  -9.48133925e-02  1.22975081e+00 -4.69265823e-01]
-Raw predicted values distribution: {-0.24714981: 1, 1.5202852: 1, 1.5407988: 1, 1.5860783: 1}
 Mean predicted value: 1.100, Median: 1.531
-Prediction distribution visualization saved to img\distribution_601633.SH.png
-First 10 Raw Predictions for 601633.SH: [ 1.5860783  -0.24714981  1.5202852   1.5407988 ]
-First 10 Ground Truth Labels for 601633.SH: [2. 0. 2. 2.]
-Threshold analysis for 601633.SH:
-  Positive samples: 3
-  Negative samples: 1
-  Separation metric: 65.34766387939453
-  Threshold well placed: False
-Binary Predictions Distribution for 601633.SH: {0: 4}
-Class distribution for 601633.SH: [1 0 3]
-Severe class imbalance for 601633.SH. Using stratified metrics.
-Error calculating metrics for 601633.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 601633.SH:
-[[1 0]
- [3 0]]
-Confusion matrix image saved as img\confusion_matrix_601633.SH.png
+First 10 Predictions for 601633.SH: [ 1.5860783  -0.24714981  1.5202852   1.5407988 ]
+First 10 True Values for 601633.SH: [2. 0. 2. 2.]
+Regression prediction visualization saved to img\regression_distribution_601633.SH.png
 Sentiment Score for 601633.SH: -0.9639
 Report for 601633.SH generated.
 Target Return Distribution - Mean: 1.100, Median: 1.531, Variance: 0.606
@@ -6302,8 +5412,6 @@ Not enough test data for stock 603378.SH (requires > 10 rows). Skipping.
 Processing stock: 000591.SZ
 Stock 000591.SZ has 77 rows.
 For stock 000591.SZ: Latest market value = 28507289343.36, Average = 18408516874.59532, Difference = 54.9%
-True label distribution: {0.0: 21, 1.0: 1, 2.0: 9}
-Target Return Distribution - Mean: 0.613, Median: 0.000, Variance: 0.818
 Shape of features: (31, 59)
 First row of features: [ 5.48415407e+00  5.64858197e+00  5.70661535e+00  5.44546515e+00
   1.46595167e+08  8.50791895e+08  2.99823633e-02  1.75614525e+10
@@ -6320,25 +5428,11 @@ First row of features: [ 5.48415407e+00  5.64858197e+00  5.70661535e+00  5.44546
   8.05921367e-01  1.17107699e+00 -9.70258869e-01  2.65960396e+00
  -1.48655243e+00 -4.45792680e-01 -1.23402110e+00 -2.36997840e+00
   2.12054542e+00  2.74630580e+00 -1.74886934e+00]
-Raw predicted values distribution: {0.37617913: 1, 0.37699208: 1, 0.37944984: 1, 0.3816108: 1, 0.4205508: 1, 0.423462: 1, 0.43078157: 1, 0.4313883: 1, 0.43666986: 1, 0.4369394: 1, 0.43707025: 1, 0.43865204: 1, 0.44039375: 1, 1.3984287: 1, 2.0925102: 1, 2.092637: 1, 2.101745: 1, 2.1329808: 1, 2.1370056: 1, 2.1589906: 1, 2.1652465: 1}
 Mean predicted value: 1.033, Median: 0.437
-Prediction distribution visualization saved to img\distribution_000591.SZ.png
-First 10 Raw Predictions for 000591.SZ: [0.37617913 0.37944984 0.4313883  0.44039375 0.4369394  0.43666986
+First 10 Predictions for 000591.SZ: [0.37617913 0.37944984 0.4313883  0.44039375 0.4369394  0.43666986
  0.43707025 1.3984287  0.4205508  0.43078157]
-First 10 Ground Truth Labels for 000591.SZ: [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
-Threshold analysis for 000591.SZ:
-  Positive samples: 8
-  Negative samples: 13
-  Separation metric: 6.046563625335693
-  Threshold well placed: False
-Binary Predictions Distribution for 000591.SZ: {0: 21}
-Class distribution for 000591.SZ: [13  1  7]
-Severe class imbalance for 000591.SZ. Using stratified metrics.
-Error calculating metrics for 000591.SZ: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 000591.SZ:
-[[13  0]
- [ 8  0]]
-Confusion matrix image saved as img\confusion_matrix_000591.SZ.png
+First 10 True Values for 000591.SZ: [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_000591.SZ.png
 Sentiment Score for 000591.SZ: -0.9635
 Report for 000591.SZ generated.
 Target Return Distribution - Mean: 1.033, Median: 0.437, Variance: 0.641
@@ -6621,8 +5715,6 @@ Not enough data for stock 601666.SH (requires > 10 rows). Skipping.
 Processing stock: 002812.SZ
 Stock 002812.SZ has 26 rows.
 For stock 002812.SZ: Latest market value = 265044580812.0, Average = 145134873592.08923, Difference = 82.6%
-True label distribution: {0.0: 5, 1.0: 1, 2.0: 5}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.909
 Shape of features: (11, 59)
 First row of features: [ 1.94669250e+02  1.90215444e+02  1.95338319e+02  1.85861500e+02
   8.07952700e+06  1.53943975e+09 -2.28788345e-02  1.69176838e+11
@@ -6639,20 +5731,10 @@ First row of features: [ 1.94669250e+02  1.90215444e+02  1.95338319e+02  1.85861
  -1.95001503e-01 -4.34463024e-01  9.30482853e-01 -3.13359104e-01
  -1.04958368e+00 -8.15206727e-01  8.10655204e-01  2.54595858e+00
  -1.77544772e-01 -1.97882099e-01  1.60077024e+00]
-Raw predicted values distribution: {0.08820681: 1}
 Mean predicted value: 0.088, Median: 0.088
-Prediction distribution visualization saved to img\distribution_002812.SZ.png
-First 10 Raw Predictions for 002812.SZ: [0.08820681]
-First 10 Ground Truth Labels for 002812.SZ: [0.]
-Threshold analysis for 002812.SZ:
-  Positive samples: 0
-  Negative samples: 1
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002812.SZ: {0: 1}
-Class distribution for 002812.SZ: [1]
-Severe class imbalance for 002812.SZ. Using stratified metrics.
-Only one class present for 002812.SZ. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 002812.SZ: [0.08820681]
+First 10 True Values for 002812.SZ: [0.]
+Regression prediction visualization saved to img\regression_distribution_002812.SZ.png
 Sentiment Score for 002812.SZ: -0.9640
 Report for 002812.SZ generated.
 Target Return Distribution - Mean: 0.088, Median: 0.088, Variance: 0.000
@@ -6806,8 +5888,6 @@ Not enough data for stock 600750.SH (requires > 10 rows). Skipping.
 Processing stock: 600900.SH
 Stock 600900.SH has 28 rows.
 For stock 600900.SH: Latest market value = 434142092700.7, Average = 416161030084.4179, Difference = 4.3%
-True label distribution: {0.0: 2, 1.0: 10}
-Target Return Distribution - Mean: 0.833, Median: 1.000, Variance: 0.139
 Shape of features: (12, 59)
 First row of features: [ 1.79744796e+01  1.80491787e+01  1.81425527e+01  1.77223700e+01
   1.70998310e+07  3.28263736e+08  4.15584416e-03  4.38617030e+11
@@ -6824,23 +5904,10 @@ First row of features: [ 1.79744796e+01  1.80491787e+01  1.81425527e+01  1.77223
   9.33876523e-02 -2.00844245e-01 -9.91547199e-01 -4.08709180e-01
  -8.26189303e-01 -6.79420178e-01  6.32188536e-02 -9.57758515e-01
   6.63763181e-01 -7.98045778e-01 -1.19826032e+00]
-Raw predicted values distribution: {-0.40680557: 1, 1.4084208: 1}
 Mean predicted value: 0.501, Median: 0.501
-Prediction distribution visualization saved to img\distribution_600900.SH.png
-First 10 Raw Predictions for 600900.SH: [ 1.4084208  -0.40680557]
-First 10 Ground Truth Labels for 600900.SH: [1. 0.]
-Threshold analysis for 600900.SH:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 600900.SH: {0: 1, 1: 1}
-Class distribution for 600900.SH: [1 1]
-Severe class imbalance for 600900.SH. Using stratified metrics.
-Confusion Matrix for stock 600900.SH:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_600900.SH.png
+First 10 Predictions for 600900.SH: [ 1.4084208  -0.40680557]
+First 10 True Values for 600900.SH: [1. 0.]
+Regression prediction visualization saved to img\regression_distribution_600900.SH.png
 Sentiment Score for 600900.SH: -0.9640
 Report for 600900.SH generated.
 Target Return Distribution - Mean: 0.501, Median: 0.501, Variance: 0.824
@@ -6998,8 +6065,6 @@ Not enough data for stock 600808.SH (requires > 10 rows). Skipping.
 Processing stock: 600859.SH
 Stock 600859.SH has 31 rows.
 For stock 600859.SH: Latest market value = 23830885745.0, Average = 27326015546.70968, Difference = -12.8%
-True label distribution: {0.0: 5, 1.0: 5, 2.0: 3}
-Target Return Distribution - Mean: 0.846, Median: 1.000, Variance: 0.592
 Shape of features: (13, 59)
 First row of features: [ 3.05413988e+01  3.23995050e+01  3.30058344e+01  3.03262497e+01
   1.67210160e+07  5.49350074e+08  6.08389369e-02  2.57171741e+10
@@ -7016,20 +6081,10 @@ First row of features: [ 3.05413988e+01  3.23995050e+01  3.30058344e+01  3.03262
   7.40969650e-02  8.65630046e-03 -5.21634203e-01 -3.85222488e-01
   4.45170832e-02 -1.32405516e-01  3.95836052e-01  7.93426424e-01
  -7.38793008e-01 -4.70299918e-02  9.43984243e-01]
-Raw predicted values distribution: {0.039488442: 1, 0.045490053: 1, 0.05526683: 1}
 Mean predicted value: 0.047, Median: 0.045
-Prediction distribution visualization saved to img\distribution_600859.SH.png
-First 10 Raw Predictions for 600859.SH: [0.05526683 0.04549005 0.03948844]
-First 10 Ground Truth Labels for 600859.SH: [0. 0. 0.]
-Threshold analysis for 600859.SH:
-  Positive samples: 0
-  Negative samples: 3
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 600859.SH: {0: 2, 1: 1}
-Class distribution for 600859.SH: [3]
-Severe class imbalance for 600859.SH. Using stratified metrics.
-Only one class present for 600859.SH. Setting AUC/AUPR to 0.5.
+First 10 Predictions for 600859.SH: [0.05526683 0.04549005 0.03948844]
+First 10 True Values for 600859.SH: [0. 0. 0.]
+Regression prediction visualization saved to img\regression_distribution_600859.SH.png
 Sentiment Score for 600859.SH: -0.9611
 Report for 600859.SH generated.
 Target Return Distribution - Mean: 0.047, Median: 0.045, Variance: 0.000
@@ -7167,8 +6222,6 @@ Not enough data for stock 300444.SZ (requires > 10 rows). Skipping.
 Processing stock: 601607.SH
 Stock 601607.SH has 29 rows.
 For stock 601607.SH: Latest market value = 45201827031.5072, Average = 52460753021.8894, Difference = -13.8%
-True label distribution: {0.0: 2, 1.0: 7, 2.0: 3}
-Target Return Distribution - Mean: 1.083, Median: 1.000, Variance: 0.410
 Shape of features: (12, 59)
 First row of features: [ 2.09959581e+01  2.10531418e+01  2.15201422e+01  2.07862844e+01
   2.38286000e+07  5.27653882e+08  2.72355878e-03  5.50916652e+10
@@ -7185,24 +6238,10 @@ First row of features: [ 2.09959581e+01  2.10531418e+01  2.15201422e+01  2.07862
   1.32121286e+00 -1.50877076e-01  1.38528795e+00 -2.62414244e-01
  -8.01972540e-01  3.83575326e+00  8.33406039e-01  6.08664931e-01
   5.90199776e-01 -6.53048414e-01  5.34460773e-01]
-Raw predicted values distribution: {-0.23815207: 1, 2.104215: 1}
 Mean predicted value: 0.933, Median: 0.933
-Prediction distribution visualization saved to img\distribution_601607.SH.png
-First 10 Raw Predictions for 601607.SH: [ 2.104215   -0.23815207]
-First 10 Ground Truth Labels for 601607.SH: [2. 0.]
-Threshold analysis for 601607.SH:
-  Positive samples: 1
-  Negative samples: 1
-  Separation metric: inf
-  Threshold well placed: True
-Binary Predictions Distribution for 601607.SH: {0: 1, 1: 1}
-Class distribution for 601607.SH: [1 0 1]
-Severe class imbalance for 601607.SH. Using stratified metrics.
-Error calculating metrics for 601607.SH: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 601607.SH:
-[[1 0]
- [0 1]]
-Confusion matrix image saved as img\confusion_matrix_601607.SH.png
+First 10 Predictions for 601607.SH: [ 2.104215   -0.23815207]
+First 10 True Values for 601607.SH: [2. 0.]
+Regression prediction visualization saved to img\regression_distribution_601607.SH.png
 Sentiment Score for 601607.SH: -0.9640
 Report for 601607.SH generated.
 Target Return Distribution - Mean: 0.933, Median: 0.933, Variance: 1.372
@@ -7343,8 +6382,6 @@ Not enough data for stock 603920.SH (requires > 10 rows). Skipping.
 Processing stock: 000413.SZ
 Stock 000413.SZ has 39 rows.
 For stock 000413.SZ: Latest market value = 11553369642.0762, Average = 25268717019.408134, Difference = -54.3%
-True label distribution: {0.0: 3, 1.0: 10, 2.0: 3}
-Target Return Distribution - Mean: 1.000, Median: 1.000, Variance: 0.375
 Shape of features: (16, 59)
 First row of features: [ 4.80000000e+00  4.80000000e+00  4.80000000e+00  4.80000000e+00
   0.00000000e+00  0.00000000e+00  0.00000000e+00  2.75052006e+10
@@ -7361,24 +6398,10 @@ First row of features: [ 4.80000000e+00  4.80000000e+00  4.80000000e+00  4.80000
  -2.24138975e-01 -9.01532081e-01 -8.58502365e-01 -1.78083821e-01
   1.78286776e-01  3.74617056e-01 -1.01383957e+00 -1.48329272e-01
  -8.35381272e-01  9.40122486e-01 -1.41254794e+00]
-Raw predicted values distribution: {-0.18921135: 1, -0.18209729: 1, -0.14242691: 1, 0.9931524: 1, 2.112486: 1, 2.1147034: 1}
 Mean predicted value: 0.784, Median: 0.425
-Prediction distribution visualization saved to img\distribution_000413.SZ.png
-First 10 Raw Predictions for 000413.SZ: [-0.18921135  2.1147034   0.9931524  -0.18209729 -0.14242691  2.112486  ]
-First 10 Ground Truth Labels for 000413.SZ: [0. 2. 1. 0. 0. 2.]
-Threshold analysis for 000413.SZ:
-  Positive samples: 3
-  Negative samples: 3
-  Separation metric: 3.483013868331909
-  Threshold well placed: False
-Binary Predictions Distribution for 000413.SZ: {0: 3, 1: 3}
-Class distribution for 000413.SZ: [3 1 2]
-Severe class imbalance for 000413.SZ. Using stratified metrics.
-Error calculating metrics for 000413.SZ: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 000413.SZ:
-[[3 0]
- [0 3]]
-Confusion matrix image saved as img\confusion_matrix_000413.SZ.png
+First 10 Predictions for 000413.SZ: [-0.18921135  2.1147034   0.9931524  -0.18209729 -0.14242691  2.112486  ]
+First 10 True Values for 000413.SZ: [0. 2. 1. 0. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_000413.SZ.png
 Sentiment Score for 000413.SZ: -0.9639
 Report for 000413.SZ generated.
 Target Return Distribution - Mean: 0.784, Median: 0.425, Variance: 1.053
@@ -7653,8 +6676,6 @@ Not enough data for stock 002321.SZ (requires > 10 rows). Skipping.
 Processing stock: 002456.SZ
 Stock 002456.SZ has 43 rows.
 For stock 002456.SZ: Latest market value = 24401730508.76, Average = 29676326182.586742, Difference = -17.8%
-True label distribution: {0.0: 7, 1.0: 9, 2.0: 2}
-Target Return Distribution - Mean: 0.722, Median: 1.000, Variance: 0.423
 Shape of features: (18, 59)
 First row of features: [ 1.28000000e+01  1.18800000e+01  1.28000000e+01  1.17000000e+01
   2.16317461e+08  2.60793366e+09 -7.18750000e-02  3.20135032e+10
@@ -7671,25 +6692,11 @@ First row of features: [ 1.28000000e+01  1.18800000e+01  1.28000000e+01  1.17000
  -1.14566949e+00  1.08577890e+00  3.76121486e-01  5.19571005e-01
   8.04740732e-01  1.45441950e+00 -1.26240846e+00  1.49975978e-01
  -6.98185506e-01 -7.37309158e-01  7.14348706e-02]
-Raw predicted values distribution: {0.05311721: 1, 0.15059547: 1, 1.4024262: 1, 1.4024794: 1, 1.4069362: 1, 1.4263194: 1, 1.4467132: 1, 2.2176666: 1}
 Mean predicted value: 1.188, Median: 1.405
-Prediction distribution visualization saved to img\distribution_002456.SZ.png
-First 10 Raw Predictions for 002456.SZ: [1.4069362  1.4024262  1.4024794  0.05311721 2.2176666  1.4263194
+First 10 Predictions for 002456.SZ: [1.4069362  1.4024262  1.4024794  0.05311721 2.2176666  1.4263194
  1.4467132  0.15059547]
-First 10 Ground Truth Labels for 002456.SZ: [1. 1. 1. 0. 2. 1. 1. 0.]
-Threshold analysis for 002456.SZ:
-  Positive samples: 6
-  Negative samples: 2
-  Separation metric: 4.167862892150879
-  Threshold well placed: False
-Binary Predictions Distribution for 002456.SZ: {0: 8}
-Class distribution for 002456.SZ: [2 5 1]
-Severe class imbalance for 002456.SZ. Using stratified metrics.
-Error calculating metrics for 002456.SZ: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 002456.SZ:
-[[2 0]
- [6 0]]
-Confusion matrix image saved as img\confusion_matrix_002456.SZ.png
+First 10 True Values for 002456.SZ: [1. 1. 1. 0. 2. 1. 1. 0.]
+Regression prediction visualization saved to img\regression_distribution_002456.SZ.png
 Sentiment Score for 002456.SZ: -0.9640
 Report for 002456.SZ generated.
 Target Return Distribution - Mean: 1.188, Median: 1.405, Variance: 0.461
@@ -8300,8 +7307,6 @@ Not enough data for stock 002479.SZ (requires > 10 rows). Skipping.
 Processing stock: 600733.SH
 Stock 600733.SH has 31 rows.
 For stock 600733.SH: Latest market value = 54963315866.6, Average = 41663950674.67516, Difference = 31.9%
-True label distribution: {0.0: 2, 1.0: 8, 2.0: 3}
-Target Return Distribution - Mean: 1.077, Median: 1.000, Variance: 0.379
 Shape of features: (13, 59)
 First row of features: [ 1.51400000e+01  1.51400000e+01  1.51400000e+01  1.51400000e+01
   1.92615730e+07  2.91620215e+08  0.00000000e+00  5.28940024e+10
@@ -8318,24 +7323,10 @@ First row of features: [ 1.51400000e+01  1.51400000e+01  1.51400000e+01  1.51400
  -7.91744298e-01 -5.34801808e-01  2.17121384e+00  1.81766030e+00
  -5.30107638e-01 -6.04108645e-01  1.40645520e+00  4.65876441e-02
   1.22151998e+00  6.92107171e-01  2.08058349e+00]
-Raw predicted values distribution: {-0.21013586: 1, 0.8734988: 1, 2.067064: 1}
 Mean predicted value: 0.910, Median: 0.873
-Prediction distribution visualization saved to img\distribution_600733.SH.png
-First 10 Raw Predictions for 600733.SH: [ 0.8734988  -0.21013586  2.067064  ]
-First 10 Ground Truth Labels for 600733.SH: [1. 0. 2.]
-Threshold analysis for 600733.SH:
-  Positive samples: 2
-  Negative samples: 1
-  Separation metric: 2.8157944679260254
-  Threshold well placed: False
-Binary Predictions Distribution for 600733.SH: {0: 2, 1: 1}
-Class distribution for 600733.SH: [1 1 1]
-Severe class imbalance for 600733.SH. Using stratified metrics.
-Error calculating metrics for 600733.SH: multi_class must be in ('ovo', 'ovr')
-Confusion Matrix for stock 600733.SH:
-[[1 0]
- [1 1]]
-Confusion matrix image saved as img\confusion_matrix_600733.SH.png
+First 10 Predictions for 600733.SH: [ 0.8734988  -0.21013586  2.067064  ]
+First 10 True Values for 600733.SH: [1. 0. 2.]
+Regression prediction visualization saved to img\regression_distribution_600733.SH.png
 Sentiment Score for 600733.SH: -0.9639
 Report for 600733.SH generated.
 Target Return Distribution - Mean: 0.910, Median: 0.873, Variance: 0.865
@@ -8586,8 +7577,6 @@ Not enough data for stock 300531.SZ (requires > 10 rows). Skipping.
 Processing stock: 002647.SZ
 Stock 002647.SZ has 28 rows.
 For stock 002647.SZ: Latest market value = 5890533558.0, Average = 8547832917.0, Difference = -31.1%
-True label distribution: {0.0: 2, 1.0: 3, 2.0: 7}
-Target Return Distribution - Mean: 1.417, Median: 2.000, Variance: 0.576
 Shape of features: (12, 59)
 First row of features: [ 1.51600000e+01  1.58800000e+01  1.58800000e+01  1.44900000e+01
   1.36485904e+08  2.13257424e+09  4.74934037e-02  8.89179400e+09
@@ -8604,23 +7593,10 @@ First row of features: [ 1.51600000e+01  1.58800000e+01  1.58800000e+01  1.44900
  -9.65671375e-01  7.24833516e+00  1.83666080e+00  1.32568711e-01
   1.17183973e+00 -4.34398240e-01  9.04072581e-01  5.77263946e-02
   1.00874134e-01 -2.89523500e+00  2.19526019e+00]
-Raw predicted values distribution: {0.4896719: 1, 1.6640049: 1}
 Mean predicted value: 1.077, Median: 1.077
-Prediction distribution visualization saved to img\distribution_002647.SZ.png
-First 10 Raw Predictions for 002647.SZ: [1.6640049 0.4896719]
-First 10 Ground Truth Labels for 002647.SZ: [2. 1.]
-Threshold analysis for 002647.SZ:
-  Positive samples: 2
-  Negative samples: 0
-  Separation metric: N/A - only one class present
-  Threshold well placed: N/A
-Binary Predictions Distribution for 002647.SZ: {0: 1, 1: 1}
-Class distribution for 002647.SZ: [0 1 1]
-Severe class imbalance for 002647.SZ. Using stratified metrics.
-Confusion Matrix for stock 002647.SZ:
-[[0 0]
- [1 1]]
-Confusion matrix image saved as img\confusion_matrix_002647.SZ.png
+First 10 Predictions for 002647.SZ: [1.6640049 0.4896719]
+First 10 True Values for 002647.SZ: [2. 1.]
+Regression prediction visualization saved to img\regression_distribution_002647.SZ.png
 Sentiment Score for 002647.SZ: -0.9598
 Report for 002647.SZ generated.
 Target Return Distribution - Mean: 1.077, Median: 1.077, Variance: 0.345
@@ -10557,8 +9533,6 @@ Not enough data for stock 300056.SZ (requires > 10 rows). Skipping.
 Processing stock: 000100.SZ
 Stock 000100.SZ has 32 rows.
 For stock 000100.SZ: Latest market value = 89375192221.77, Average = 104837349028.14156, Difference = -14.7%
-True label distribution: {0.0: 5, 1.0: 1, 2.0: 7}
-Target Return Distribution - Mean: 1.154, Median: 2.000, Variance: 0.899
 Shape of features: (13, 59)
 First row of features: [ 8.30227514e+00  8.63589125e+00  8.65495503e+00  7.95912715e+00
   5.23793664e+08  4.59536493e+09  4.01836969e-02  1.27118943e+11
@@ -10575,24 +9549,10 @@ First row of features: [ 8.30227514e+00  8.63589125e+00  8.65495503e+00  7.95912
  -1.19018578e-01 -2.71366485e-02  3.45352484e-02  2.48736847e-01
  -1.29721335e+00 -1.20817188e-01 -6.09691242e-01 -4.81747471e-01
   2.14842241e-02  5.21482424e-01 -2.12377531e-01]
-Raw predicted values distribution: {0.0440233: 1, 1.7869027: 1, 1.8019147: 1}
 Mean predicted value: 1.211, Median: 1.787
-Prediction distribution visualization saved to img\distribution_000100.SZ.png
-First 10 Raw Predictions for 000100.SZ: [1.7869027 1.8019147 0.0440233]
-First 10 Ground Truth Labels for 000100.SZ: [2. 2. 0.]
-Threshold analysis for 000100.SZ:
-  Positive samples: 2
-  Negative samples: 1
-  Separation metric: 233.19775390625
-  Threshold well placed: False
-Binary Predictions Distribution for 000100.SZ: {0: 2, 1: 1}
-Class distribution for 000100.SZ: [1 0 2]
-Severe class imbalance for 000100.SZ. Using stratified metrics.
-Error calculating metrics for 000100.SZ: pos_label=1 is not a valid label. It should be one of [0.0, 2.0]
-Confusion Matrix for stock 000100.SZ:
-[[1 0]
- [1 1]]
-Confusion matrix image saved as img\confusion_matrix_000100.SZ.png
+First 10 Predictions for 000100.SZ: [1.7869027 1.8019147 0.0440233]
+First 10 True Values for 000100.SZ: [2. 2. 0.]
+Regression prediction visualization saved to img\regression_distribution_000100.SZ.png
 Sentiment Score for 000100.SZ: -0.9638
 Report for 000100.SZ generated.
 Target Return Distribution - Mean: 1.211, Median: 1.787, Variance: 0.681
@@ -13656,87 +12616,90 @@ Stock 300900.SZ has 1 rows.
 Not enough data for stock 300900.SZ (requires > 10 rows). Skipping.
 
 Overall Performance Metrics for All Stocks:
-    Stock  Accuracy  Precision   Recall  Specificity  F1-score  AUC     AUPR  Error Rate      MSE     RMSE      MAE
-000063.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.001830 0.042782 0.042782
-000333.SZ  0.333333        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.666667 0.003678 0.060647 0.051166
-600340.SH  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.100978 0.317771 0.317771
-000876.SZ  0.571429        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.428571 0.212791 0.461293 0.441788
-300676.SZ  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 0.074263 0.272513 0.267125
-002352.SZ  0.833333        1.0 0.750000     1.000000  0.857143  0.5 0.500000    0.166667 0.004733 0.068795 0.061401
-600521.SH  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.151485 0.389211 0.389211
-300207.SZ  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.001214 0.034837 0.034837
-600673.SH  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.008553 0.092480 0.092480
-000002.SZ  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.124417 0.352728 0.352728
-002252.SZ  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.000386 0.019636 0.019636
-002594.SZ  0.590909        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.409091 0.073758 0.271583 0.259253
-601669.SH  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.012143 0.110195 0.107875
-002548.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.010091 0.100452 0.100452
-002422.SZ  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 0.028547 0.168958 0.164389
-600309.SH  0.000000        0.0 0.000000     0.000000  0.000000  1.0 0.250000    1.000000 0.030124 0.173561 0.137928
-000157.SZ  0.666667        0.0 0.000000     0.666667  0.000000  0.5 0.500000    0.333333 0.396379 0.629587 0.629576
-600519.SH  0.800000        0.5 1.000000     0.750000  0.666667  0.5 0.500000    0.200000 0.004932 0.070230 0.069906
-601238.SH  0.500000        1.0 0.500000     0.000000  0.666667  1.0 0.250000    0.500000 0.011308 0.106341 0.080242
-002415.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.552177 0.743086 0.743086
-600276.SH  0.500000        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.500000 0.018035 0.134294 0.117836
-601727.SH  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 1.246271 1.116365 1.052416
-002714.SZ  0.800000        0.5 1.000000     0.750000  0.666667  0.5 0.500000    0.200000 0.073134 0.270433 0.246878
-002653.SZ  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.044932 0.211972 0.197139
-600030.SH  0.111111        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.888889 0.009936 0.099677 0.095490
-001979.SZ  0.666667        1.0 0.500000     1.000000  0.666667  1.0 1.000000    0.333333 0.031018 0.176121 0.128243
-000625.SZ  0.933333        1.0 0.916667     1.000000  0.956522  1.0 1.000000    0.066667 0.020382 0.142764 0.130815
-601628.SH  0.250000        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.750000 0.059007 0.242914 0.226032
-300003.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.312254 0.558797 0.558797
-601318.SH  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 0.027219 0.164983 0.125204
-600029.SH  0.500000        1.0 0.500000     0.000000  0.666667  0.5 0.500000    0.500000 0.106022 0.325610 0.325278
-601601.SH  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.524267 0.724063 0.724063
-300498.SZ  0.500000        1.0 0.500000     0.000000  0.666667  0.5 0.500000    0.500000 0.011609 0.107743 0.106393
-600267.SH  0.250000        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.750000 0.176501 0.420120 0.404947
-000016.SZ  0.750000        1.0 0.666667     1.000000  0.800000  1.0 1.000000    0.250000 0.038660 0.196623 0.174454
-000538.SZ  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.177750 0.421604 0.413882
-600196.SH  0.916667        1.0 0.900000     1.000000  0.947368  1.0 1.000000    0.083333 0.059616 0.244163 0.203333
-002271.SZ  0.500000        0.0 0.000000     0.500000  0.000000  0.5 0.500000    0.500000 0.054219 0.232849 0.232694
-600418.SH  0.363636        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.636364 0.026541 0.162913 0.138250
-600104.SH  0.000000        0.0 0.000000     0.000000  0.000000  1.0 0.583333    1.000000 0.153458 0.391737 0.375080
-601988.SH  0.466667        1.0 0.466667     0.000000  0.636364  0.5 0.500000    0.533333 0.002186 0.046756 0.035298
-600009.SH  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 0.067765 0.260318 0.241659
-601211.SH  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.067715 0.260221 0.259421
-002120.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.005005 0.070744 0.070744
-002460.SZ  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 0.011303 0.106318 0.098578
-601857.SH  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.097535 0.312306 0.312095
-601688.SH  0.333333        1.0 0.333333     0.000000  0.500000  0.5 0.500000    0.666667 0.008863 0.094143 0.094101
-000651.SZ  0.750000        1.0 0.666667     1.000000  0.800000  0.5 0.500000    0.250000 0.014723 0.121337 0.111158
-600039.SH  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.019667 0.140240 0.072977
-300024.SZ  0.500000        0.0 0.000000     0.500000  0.000000  0.5 0.500000    0.500000 0.010618 0.103042 0.102646
-000661.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.194308 0.440803 0.440803
-300014.SZ  0.454545        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.545455 0.016546 0.128633 0.120847
-600006.SH  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.101359 0.318370 0.317532
-002385.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 1.296949 1.138837 1.138837
-002567.SZ  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.076048 0.275769 0.275769
-600745.SH  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.012054 0.109791 0.109791
-002100.SZ  0.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    1.000000 0.001460 0.038211 0.038211
-002074.SZ  0.500000        0.0 0.000000     0.500000  0.000000  0.5 0.500000    0.500000 0.015600 0.124901 0.124879
-002466.SZ  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.019421 0.139360 0.117824
-603259.SH  0.500000        0.0 0.000000     0.500000  0.000000  0.5 0.500000    0.500000 0.108545 0.329462 0.329451
-300750.SZ  0.700000        0.0 0.000000     1.000000  0.000000  1.0 1.000000    0.300000 0.098987 0.314621 0.306394
-002468.SZ  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.136215 0.369073 0.369073
-601066.SH  0.400000        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.600000 0.017105 0.130785 0.116135
-600438.SH  0.333333        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.666667 0.030931 0.175872 0.119368
-601633.SH  0.250000        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.750000 0.168352 0.410307 0.399997
-000591.SZ  0.619048        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.380952 0.120731 0.347464 0.318556
-002812.SZ  1.000000        0.0 0.000000     0.000000  0.000000  0.5 0.500000    0.000000 0.007780 0.088207 0.088207
-600900.SH  1.000000        1.0 1.000000     1.000000  1.000000  1.0 1.000000    0.000000 0.166149 0.407614 0.407613
-600859.SH  0.666667        0.0 0.000000     0.666667  0.000000  0.5 0.500000    0.333333 0.002228 0.047199 0.046748
-601607.SH  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.033789 0.183817 0.171183
-000413.SZ  1.000000        1.0 1.000000     1.000000  1.000000  0.5 0.500000    0.000000 0.019184 0.138505 0.124629
-002456.SZ  0.250000        0.0 0.000000     1.000000  0.000000  0.5 0.500000    0.750000 0.117964 0.343459 0.313282
-600733.SH  0.666667        1.0 0.500000     1.000000  0.666667  0.5 0.500000    0.333333 0.021552 0.146807 0.134567
-002647.SZ  0.500000        1.0 0.500000     0.000000  0.666667  1.0 0.500000    0.500000 0.186664 0.432046 0.423162
-000100.SZ  0.666667        1.0 0.500000     1.000000  0.666667  0.5 0.500000    0.333333 0.028862 0.169889 0.151735
+    Stock      MSE     RMSE      MAE        R2
+000063.SZ 0.001830 0.042782 0.042782       NaN
+000333.SZ 0.003678 0.060647 0.051166  0.994483
+600340.SH 0.100978 0.317771 0.317771       NaN
+000876.SZ 0.212791 0.461293 0.441788  0.131102
+300676.SZ 0.074263 0.272513 0.267125  0.683144
+002352.SZ 0.004733 0.068795 0.061401  0.989978
+600521.SH 0.151485 0.389211 0.389211       NaN
+300207.SZ 0.001214 0.034837 0.034837       NaN
+600673.SH 0.008553 0.092480 0.092480       NaN
+000002.SZ 0.124417 0.352728 0.352728       NaN
+002252.SZ 0.000386 0.019636 0.019636       NaN
+002594.SZ 0.073758 0.271583 0.259253  0.892474
+601669.SH 0.012143 0.110195 0.107875  0.987857
+002548.SZ 0.010091 0.100452 0.100452       NaN
+002422.SZ 0.028547 0.168958 0.164389  0.885812
+600309.SH 0.030124 0.173561 0.137928  0.839341
+000157.SZ 0.396379 0.629587 0.629576  0.000000
+600519.SH 0.004932 0.070230 0.069906  0.992293
+601238.SH 0.011308 0.106341 0.080242  0.939688
+002415.SZ 0.552177 0.743086 0.743086       NaN
+600276.SH 0.018035 0.134294 0.117836  0.975240
+601727.SH 1.246271 1.116365 1.052416 -3.985085
+002714.SZ 0.073134 0.270433 0.246878  0.885728
+002653.SZ 0.044932 0.211972 0.197139  0.955068
+600030.SH 0.009936 0.099677 0.095490  0.899402
+001979.SZ 0.031018 0.176121 0.128243  0.860417
+000625.SZ 0.020382 0.142764 0.130815  0.967244
+601628.SH 0.059007 0.242914 0.226032  0.685295
+300003.SZ 0.312254 0.558797 0.558797       NaN
+601318.SH 0.027219 0.164983 0.125204  0.854830
+600029.SH 0.106022 0.325610 0.325278  0.000000
+601601.SH 0.524267 0.724063 0.724063       NaN
+300498.SZ 0.011609 0.107743 0.106393  0.000000
+600267.SH 0.176501 0.420120 0.404947  0.646999
+000016.SZ 0.038660 0.196623 0.174454  0.793811
+000538.SZ 0.177750 0.421604 0.413882  0.800031
+600196.SH 0.059616 0.244163 0.203333  0.885538
+002271.SZ 0.054219 0.232849 0.232694  0.000000
+600418.SH 0.026541 0.162913 0.138250  0.971327
+600104.SH 0.153458 0.391737 0.375080  0.309440
+601988.SH 0.002186 0.046756 0.035298  0.000000
+600009.SH 0.067765 0.260318 0.241659  0.728938
+601211.SH 0.067715 0.260221 0.259421  0.000000
+002120.SZ 0.005005 0.070744 0.070744       NaN
+002460.SZ 0.011303 0.106318 0.098578  0.983045
+601857.SH 0.097535 0.312306 0.312095  0.000000
+601688.SH 0.008863 0.094143 0.094101  0.000000
+000651.SZ 0.014723 0.121337 0.111158  0.959033
+600039.SH 0.019667 0.140240 0.072977  0.973777
+300024.SZ 0.010618 0.103042 0.102646  0.000000
+000661.SZ 0.194308 0.440803 0.440803       NaN
+300014.SZ 0.016546 0.128633 0.120847  0.933263
+600006.SH 0.101359 0.318370 0.317532  0.000000
+002385.SZ 1.296949 1.138837 1.138837       NaN
+002567.SZ 0.076048 0.275769 0.275769       NaN
+600745.SH 0.012054 0.109791 0.109791       NaN
+002100.SZ 0.001460 0.038211 0.038211       NaN
+002074.SZ 0.015600 0.124901 0.124879  0.000000
+002466.SZ 0.019421 0.139360 0.117824  0.980579
+603259.SH 0.108545 0.329462 0.329451  0.000000
+300750.SZ 0.098987 0.314621 0.306394  0.775031
+002468.SZ 0.136215 0.369073 0.369073       NaN
+601066.SH 0.017105 0.130785 0.116135  0.969456
+600438.SH 0.030931 0.175872 0.119368  0.965203
+601633.SH 0.168352 0.410307 0.399997  0.775531
+000591.SZ 0.120731 0.347464 0.318556  0.861348
+002812.SZ 0.007780 0.088207 0.088207       NaN
+600900.SH 0.166149 0.407614 0.407613  0.335403
+600859.SH 0.002228 0.047199 0.046748  0.000000
+601607.SH 0.033789 0.183817 0.171183  0.966211
+000413.SZ 0.019184 0.138505 0.124629  0.976186
+002456.SZ 0.117964 0.343459 0.313282  0.671752
+600733.SH 0.021552 0.146807 0.134567  0.967671
+002647.SZ 0.186664 0.432046 0.423162  0.253345
+000100.SZ 0.028862 0.169889 0.151735  0.967530
+Regression metrics heatmap saved to img\regression_metrics_heatmap.png
+Too many stocks (75) to display in legend
+Aggregate regression summary visualization saved to img\aggregate_regression_summary.png
 
-Weighted Metric Averages (adjusted for sample size and class balance):
-Weighted_Accuracy: 0.6438
-Weighted_F1: 0.0000
-Weighted_AUC: 0.8562
-Weighted_AUPR: 0.8562
-Enhanced evaluation results saved to enhanced_evaluation_results.csv
+Average Regression Metrics:
+MSE: 0.1104
+RMSE: 0.2546
+MAE: 0.2433
+R2: 0.5515
+Regression evaluation results saved to regression_evaluation_results.csv
 Evaluation completed.

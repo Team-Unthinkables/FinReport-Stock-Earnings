@@ -2,7 +2,7 @@ import yaml
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler, random_split
+from torch.utils.data import DataLoader, Dataset, random_split
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -11,10 +11,9 @@ from model import FinReportModel
 from data_loader import load_data, split_data
 from preprocessing import select_features, normalize_features
 
-# Create directories for outputs
+# Create only necessary directories
 os.makedirs('models', exist_ok=True)
-os.makedirs('plots', exist_ok=True)
-os.makedirs('logs', exist_ok=True)
+os.makedirs('img', exist_ok=True)
 
 # Early Stopping implementation
 class EarlyStopping:
@@ -70,9 +69,9 @@ def plot_learning_curves(train_losses, val_losses):
     plt.ylabel('Loss')
     plt.title('Training and Validation Losses')
     plt.legend()
-    plt.savefig('plots/learning_curves.png')
+    plt.savefig('img/learning_curves.png')
     plt.close()
-    print("Learning curves saved to 'plots/learning_curves.png'")
+    print("Learning curves saved to 'img/learning_curves.png'")
 
 # Load configuration from config.yaml
 with open('src/config.yaml', 'r') as file:
@@ -107,13 +106,6 @@ df = load_data(data_path)
 train_df, test_df = split_data(df)
 train_features, train_labels = select_features(train_df)
 test_features, test_labels = select_features(test_df)
-
-# Data-level balancing using WeightedRandomSampler (if imbalanced)
-train_labels_int = train_labels.astype(int)
-class_counts = np.bincount(train_labels_int)
-weights = 1. / class_counts  # Inverse frequency per class
-samples_weight = np.array([weights[t] for t in train_labels_int])
-samples_weight = torch.from_numpy(samples_weight).double()
 
 # Normalize features
 train_features, scaler = normalize_features(train_features)
@@ -286,7 +278,7 @@ with torch.no_grad():
 test_loss /= len(test_loader.dataset)
 print(f"Test Loss: {test_loss:.6f}")
 
-# Calculate additional metrics
+# Calculate regression metrics
 all_test_preds = np.array(all_test_preds)
 all_test_targets = np.array(all_test_targets)
 
@@ -335,6 +327,16 @@ plt.plot([min_val, max_val], [min_val, max_val], 'r--')
 plt.xlabel('Actual Values')
 plt.ylabel('Predicted Values')
 plt.title(f'Predictions vs Actual (R² = {test_r2:.4f})')
+plt.grid(True)
+
+# Error distribution plot
+plt.subplot(2, 2, 4)
+errors = all_test_preds - all_test_targets
+plt.hist(errors, bins=30)
+plt.axvline(x=0, color='r', linestyle='--')
+plt.xlabel('Prediction Error')
+plt.ylabel('Frequency')
+plt.title(f'Error Distribution (RMSE = {test_rmse:.4f})')
 plt.grid(True)
 
 plt.tight_layout()
@@ -420,19 +422,13 @@ def perform_cross_validation(df, model_config, k_folds=5):
                 all_preds.extend(outputs.cpu().numpy())
                 all_labels.extend(y_test.cpu().numpy())
         
-        # Calculate metrics
-        from sklearn.metrics import mean_squared_error, r2_score
+        # Calculate regression metrics
+        all_preds = np.array(all_preds)
+        all_labels = np.array(all_labels)
         mse = mean_squared_error(all_labels, all_preds)
+        rmse = np.sqrt(mse)
+        mae = mean_absolute_error(all_labels, all_preds)
         r2 = r2_score(all_labels, all_preds)
-        
-        # Calculate classification metrics
-        binary_true = (np.array(all_labels) > 0).astype(int)
-        threshold = np.mean(all_preds)
-        binary_preds = (np.array(all_preds) > threshold).astype(int)
-        
-        from sklearn.metrics import accuracy_score, f1_score
-        accuracy = accuracy_score(binary_true, binary_preds)
-        f1 = f1_score(binary_true, binary_preds, zero_division=0)
         
         # Plot predictions vs actual for this fold
         plt.subplot(k_folds, 2, fold*2+1)
@@ -446,17 +442,16 @@ def perform_cross_validation(df, model_config, k_folds=5):
         plt.subplot(k_folds, 2, fold*2+2)
         plt.hist(all_labels, bins=20, alpha=0.5, label='Actual')
         plt.hist(all_preds, bins=20, alpha=0.5, label='Predicted')
-        plt.axvline(x=threshold, color='r', linestyle='--', label='Threshold')
-        plt.title(f'Fold {fold+1}: Distribution (Acc = {accuracy:.4f}, F1 = {f1:.4f})')
+        plt.title(f'Fold {fold+1}: Distribution (RMSE = {rmse:.4f})')
         plt.legend()
         
         # Store metrics
         fold_metrics.append({
             'fold': fold+1,
             'mse': mse,
-            'r2': r2,
-            'accuracy': accuracy,
-            'f1': f1
+            'rmse': rmse,
+            'mae': mae,
+            'r2': r2
         })
     
     plt.tight_layout()
@@ -466,14 +461,14 @@ def perform_cross_validation(df, model_config, k_folds=5):
     # Print average metrics
     if fold_metrics:
         avg_mse = np.mean([m['mse'] for m in fold_metrics])
+        avg_rmse = np.mean([m['rmse'] for m in fold_metrics])
+        avg_mae = np.mean([m['mae'] for m in fold_metrics])
         avg_r2 = np.mean([m['r2'] for m in fold_metrics])
-        avg_accuracy = np.mean([m['accuracy'] for m in fold_metrics])
-        avg_f1 = np.mean([m['f1'] for m in fold_metrics])
         
         print("\nCross-Validation Results:")
         print(f"Average MSE: {avg_mse:.6f}")
+        print(f"Average RMSE: {avg_rmse:.6f}")
+        print(f"Average MAE: {avg_mae:.6f}")
         print(f"Average R²: {avg_r2:.6f}")
-        print(f"Average Accuracy: {avg_accuracy:.6f}")
-        print(f"Average F1: {avg_f1:.6f}")
     
     return fold_metrics
