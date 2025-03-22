@@ -7,28 +7,62 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
       color: #333;
+      line-height: 1.5;
     }
     h1 {
       text-align: center;
       margin-bottom: 30px;
+      color: #0070c0;
     }
-    .report {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 40px;
-      border-radius: 4px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+      gap: 40px;
+      justify-content: center;
+    }
+    @media (max-width: 850px) {
+      .report-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .page-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
-  <h1>FinReport - Multiple Stocks</h1>
-  {% for report in reports %}
-    <div class="report">
+  <h1>FinReport - Multiple Stock Analysis</h1>
+  
+  <div class="report-grid">
+    {% for report in reports %}
       {{ report | safe }}
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
+  
+  <div class="page-footer">
+    &copy; {{ now.year }} FinReport Analysis System - All reports generated on {{ now.strftime('%Y-%m-%d') }}
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const dateStr = now.toISOString().split('T')[0];
+      
+      const footer = document.querySelector('.page-footer');
+      footer.innerHTML = footer.innerHTML
+        .replace('{{ now.year }}', year)
+        .replace("{{ now.strftime('%Y-%m-%d') }}", dateStr);
+    });
+  </script>
 </body>
 </html>

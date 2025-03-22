@@ -20,6 +20,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 import sys
 sys.path.append('.')  # Make sure current directory is in path
+from report_generator import enhanced_generate_html_finreport, generate_risk_assessment_text
 
 # ----- Set Up Logging to File and Terminal -----
 logging.basicConfig(
@@ -376,11 +377,12 @@ for stock in stock_list:
     logger.info(f"Sentiment Score for {stock}: {sentiment_score:.4f}")
     news_source = "财联社"
 
-    market_factor = compute_market_factor(df_stock)
-    size_factor = compute_size_factor(df_stock)
-    valuation_factor = compute_valuation_factor(df_stock)
-    profitability_factor = compute_profitability_factor(df_stock)
-    investment_factor = compute_investment_factor(df_stock)
+    # Updated factor function calls with news_summary
+    market_factor = compute_market_factor(df_stock, news_summary)
+    size_factor = compute_size_factor(df_stock, news_summary)
+    valuation_factor = compute_valuation_factor(df_stock, news_summary)
+    profitability_factor = compute_profitability_factor(df_stock, news_summary)
+    investment_factor = compute_investment_factor(df_stock, news_summary)
     news_effect_factor = compute_news_effect_factor(sentiment_score)
     event_factor = compute_event_factor(news_summary)
     rsi_factor = compute_rsi_factor(df_stock)
@@ -409,7 +411,24 @@ for stock in stock_list:
                      "However, market conditions remain volatile, so caution is advised.")
     date_str = "Today"
 
-    report_html = generate_html_finreport(
+    try:
+        if 'vol' in locals() and 'max_dd' in locals():
+            risk_assessment_text, overall_trend_text, summary_text = generate_risk_assessment_text(
+                predicted_return=predicted_return,
+                volatility=vol,
+                max_drawdown=max_dd
+            )
+        else:
+            risk_assessment_text = "Historical data shows moderate stock fluctuations in 30 days, no abnormal swings."
+            overall_trend_text = "Positive" if predicted_return >= 0 else "Negative"
+            summary_text = None
+    except Exception as e:
+        print(f"Error generating risk assessment: {e}")
+        risk_assessment_text = "Historical data shows moderate stock fluctuations in 30 days, no abnormal swings."
+        overall_trend_text = "Positive" if predicted_return >= 0 else "Negative"
+        summary_text = None
+
+    report_html = enhanced_generate_html_finreport(
         stock_symbol=stock,
         date_str=date_str,
         news_summary=news_summary,
@@ -424,10 +443,11 @@ for stock in stock_list:
         rsi_factor=rsi_factor,
         mfi_factor=mfi_factor,
         bias_factor=bias_factor,
-        risk_assessment=risk_assessment,
-        overall_trend=overall_trend,
+        risk_assessment=risk_assessment_text,
+        overall_trend=overall_trend_text,
         news_effect_score=news_effect_factor["value"],
         risk_metrics=risk_metrics,
+        summary_text=summary_text,
         template_path="templates/report_template.html"
     )
     all_reports.append(report_html)

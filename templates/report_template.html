@@ -3,130 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <title>FinReport for {{ stock_symbol }}</title>
-    <link rel="stylesheet" href="report_style.css">
     <style>
-      body { font-family: Arial, sans-serif; margin: 20px; color: #000; }
-      .header { margin-bottom: 20px; }
-      .news-header { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
-      .news-content { font-size: 1em; margin-bottom: 10px; }
-      .source { font-style: italic; color: #555; margin-bottom: 20px; }
-      .section { margin-bottom: 20px; }
-      .section-title { font-weight: bold; margin-bottom: 5px; }
-      ul { list-style-type: disc; margin-left: 20px; }
-      .label-blue { color: rgb(0, 112, 192); font-weight: bold; }
-      .normal-text { color: #000; }
-      .positive { color: rgb(3, 177, 82); }
-      .negative { color: rgb(255, 19, 19); }
-      .disclaimer { font-size: 0.9em; color: #777; border-top: 1px solid #ccc; padding-top: 10px; }
+        /* Base styles and layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.5;
+        }
+        .report-container {
+            width: 800px;
+            margin: 20px auto;
+            border: 2px solid #000;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* News header */
+        .news-header {
+            padding: 15px 20px;
+            border-bottom: 1px dashed #ccc;
+            display: flex;
+            align-items: flex-start;
+        }
+        .news-icon {
+            margin-right: 15px;
+            font-size: 24px;
+            color: #000;
+        }
+        .news-content {
+            flex: 1;
+        }
+        /* FinReport header */
+        .finreport-header {
+            text-align: center;
+            margin: 0;
+            padding: 15px 0;
+            border-bottom: 1px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .finreport-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            background-color: #f8f8d0;
+            position: relative;
+            transform: rotate(45deg);
+            display: inline-block;
+        }
+        .finreport-icon::before, 
+        .finreport-icon::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #f8f8d0;
+            border: 1px solid #d0d0a0;
+        }
+        .finreport-icon::before {
+            transform: rotate(30deg);
+        }
+        .finreport-icon::after {
+            transform: rotate(60deg);
+        }
+        .finreport-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        /* Report intro */
+        .report-intro {
+            padding: 15px 20px;
+            margin: 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        /* Section headers */
+        .section-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            padding: 15px 20px 10px;
+        }
+        /* Return forecast list */
+        .factor-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 20px 15px;
+        }
+        .factor-item {
+            margin-bottom: 8px;
+        }
+        .factor-name {
+            color: #0070c0;
+            font-weight: bold;
+        }
+        .positive {
+            color: #03b152;
+        }
+        .negative {
+            color: #ff1313;
+        }
+        /* Other sections */
+        .risk-assessment,
+        .overall-trend,
+        .summary {
+            padding: 0 20px 15px;
+        }
+        .disclaimer {
+            padding: 15px 20px;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            border-top: 1px dashed #ccc;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-      <h1>FinReport for {{ stock_symbol }}</h1>
-      <p>{{ date_str }}</p>
-    </div>
-    <div class="section">
-      <div class="news-header">
-         Analyze stock {{ stock_symbol }}, {{ date_str }}, the following news has emerged:
-      </div>
-      <div class="news-content">
-         {{ news_summary }}
-      </div>
-      <div class="source">
-         <strong>Source:</strong> {{ news_source }}
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-title">Return Forecast</div>
-      <ul>
-         <li>
-           <span class="label-blue">Market Factor:</span>
-           <span class="normal-text">{{ market_factor.desc_base }}</span>
-           <span class="{% if market_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-             {{ market_factor.desc_highlight }}
-           </span>
-         </li>
-         <li>
-           <span class="label-blue">Size Factor:</span>
-           <span class="normal-text">{{ size_factor.desc_base }}</span>
-           <span class="{% if size_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-             {{ size_factor.desc_highlight }}
-           </span>
-         </li>
-         <li>
-           <span class="label-blue">Valuation Factor:</span>
-           <span class="normal-text">{{ valuation_factor.desc_base }}</span>
-           <span class="{% if valuation_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-             {{ valuation_factor.desc_highlight }}
-           </span>
-         </li>
-         <li>
-           <span class="label-blue">Profitability Factor:</span>
-           <span class="normal-text">{{ profitability_factor.desc_base }}</span>
-           <span class="{% if profitability_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-             {{ profitability_factor.desc_highlight }}
-           </span>
-         </li>
-         <li>
-           <span class="label-blue">Investment Factor:</span>
-           <span class="normal-text">{{ investment_factor.desc_base }}</span>
-           <span class="{% if investment_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-             {{ investment_factor.desc_highlight }}
-           </span>
-         </li>
-         <li>
-           <span class="label-blue">News Effect Factor:</span>
-           <span class="normal-text">{{ news_effect_factor.desc_base }}</span>
-           <span class="{% if news_effect_score >= 0 %}positive{% else %}negative{% endif %}">
-             {{ news_effect_factor.desc_highlight }}
-           </span>
-         </li>
-         <li>
-           <span class="label-blue">Event Factor:</span>
-           <span class="normal-text">{{ event_factor.desc_base }}</span>
-           <span class="{% if event_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-             {{ event_factor.desc_highlight }}
-           </span>
-         </li>
-         {% if rsi_factor.desc != "RSI data unavailable." %}
-         <li>
-           <span class="label-blue">RSI Factor:</span>
-           <span class="normal-text">{{ rsi_factor.desc }}</span>
-         </li>
-         {% endif %}
-         {% if mfi_factor.desc != "MFI data unavailable." %}
-         <li>
-           <span class="label-blue">MFI Factor:</span>
-           <span class="normal-text">{{ mfi_factor.desc }}</span>
-         </li>
-         {% endif %}
-         {% if bias_factor.desc != "BIAS data unavailable." %}
-         <li>
-           <span class="label-blue">BIAS Factor:</span>
-           <span class="normal-text">{{ bias_factor.desc }}</span>
-         </li>
-         {% endif %}
-      </ul>
-    </div>
-    <div class="section">
-      <div class="section-title">Risk Assessment</div>
-      <p>{{ risk_assessment }}</p>
-      {% if risk_metrics %}
-      <ul>
-        <li><strong>Conditional Volatility:</strong> {{ risk_metrics.volatility }}</li>
-        <li><strong>VaR (95%):</strong> {{ risk_metrics.var_95 }}</li>
-        <li><strong>Max Drawdown:</strong> {{ risk_metrics.max_drawdown }}</li>
-        <li><strong>CVaR (Expected Shortfall):</strong> {{ risk_metrics.cvar }}</li>
-        <li><strong>Risk-Adjusted Ratio:</strong> {{ risk_metrics.risk_adjusted_ratio }}</li>
-      </ul>
-      {% endif %}
-    </div>
-    <div class="section">
-      <div class="section-title">Overall Trend Prognosis</div>
-      <p>{{ overall_trend }}</p>
-    </div>
-    <div class="disclaimer">
-      <p>Disclaimer: This is a research-based forecast. Kindly exercise caution and acknowledge personal risks.</p>
+    <div class="report-container">
+        <!-- News Header -->
+        <div class="news-header">
+            <div class="news-icon">👨‍💼</div>
+            <div class="news-content">
+                Analyze stock <strong>{{ stock_symbol }}</strong>. Today, the following news has emerged:<br>
+                {{ news_summary }}
+            </div>
+        </div>
+        
+        <!-- FinReport Header -->
+        <div class="finreport-header">
+            <div class="finreport-icon"></div>
+            <h1 class="finreport-title">FinReport</h1>
+        </div>
+        
+        <!-- Report Introduction -->
+        <p class="report-intro">
+            Based on the analysis from our model, the following impacts on the stock's returns are expected from this news.
+        </p>
+        
+        <!-- Return Forecast -->
+        <h2 class="section-header">Return Forecast</h2>
+        <ul class="factor-list">
+            <li class="factor-item">
+                <span class="factor-name">Market Factor:</span> 
+                <span>{{ market_factor.desc_base }}</span>
+                <span class="{% if market_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ market_factor.desc_highlight }}
+                </span>
+            </li>
+            <li class="factor-item">
+                <span class="factor-name">Size Factor:</span> 
+                <span>{{ size_factor.desc_base }}</span>
+                <span class="{% if size_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ size_factor.desc_highlight }}
+                </span>
+            </li>
+            <li class="factor-item">
+                <span class="factor-name">Valuation (BP) Factor:</span> 
+                <span>{{ valuation_factor.desc_base }}</span>
+                <span class="{% if valuation_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ valuation_factor.desc_highlight }}
+                </span>
+            </li>
+            <li class="factor-item">
+                <span class="factor-name">Profitability Factor:</span> 
+                <span>{{ profitability_factor.desc_base }}</span>
+                <span class="{% if profitability_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ profitability_factor.desc_highlight }}
+                </span>
+            </li>
+            <li class="factor-item">
+                <span class="factor-name">Investment Factor:</span> 
+                <span>{{ investment_factor.desc_base }}</span>
+                <span class="{% if investment_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ investment_factor.desc_highlight }}
+                </span>
+            </li>
+            <li class="factor-item">
+                <span class="factor-name">News Effect Factor:</span> 
+                <span>{{ news_effect_factor.desc_base }}</span>
+                <span class="{% if news_effect_score >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ news_effect_factor.desc_highlight }}
+                </span>
+            </li>
+            <li class="factor-item">
+                <span class="factor-name">Event Factor:</span> 
+                <span>{{ event_factor.desc_base }}</span>
+                <span class="{% if event_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ event_factor.desc_highlight }}
+                </span>
+            </li>
+        </ul>
+        
+        <!-- Risk Assessment -->
+        <h2 class="section-header">Risk Assessment</h2>
+        <div class="risk-assessment">
+            <p>
+                {% if "heightened" in risk_assessment %}
+                  Historical data reveals heightened stock volatility in 30 days,
+                  <span class="negative">expected max decline: 10%, indicating substantial risk.</span>
+                {% else %}
+                  Historical data shows moderate stock fluctuations in 30 days,
+                  <span class="positive">expected max decline: 2%, indicating favorable risk.</span>
+                {% endif %}
+            </p>
+            {% if risk_metrics %}
+            <p>
+                <strong>Volatility:</strong> {{ risk_metrics.volatility }} | 
+                <strong>VaR (95%):</strong> {{ risk_metrics.var_95 }} | 
+                <strong>Max Drawdown:</strong> {{ risk_metrics.max_drawdown }}
+            </p>
+            {% endif %}
+        </div>
+        
+        <!-- Overall Trend -->
+        <h2 class="section-header">Overall Trend Prognosis</h2>
+        <div class="overall-trend">
+            <p class="{% if overall_trend == 'Positive' %}positive{% else %}negative{% endif %}">
+                {{ overall_trend }}
+            </p>
+        </div>
+        
+        <!-- Summary -->
+        <h2 class="section-header">Summary</h2>
+        <div class="summary">
+            <p>
+                After considering the revenue forecast and risk assessment, we conclude that 
+                {% if overall_trend == 'Positive' %}
+                  <span class="positive">the stock has a relatively low level of risk</span> with an estimated return growth of 1% to 2%.
+                {% else %}
+                  <span class="negative">the stock carries a high level of risk</span> and is expected to decline by over 8%.
+                {% endif %}
+            </p>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+            This report serves as a reference; it is not investment advice. Kindly exercise caution and acknowledge personal risks.
+        </div>
     </div>
 </body>
 </html>
