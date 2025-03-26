@@ -237,8 +237,8 @@ For any questions or feedback, please contact:
 **Kanishk**  
 **Kanishkgupta2003@outlook.com**
 
-<!-- **Kingshuk Chatterjee**  
-**kingshuk.chatterjee770@gmail.com** -->
+**Kingshuk Chatterjee**  
+**kingshuk.chatterjee770@gmail.com**
 
 **MD Azlan**  
 **azlan04.md@gmail.com**
