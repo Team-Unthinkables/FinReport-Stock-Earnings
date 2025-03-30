@@ -18,7 +18,7 @@ Additionally, the system computes comprehensive regression metrics (MSE, RMSE, M
 The final output is a polished HTML report that presents predictions, detailed technical factors (with conditional styling for key numeric values), and risk metrics. In parallel, comprehensive performance metrics are printed in the terminal and saved in heatmaps for further analysis.
 
 ## Code Structure and Workflow
-
+![System Workflow Flowchart](imgs/flowchart.png)
 ### Core Components
 
 1. **Data Processing Pipeline:**
