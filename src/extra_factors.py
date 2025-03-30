@@ -1,6 +1,7 @@
 import random
 import re
 import numpy as np
+import pandas as pd
 from textblob import TextBlob
 
 # Dictionary of positive and negative keywords related to finance
@@ -179,6 +180,7 @@ def compute_market_factor(df, news_text=""):
     
     # Add reduced randomization but keep within range
     effect_value = base_impact + random.uniform(-0.2, 0.2)
+    effect_value = effect_value * 1.5  # Amplify by 50%
     effect_value = max(min(effect_value, impact_range[1]), impact_range[0])
     effect_value = round(effect_value, 1)  # Round to 1 decimal place
     
@@ -317,6 +319,7 @@ def compute_size_factor(df, news_text=""):
         
     # Calculate final effect with some randomization
     effect_value = base_effect + sentiment_modifier + news_modifier
+    effect_value = effect_value * 1.5  # Amplify by 50%
     effect_value = effect_value + random.uniform(-0.1, 0.1)  # Add small randomization
     effect_value = round(max(min(effect_value, 1.5), -1.5), 1)  # Cap and round
     
@@ -673,8 +676,7 @@ def compute_profitability_factor(df, news_text=""):
     
     # Calculate final effect
     effect_value = base_effect + pct_effect * 0.5 + sentiment * 0.5
-    
-    # Add randomization
+    effect_value = effect_value * 1.5  # Amplify by 50%
     effect_value += random.uniform(-0.2, 0.2)
     
     # Round and cap final value
@@ -899,7 +901,7 @@ def compute_investment_factor(df, news_text=""):
         ]
         
         highlight_templates = [
-            "limit growth, causing a {value}% decrease.",
+            "limit growth, resulting in a {value}% decrease.",
             "result in a {value}% reduction in potential.",
             "lead to approximately {value}% downside risk.",
             "contribute to an estimated {value}% negative impact.",
@@ -1326,4 +1328,403 @@ def compute_bias_factor(df):
         "value": value,
         "desc_base": random.choice(templates),
         "desc_highlight": highlight
+    }
+# Add to extra_factors.py - these functions will amplify and improve your existing factors
+
+def amplify_all_factors(market_factor, size_factor, valuation_factor, profitability_factor, 
+                        investment_factor, news_effect_factor, event_factor):
+    """
+    Amplifies all factor values based on factor relationships and market context.
+    This increases the magnitude of values while preserving their directional signals.
+    
+    Returns enhanced versions of all factors with larger, more meaningful values.
+    """
+    import random
+    
+    # Extract values for processing
+    values = {
+        'market_factor': market_factor['value'] if isinstance(market_factor, dict) and 'value' in market_factor else 0.0,
+        'size_factor': size_factor['value'] if isinstance(size_factor, dict) and 'value' in size_factor else 0.0,
+        'valuation_factor': valuation_factor['value'] if isinstance(valuation_factor, dict) and 'value' in valuation_factor else 0.0,
+        'profitability_factor': profitability_factor['value'] if isinstance(profitability_factor, dict) and 'value' in profitability_factor else 0.0,
+        'investment_factor': investment_factor['value'] if isinstance(investment_factor, dict) and 'value' in investment_factor else 0.0,
+        'news_effect_factor': news_effect_factor['value'] if isinstance(news_effect_factor, dict) and 'value' in news_effect_factor else 0.0,
+        'event_factor': event_factor['value'] if isinstance(event_factor, dict) and 'value' in event_factor else 0.0
+    }
+    
+    # 1. Apply base amplification factor (2-3x increase)
+    amplification_base = 2.5
+    
+    # 2. Calculate correlating factors for additional amplification
+    # When multiple factors point in the same direction, we increase their impact
+    
+    # Count positive and negative factors
+    positive_count = sum(1 for v in values.values() if v > 0.5)
+    negative_count = sum(1 for v in values.values() if v < -0.5)
+    
+    # Determine dominant direction
+    direction_amplifier = 1.0
+    if positive_count >= 3 and positive_count > negative_count:
+        # Enhance positive factors when multiple positive signals exist
+        direction_amplifier = 1.3
+        direction = "positive"
+    elif negative_count >= 3 and negative_count > positive_count:
+        # Enhance negative factors when multiple negative signals exist
+        direction_amplifier = 1.3
+        direction = "negative"
+    else:
+        direction = "mixed"
+    
+    # 3. Special amplification for key factor relationships
+    relationship_amplifiers = {
+        'market_factor': 1.0,
+        'size_factor': 1.0,
+        'valuation_factor': 1.0,
+        'profitability_factor': 1.0,
+        'investment_factor': 1.0,
+        'news_effect_factor': 1.0,
+        'event_factor': 1.0
+    }
+    
+    # Market and event factors often correlate
+    if values['market_factor'] * values['event_factor'] > 0:
+        relationship_amplifiers['market_factor'] *= 1.2
+        relationship_amplifiers['event_factor'] *= 1.2
+    
+    # Profitability and investment often correlate
+    if values['profitability_factor'] * values['investment_factor'] > 0:
+        relationship_amplifiers['profitability_factor'] *= 1.2
+        relationship_amplifiers['investment_factor'] *= 1.2
+    
+    # News effect and profitability often correlate
+    if values['news_effect_factor'] * values['profitability_factor'] > 0:
+        relationship_amplifiers['news_effect_factor'] *= 1.15
+        relationship_amplifiers['profitability_factor'] *= 1.15
+    
+    # 4. Apply dynamic amplification based on factor magnitude
+    # Smaller values get more amplification to ensure visibility
+    dynamic_amplifiers = {}
+    for factor, value in values.items():
+        if abs(value) < 0.3:
+            # Small values get more amplification
+            dynamic_amplifiers[factor] = 1.5
+        elif abs(value) < 0.7:
+            # Medium values get moderate amplification
+            dynamic_amplifiers[factor] = 1.3
+        else:
+            # Large values get standard amplification
+            dynamic_amplifiers[factor] = 1.1
+    
+    # 5. Apply amplification with slight randomization for naturalistic variation
+    enhanced_factors = {}
+    for factor_name, orig_factor in [
+        ('market_factor', market_factor),
+        ('size_factor', size_factor),
+        ('valuation_factor', valuation_factor),
+        ('profitability_factor', profitability_factor),
+        ('investment_factor', investment_factor),
+        ('news_effect_factor', news_effect_factor),
+        ('event_factor', event_factor)
+    ]:
+        if not isinstance(orig_factor, dict) or 'value' not in orig_factor:
+            continue
+            
+        orig_value = orig_factor['value']
+        
+        # Calculate total amplification
+        total_amplifier = (
+            amplification_base * 
+            relationship_amplifiers[factor_name] * 
+            dynamic_amplifiers[factor_name]
+        )
+        
+        # Apply directional amplification
+        if (direction == "positive" and orig_value > 0) or (direction == "negative" and orig_value < 0):
+            total_amplifier *= direction_amplifier
+        
+        # Apply amplification
+        new_value = orig_value * total_amplifier
+        
+        # Add slight randomization (±10%)
+        randomization = random.uniform(0.9, 1.1)
+        new_value *= randomization
+        
+        # Ensure the sign hasn't changed and values aren't too extreme
+        if orig_value * new_value <= 0:  # If signs differ
+            new_value = orig_value * 1.5  # Fallback to simple amplification
+        
+        # Cap at reasonable values (-5 to 5)
+        new_value = max(min(new_value, 5.0), -5.0)
+        
+        # Round to 1 decimal place
+        new_value = round(new_value, 1)
+        
+        # Copy the original factor and update value
+        enhanced_factor = orig_factor.copy()
+        enhanced_factor['value'] = new_value
+        
+        # Fix "causing" in impact text
+        if 'desc_highlight' in enhanced_factor:
+            if "may causing" in enhanced_factor['desc_highlight']:
+                enhanced_factor['desc_highlight'] = enhanced_factor['desc_highlight'].replace("may causing", "may cause")
+            elif "could causing" in enhanced_factor['desc_highlight']:
+                enhanced_factor['desc_highlight'] = enhanced_factor['desc_highlight'].replace("could causing", "could cause")
+            elif "likely causing" in enhanced_factor['desc_highlight']:
+                enhanced_factor['desc_highlight'] = enhanced_factor['desc_highlight'].replace("likely causing", "likely cause")
+        
+        enhanced_factors[factor_name] = enhanced_factor
+    
+    return enhanced_factors
+
+def improve_market_factor_value(market_factor, df):
+    """
+    Improves the market factor value using technical indicators in the dataset.
+    """
+    import numpy as np
+    
+    if not isinstance(market_factor, dict) or 'value' not in market_factor:
+        return market_factor
+    
+    # Check if we have technical indicators to use
+    if 'technical_indicators_overbought_oversold_RSI' in df.columns and len(df) > 1:
+        # Get the latest RSI
+        rsi = df['technical_indicators_overbought_oversold_RSI'].iloc[-1]
+        
+        # Use RSI to enhance market factor
+        if not pd.isna(rsi):
+            if rsi > 70:  # Overbought
+                # Make market factor more negative
+                market_factor['value'] = market_factor['value'] - 1.0
+            elif rsi < 30:  # Oversold
+                # Make market factor more positive
+                market_factor['value'] = market_factor['value'] + 1.0
+    
+    # Check if we have BIAS indicator
+    if 'technical_indicators_overbought_oversold_BIAS' in df.columns and len(df) > 1:
+        bias = df['technical_indicators_overbought_oversold_BIAS'].iloc[-1]
+        
+        if not pd.isna(bias):
+            # High positive BIAS suggests overbought conditions (bearish)
+            if bias > 5:
+                market_factor['value'] = market_factor['value'] - 0.8
+            elif bias < -5:
+                market_factor['value'] = market_factor['value'] + 0.8
+    
+    # Apply CCI indicator if available (Commodity Channel Index)
+    if 'technical_indicators_overbought_oversold_CCI' in df.columns and len(df) > 1:
+        cci = df['technical_indicators_overbought_oversold_CCI'].iloc[-1]
+        
+        if not pd.isna(cci):
+            if cci > 100:  # Bullish momentum
+                market_factor['value'] = market_factor['value'] + 0.7
+            elif cci < -100:  # Bearish momentum
+                market_factor['value'] = market_factor['value'] - 0.7
+    
+    # Cap the value to reasonable ranges
+    market_factor['value'] = max(min(market_factor['value'], 4.0), -4.0)
+    
+    # Round to 1 decimal
+    market_factor['value'] = round(market_factor['value'], 1)
+    
+    return market_factor
+
+def improve_profitability_factor_value(profitability_factor, df, news_text):
+    """
+    Enhances profitability factor values with more sophisticated analysis.
+    """
+    import re
+    
+    if not isinstance(profitability_factor, dict) or 'value' not in profitability_factor:
+        return profitability_factor
+    
+    # Extract profit percentage changes from news
+    profit_increase_pattern = r'(净利|利润|盈利|profit|earning).{0,10}(增|增长|升|increase|rise|up).{0,5}(\d+(\.\d+)?%?)'
+    profit_decrease_pattern = r'(净利|利润|亏损|loss|profit|earning).{0,10}(降|下降|decrease|decline|drop).{0,5}(\d+(\.\d+)?%?)'
+    
+    news_lower = news_text.lower() if news_text else ""
+    
+    # Look for specific profit keywords
+    if "大幅增长" in news_text or "significantly increased" in news_lower:
+        profitability_factor['value'] += 1.5
+    elif "大幅下降" in news_text or "significantly decreased" in news_lower:
+        profitability_factor['value'] -= 1.5
+    elif "增长" in news_text or "increased" in news_lower:
+        profitability_factor['value'] += 0.8
+    elif "下降" in news_text or "decreased" in news_lower:
+        profitability_factor['value'] -= 0.8
+    
+    # Extract profit percentages
+    profit_increases = re.findall(profit_increase_pattern, news_lower)
+    profit_decreases = re.findall(profit_decrease_pattern, news_lower)
+    
+    if profit_increases:
+        for match in profit_increases:
+            if match and len(match) >= 3:
+                percent_str = match[2]
+                try:
+                    # Remove % sign if present
+                    percent_str = percent_str.replace('%', '')
+                    percent_value = float(percent_str)
+                    # Scale up profit increase impacts
+                    profitability_factor['value'] += min(percent_value / 20, 2.5)
+                except ValueError:
+                    continue
+    
+    if profit_decreases:
+        for match in profit_decreases:
+            if match and len(match) >= 3:
+                percent_str = match[2]
+                try:
+                    # Remove % sign if present
+                    percent_str = percent_str.replace('%', '')
+                    percent_value = float(percent_str)
+                    # Scale up profit decrease impacts
+                    profitability_factor['value'] -= min(percent_value / 20, 2.5)
+                except ValueError:
+                    continue
+    
+    # Check for specific loss/profit mentions
+    if "净亏" in news_text or "亏损" in news_text or "净亏损" in news_text or "net loss" in news_lower:
+        profitability_factor['value'] -= 1.8
+    elif "净利润" in news_text or "盈利" in news_text or "净利" in news_text or "net profit" in news_lower:
+        profitability_factor['value'] += 0.8
+    
+    # Quarterly vs annual distinction
+    is_quarterly = bool(re.search(r'(季度|quarterly|Q[1-4]|第[一二三四]季)', news_text))
+    is_annual = bool(re.search(r'(年度|annual|yearly|full year|全年)', news_text))
+    
+    if is_annual:
+        # Annual reports have more impact
+        profitability_factor['value'] *= 1.5
+    
+    # Cap the value to reasonable ranges
+    profitability_factor['value'] = max(min(profitability_factor['value'], 5.0), -5.0)
+    
+    # Round to 1 decimal
+    profitability_factor['value'] = round(profitability_factor['value'], 1)
+    
+    return profitability_factor
+
+def improve_investment_factor_value(investment_factor, news_text):
+    """
+    Improves investment factor based on more detailed news analysis.
+    """
+    import re
+    
+    if not isinstance(investment_factor, dict) or 'value' not in investment_factor:
+        return investment_factor
+    
+    # Keywords for different types of investments
+    acquisition_keywords = ['acquisition', 'acquire', 'M&A', 'takeover', 'purchase', '收购', '并购']
+    expansion_keywords = ['expansion', 'new facility', 'new plant', 'capacity', 'increase capacity', '扩产', '扩建']
+    rd_keywords = ['R&D', 'research', 'development', 'innovation', 'technology', '研发', '技术']
+    partnership_keywords = ['partnership', 'collaboration', 'joint venture', 'strategic', '合作', '伙伴']
+    
+    news_lower = news_text.lower() if news_text else ""
+    
+    # Look for investment amounts
+    amount_pattern = r'(\d+(\.\d+)?)亿元'
+    amount_matches = re.findall(amount_pattern, news_text)
+    
+    if amount_matches:
+        total_amount = 0
+        for match in amount_matches:
+            try:
+                amount = float(match[0])
+                total_amount += amount
+            except ValueError:
+                continue
+        
+        # Scale investment effect based on size (in billions)
+        if total_amount > 50:
+            investment_factor['value'] += 2.5
+        elif total_amount > 20:
+            investment_factor['value'] += 2.0
+        elif total_amount > 10:
+            investment_factor['value'] += 1.5
+        elif total_amount > 5:
+            investment_factor['value'] += 1.0
+        elif total_amount > 1:
+            investment_factor['value'] += 0.7
+        elif total_amount > 0:
+            investment_factor['value'] += 0.4
+    
+    # Check for investment types
+    acquisition_count = sum(1 for kw in acquisition_keywords if kw in news_lower)
+    expansion_count = sum(1 for kw in expansion_keywords if kw in news_lower)
+    rd_count = sum(1 for kw in rd_keywords if kw in news_lower)
+    partnership_count = sum(1 for kw in partnership_keywords if kw in news_lower)
+    
+    # Add effects based on investment types
+    investment_factor['value'] += acquisition_count * 0.6
+    investment_factor['value'] += expansion_count * 0.5
+    investment_factor['value'] += rd_count * 0.7
+    investment_factor['value'] += partnership_count * 0.4
+    
+    # Cap the value to reasonable ranges
+    investment_factor['value'] = max(min(investment_factor['value'], 5.0), -5.0)
+    
+    # Round to 1 decimal
+    investment_factor['value'] = round(investment_factor['value'], 1)
+    
+    return investment_factor
+
+def improve_news_effect_factor(news_effect_factor, event_factor):
+    """
+    Improves news effect factor with more significant values.
+    """
+    if not isinstance(news_effect_factor, dict) or 'value' not in news_effect_factor:
+        return news_effect_factor
+        
+    # Amplify news effect based on event factor
+    if isinstance(event_factor, dict) and 'value' in event_factor:
+        # Strong event factors strengthen news effects
+        if abs(event_factor['value']) > 1.0:
+            # Maintain the sign but increase magnitude
+            sign = 1 if news_effect_factor['value'] >= 0 else -1
+            news_effect_factor['value'] = sign * (abs(news_effect_factor['value']) + 0.8)
+    
+    # Simple amplification
+    news_effect_factor['value'] *= 2.0
+    
+    # Cap the value to reasonable ranges
+    news_effect_factor['value'] = max(min(news_effect_factor['value'], 4.0), -4.0)
+    
+    # Round to 1 decimal
+    news_effect_factor['value'] = round(news_effect_factor['value'], 1)
+    
+    return news_effect_factor
+
+def fix_grammar_in_factors(factors_dict):
+    for factor_name, factor in factors_dict.items():
+        if not isinstance(factor, dict):
+            continue
+        if 'desc_highlight' in factor:
+            highlight = factor['desc_highlight']
+            # Fix "causing" issues
+            if " causing " in highlight:
+                fixed = highlight.replace(" causing ", " cause ")
+                factor['desc_highlight'] = fixed
+            elif " causing" in highlight:
+                fixed = highlight.replace(" causing", " cause")
+            elif "could causing" in highlight:
+                fixed = highlight.replace("could causing", "could cause")
+            elif "may causing" in highlight:
+                fixed = highlight.replace("may causing", "may cause")
+            elif "likely causing" in highlight:
+                fixed = highlight.replace("likely causing", "likely cause")
+            elif "potentially causing" in highlight:
+                fixed = highlight.replace("potentially causing", "potentially cause")
+    # Return the modified dictionary for clarity
+    return factors_dict
+
+# New helper function with error handling in case factor is None
+def format_factor_for_display(factor):
+    if not factor or not isinstance(factor, dict):
+        return {'value': 0.0, 'desc_text': 'No data available', 'impact_text': 'neutral impact.'}
+    # ...existing formatting logic...
+    return {
+        'value': factor.get('value', 0.0),
+        'desc_text': factor.get('desc_base', ''),
+        'impact_text': factor.get('desc_highlight', '')
     }

@@ -68,7 +68,8 @@ def generate_html_finreport(
     overall_trend,
     news_effect_score,   # numeric value
     risk_metrics=None,   # New optional parameter
-    template_path="templates/report_template.html"
+    template_path="templates/report_template.html",
+    content_only=False  # Add this parameter
 ):
     template_dir = os.path.dirname(template_path) or '.'
     env = Environment(loader=FileSystemLoader(template_dir))
@@ -93,9 +94,22 @@ def generate_html_finreport(
         risk_assessment=risk_assessment,
         overall_trend=overall_trend,
         news_effect_score=news_effect_score,
-        risk_metrics=risk_metrics  # Pass risk metrics to the template
+        risk_metrics=risk_metrics,
+        content_only=content_only  # Pass to template
     )
     return rendered_html
+
+def extract_report_content(html_report):
+    """
+    Extract just the report container div from a full HTML report.
+    This is needed to avoid nesting complete HTML documents inside each other.
+    """
+    import re
+    pattern = r'<div class="report-container">(.*?)</div>\s*</body>\s*</html>'
+    match = re.search(pattern, html_report, re.DOTALL)
+    if match:
+        return '<div class="report-container">' + match.group(1) + '</div>'
+    return html_report  # Return original if pattern not found
 
 def generate_multi_report_html(reports, template_path="templates/multi_report_template.html"):
     """
@@ -107,16 +121,32 @@ def generate_multi_report_html(reports, template_path="templates/multi_report_te
     template_file = os.path.basename(template_path)
     template = env.get_template(template_file)
     
+    # Extract just the report container from each report
+    processed_reports = []
+    for report in reports:
+        processed_reports.append(extract_report_content(report))
+    
     # Pass the current datetime as 'now'
     now = datetime.now()
     
-    rendered_html = template.render(reports=reports, now=now)
+    rendered_html = template.render(reports=processed_reports, now=now)
     return rendered_html
 
 def save_html_report(html_content, output_filename="finreport.html"):
-    with open(output_filename, "w", encoding="utf-8") as f:
-        f.write(html_content)
-    print(f"HTML report saved to: {output_filename}")
+    try:
+        with open(output_filename, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        print(f"HTML report saved to: {output_filename}")
+    except Exception as e:
+        print(f"Error saving HTML report: {e}")
+        # Try an alternative approach if the first one fails
+        try:
+            import codecs
+            with codecs.open(output_filename, "w", encoding="utf-8") as f:
+                f.write(html_content)
+            print(f"HTML report saved using codecs to: {output_filename}")
+        except Exception as e2:
+            print(f"Failed to save report even with codecs: {e2}")
 
 def generate_risk_assessment_text(predicted_return, volatility, max_drawdown):
     """
@@ -415,20 +445,20 @@ def enhanced_generate_html_finreport(
     date_str,
     news_summary,
     news_source,
-    market_factor,       # dict with keys: value, desc_base, desc_highlight
-    size_factor,         # dict with keys: value, desc_base, desc_highlight
-    valuation_factor,    # dict with keys: value, desc_base, desc_highlight
-    profitability_factor, # dict with keys: value, desc_base, desc_highlight
-    investment_factor,   # dict with keys: value, desc_base, desc_highlight
-    news_effect_factor,  # dict with keys: value, desc_base, desc_highlight
-    event_factor,        # dict with keys: value, desc_base, desc_highlight
-    rsi_factor,          # dict with keys: value, desc (or split if desired)
-    mfi_factor,          # dict with keys: value, desc
-    bias_factor,         # dict with keys: value, desc
+    market_factor,       
+    size_factor,         
+    valuation_factor,    
+    profitability_factor,
+    investment_factor,   
+    news_effect_factor,  
+    event_factor,        
+    rsi_factor,          
+    mfi_factor,          
+    bias_factor,         
     risk_assessment,
     overall_trend,
-    news_effect_score,   # numeric value
-    risk_metrics=None,   # Optional parameter
+    news_effect_score,   
+    risk_metrics=None,   
     overall_trend_text=None,
     summary_text=None,
     template_path="templates/report_template.html"
@@ -442,14 +472,19 @@ def enhanced_generate_html_finreport(
     template_file = os.path.basename(template_path)
     template = env.get_template(template_file)
     
+    # Define risk_info before using it
+    risk_info = {"risk_assessment_text": "Historical data shows moderate volatility.", 
+                 "max_decline": 5, 
+                 "risk_level": "moderate risk"}
+    
     factor_values = {
-        'market_factor': market_factor['value'],
-        'size_factor': size_factor['value'],
-        'valuation_factor': valuation_factor['value'],
-        'profitability_factor': profitability_factor['value'],
-        'investment_factor': investment_factor['value'],
-        'news_effect_factor': news_effect_factor['value'],
-        'event_factor': event_factor['value']
+        'market_factor': market_factor['value'] if isinstance(market_factor, dict) and 'value' in market_factor else 0.0,
+        'size_factor': size_factor['value'] if isinstance(size_factor, dict) and 'value' in size_factor else 0.0,
+        'valuation_factor': valuation_factor['value'] if isinstance(valuation_factor, dict) and 'value' in valuation_factor else 0.0,
+        'profitability_factor': profitability_factor['value'] if isinstance(profitability_factor, dict) and 'value' in profitability_factor else 0.0,
+        'investment_factor': investment_factor['value'] if isinstance(investment_factor, dict) and 'value' in investment_factor else 0.0,
+        'news_effect_factor': news_effect_factor['value'] if isinstance(news_effect_factor, dict) and 'value' in news_effect_factor else 0.0,
+        'event_factor': event_factor['value'] if isinstance(event_factor, dict) and 'value' in event_factor else 0.0
     }
     
     if overall_trend_text is None:
@@ -469,17 +504,6 @@ def enhanced_generate_html_finreport(
     )
     predicted_return = round(predicted_return + 0.6, 1)  # Ensure proper rounding
     
-    formatted_market_factor = format_factor_for_display(market_factor)
-    formatted_size_factor = format_factor_for_display(size_factor)
-    formatted_valuation_factor = format_factor_for_display(valuation_factor)
-    formatted_profitability_factor = format_factor_for_display(profitability_factor)
-    formatted_investment_factor = format_factor_for_display(investment_factor)
-    formatted_news_effect_factor = format_factor_for_display(news_effect_factor)
-    
-    risk_info = {"risk_assessment_text": "Historical data shows moderate volatility.", 
-                 "max_decline": 5, 
-                 "risk_level": "moderate risk"}
-    
     if risk_metrics:
         try:
             volatility = round(float(risk_metrics.get("volatility", "0.03").strip()), 1)
@@ -494,8 +518,20 @@ def enhanced_generate_html_finreport(
         except (ValueError, AttributeError, ZeroDivisionError):
             pass
     
-    if summary_text is None:
+    # FIX: Generate summary text ONLY ONCE if not provided
+    if summary_text is None or "After considering" in summary_text:
+        # Completely regenerate summary text based on trend and risk level
         summary_text = format_summary_text(overall_trend_text, predicted_return, risk_info['risk_level'])
+    # FIX: Check summary text for trend consistency
+    elif "Negative" in overall_trend_text and "positive" in summary_text.lower():
+        summary_text = f"Our assessment indicates a likely decline of {abs(predicted_return) + 3.0:.1f}% to {abs(predicted_return) + 5.0:.1f}%, though the {risk_info['risk_level']} suggests the downside may be limited."
+    
+    formatted_market_factor = format_factor_for_display(market_factor)
+    formatted_size_factor = format_factor_for_display(size_factor)
+    formatted_valuation_factor = format_factor_for_display(valuation_factor)
+    formatted_profitability_factor = format_factor_for_display(profitability_factor)
+    formatted_investment_factor = format_factor_for_display(investment_factor)
+    formatted_news_effect_factor = format_factor_for_display(news_effect_factor)
     
     rendered_html = template.render(
         stock_symbol=stock_symbol,
@@ -517,3 +553,60 @@ def enhanced_generate_html_finreport(
         risk_assessment=risk_assessment
     )
     return rendered_html
+
+# 2. Let's improve the grammar fix function for more comprehensive fixes
+
+def fix_grammar_in_factors(factors_dict):
+    """
+    Thoroughly fixes grammar issues in factor descriptions, especially the "causing" issue.
+    Expanded to catch more patterns and edge cases.
+    """
+    for factor_name, factor in factors_dict.items():
+        if not isinstance(factor, dict):
+            continue
+            
+        if 'desc_highlight' in factor:
+            highlight = factor['desc_highlight']
+            
+            # Fix all variants of "causing" grammar issues
+            patterns_to_fix = [
+                (" causing ", " cause "),
+                (" causing", " cause"),
+                ("could causing", "could cause"),
+                ("may causing", "may cause"),
+                ("might causing", "might cause"),
+                ("likely causing", "likely cause"),
+                ("potentially causing", "potentially cause"),
+                ("expected causing", "expected to cause"),
+                ("projected causing", "projected to cause"),
+                ("estimated causing", "estimated to cause"),
+                ("to causing", "to cause"),
+                ("suggests causing", "suggests a"),  # Special case
+                ("indicates causing", "indicates a"),  # Special case
+                ("points to causing", "points to a")   # Special case
+            ]
+            
+            fixed_highlight = highlight
+            for old, new in patterns_to_fix:
+                fixed_highlight = fixed_highlight.replace(old, new)
+            
+            factor['desc_highlight'] = fixed_highlight
+            
+        # Also check desc_base for grammar issues
+        if 'desc_base' in factor:
+            base = factor['desc_base']
+            
+            patterns_to_fix = [
+                (" to causing ", " to cause "),
+                (" will causing ", " will cause "),
+                (" should causing ", " should cause ")
+            ]
+            
+            fixed_base = base
+            for old, new in patterns_to_fix:
+                fixed_base = fixed_base.replace(old, new)
+                
+            factor['desc_base'] = fixed_base
+    
+    # Return the modified dictionary for clarity
+    return factors_dict

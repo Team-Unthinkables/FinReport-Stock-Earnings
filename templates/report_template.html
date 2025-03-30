@@ -1,3 +1,4 @@
+{% if not content_only %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,10 +92,10 @@
             font-weight: bold;
         }
         .positive {
-            color: #ff0000; /* Red for positive impacts */
+            color: #00aa00; /* Green for positive impacts - conventional financial coloring */
         }
         .negative {
-            color: #00aa00; /* Green for negative impacts */
+            color: #ff0000; /* Red for negative impacts - conventional financial coloring */
         }
         .risk-assessment,
         .overall-trend,
@@ -111,11 +112,11 @@
             background-color: #fafafa;
         }
         .positive-trend {
-            color: #ff0000;
+            color: #00aa00; /* Green */
             font-weight: bold;
         }
         .negative-trend {
-            color: #00aa00;
+            color: #ff0000; /* Red */
             font-weight: bold;
         }
         .neutral-trend {
@@ -125,6 +126,7 @@
     </style>
 </head>
 <body>
+{% endif %}
     <div class="report-container">
         <!-- News Header -->
         <div class="news-header">
@@ -151,44 +153,44 @@
         <div class="factor-list">
             <div class="factor-item">
                 <span class="factor-name">Market Factor:</span> 
-                <span>{{ market_factor.desc_text }}</span>
+                <span>{{ market_factor.desc_text|default("Market analysis indicates") }}</span>
                 <span class="{% if market_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ market_factor.impact_text }}
+                    {{ market_factor.impact_text|default("impact cannot be determined.") }}
                 </span>
             </div>
             <div class="factor-item">
                 <span class="factor-name">Size Factor:</span> 
-                <span>{{ size_factor.desc_text }}</span>
+                <span>{{ size_factor.desc_text|default("Size analysis indicates") }}</span>
                 <span class="{% if size_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ size_factor.impact_text }}
+                    {{ size_factor.impact_text|default("impact cannot be determined.") }}
                 </span>
             </div>
             <div class="factor-item">
                 <span class="factor-name">Valuation (BP) Factor:</span> 
-                <span>{{ valuation_factor.desc_text }}</span>
+                <span>{{ valuation_factor.desc_text|default("Valuation analysis indicates") }}</span>
                 <span class="{% if valuation_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ valuation_factor.impact_text }}
+                    {{ valuation_factor.impact_text|default("impact cannot be determined.") }}
                 </span>
             </div>
             <div class="factor-item">
                 <span class="factor-name">Profitability Factor:</span> 
-                <span>{{ profitability_factor.desc_text }}</span>
+                <span>{{ profitability_factor.desc_text|default("Profitability analysis indicates") }}</span>
                 <span class="{% if profitability_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ profitability_factor.impact_text }}
+                    {{ profitability_factor.impact_text|default("impact cannot be determined.") }}
                 </span>
             </div>
             <div class="factor-item">
                 <span class="factor-name">Investment Factor:</span> 
-                <span>{{ investment_factor.desc_text }}</span>
+                <span>{{ investment_factor.desc_text|default("Investment analysis indicates") }}</span>
                 <span class="{% if investment_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ investment_factor.impact_text }}
+                    {{ investment_factor.impact_text|default("impact cannot be determined.") }}
                 </span>
             </div>
             <div class="factor-item">
                 <span class="factor-name">News Effect Factor:</span> 
-                <span>{{ news_effect_factor.desc_text }}</span>
+                <span>{{ news_effect_factor.desc_text|default("News sentiment analysis shows") }}</span>
                 <span class="{% if news_effect_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ news_effect_factor.impact_text }}
+                    {{ news_effect_factor.impact_text|default("impact cannot be determined.") }}
                 </span>
             </div>
         </div>
@@ -196,7 +198,7 @@
         <!-- Risk Assessment -->
         <h2 class="section-header">Risk Assessment</h2>
         <div class="risk-assessment">
-            <p>{{ risk_assessment_text }}
+            <p>{{ risk_assessment_text|default("Risk assessment data unavailable.") }}
                 <span class="{% if 'favorable' in risk_level or 'low' in risk_level %}positive{% else %}negative{% endif %}">
                     Expected max decline: {{ max_decline }}%, indicating {{ risk_level }}.
                 </span>
@@ -211,21 +213,27 @@
             </p>
         </div>
         
-        <!-- Summary -->
-        <h2 class="section-header">Summary</h2>
-        <div class="summary">
-            <p>
-                After considering the revenue forecast and risk assessment information, we believe that 
-                <span class="{% if 'Positive' in overall_trend %}positive{% elif 'Negative' in overall_trend %}negative{% else %}neutral{% endif %}">
-                    {{ summary_text }}
-                </span>
-            </p>
-        </div>
+        <!-- Replace your existing summary section with this -->
+<h2 class="section-header">Summary</h2>
+<div class="summary">
+    <p>
+        After considering the revenue forecast and risk assessment information, we believe that 
+        {% if "Positive" in overall_trend %}
+            <span class="positive">{{ summary_text }}</span>
+        {% elif "Negative" in overall_trend %}
+            <span class="negative">{{ summary_text }}</span>
+        {% else %}
+            <span class="neutral">{{ summary_text }}</span>
+        {% endif %}
+    </p>
+</div>
         
         <!-- Disclaimer -->
         <div class="disclaimer">
             This report serves as a reference; it is not investment advice. Kindly exercise caution and acknowledge personal risks.
         </div>
     </div>
+{% if not content_only %}
 </body>
 </html>
+{% endif %}
