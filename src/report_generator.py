@@ -132,6 +132,12 @@ def generate_risk_assessment_text(predicted_return, volatility, max_drawdown):
     """
     import random
     
+    # Ensure numeric values are properly formatted
+    try:
+        predicted_return = round(float(predicted_return), 1)
+    except (ValueError, TypeError):
+        predicted_return = 1.0  # Default fallback value
+    
     # Define thresholds
     high_volatility_threshold = 0.12    # Increase from 0.08
     medium_volatility_threshold = 0.05  # Increase from 0.03
@@ -206,37 +212,37 @@ def generate_risk_assessment_text(predicted_return, volatility, max_drawdown):
         if overall_risk_level == "high":
             # Positive trend with high risk
             summary_templates = [
-                f"After analyzing the metrics, we conclude that while the stock shows <span class='positive'>positive momentum</span>, it carries a <span class='negative'>{overall_risk_level} level of risk</span>. Returns may grow by <span class='positive'>{round(max(predicted_return, 0.5), 1)}% to {round(max(predicted_return, 0.5) + 1, 1)}%</span>, but with substantial volatility.",
-                f"Our analysis indicates <span class='positive'>positive growth potential of {round(max(predicted_return, 0.7), 1)}% to {round(max(predicted_return, 0.7) + 1.2, 1)}%</span>, though investors should note the <span class='negative'>{overall_risk_level} risk profile</span> requires caution.",
-                f"While showing <span class='positive'>positive trends with projected returns of {round(max(predicted_return, 0.6), 1)}% to {round(max(predicted_return, 0.6) + 0.9, 1)}%</span>, the <span class='negative'>{overall_risk_level} risk level</span> suggests using appropriate position sizing."
+                f"After analyzing the metrics, we conclude that while the stock shows <span class='positive'>positive momentum</span>, it carries a <span class='negative'>{overall_risk_level} level of risk</span>. Returns may grow by <span class='positive'>{max(predicted_return, 0.5):.1f}% to {max(predicted_return, 0.5) + 1.0:.1f}%</span>, but with substantial volatility.",
+                f"Our analysis indicates <span class='positive'>positive growth potential of {max(predicted_return, 0.7):.1f}% to {max(predicted_return, 0.7) + 1.2:.1f}%</span>, though investors should note the <span class='negative'>{overall_risk_level} risk profile</span> requires caution.",
+                f"While showing <span class='positive'>positive trends with projected returns of {max(predicted_return, 0.6):.1f}% to {max(predicted_return, 0.6) + 0.9:.1f}%</span>, the <span class='negative'>{overall_risk_level} risk level</span> suggests using appropriate position sizing."
             ]
         else:
             # Positive trend with moderate/low risk
             summary_templates = [
-                f"After reviewing the financial metrics and risk assessment, we believe the stock has a <span class='positive'>{overall_risk_level} level of risk</span>, with estimated returns likely to <span class='positive'>grow by {round(max(predicted_return, 0.8), 1)}% to {round(max(predicted_return, 0.8) + 1.3, 1)}%</span>.",
-                f"Our analysis indicates <span class='positive'>favorable growth prospects with expected returns of {round(max(predicted_return, 1.0), 1)}% to {round(max(predicted_return, 1.0) + 1.5, 1)}%</span>, supported by a <span class='positive'>{overall_risk_level} risk profile</span>.",
-                f"The combination of <span class='positive'>positive momentum</span> and <span class='positive'>{overall_risk_level} risk</span> suggests <span class='positive'>potential returns of {round(max(predicted_return, 0.9), 1)}% to {round(max(predicted_return, 0.9) + 1.4, 1)}%</span> in the near term.",
-                f"Technical indicators and financial metrics point to a <span class='positive'>promising outlook with projected growth of {round(max(predicted_return, 0.7), 1)}% to {round(max(predicted_return, 0.7) + 1.2, 1)}%</span> alongside <span class='positive'>{overall_risk_level} risk levels</span>.",
-                f"With a <span class='positive'>{overall_risk_level} risk profile</span>, we expect the stock to deliver <span class='positive'>returns of {round(max(predicted_return, 0.6), 1)}% to {round(max(predicted_return, 0.6) + 1.1, 1)}%</span> based on current market conditions."
+                f"After reviewing the financial metrics and risk assessment, we believe the stock has a <span class='positive'>{overall_risk_level} level of risk</span>, with estimated returns likely to <span class='positive'>grow by {max(predicted_return, 0.8):.1f}% to {max(predicted_return, 0.8) + 1.3:.1f}%</span>.",
+                f"Our analysis indicates <span class='positive'>favorable growth prospects with expected returns of {max(predicted_return, 1.0):.1f}% to {max(predicted_return, 1.0) + 1.5:.1f}%</span>, supported by a <span class='positive'>{overall_risk_level} risk profile</span>.",
+                f"The combination of <span class='positive'>positive momentum</span> and <span class='positive'>{overall_risk_level} risk</span> suggests <span class='positive'>potential returns of {max(predicted_return, 0.9):.1f}% to {max(predicted_return, 0.9) + 1.4:.1f}%</span> in the near term.",
+                f"Technical indicators and financial metrics point to a <span class='positive'>promising outlook with projected growth of {max(predicted_return, 0.7):.1f}% to {max(predicted_return, 0.7) + 1.2:.1f}%</span> alongside <span class='positive'>{overall_risk_level} risk levels</span>.",
+                f"With a <span class='positive'>{overall_risk_level} risk profile</span>, we expect the stock to deliver <span class='positive'>returns of {max(predicted_return, 0.6):.1f}% to {max(predicted_return, 0.6) + 1.1:.1f}%</span> based on current market conditions."
             ]
     else:
         if overall_risk_level == "high":
             # Negative trend and high risk
             summary_templates = [
-                f"After analyzing the return forecast and risk metrics, we conclude the stock carries a <span class='negative'>{overall_risk_level} level of risk</span> and is <span class='negative'>expected to decline by approximately {round(abs(min(predicted_return, -0.5)) + 5, 1)}% to {round(abs(min(predicted_return, -0.5)) + 8, 1)}%</span>.",
-                f"Our assessment indicates <span class='negative'>significant downside risk with an anticipated decline of {round(abs(min(predicted_return, -0.6)) + 6, 1)}% to {round(abs(min(predicted_return, -0.6)) + 9, 1)}%</span>, coupled with a <span class='negative'>{overall_risk_level} risk profile</span>.",
-                f"The combination of <span class='negative'>negative momentum</span> and <span class='negative'>{overall_risk_level} risk</span> suggests a <span class='negative'>potential decline of {round(abs(min(predicted_return, -0.7)) + 7, 1)}% to {round(abs(min(predicted_return, -0.7)) + 10, 1)}%</span> in the near term.",
-                f"Market indicators point to <span class='negative'>substantial headwinds with a projected decrease of {round(abs(min(predicted_return, -0.5)) + 4, 1)}% to {round(abs(min(predicted_return, -0.5)) + 7, 1)}%</span>, amid a backdrop of <span class='negative'>{overall_risk_level} volatility</span>.",
-                f"Technical analysis reveals <span class='negative'>concerning trends with an expected decline of {round(abs(min(predicted_return, -0.4)) + 5.5, 1)}% to {round(abs(min(predicted_return, -0.4)) + 8.5, 1)}%</span>, compounded by <span class='negative'>{overall_risk_level} risk factors</span>."
+                f"After analyzing the return forecast and risk metrics, we conclude the stock carries a <span class='negative'>{overall_risk_level} level of risk</span> and is <span class='negative'>expected to decline by approximately {abs(min(predicted_return, -0.5)) + 5.0:.1f}% to {abs(min(predicted_return, -0.5)) + 8.0:.1f}%</span>.",
+                f"Our assessment indicates <span class='negative'>significant downside risk with an anticipated decline of {abs(min(predicted_return, -0.6)) + 6.0:.1f}% to {abs(min(predicted_return, -0.6)) + 9.0:.1f}%</span>, coupled with a <span class='negative'>{overall_risk_level} risk profile</span>.",
+                f"The combination of <span class='negative'>negative momentum</span> and <span class='negative'>{overall_risk_level} risk</span> suggests a <span class='negative'>potential decline of {abs(min(predicted_return, -0.7)) + 7.0:.1f}% to {abs(min(predicted_return, -0.7)) + 10.0:.1f}%</span> in the near term.",
+                f"Market indicators point to <span class='negative'>substantial headwinds with a projected decrease of {abs(min(predicted_return, -0.5)) + 4.0:.1f}% to {abs(min(predicted_return, -0.5)) + 7.0:.1f}%</span>, amid a backdrop of <span class='negative'>{overall_risk_level} volatility</span>.",
+                f"Technical analysis reveals <span class='negative'>concerning trends with an expected decline of {abs(min(predicted_return, -0.4)) + 5.5:.1f}% to {abs(min(predicted_return, -0.4)) + 8.5:.1f}%</span>, compounded by <span class='negative'>{overall_risk_level} risk factors</span>."
             ]
         else:
             # Negative trend but moderate/low risk
             summary_templates = [
-                f"After analyzing the metrics, we conclude the stock has a <span class='positive'>{overall_risk_level} level of risk</span> but may experience a <span class='negative'>decline of approximately {round(abs(min(predicted_return, -0.3)) + 2, 1)}% to {round(abs(min(predicted_return, -0.3)) + 4, 1)}%</span> in the near term.",
-                f"Our assessment indicates a likely <span class='negative'>decline of {round(abs(min(predicted_return, -0.4)) + 3, 1)}% to {round(abs(min(predicted_return, -0.4)) + 5, 1)}%</span>, though the <span class='positive'>{overall_risk_level} risk profile</span> suggests the downside may be limited.",
-                f"The stock shows <span class='negative'>negative momentum with an expected decline of {round(abs(min(predicted_return, -0.2)) + 1.5, 1)}% to {round(abs(min(predicted_return, -0.2)) + 3.5, 1)}%</span>, within the context of a <span class='positive'>{overall_risk_level} risk environment</span>.",
-                f"Despite maintaining a <span class='positive'>{overall_risk_level} risk assessment</span>, current trends point to a <span class='negative'>potential decrease of {round(abs(min(predicted_return, -0.3)) + 2.5, 1)}% to {round(abs(min(predicted_return, -0.3)) + 4.5, 1)}%</span> in the coming period.",
-                f"Financial indicators suggest a temporary setback with a <span class='negative'>projected decline of {round(abs(min(predicted_return, -0.25)) + 1.8, 1)}% to {round(abs(min(predicted_return, -0.25)) + 3.8, 1)}%</span>, though the <span class='positive'>{overall_risk_level} risk level</span> may limit further downside."
+                f"After analyzing the metrics, we conclude the stock has a <span class='positive'>{overall_risk_level} level of risk</span> but may experience a <span class='negative'>decline of approximately {abs(min(predicted_return, -0.3)) + 2.0:.1f}% to {abs(min(predicted_return, -0.3)) + 4.0:.1f}%</span> in the near term.",
+                f"Our assessment indicates a likely <span class='negative'>decline of {abs(min(predicted_return, -0.4)) + 3.0:.1f}% to {abs(min(predicted_return, -0.4)) + 5.0:.1f}%</span>, though the <span class='positive'>{overall_risk_level} risk profile</span> suggests the downside may be limited.",
+                f"The stock shows <span class='negative'>negative momentum with an expected decline of {abs(min(predicted_return, -0.2)) + 1.5:.1f}% to {abs(min(predicted_return, -0.2)) + 3.5:.1f}%</span>, within the context of a <span class='positive'>{overall_risk_level} risk environment</span>.",
+                f"Despite maintaining a <span class='positive'>{overall_risk_level} risk assessment</span>, current trends point to a <span class='negative'>potential decrease of {abs(min(predicted_return, -0.3)) + 2.5:.1f}% to {abs(min(predicted_return, -0.3)) + 4.5:.1f}%</span> in the coming period.",
+                f"Financial indicators suggest a temporary setback with a <span class='negative'>projected decline of {abs(min(predicted_return, -0.25)) + 1.8:.1f}% to {abs(min(predicted_return, -0.25)) + 3.8:.1f}%</span>, though the <span class='positive'>{overall_risk_level} risk level</span> may limit further downside."
             ]
     
     summary_text = random.choice(summary_templates)
@@ -379,21 +385,28 @@ def format_summary_text(overall_trend, predicted_return, risk_level):
     Returns:
         Summary text appropriate for the trend and risk level
     """
-    predicted_return_rounded = round(float(predicted_return), 1)
-    
+    try:
+        predicted_return_rounded = round(float(predicted_return), 1)
+    except (ValueError, TypeError):
+        predicted_return_rounded = 1.0  # Default fallback value
+
     is_positive = 'Positive' in overall_trend
     is_high_risk = 'substantial' in risk_level or 'high' in risk_level
-    
+
     if is_positive:
+        upper_rate = round(predicted_return_rounded + 1.0, 1)
         if is_high_risk:
-            return f"the stock has a relatively high level of risk, and the estimated rate of return is expected to grow by {abs(predicted_return_rounded):.1f}% to {abs(predicted_return_rounded) + 1.0:.1f}%."
+            return f"the stock has a relatively high level of risk, and the estimated rate of return is expected to grow by {predicted_return_rounded:.1f}% to {upper_rate:.1f}%."
         else:
-            return f"the stock has a relatively low level of risk, and the estimated rate of return is expected to grow by {abs(predicted_return_rounded):.1f}% to {abs(predicted_return_rounded) + 1.0:.1f}%."
+            return f"the stock has a relatively low level of risk, and the estimated rate of return is expected to grow by {predicted_return_rounded:.1f}% to {upper_rate:.1f}%."
     else:
         if is_high_risk:
-            return f"the stock carries an extremely high level of risk, and the anticipated rate of return decline is expected to be above {abs(predicted_return_rounded) + 6.0:.1f}%."
+            decline_rate = round(predicted_return_rounded + 6.0, 1)
+            return f"the stock carries an extremely high level of risk, and the anticipated rate of return decline is expected to be above {decline_rate:.1f}%."
         else:
-            return f"the stock carries an elevated risk profile, and the anticipated rate of return decline is expected to be {abs(predicted_return_rounded) + 3.0:.1f}% to {abs(predicted_return_rounded) + 5.0:.1f}%."
+            lower_decline = round(predicted_return_rounded + 3.0, 1)
+            upper_decline = round(predicted_return_rounded + 5.0, 1)
+            return f"the stock carries an elevated risk profile, and the anticipated rate of return decline is expected to be {lower_decline:.1f}% to {upper_decline:.1f}%."
 
 # Replaced enhanced_generate_html_finreport function
 
@@ -454,7 +467,7 @@ def enhanced_generate_html_finreport(
         factor_values.get('news_effect_factor', 0) * 0.10 +
         factor_values.get('event_factor', 0) * 0.25
     )
-    predicted_return = round(predicted_return + 0.6, 1)
+    predicted_return = round(predicted_return + 0.6, 1)  # Ensure proper rounding
     
     formatted_market_factor = format_factor_for_display(market_factor)
     formatted_size_factor = format_factor_for_display(size_factor)
@@ -469,8 +482,8 @@ def enhanced_generate_html_finreport(
     
     if risk_metrics:
         try:
-            volatility = float(risk_metrics.get("volatility", "0.03").strip())
-            max_drawdown = float(risk_metrics.get("max_drawdown", "-0.30").strip())
+            volatility = round(float(risk_metrics.get("volatility", "0.03").strip()), 1)
+            max_drawdown = round(float(risk_metrics.get("max_drawdown", "-0.30").strip()), 1)
             
             risk_info = format_risk_assessment(risk_metrics, predicted_return)
             
