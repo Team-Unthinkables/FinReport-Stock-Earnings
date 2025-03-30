@@ -4,122 +4,123 @@
     <meta charset="UTF-8">
     <title>FinReport for {{ stock_symbol }}</title>
     <style>
-        /* Base styles and layout */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
             line-height: 1.5;
+            background-color: #f9f9f9;
         }
         .report-container {
-            width: 800px;
+            width: 920px;
             margin: 20px auto;
             border: 2px solid #000;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             padding: 0;
             box-sizing: border-box;
+            background-color: #fff;
         }
-        /* News header */
         .news-header {
-            padding: 15px 20px;
+            padding: 18px 25px;
             border-bottom: 1px dashed #ccc;
             display: flex;
             align-items: flex-start;
         }
         .news-icon {
-            margin-right: 15px;
-            font-size: 24px;
+            margin-right: 18px;
+            font-size: 28px;
             color: #000;
         }
         .news-content {
             flex: 1;
+            font-size: 16px;
         }
-        /* FinReport header */
+        .news-text {
+            color: #0099cc;
+            display: block;
+            margin-top: 6px;
+        }
         .finreport-header {
             text-align: center;
             margin: 0;
-            padding: 15px 0;
+            padding: 18px 0;
             border-bottom: 1px dashed #ccc;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #fafafa;
         }
+        /* Unicode Star Icon */
         .finreport-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            background-color: #f8f8d0;
             position: relative;
-            transform: rotate(45deg);
+            font-size: 42px;
+            margin-right: 15px;
+            color: #FFD700;
+            text-shadow: 0 0 3px #996515;
             display: inline-block;
         }
-        .finreport-icon::before, 
-        .finreport-icon::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #f8f8d0;
-            border: 1px solid #d0d0a0;
-        }
-        .finreport-icon::before {
-            transform: rotate(30deg);
-        }
-        .finreport-icon::after {
-            transform: rotate(60deg);
-        }
         .finreport-title {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             margin: 0;
+            color: #0066cc;
         }
-        /* Report intro */
         .report-intro {
-            padding: 15px 20px;
+            padding: 18px 25px;
             margin: 0;
             border-bottom: 1px dashed #ccc;
+            font-size: 16px;
         }
-        /* Section headers */
         .section-header {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             margin: 0;
-            padding: 15px 20px 10px;
+            padding: 20px 25px 12px;
+            color: #333;
         }
-        /* Return forecast list */
         .factor-list {
             list-style-type: none;
             margin: 0;
-            padding: 0 20px 15px;
+            padding: 0 25px 18px;
         }
         .factor-item {
-            margin-bottom: 8px;
+            margin-bottom: 14px;
+            font-size: 16px;
         }
         .factor-name {
             color: #0070c0;
             font-weight: bold;
         }
         .positive {
-            color: #03b152;
+            color: #ff0000; /* Red for positive impacts */
         }
         .negative {
-            color: #ff1313;
+            color: #00aa00; /* Green for negative impacts */
         }
-        /* Other sections */
         .risk-assessment,
         .overall-trend,
         .summary {
-            padding: 0 20px 15px;
+            padding: 0 25px 18px;
+            font-size: 16px;
         }
         .disclaimer {
-            padding: 15px 20px;
+            padding: 18px 25px;
             font-size: 14px;
             color: #666;
             font-style: italic;
             border-top: 1px dashed #ccc;
+            background-color: #fafafa;
+        }
+        .positive-trend {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        .negative-trend {
+            color: #00aa00;
+            font-weight: bold;
+        }
+        .neutral-trend {
+            color: #CC7000; /* Amber/Orange color for neutral trend */
+            font-weight: bold;
         }
     </style>
 </head>
@@ -130,13 +131,13 @@
             <div class="news-icon">👨‍💼</div>
             <div class="news-content">
                 Analyze stock <strong>{{ stock_symbol }}</strong>. Today, the following news has emerged:<br>
-                {{ news_summary }}
+                <span class="news-text">{{ news_summary }}</span>
             </div>
         </div>
         
-        <!-- FinReport Header -->
+        <!-- FinReport Header with Star Icon -->
         <div class="finreport-header">
-            <div class="finreport-icon"></div>
+            <div class="finreport-icon">★</div>
             <h1 class="finreport-title">FinReport</h1>
         </div>
         
@@ -147,83 +148,65 @@
         
         <!-- Return Forecast -->
         <h2 class="section-header">Return Forecast</h2>
-        <ul class="factor-list">
-            <li class="factor-item">
+        <div class="factor-list">
+            <div class="factor-item">
                 <span class="factor-name">Market Factor:</span> 
-                <span>{{ market_factor.desc_base }}</span>
+                <span>{{ market_factor.desc_text }}</span>
                 <span class="{% if market_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ market_factor.desc_highlight }}
+                    {{ market_factor.impact_text }}
                 </span>
-            </li>
-            <li class="factor-item">
+            </div>
+            <div class="factor-item">
                 <span class="factor-name">Size Factor:</span> 
-                <span>{{ size_factor.desc_base }}</span>
+                <span>{{ size_factor.desc_text }}</span>
                 <span class="{% if size_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ size_factor.desc_highlight }}
+                    {{ size_factor.impact_text }}
                 </span>
-            </li>
-            <li class="factor-item">
+            </div>
+            <div class="factor-item">
                 <span class="factor-name">Valuation (BP) Factor:</span> 
-                <span>{{ valuation_factor.desc_base }}</span>
+                <span>{{ valuation_factor.desc_text }}</span>
                 <span class="{% if valuation_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ valuation_factor.desc_highlight }}
+                    {{ valuation_factor.impact_text }}
                 </span>
-            </li>
-            <li class="factor-item">
+            </div>
+            <div class="factor-item">
                 <span class="factor-name">Profitability Factor:</span> 
-                <span>{{ profitability_factor.desc_base }}</span>
+                <span>{{ profitability_factor.desc_text }}</span>
                 <span class="{% if profitability_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ profitability_factor.desc_highlight }}
+                    {{ profitability_factor.impact_text }}
                 </span>
-            </li>
-            <li class="factor-item">
+            </div>
+            <div class="factor-item">
                 <span class="factor-name">Investment Factor:</span> 
-                <span>{{ investment_factor.desc_base }}</span>
+                <span>{{ investment_factor.desc_text }}</span>
                 <span class="{% if investment_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ investment_factor.desc_highlight }}
+                    {{ investment_factor.impact_text }}
                 </span>
-            </li>
-            <li class="factor-item">
+            </div>
+            <div class="factor-item">
                 <span class="factor-name">News Effect Factor:</span> 
-                <span>{{ news_effect_factor.desc_base }}</span>
-                <span class="{% if news_effect_score >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ news_effect_factor.desc_highlight }}
+                <span>{{ news_effect_factor.desc_text }}</span>
+                <span class="{% if news_effect_factor.value >= 0 %}positive{% else %}negative{% endif %}">
+                    {{ news_effect_factor.impact_text }}
                 </span>
-            </li>
-            <li class="factor-item">
-                <span class="factor-name">Event Factor:</span> 
-                <span>{{ event_factor.desc_base }}</span>
-                <span class="{% if event_factor.value >= 0 %}positive{% else %}negative{% endif %}">
-                    {{ event_factor.desc_highlight }}
-                </span>
-            </li>
-        </ul>
+            </div>
+        </div>
         
         <!-- Risk Assessment -->
         <h2 class="section-header">Risk Assessment</h2>
         <div class="risk-assessment">
-            <p>
-                {% if "heightened" in risk_assessment %}
-                  Historical data reveals heightened stock volatility in 30 days,
-                  <span class="negative">expected max decline: 10%, indicating substantial risk.</span>
-                {% else %}
-                  Historical data shows moderate stock fluctuations in 30 days,
-                  <span class="positive">expected max decline: 2%, indicating favorable risk.</span>
-                {% endif %}
+            <p>{{ risk_assessment_text }}
+                <span class="{% if 'favorable' in risk_level or 'low' in risk_level %}positive{% else %}negative{% endif %}">
+                    Expected max decline: {{ max_decline }}%, indicating {{ risk_level }}.
+                </span>
             </p>
-            {% if risk_metrics %}
-            <p>
-                <strong>Volatility:</strong> {{ risk_metrics.volatility }} | 
-                <strong>VaR (95%):</strong> {{ risk_metrics.var_95 }} | 
-                <strong>Max Drawdown:</strong> {{ risk_metrics.max_drawdown }}
-            </p>
-            {% endif %}
         </div>
         
         <!-- Overall Trend -->
-        <h2 class="section-header">Overall Trend Prognosis</h2>
+        <h2 class="section-header">Overall trend prognosis</h2>
         <div class="overall-trend">
-            <p class="{% if overall_trend == 'Positive' %}positive{% else %}negative{% endif %}">
+            <p class="{% if 'Positive' in overall_trend %}positive-trend{% elif 'Negative' in overall_trend %}negative-trend{% else %}neutral-trend{% endif %}">
                 {{ overall_trend }}
             </p>
         </div>
@@ -232,12 +215,10 @@
         <h2 class="section-header">Summary</h2>
         <div class="summary">
             <p>
-                After considering the revenue forecast and risk assessment, we conclude that 
-                {% if overall_trend == 'Positive' %}
-                  <span class="positive">the stock has a relatively low level of risk</span> with an estimated return growth of 1% to 2%.
-                {% else %}
-                  <span class="negative">the stock carries a high level of risk</span> and is expected to decline by over 8%.
-                {% endif %}
+                After considering the revenue forecast and risk assessment information, we believe that 
+                <span class="{% if 'Positive' in overall_trend %}positive{% elif 'Negative' in overall_trend %}negative{% else %}neutral{% endif %}">
+                    {{ summary_text }}
+                </span>
             </p>
         </div>
         

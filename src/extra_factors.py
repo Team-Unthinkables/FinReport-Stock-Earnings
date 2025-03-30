@@ -163,22 +163,22 @@ def compute_market_factor(df, news_text=""):
     positive_days = sum(1 for change in recent_changes if change > 0)
     negative_days = sum(1 for change in recent_changes if change < 0)
     
-    # Volatility-based impact calculation
+    # Volatility-based impact calculation with reduced negative bias
     if volatility > 4.0:  # High volatility
-        base_impact = -2.0 - (volatility - 4.0) * 0.2
-        impact_range = (-5.0, -1.5)
+        base_impact = -1.5 - (volatility - 4.0) * 0.1  # Reduced negative impact
+        impact_range = (-3.0, -0.5)  # Less extreme negative range
     elif volatility > 2.5:  # Moderate volatility
-        base_impact = -1.0 - (volatility - 2.5) * 0.5
-        impact_range = (-2.5, -0.5)
+        base_impact = -0.7 - (volatility - 2.5) * 0.3  # Reduced negative impact
+        impact_range = (-1.5, 0.0)  # Allow for neutral outcomes
     elif positive_days > negative_days:  # Low volatility, positive trend
-        base_impact = 0.5 + sentiment * 0.7
-        impact_range = (0.0, 1.5)
+        base_impact = 0.7 + sentiment * 0.8  # Increased positive impact
+        impact_range = (0.2, 1.8)  # More positive range
     else:  # Low volatility, negative or neutral trend
-        base_impact = -0.3 + sentiment * 0.5
-        impact_range = (-1.0, 0.5)
+        base_impact = -0.2 + sentiment * 0.6  # Less negative base
+        impact_range = (-0.8, 0.8)  # More balanced range
     
-    # Add some randomization but keep within range
-    effect_value = base_impact + random.uniform(-0.3, 0.3)
+    # Add reduced randomization but keep within range
+    effect_value = base_impact + random.uniform(-0.2, 0.2)
     effect_value = max(min(effect_value, impact_range[1]), impact_range[0])
     effect_value = round(effect_value, 1)  # Round to 1 decimal place
     
