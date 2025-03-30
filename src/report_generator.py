@@ -279,6 +279,209 @@ def generate_risk_assessment_text(predicted_return, volatility, max_drawdown):
     
     return risk_assessment, trend_strength, summary_text
 
+# New enhanced_risk_assessment function
+def enhanced_risk_assessment(risk_metrics, predicted_return, stock_symbol, sector=None):
+    """
+    Generate a highly dynamic and personalized risk assessment text based on stock metrics.
+    
+    Args:
+        risk_metrics: Dictionary with keys like volatility, max_drawdown, var_95, cvar
+        predicted_return: The predicted return from the model
+        stock_symbol: The stock symbol for personalization
+        sector: Optional sector information for industry-specific risk language
+        
+    Returns:
+        dict: Contains risk_assessment_text, max_decline, risk_level, and volatility_class
+    """
+    import random
+    
+    # Default values if metrics are missing
+    volatility = float(risk_metrics.get("volatility", "0.08").strip())
+    max_drawdown = float(risk_metrics.get("max_drawdown", "-0.25").strip())
+    var_95 = float(risk_metrics.get("var_95", "0.10").strip())
+    cvar = float(risk_metrics.get("cvar", "-0.15").strip())
+    risk_adjusted_ratio = float(risk_metrics.get("risk_adjusted_ratio", "0.5").strip())
+    
+    # Determine price volatility level (5 levels instead of 3)
+    if volatility > 0.15:
+        volatility_class = "extreme"
+        volatility_text = random.choice([
+            f"extreme stock volatility with intense price swings",
+            f"highly erratic price movements with sharp fluctuations",
+            f"significant price turbulence and unstable trading patterns"
+        ])
+        max_decline = min(round(volatility * 130), 25)
+    elif volatility > 0.10:
+        volatility_class = "high"
+        volatility_text = random.choice([
+            f"heightened stock volatility with frequent price swings",
+            f"substantial price fluctuations and uncertain trading patterns",
+            f"considerable market instability with unpredictable price changes"
+        ])
+        max_decline = min(round(volatility * 120), 20)
+    elif volatility > 0.07:
+        volatility_class = "elevated"
+        volatility_text = random.choice([
+            f"elevated stock volatility with notable price movements",
+            f"above-average price fluctuations with some uncertainty",
+            f"increased price variability and moderate instability"
+        ])
+        max_decline = round(volatility * 110)
+    elif volatility > 0.04:
+        volatility_class = "moderate"
+        volatility_text = random.choice([
+            f"moderate stock fluctuations with manageable price swings",
+            f"average price variability within expected ranges",
+            f"typical market movements without excessive turbulence"
+        ])
+        max_decline = round(volatility * 100)
+    else:
+        volatility_class = "low"
+        volatility_text = random.choice([
+            f"low stock volatility with minimal price fluctuations",
+            f"stable price behavior with limited deviations",
+            f"consistent trading patterns with predictable price movements"
+        ])
+        max_decline = max(round(volatility * 90), 2)
+    
+    # Determine drawdown severity
+    if max_drawdown < -0.40:
+        drawdown_severity = "severe historical drawdowns"
+    elif max_drawdown < -0.25:
+        drawdown_severity = "significant historical corrections"
+    elif max_drawdown < -0.15:
+        drawdown_severity = "moderate historical pullbacks"
+    else:
+        drawdown_severity = "limited historical declines"
+    
+    # Determine VaR description
+    if var_95 > 0.15:
+        var_desc = "extreme downside events"
+    elif var_95 > 0.10:
+        var_desc = "substantial single-day losses"
+    elif var_95 > 0.06:
+        var_desc = "notable daily downside risk"
+    else:
+        var_desc = "controlled daily fluctuations"
+    
+    # Determine risk-adjusted profile
+    if risk_adjusted_ratio > 2.0:
+        risk_reward = "exceptional risk-return profile"
+    elif risk_adjusted_ratio > 1.0:
+        risk_reward = "favorable risk-return balance"
+    elif risk_adjusted_ratio > 0.5:
+        risk_reward = "adequate risk-return tradeoff"
+    elif risk_adjusted_ratio > 0:
+        risk_reward = "moderate risk-return characteristics"
+    else:
+        risk_reward = "challenging risk-return relationship"
+    
+    # Combine volatility and drawdown to determine overall risk level
+    vol_score = min(volatility * 10, 10)
+    drawdown_score = min(abs(max_drawdown) * 10, 10)
+    var_score = min(var_95 * 20, 10)
+    
+    return_risk = 5 - min(max(predicted_return, -5), 5)
+    
+    # Weighted risk score
+    risk_score = (vol_score * 0.4) + (drawdown_score * 0.25) + (var_score * 0.15) + (return_risk * 0.2)
+    
+    # Determine risk level with more granularity
+    if risk_score > 7.5:
+        risk_level = "substantial risk"
+        risk_color = "negative"
+    elif risk_score > 6.0:
+        risk_level = "high risk"
+        risk_color = "negative"
+    elif risk_score > 4.5:
+        risk_level = "moderate to high risk"
+        risk_color = "negative"
+    elif risk_score > 3.0:
+        risk_level = "moderate risk"
+        risk_color = "moderate"
+    elif risk_score > 1.5:
+        risk_level = "low to moderate risk"
+        risk_color = "positive"
+    else:
+        risk_level = "favorable risk"
+        risk_color = "positive"
+    
+    # Sector-specific risk factors (if sector provided)
+    sector_risk_text = ""
+    if sector:
+        sector = sector.lower()
+        if "tech" in sector or "technology" in sector:
+            sector_risk_text = random.choice([
+                " Technology sector volatility factors are also present.",
+                " Tech market dynamics add additional complexity to the risk profile.",
+                " Sector-specific technology industry risks should be considered."
+            ])
+        elif "energy" in sector:
+            sector_risk_text = random.choice([
+                " Energy price fluctuations may add volatility.",
+                " Commodity price sensitivity impacts the overall risk profile.",
+                " Energy sector exposure introduces additional market dynamics."
+            ])
+        elif "financial" in sector or "bank" in sector:
+            sector_risk_text = random.choice([
+                " Financial sector regulatory factors may influence performance.",
+                " Interest rate sensitivity adds a dimension to the risk assessment.",
+                " Banking sector cyclicality is an additional consideration."
+            ])
+    
+    # Abnormal swings text
+    if volatility_class in ["high", "extreme"]:
+        abnormal_text = random.choice([
+            "suggesting high potential for abnormal swings",
+            "indicating vulnerability to market disruptions",
+            "pointing to heightened price shock sensitivity"
+        ])
+    else:
+        abnormal_text = random.choice([
+            "with manageable price variability",
+            "showing well-contained price movements",
+            "maintaining predictable trading patterns"
+        ])
+    
+    # Generate risk assessment text with appropriate HTML spans for coloring
+    if volatility_class in ["high", "extreme"]:
+        templates = [
+            f"Detailed risk analysis reveals <span class='negative'>{volatility_text}</span> and {drawdown_severity}, {abnormal_text}. Expected max decline: <span class='negative'>{max_decline}%</span>, indicating <span class='negative'>{risk_level}</span> with {var_desc}.{sector_risk_text}",
+            f"Historical volatility data shows <span class='negative'>{volatility_text}</span> combined with {drawdown_severity}, {abnormal_text}. Analysis suggests potential <span class='negative'>{max_decline}% maximum decline</span> and <span class='negative'>{risk_level}</span> with {var_desc}.{sector_risk_text}",
+            f"Technical risk indicators highlight <span class='negative'>{volatility_text}</span> and {drawdown_severity}, {abnormal_text}. Investors should anticipate <span class='negative'>{max_decline}% max drawdowns</span>, reflecting <span class='negative'>{risk_level}</span> and {var_desc}.{sector_risk_text}"
+        ]
+    elif volatility_class in ["elevated", "moderate"]:
+        templates = [
+            f"Risk metrics show <span class='{risk_color}'>{volatility_text}</span> alongside {drawdown_severity}, {abnormal_text}. Expected max decline: <span class='{risk_color}'>{max_decline}%</span>, indicating <span class='{risk_color}'>{risk_level}</span> with {var_desc}.{sector_risk_text}",
+            f"Analysis of volatility patterns reveals <span class='{risk_color}'>{volatility_text}</span> paired with {drawdown_severity}, {abnormal_text}. Data suggests <span class='{risk_color}'>{max_decline}% potential drawdown</span> and <span class='{risk_color}'>{risk_level}</span> with {var_desc}.{sector_risk_text}",
+            f"Historical trading data indicates <span class='{risk_color}'>{volatility_text}</span> and {drawdown_severity}, {abnormal_text}. Risk assessment points to <span class='{risk_color}'>{max_decline}% maximum decline</span>, representing <span class='{risk_color}'>{risk_level}</span> with {var_desc}.{sector_risk_text}"
+        ]
+    else:
+        templates = [
+            f"Risk evaluation indicates <span class='positive'>{volatility_text}</span> with {drawdown_severity}, {abnormal_text}. Expected max decline: <span class='positive'>{max_decline}%</span>, reflecting <span class='positive'>{risk_level}</span> with {var_desc}.{sector_risk_text}",
+            f"Market analysis demonstrates <span class='positive'>{volatility_text}</span> combined with {drawdown_severity}, {abnormal_text}. Data suggests <span class='positive'>{max_decline}% maximum potential decline</span> and <span class='positive'>{risk_level}</span> with {var_desc}.{sector_risk_text}",
+            f"Stability metrics confirm <span class='positive'>{volatility_text}</span> and {drawdown_severity}, {abnormal_text}. Risk models project <span class='positive'>{max_decline}% max drawdown scenarios</span>, indicating <span class='positive'>{risk_level}</span> with {var_desc}.{sector_risk_text}"
+        ]
+    
+    # Add custom risk text for specific stock symbols if desired
+    custom_stock_text = ""
+    if stock_symbol in ["000651.SZ", "600519.SH", "601318.SH"]:
+        custom_stock_text = f" {stock_symbol} has historically shown {risk_reward} relative to market benchmarks."
+    elif stock_symbol in ["300750.SZ", "002812.SZ", "300014.SZ"]:
+        custom_stock_text = f" As a growth-oriented security, {stock_symbol} exhibits {risk_reward}."
+    
+    if custom_stock_text:
+        templates = [t + custom_stock_text for t in templates]
+    
+    risk_assessment_text = random.choice(templates)
+    
+    return {
+        "risk_assessment_text": risk_assessment_text,
+        "max_decline": max_decline,
+        "risk_level": risk_level,
+        "volatility_class": volatility_class
+    }
+
 def calculate_overall_trend(factor_values):
     """
     Calculate overall trend based on weighted factor scores with improved balance.
@@ -472,11 +675,6 @@ def enhanced_generate_html_finreport(
     template_file = os.path.basename(template_path)
     template = env.get_template(template_file)
     
-    # Define risk_info before using it
-    risk_info = {"risk_assessment_text": "Historical data shows moderate volatility.", 
-                 "max_decline": 5, 
-                 "risk_level": "moderate risk"}
-    
     factor_values = {
         'market_factor': market_factor['value'] if isinstance(market_factor, dict) and 'value' in market_factor else 0.0,
         'size_factor': size_factor['value'] if isinstance(size_factor, dict) and 'value' in size_factor else 0.0,
@@ -503,13 +701,23 @@ def enhanced_generate_html_finreport(
         factor_values.get('event_factor', 0) * 0.25
     )
     predicted_return = round(predicted_return + 0.6, 1)  # Ensure proper rounding
-    
+
+    # Get sector information from news_summary if possible
+    from extra_factors import identify_sector
+    sector = identify_sector(news_summary)
+
+    # Use the enhanced risk assessment function
+    risk_info = enhanced_risk_assessment(
+        risk_metrics=risk_metrics, 
+        predicted_return=predicted_return,
+        stock_symbol=stock_symbol,
+        sector=sector
+    )
+
     if risk_metrics:
         try:
             volatility = round(float(risk_metrics.get("volatility", "0.03").strip()), 1)
             max_drawdown = round(float(risk_metrics.get("max_drawdown", "-0.30").strip()), 1)
-            
-            risk_info = format_risk_assessment(risk_metrics, predicted_return)
             
             if "Negative" in overall_trend_text and predicted_return > 0:
                 predicted_return = round(-abs(predicted_return) * 0.5, 1)

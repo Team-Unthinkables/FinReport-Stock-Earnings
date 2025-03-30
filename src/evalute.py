@@ -491,7 +491,6 @@ for stock in stock_list:
         # ...existing fallback code...
         pass
 
-    # Modify call to enhanced_generate_html_finreport to pass technical_factor
     report_html = enhanced_generate_html_finreport(
         stock_symbol=stock,
         date_str=date_str,

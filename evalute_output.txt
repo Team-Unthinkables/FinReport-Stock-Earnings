@@ -37,10 +37,10 @@ First 10 Predictions for 000063.SZ: [1.0427816]
 First 10 True Values for 000063.SZ: [1.]
 Regression prediction visualization saved to img\regression_distribution_000063.SZ.png
 Sentiment Score for 000063.SZ: -0.9640
-Enhanced Market Factor for 000063.SZ: 3.00
-Enhanced Size Factor for 000063.SZ: 1.10
-Enhanced Valuation Factor for 000063.SZ: -0.00
-Enhanced Profitability Factor for 000063.SZ: 3.20
+Enhanced Market Factor for 000063.SZ: 2.50
+Enhanced Size Factor for 000063.SZ: 1.20
+Enhanced Valuation Factor for 000063.SZ: 0.50
+Enhanced Profitability Factor for 000063.SZ: 4.40
 Enhanced Investment Factor for 000063.SZ: 5.00
 Enhanced News Effect Factor for 000063.SZ: -5.00
 Report for 000063.SZ generated.
@@ -96,11 +96,11 @@ First 10 Predictions for 000333.SZ: [1.9940941  1.0811293  0.06646225]
 First 10 True Values for 000333.SZ: [2. 1. 0.]
 Regression prediction visualization saved to img\regression_distribution_000333.SZ.png
 Sentiment Score for 000333.SZ: -0.9568
-Enhanced Market Factor for 000333.SZ: -1.50
-Enhanced Size Factor for 000333.SZ: 3.00
-Enhanced Valuation Factor for 000333.SZ: 0.00
-Enhanced Profitability Factor for 000333.SZ: -4.00
-Enhanced Investment Factor for 000333.SZ: 1.50
+Enhanced Market Factor for 000333.SZ: -1.70
+Enhanced Size Factor for 000333.SZ: 3.30
+Enhanced Valuation Factor for 000333.SZ: -0.40
+Enhanced Profitability Factor for 000333.SZ: -3.60
+Enhanced Investment Factor for 000333.SZ: 2.10
 Enhanced News Effect Factor for 000333.SZ: -5.00
 Report for 000333.SZ generated.
 Target Return Distribution - Mean: 1.047, Median: 1.081, Variance: 0.620
@@ -207,10 +207,10 @@ First 10 Predictions for 600340.SH: [-0.317771]
 First 10 True Values for 600340.SH: [0.]
 Regression prediction visualization saved to img\regression_distribution_600340.SH.png
 Sentiment Score for 600340.SH: -0.9640
-Enhanced Market Factor for 600340.SH: 0.80
+Enhanced Market Factor for 600340.SH: 0.00
 Enhanced Size Factor for 600340.SH: -5.00
 Enhanced Valuation Factor for 600340.SH: -0.90
-Enhanced Profitability Factor for 600340.SH: -3.50
+Enhanced Profitability Factor for 600340.SH: -4.00
 Enhanced Investment Factor for 600340.SH: 5.00
 Enhanced News Effect Factor for 600340.SH: -5.00
 Report for 600340.SH generated.
@@ -298,7 +298,7 @@ Regression prediction visualization saved to img\regression_distribution_000876.
 Sentiment Score for 000876.SZ: -0.9638
 Enhanced Market Factor for 000876.SZ: 5.00
 Enhanced Size Factor for 000876.SZ: -5.00
-Enhanced Valuation Factor for 000876.SZ: -2.00
+Enhanced Valuation Factor for 000876.SZ: -2.30
 Enhanced Profitability Factor for 000876.SZ: -5.00
 Enhanced Investment Factor for 000876.SZ: 5.00
 Enhanced News Effect Factor for 000876.SZ: -5.00
@@ -364,8 +364,8 @@ Regression prediction visualization saved to img\regression_distribution_300676.
 Sentiment Score for 300676.SZ: -0.9602
 Enhanced Market Factor for 300676.SZ: 5.00
 Enhanced Size Factor for 300676.SZ: -5.00
-Enhanced Valuation Factor for 300676.SZ: -0.00
-Enhanced Profitability Factor for 300676.SZ: -4.80
+Enhanced Valuation Factor for 300676.SZ: -0.50
+Enhanced Profitability Factor for 300676.SZ: -4.10
 Enhanced Investment Factor for 300676.SZ: 3.90
 Enhanced News Effect Factor for 300676.SZ: -5.00
 Report for 300676.SZ generated.
@@ -404,10 +404,10 @@ First 10 Predictions for 002352.SZ: [ 0.8914582   0.95647997  1.9445876  -0.0403
 First 10 True Values for 002352.SZ: [1. 1. 2. 0. 1. 0.]
 Regression prediction visualization saved to img\regression_distribution_002352.SZ.png
 Sentiment Score for 002352.SZ: -0.9637
-Enhanced Market Factor for 002352.SZ: -2.10
-Enhanced Size Factor for 002352.SZ: 4.20
-Enhanced Valuation Factor for 002352.SZ: -0.00
-Enhanced Profitability Factor for 002352.SZ: -3.00
+Enhanced Market Factor for 002352.SZ: -1.90
+Enhanced Size Factor for 002352.SZ: 3.90
+Enhanced Valuation Factor for 002352.SZ: 0.40
+Enhanced Profitability Factor for 002352.SZ: -3.20
 Enhanced Investment Factor for 002352.SZ: 0.40
 Enhanced News Effect Factor for 002352.SZ: -5.00
 Report for 002352.SZ generated.
@@ -437,10 +437,10 @@ First 10 True Values for 600521.SH: [0.]
 Regression prediction visualization saved to img\regression_distribution_600521.SH.png
 Sentiment Score for 600521.SH: -0.9515
 Enhanced Market Factor for 600521.SH: -5.00
-Enhanced Size Factor for 600521.SH: -4.60
+Enhanced Size Factor for 600521.SH: -4.20
 Enhanced Valuation Factor for 600521.SH: -0.50
-Enhanced Profitability Factor for 600521.SH: 3.20
-Enhanced Investment Factor for 600521.SH: 2.40
+Enhanced Profitability Factor for 600521.SH: 4.20
+Enhanced Investment Factor for 600521.SH: 1.80
 Enhanced News Effect Factor for 600521.SH: -5.00
 Report for 600521.SH generated.
 Target Return Distribution - Mean: 0.389, Median: 0.389, Variance: 0.000
@@ -468,12 +468,12 @@ First 10 Predictions for 300207.SZ: [-0.03483731]
 First 10 True Values for 300207.SZ: [0.]
 Regression prediction visualization saved to img\regression_distribution_300207.SZ.png
 Sentiment Score for 300207.SZ: -0.9639
-Enhanced Market Factor for 300207.SZ: 1.80
-Enhanced Size Factor for 300207.SZ: 3.90
+Enhanced Market Factor for 300207.SZ: 2.20
+Enhanced Size Factor for 300207.SZ: 4.50
 Enhanced Valuation Factor for 300207.SZ: 0.40
-Enhanced Profitability Factor for 300207.SZ: -3.40
-Enhanced Investment Factor for 300207.SZ: 1.80
-Enhanced News Effect Factor for 300207.SZ: -5.00
+Enhanced Profitability Factor for 300207.SZ: -3.30
+Enhanced Investment Factor for 300207.SZ: 1.50
+Enhanced News Effect Factor for 300207.SZ: -4.70
 Report for 300207.SZ generated.
 Target Return Distribution - Mean: -0.035, Median: -0.035, Variance: 0.000
 Processing stock: 300069.SZ
@@ -510,10 +510,10 @@ First 10 Predictions for 600673.SH: [2.0924802]
 First 10 True Values for 600673.SH: [2.]
 Regression prediction visualization saved to img\regression_distribution_600673.SH.png
 Sentiment Score for 600673.SH: -0.9639
-Enhanced Market Factor for 600673.SH: -4.40
-Enhanced Size Factor for 600673.SH: 3.80
-Enhanced Valuation Factor for 600673.SH: 0.90
-Enhanced Profitability Factor for 600673.SH: -3.90
+Enhanced Market Factor for 600673.SH: -5.00
+Enhanced Size Factor for 600673.SH: 4.30
+Enhanced Valuation Factor for 600673.SH: 0.80
+Enhanced Profitability Factor for 600673.SH: -4.60
 Enhanced Investment Factor for 600673.SH: 1.60
 Enhanced News Effect Factor for 600673.SH: -5.00
 Report for 600673.SH generated.
@@ -550,9 +550,9 @@ First 10 True Values for 000002.SZ: [0.]
 Regression prediction visualization saved to img\regression_distribution_000002.SZ.png
 Sentiment Score for 000002.SZ: -0.9640
 Enhanced Market Factor for 000002.SZ: 5.00
-Enhanced Size Factor for 000002.SZ: -4.20
-Enhanced Valuation Factor for 000002.SZ: 2.50
-Enhanced Profitability Factor for 000002.SZ: -2.70
+Enhanced Size Factor for 000002.SZ: -3.80
+Enhanced Valuation Factor for 000002.SZ: 1.60
+Enhanced Profitability Factor for 000002.SZ: -4.00
 Enhanced Investment Factor for 000002.SZ: 5.00
 Enhanced News Effect Factor for 000002.SZ: -5.00
 Report for 000002.SZ generated.
@@ -582,7 +582,7 @@ First 10 True Values for 002252.SZ: [0.]
 Regression prediction visualization saved to img\regression_distribution_002252.SZ.png
 Sentiment Score for 002252.SZ: -0.9640
 Enhanced Market Factor for 002252.SZ: -3.60
-Enhanced Size Factor for 002252.SZ: -4.30
+Enhanced Size Factor for 002252.SZ: -3.90
 Enhanced Valuation Factor for 002252.SZ: -0.00
 Enhanced Profitability Factor for 002252.SZ: 5.00
 Enhanced Investment Factor for 002252.SZ: 5.00
@@ -616,9 +616,9 @@ Regression prediction visualization saved to img\regression_distribution_002594.
 Sentiment Score for 002594.SZ: -0.9612
 Enhanced Market Factor for 002594.SZ: 5.00
 Enhanced Size Factor for 002594.SZ: 5.00
-Enhanced Valuation Factor for 002594.SZ: 0.50
-Enhanced Profitability Factor for 002594.SZ: -3.10
-Enhanced Investment Factor for 002594.SZ: 2.30
+Enhanced Valuation Factor for 002594.SZ: 0.40
+Enhanced Profitability Factor for 002594.SZ: -3.80
+Enhanced Investment Factor for 002594.SZ: 3.00
 Enhanced News Effect Factor for 002594.SZ: -5.00
 Report for 002594.SZ generated.
 Target Return Distribution - Mean: 0.896, Median: 0.288, Variance: 0.613
@@ -689,10 +689,10 @@ First 10 Predictions for 601669.SH: [0.08538354 1.8696338 ]
 First 10 True Values for 601669.SH: [0. 2.]
 Regression prediction visualization saved to img\regression_distribution_601669.SH.png
 Sentiment Score for 601669.SH: -0.9638
-Enhanced Market Factor for 601669.SH: -3.00
-Enhanced Size Factor for 601669.SH: 2.60
-Enhanced Valuation Factor for 601669.SH: 0.40
-Enhanced Profitability Factor for 601669.SH: -3.30
+Enhanced Market Factor for 601669.SH: -3.10
+Enhanced Size Factor for 601669.SH: 2.30
+Enhanced Valuation Factor for 601669.SH: 0.30
+Enhanced Profitability Factor for 601669.SH: -2.80
 Enhanced Investment Factor for 601669.SH: 5.00
 Enhanced News Effect Factor for 601669.SH: -5.00
 Report for 601669.SH generated.
@@ -744,10 +744,10 @@ First 10 Predictions for 002548.SZ: [1.8995477]
 First 10 True Values for 002548.SZ: [2.]
 Regression prediction visualization saved to img\regression_distribution_002548.SZ.png
 Sentiment Score for 002548.SZ: -0.9640
-Enhanced Market Factor for 002548.SZ: -0.80
-Enhanced Size Factor for 002548.SZ: -3.70
-Enhanced Valuation Factor for 002548.SZ: -1.80
-Enhanced Profitability Factor for 002548.SZ: -1.70
+Enhanced Market Factor for 002548.SZ: 0.40
+Enhanced Size Factor for 002548.SZ: -4.00
+Enhanced Valuation Factor for 002548.SZ: -1.60
+Enhanced Profitability Factor for 002548.SZ: -1.40
 Enhanced Investment Factor for 002548.SZ: 5.00
 Enhanced News Effect Factor for 002548.SZ: -5.00
 Report for 002548.SZ generated.
@@ -832,9 +832,9 @@ First 10 Predictions for 002422.SZ: [0.12536193 1.2034165 ]
 First 10 True Values for 002422.SZ: [0. 1.]
 Regression prediction visualization saved to img\regression_distribution_002422.SZ.png
 Sentiment Score for 002422.SZ: -0.9640
-Enhanced Market Factor for 002422.SZ: 0.00
-Enhanced Size Factor for 002422.SZ: -4.20
-Enhanced Valuation Factor for 002422.SZ: -1.10
+Enhanced Market Factor for 002422.SZ: -1.00
+Enhanced Size Factor for 002422.SZ: -4.40
+Enhanced Valuation Factor for 002422.SZ: -1.00
 Enhanced Profitability Factor for 002422.SZ: 5.00
 Enhanced Investment Factor for 002422.SZ: 5.00
 Enhanced News Effect Factor for 002422.SZ: -5.00
@@ -889,9 +889,9 @@ First 10 True Values for 600309.SH: [1. 2. 2. 2.]
 Regression prediction visualization saved to img\regression_distribution_600309.SH.png
 Sentiment Score for 600309.SH: -0.9639
 Enhanced Market Factor for 600309.SH: 5.00
-Enhanced Size Factor for 600309.SH: 4.40
-Enhanced Valuation Factor for 600309.SH: 0.30
-Enhanced Profitability Factor for 600309.SH: -3.30
+Enhanced Size Factor for 600309.SH: 3.80
+Enhanced Valuation Factor for 600309.SH: 0.40
+Enhanced Profitability Factor for 600309.SH: -2.90
 Enhanced Investment Factor for 600309.SH: 1.60
 Enhanced News Effect Factor for 600309.SH: -5.00
 Report for 600309.SH generated.
@@ -980,10 +980,10 @@ First 10 Predictions for 000157.SZ: [0.63466614 0.62726796 0.62679493]
 First 10 True Values for 000157.SZ: [0. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_000157.SZ.png
 Sentiment Score for 000157.SZ: -0.9639
-Enhanced Market Factor for 000157.SZ: 2.80
+Enhanced Market Factor for 000157.SZ: 1.80
 Enhanced Size Factor for 000157.SZ: -5.00
-Enhanced Valuation Factor for 000157.SZ: 0.40
-Enhanced Profitability Factor for 000157.SZ: -3.00
+Enhanced Valuation Factor for 000157.SZ: 0.70
+Enhanced Profitability Factor for 000157.SZ: -4.80
 Enhanced Investment Factor for 000157.SZ: 5.00
 Enhanced News Effect Factor for 000157.SZ: -5.00
 Report for 000157.SZ generated.
@@ -1018,9 +1018,9 @@ First 10 Predictions for 600519.SH: [0.0678646  0.06557597 0.06648237 0.08331035
 First 10 True Values for 600519.SH: [0. 0. 0. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_600519.SH.png
 Sentiment Score for 600519.SH: -0.9639
-Enhanced Market Factor for 600519.SH: -0.40
-Enhanced Size Factor for 600519.SH: 3.40
-Enhanced Valuation Factor for 600519.SH: 0.50
+Enhanced Market Factor for 600519.SH: -1.80
+Enhanced Size Factor for 600519.SH: 3.70
+Enhanced Valuation Factor for 600519.SH: -0.00
 Enhanced Profitability Factor for 600519.SH: 5.00
 Enhanced Investment Factor for 600519.SH: 5.00
 Enhanced News Effect Factor for 600519.SH: -5.00
@@ -1080,12 +1080,12 @@ First 10 Predictions for 601238.SH: [1.9624515 1.9592459 1.9584183 0.7989181]
 First 10 True Values for 601238.SH: [2. 2. 2. 1.]
 Regression prediction visualization saved to img\regression_distribution_601238.SH.png
 Sentiment Score for 601238.SH: -0.9640
-Enhanced Market Factor for 601238.SH: -4.30
-Enhanced Size Factor for 601238.SH: 3.40
+Enhanced Market Factor for 601238.SH: -3.50
+Enhanced Size Factor for 601238.SH: 3.60
 Enhanced Valuation Factor for 601238.SH: -0.70
-Enhanced Profitability Factor for 601238.SH: -1.10
+Enhanced Profitability Factor for 601238.SH: -0.80
 Enhanced Investment Factor for 601238.SH: 0.00
-Enhanced News Effect Factor for 601238.SH: -5.00
+Enhanced News Effect Factor for 601238.SH: -4.60
 Report for 601238.SH generated.
 Target Return Distribution - Mean: 1.670, Median: 1.959, Variance: 0.253
 Processing stock: 300102.SZ
@@ -1118,8 +1118,8 @@ First 10 Predictions for 002415.SZ: [1.7430865]
 First 10 True Values for 002415.SZ: [1.]
 Regression prediction visualization saved to img\regression_distribution_002415.SZ.png
 Sentiment Score for 002415.SZ: -0.9640
-Enhanced Market Factor for 002415.SZ: 2.80
-Enhanced Size Factor for 002415.SZ: 4.20
+Enhanced Market Factor for 002415.SZ: 3.20
+Enhanced Size Factor for 002415.SZ: 3.60
 Enhanced Valuation Factor for 002415.SZ: 0.50
 Enhanced Profitability Factor for 002415.SZ: 5.00
 Enhanced Investment Factor for 002415.SZ: 5.00
@@ -1155,11 +1155,11 @@ First 10 Predictions for 600276.SH: [2.0272949  0.14366883 1.983992   1.1197617 
 First 10 True Values for 600276.SH: [2. 0. 2. 1. 0. 0. 0. 0. 2. 0.]
 Regression prediction visualization saved to img\regression_distribution_600276.SH.png
 Sentiment Score for 600276.SH: -0.9406
-Enhanced Market Factor for 600276.SH: 2.60
+Enhanced Market Factor for 600276.SH: 2.30
 Enhanced Size Factor for 600276.SH: -5.00
-Enhanced Valuation Factor for 600276.SH: -0.00
-Enhanced Profitability Factor for 600276.SH: -4.60
-Enhanced Investment Factor for 600276.SH: 1.80
+Enhanced Valuation Factor for 600276.SH: 0.00
+Enhanced Profitability Factor for 600276.SH: -5.00
+Enhanced Investment Factor for 600276.SH: 1.60
 Enhanced News Effect Factor for 600276.SH: -5.00
 Report for 600276.SH generated.
 Target Return Distribution - Mean: 0.894, Median: 0.663, Variance: 0.633
@@ -1197,8 +1197,8 @@ First 10 Predictions for 601727.SH: [0.680003  2.4248292]
 First 10 True Values for 601727.SH: [0. 1.]
 Regression prediction visualization saved to img\regression_distribution_601727.SH.png
 Sentiment Score for 601727.SH: -0.9640
-Enhanced Market Factor for 601727.SH: 2.50
-Enhanced Size Factor for 601727.SH: -2.70
+Enhanced Market Factor for 601727.SH: 2.90
+Enhanced Size Factor for 601727.SH: -1.90
 Enhanced Valuation Factor for 601727.SH: 0.40
 Enhanced Profitability Factor for 601727.SH: -5.00
 Enhanced Investment Factor for 601727.SH: 5.00
@@ -1246,10 +1246,10 @@ First 10 Predictions for 002714.SZ: [0.28541365 0.29131606 0.33765215 2.0293653 
 First 10 True Values for 002714.SZ: [0. 0. 0. 2. 0.]
 Regression prediction visualization saved to img\regression_distribution_002714.SZ.png
 Sentiment Score for 002714.SZ: -0.9639
-Enhanced Market Factor for 002714.SZ: -1.50
-Enhanced Size Factor for 002714.SZ: 3.70
-Enhanced Valuation Factor for 002714.SZ: -0.40
-Enhanced Profitability Factor for 002714.SZ: -2.70
+Enhanced Market Factor for 002714.SZ: -1.60
+Enhanced Size Factor for 002714.SZ: 3.90
+Enhanced Valuation Factor for 002714.SZ: -0.00
+Enhanced Profitability Factor for 002714.SZ: -3.10
 Enhanced Investment Factor for 002714.SZ: 5.00
 Enhanced News Effect Factor for 002714.SZ: -5.00
 Report for 002714.SZ generated.
@@ -1325,11 +1325,11 @@ First 10 Predictions for 002653.SZ: [2.11924    0.27503794]
 First 10 True Values for 002653.SZ: [2. 0.]
 Regression prediction visualization saved to img\regression_distribution_002653.SZ.png
 Sentiment Score for 002653.SZ: -0.9610
-Enhanced Market Factor for 002653.SZ: -1.00
-Enhanced Size Factor for 002653.SZ: -5.00
-Enhanced Valuation Factor for 002653.SZ: 0.00
-Enhanced Profitability Factor for 002653.SZ: -3.70
-Enhanced Investment Factor for 002653.SZ: 2.10
+Enhanced Market Factor for 002653.SZ: -0.50
+Enhanced Size Factor for 002653.SZ: -4.60
+Enhanced Valuation Factor for 002653.SZ: -0.00
+Enhanced Profitability Factor for 002653.SZ: -4.80
+Enhanced Investment Factor for 002653.SZ: 1.90
 Enhanced News Effect Factor for 002653.SZ: -5.00
 Report for 002653.SZ generated.
 Target Return Distribution - Mean: 1.197, Median: 1.197, Variance: 0.850
@@ -1418,12 +1418,12 @@ First 10 Predictions for 600030.SH: [ 1.0834557   1.1027814   1.0870645   1.0894
 First 10 True Values for 600030.SH: [1. 1. 1. 1. 1. 1. 1. 0. 1.]
 Regression prediction visualization saved to img\regression_distribution_600030.SH.png
 Sentiment Score for 600030.SH: -0.9640
-Enhanced Market Factor for 600030.SH: 4.00
-Enhanced Size Factor for 600030.SH: 0.50
-Enhanced Valuation Factor for 600030.SH: -0.00
+Enhanced Market Factor for 600030.SH: 3.30
+Enhanced Size Factor for 600030.SH: 1.30
+Enhanced Valuation Factor for 600030.SH: 0.00
 Enhanced Profitability Factor for 600030.SH: 5.00
 Enhanced Investment Factor for 600030.SH: 5.00
-Enhanced News Effect Factor for 600030.SH: -3.50
+Enhanced News Effect Factor for 600030.SH: -4.10
 Report for 600030.SH generated.
 Target Return Distribution - Mean: 0.948, Median: 1.089, Variance: 0.155
 Processing stock: 002008.SZ
@@ -1480,12 +1480,12 @@ First 10 Predictions for 001979.SZ: [ 0.995901   -0.29180214  0.91117316]
 First 10 True Values for 001979.SZ: [1. 0. 1.]
 Regression prediction visualization saved to img\regression_distribution_001979.SZ.png
 Sentiment Score for 001979.SZ: -0.9639
-Enhanced Market Factor for 001979.SZ: 2.10
-Enhanced Size Factor for 001979.SZ: -4.40
-Enhanced Valuation Factor for 001979.SZ: 2.10
-Enhanced Profitability Factor for 001979.SZ: -1.00
+Enhanced Market Factor for 001979.SZ: 2.20
+Enhanced Size Factor for 001979.SZ: -5.00
+Enhanced Valuation Factor for 001979.SZ: 2.00
+Enhanced Profitability Factor for 001979.SZ: -3.10
 Enhanced Investment Factor for 001979.SZ: 5.00
-Enhanced News Effect Factor for 001979.SZ: -5.00
+Enhanced News Effect Factor for 001979.SZ: -4.70
 Report for 001979.SZ generated.
 Target Return Distribution - Mean: 0.538, Median: 0.911, Variance: 0.346
 Processing stock: 000705.SZ
@@ -1528,9 +1528,9 @@ First 10 True Values for 000625.SZ: [0. 0. 1. 1. 2. 0. 1. 1. 2. 2.]
 Regression prediction visualization saved to img\regression_distribution_000625.SZ.png
 Sentiment Score for 000625.SZ: -0.9640
 Enhanced Market Factor for 000625.SZ: 5.00
-Enhanced Size Factor for 000625.SZ: 3.90
-Enhanced Valuation Factor for 000625.SZ: -0.70
-Enhanced Profitability Factor for 000625.SZ: -1.10
+Enhanced Size Factor for 000625.SZ: 4.00
+Enhanced Valuation Factor for 000625.SZ: -0.90
+Enhanced Profitability Factor for 000625.SZ: -1.50
 Enhanced Investment Factor for 000625.SZ: 5.00
 Enhanced News Effect Factor for 000625.SZ: -5.00
 Report for 000625.SZ generated.
@@ -1571,8 +1571,8 @@ First 10 True Values for 601628.SH: [0. 1. 1. 1. 0. 1. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_601628.SH.png
 Sentiment Score for 601628.SH: -0.9640
 Enhanced Market Factor for 601628.SH: 5.00
-Enhanced Size Factor for 601628.SH: -4.10
-Enhanced Valuation Factor for 601628.SH: -0.80
+Enhanced Size Factor for 601628.SH: -4.30
+Enhanced Valuation Factor for 601628.SH: -0.40
 Enhanced Profitability Factor for 601628.SH: 1.10
 Enhanced Investment Factor for 601628.SH: 5.00
 Enhanced News Effect Factor for 601628.SH: -5.00
@@ -1623,10 +1623,10 @@ First 10 Predictions for 300003.SZ: [0.441203]
 First 10 True Values for 300003.SZ: [1.]
 Regression prediction visualization saved to img\regression_distribution_300003.SZ.png
 Sentiment Score for 300003.SZ: -0.9635
-Enhanced Market Factor for 300003.SZ: -0.50
+Enhanced Market Factor for 300003.SZ: -1.00
 Enhanced Size Factor for 300003.SZ: -5.00
-Enhanced Valuation Factor for 300003.SZ: -1.10
-Enhanced Profitability Factor for 300003.SZ: -4.50
+Enhanced Valuation Factor for 300003.SZ: -0.50
+Enhanced Profitability Factor for 300003.SZ: -3.80
 Enhanced Investment Factor for 300003.SZ: 5.00
 Enhanced News Effect Factor for 300003.SZ: -5.00
 Report for 300003.SZ generated.
@@ -1708,12 +1708,12 @@ First 10 Predictions for 601318.SH: [1.3099138  0.04630238 0.06151303 0.08308575
 First 10 True Values for 601318.SH: [1. 0. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_601318.SH.png
 Sentiment Score for 601318.SH: -0.9639
-Enhanced Market Factor for 601318.SH: 2.80
-Enhanced Size Factor for 601318.SH: -3.80
+Enhanced Market Factor for 601318.SH: 2.20
+Enhanced Size Factor for 601318.SH: -4.20
 Enhanced Valuation Factor for 601318.SH: 1.60
-Enhanced Profitability Factor for 601318.SH: -2.90
+Enhanced Profitability Factor for 601318.SH: -3.20
 Enhanced Investment Factor for 601318.SH: 5.00
-Enhanced News Effect Factor for 601318.SH: -5.00
+Enhanced News Effect Factor for 601318.SH: -4.70
 Report for 601318.SH generated.
 Target Return Distribution - Mean: 0.375, Median: 0.072, Variance: 0.291
 Processing stock: 000545.SZ
@@ -1763,8 +1763,8 @@ First 10 True Values for 600029.SH: [1. 1.]
 Regression prediction visualization saved to img\regression_distribution_600029.SH.png
 Sentiment Score for 600029.SH: -0.9640
 Enhanced Market Factor for 600029.SH: 4.90
-Enhanced Size Factor for 600029.SH: 1.80
-Enhanced Valuation Factor for 600029.SH: -0.80
+Enhanced Size Factor for 600029.SH: 2.10
+Enhanced Valuation Factor for 600029.SH: -0.00
 Enhanced Profitability Factor for 600029.SH: -5.00
 Enhanced Investment Factor for 600029.SH: 5.00
 Enhanced News Effect Factor for 600029.SH: -5.00
@@ -1794,12 +1794,12 @@ First 10 Predictions for 601601.SH: [1.7240628]
 First 10 True Values for 601601.SH: [1.]
 Regression prediction visualization saved to img\regression_distribution_601601.SH.png
 Sentiment Score for 601601.SH: -0.9639
-Enhanced Market Factor for 601601.SH: 4.10
-Enhanced Size Factor for 601601.SH: -4.20
-Enhanced Valuation Factor for 601601.SH: 2.00
-Enhanced Profitability Factor for 601601.SH: 3.20
+Enhanced Market Factor for 601601.SH: 1.70
+Enhanced Size Factor for 601601.SH: -3.80
+Enhanced Valuation Factor for 601601.SH: 1.20
+Enhanced Profitability Factor for 601601.SH: 1.50
 Enhanced Investment Factor for 601601.SH: 5.00
-Enhanced News Effect Factor for 601601.SH: -4.70
+Enhanced News Effect Factor for 601601.SH: -5.00
 Report for 601601.SH generated.
 Target Return Distribution - Mean: 1.724, Median: 1.724, Variance: 0.000
 Processing stock: 603619.SH
@@ -1869,8 +1869,8 @@ Regression prediction visualization saved to img\regression_distribution_300498.
 Sentiment Score for 300498.SZ: -0.9640
 Enhanced Market Factor for 300498.SZ: 5.00
 Enhanced Size Factor for 300498.SZ: -4.10
-Enhanced Valuation Factor for 300498.SZ: -0.70
-Enhanced Profitability Factor for 300498.SZ: -2.20
+Enhanced Valuation Factor for 300498.SZ: -0.00
+Enhanced Profitability Factor for 300498.SZ: -2.10
 Enhanced Investment Factor for 300498.SZ: 5.00
 Enhanced News Effect Factor for 300498.SZ: -5.00
 Report for 300498.SZ generated.
@@ -1916,12 +1916,12 @@ First 10 Predictions for 600267.SH: [0.33490676 1.4838657  2.2610455  1.5399714 
 First 10 True Values for 600267.SH: [0. 1. 2. 1.]
 Regression prediction visualization saved to img\regression_distribution_600267.SH.png
 Sentiment Score for 600267.SH: -0.9640
-Enhanced Market Factor for 600267.SH: 5.00
-Enhanced Size Factor for 600267.SH: -1.60
-Enhanced Valuation Factor for 600267.SH: 1.00
-Enhanced Profitability Factor for 600267.SH: -3.10
-Enhanced Investment Factor for 600267.SH: 5.00
-Enhanced News Effect Factor for 600267.SH: -3.50
+Enhanced Market Factor for 600267.SH: 4.70
+Enhanced Size Factor for 600267.SH: -1.50
+Enhanced Valuation Factor for 600267.SH: 0.40
+Enhanced Profitability Factor for 600267.SH: -3.80
+Enhanced Investment Factor for 600267.SH: 4.90
+Enhanced News Effect Factor for 600267.SH: -5.00
 Report for 600267.SH generated.
 Target Return Distribution - Mean: 1.405, Median: 1.512, Variance: 0.476
 Processing stock: 000736.SZ
@@ -1984,11 +1984,11 @@ First 10 Predictions for 000016.SZ: [-0.01745595  1.2218212   1.2305423   1.2279
 First 10 True Values for 000016.SZ: [0. 1. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_000016.SZ.png
 Sentiment Score for 000016.SZ: -0.9640
-Enhanced Market Factor for 000016.SZ: 3.50
-Enhanced Size Factor for 000016.SZ: 2.90
-Enhanced Valuation Factor for 000016.SZ: -0.40
+Enhanced Market Factor for 000016.SZ: 4.00
+Enhanced Size Factor for 000016.SZ: 3.10
+Enhanced Valuation Factor for 000016.SZ: -1.00
 Enhanced Profitability Factor for 000016.SZ: 3.30
-Enhanced Investment Factor for 000016.SZ: 5.00
+Enhanced Investment Factor for 000016.SZ: 4.40
 Enhanced News Effect Factor for 000016.SZ: -5.00
 Report for 000016.SZ generated.
 Target Return Distribution - Mean: 0.916, Median: 1.225, Variance: 0.290
@@ -2049,11 +2049,11 @@ First 10 Predictions for 000538.SZ: [ 1.4771622  -0.3872231  -0.33158514]
 First 10 True Values for 000538.SZ: [2. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_000538.SZ.png
 Sentiment Score for 000538.SZ: -0.9640
-Enhanced Market Factor for 000538.SZ: -5.00
+Enhanced Market Factor for 000538.SZ: -2.80
 Enhanced Size Factor for 000538.SZ: 0.70
-Enhanced Valuation Factor for 000538.SZ: -0.50
-Enhanced Profitability Factor for 000538.SZ: -3.30
-Enhanced Investment Factor for 000538.SZ: 3.40
+Enhanced Valuation Factor for 000538.SZ: -0.40
+Enhanced Profitability Factor for 000538.SZ: -1.50
+Enhanced Investment Factor for 000538.SZ: 3.20
 Enhanced News Effect Factor for 000538.SZ: -5.00
 Report for 000538.SZ generated.
 Target Return Distribution - Mean: 0.253, Median: -0.332, Variance: 0.750
@@ -2175,10 +2175,10 @@ First 10 True Values for 600196.SH: [1. 2. 0. 2. 2. 2. 2. 0. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_600196.SH.png
 Sentiment Score for 600196.SH: -0.9592
 Enhanced Market Factor for 600196.SH: 5.00
-Enhanced Size Factor for 600196.SH: -3.40
+Enhanced Size Factor for 600196.SH: -2.90
 Enhanced Valuation Factor for 600196.SH: -0.00
-Enhanced Profitability Factor for 600196.SH: -3.40
-Enhanced Investment Factor for 600196.SH: 1.70
+Enhanced Profitability Factor for 600196.SH: -5.00
+Enhanced Investment Factor for 600196.SH: 1.50
 Enhanced News Effect Factor for 600196.SH: -5.00
 Report for 600196.SH generated.
 Target Return Distribution - Mean: 1.047, Median: 0.677, Variance: 0.701
@@ -2206,10 +2206,10 @@ First 10 Predictions for 002271.SZ: [0.2411958  0.22419195]
 First 10 True Values for 002271.SZ: [0. 0.]
 Regression prediction visualization saved to img\regression_distribution_002271.SZ.png
 Sentiment Score for 002271.SZ: -0.9638
-Enhanced Market Factor for 002271.SZ: 2.50
-Enhanced Size Factor for 002271.SZ: -4.50
-Enhanced Valuation Factor for 002271.SZ: -0.70
-Enhanced Profitability Factor for 002271.SZ: -3.60
+Enhanced Market Factor for 002271.SZ: 3.20
+Enhanced Size Factor for 002271.SZ: -4.30
+Enhanced Valuation Factor for 002271.SZ: -0.30
+Enhanced Profitability Factor for 002271.SZ: -2.90
 Enhanced Investment Factor for 002271.SZ: 5.00
 Enhanced News Effect Factor for 002271.SZ: -5.00
 Report for 002271.SZ generated.
@@ -2270,10 +2270,10 @@ First 10 True Values for 600418.SH: [2. 2. 2. 0. 0. 0. 2. 2. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_600418.SH.png
 Sentiment Score for 600418.SH: -0.9631
 Enhanced Market Factor for 600418.SH: -5.00
-Enhanced Size Factor for 600418.SH: 2.90
-Enhanced Valuation Factor for 600418.SH: -0.80
+Enhanced Size Factor for 600418.SH: 2.70
+Enhanced Valuation Factor for 600418.SH: -0.70
 Enhanced Profitability Factor for 600418.SH: -5.00
-Enhanced Investment Factor for 600418.SH: 3.90
+Enhanced Investment Factor for 600418.SH: 4.10
 Enhanced News Effect Factor for 600418.SH: -5.00
 Report for 600418.SH generated.
 Target Return Distribution - Mean: 1.146, Median: 1.790, Variance: 0.743
@@ -2460,11 +2460,11 @@ First 10 True Values for 600104.SH: [2. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_600104.SH.png
 Sentiment Score for 600104.SH: -0.9640
 Enhanced Market Factor for 600104.SH: 5.00
-Enhanced Size Factor for 600104.SH: -4.00
-Enhanced Valuation Factor for 600104.SH: 0.70
-Enhanced Profitability Factor for 600104.SH: 1.60
-Enhanced Investment Factor for 600104.SH: 3.10
-Enhanced News Effect Factor for 600104.SH: -5.00
+Enhanced Size Factor for 600104.SH: -3.70
+Enhanced Valuation Factor for 600104.SH: 0.00
+Enhanced Profitability Factor for 600104.SH: 1.50
+Enhanced Investment Factor for 600104.SH: 3.00
+Enhanced News Effect Factor for 600104.SH: -4.20
 Report for 600104.SH generated.
 Target Return Distribution - Mean: 1.708, Median: 1.466, Variance: 0.129
 Processing stock: 601988.SH
@@ -2493,9 +2493,9 @@ First 10 True Values for 601988.SH: [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_601988.SH.png
 Sentiment Score for 601988.SH: -0.9640
 Enhanced Market Factor for 601988.SH: 5.00
-Enhanced Size Factor for 601988.SH: -4.90
-Enhanced Valuation Factor for 601988.SH: -1.40
-Enhanced Profitability Factor for 601988.SH: -3.70
+Enhanced Size Factor for 601988.SH: -5.00
+Enhanced Valuation Factor for 601988.SH: -1.30
+Enhanced Profitability Factor for 601988.SH: -4.50
 Enhanced Investment Factor for 601988.SH: 5.00
 Enhanced News Effect Factor for 601988.SH: -5.00
 Report for 601988.SH generated.
@@ -2544,10 +2544,10 @@ First 10 Predictions for 600009.SH: [ 0.85512036 -0.33843884]
 First 10 True Values for 600009.SH: [1. 0.]
 Regression prediction visualization saved to img\regression_distribution_600009.SH.png
 Sentiment Score for 600009.SH: -0.9640
-Enhanced Market Factor for 600009.SH: 2.10
-Enhanced Size Factor for 600009.SH: -5.00
-Enhanced Valuation Factor for 600009.SH: -0.00
-Enhanced Profitability Factor for 600009.SH: -4.80
+Enhanced Market Factor for 600009.SH: 2.80
+Enhanced Size Factor for 600009.SH: -3.80
+Enhanced Valuation Factor for 600009.SH: 0.40
+Enhanced Profitability Factor for 600009.SH: -3.20
 Enhanced Investment Factor for 600009.SH: 5.00
 Enhanced News Effect Factor for 600009.SH: -5.00
 Report for 600009.SH generated.
@@ -2713,12 +2713,12 @@ First 10 Predictions for 601211.SH: [1.7515385 1.7477138 1.7475032 1.7476368 1.7
 First 10 True Values for 601211.SH: [2. 2. 2. 2. 2. 2. 2. 2.]
 Regression prediction visualization saved to img\regression_distribution_601211.SH.png
 Sentiment Score for 601211.SH: -0.9640
-Enhanced Market Factor for 601211.SH: -3.00
-Enhanced Size Factor for 601211.SH: -4.40
+Enhanced Market Factor for 601211.SH: -2.80
+Enhanced Size Factor for 601211.SH: -4.20
 Enhanced Valuation Factor for 601211.SH: 0.40
-Enhanced Profitability Factor for 601211.SH: 4.30
+Enhanced Profitability Factor for 601211.SH: 3.90
 Enhanced Investment Factor for 601211.SH: 5.00
-Enhanced News Effect Factor for 601211.SH: -4.10
+Enhanced News Effect Factor for 601211.SH: -5.00
 Report for 601211.SH generated.
 Target Return Distribution - Mean: 1.741, Median: 1.748, Variance: 0.000
 Processing stock: 600054.SH
@@ -2751,10 +2751,10 @@ First 10 Predictions for 002120.SZ: [1.9292562]
 First 10 True Values for 002120.SZ: [2.]
 Regression prediction visualization saved to img\regression_distribution_002120.SZ.png
 Sentiment Score for 002120.SZ: -0.9639
-Enhanced Market Factor for 002120.SZ: -4.40
-Enhanced Size Factor for 002120.SZ: -4.00
-Enhanced Valuation Factor for 002120.SZ: 0.40
-Enhanced Profitability Factor for 002120.SZ: 2.40
+Enhanced Market Factor for 002120.SZ: -3.80
+Enhanced Size Factor for 002120.SZ: -5.00
+Enhanced Valuation Factor for 002120.SZ: -0.50
+Enhanced Profitability Factor for 002120.SZ: 2.10
 Enhanced Investment Factor for 002120.SZ: 5.00
 Enhanced News Effect Factor for 002120.SZ: -5.00
 Report for 002120.SZ generated.
@@ -2797,12 +2797,12 @@ First 10 Predictions for 002460.SZ: [1.9847835  1.1020875  0.10935962 0.12229714
 First 10 True Values for 002460.SZ: [2. 1. 0. 0. 0. 0. 0. 2. 1.]
 Regression prediction visualization saved to img\regression_distribution_002460.SZ.png
 Sentiment Score for 002460.SZ: -0.9640
-Enhanced Market Factor for 002460.SZ: -0.80
-Enhanced Size Factor for 002460.SZ: 4.10
-Enhanced Valuation Factor for 002460.SZ: -0.40
-Enhanced Profitability Factor for 002460.SZ: -3.60
-Enhanced Investment Factor for 002460.SZ: 1.70
-Enhanced News Effect Factor for 002460.SZ: -3.40
+Enhanced Market Factor for 002460.SZ: -1.70
+Enhanced Size Factor for 002460.SZ: 4.40
+Enhanced Valuation Factor for 002460.SZ: 0.00
+Enhanced Profitability Factor for 002460.SZ: -3.50
+Enhanced Investment Factor for 002460.SZ: 1.60
+Enhanced News Effect Factor for 002460.SZ: -5.00
 Report for 002460.SZ generated.
 Target Return Distribution - Mean: 0.762, Median: 0.145, Variance: 0.602
 Processing stock: 300387.SZ
@@ -2936,9 +2936,9 @@ First 10 Predictions for 601857.SH: [1.3235823 1.3006068]
 First 10 True Values for 601857.SH: [1. 1.]
 Regression prediction visualization saved to img\regression_distribution_601857.SH.png
 Sentiment Score for 601857.SH: -0.9640
-Enhanced Market Factor for 601857.SH: -0.90
-Enhanced Size Factor for 601857.SH: -4.10
-Enhanced Valuation Factor for 601857.SH: 1.20
+Enhanced Market Factor for 601857.SH: -1.50
+Enhanced Size Factor for 601857.SH: -4.50
+Enhanced Valuation Factor for 601857.SH: 0.90
 Enhanced Profitability Factor for 601857.SH: 5.00
 Enhanced Investment Factor for 601857.SH: 5.00
 Enhanced News Effect Factor for 601857.SH: -5.00
@@ -2984,10 +2984,10 @@ First 10 Predictions for 601688.SH: [0.90194887 0.9078394  0.9079083 ]
 First 10 True Values for 601688.SH: [1. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_601688.SH.png
 Sentiment Score for 601688.SH: -0.9640
-Enhanced Market Factor for 601688.SH: 2.50
-Enhanced Size Factor for 601688.SH: -5.00
-Enhanced Valuation Factor for 601688.SH: 0.90
-Enhanced Profitability Factor for 601688.SH: -3.60
+Enhanced Market Factor for 601688.SH: 2.20
+Enhanced Size Factor for 601688.SH: -4.60
+Enhanced Valuation Factor for 601688.SH: 1.30
+Enhanced Profitability Factor for 601688.SH: -3.90
 Enhanced Investment Factor for 601688.SH: 0.00
 Enhanced News Effect Factor for 601688.SH: -5.00
 Report for 601688.SH generated.
@@ -3024,11 +3024,11 @@ First 10 Predictions for 000651.SZ: [ 1.132683   -0.13202344 -0.14342622  1.0817
 First 10 True Values for 000651.SZ: [1. 0. 0. 1. 2. 1. 1. 1.]
 Regression prediction visualization saved to img\regression_distribution_000651.SZ.png
 Sentiment Score for 000651.SZ: -0.9640
-Enhanced Market Factor for 000651.SZ: 5.00
+Enhanced Market Factor for 000651.SZ: 4.80
 Enhanced Size Factor for 000651.SZ: -4.00
 Enhanced Valuation Factor for 000651.SZ: -0.70
-Enhanced Profitability Factor for 000651.SZ: -1.60
-Enhanced Investment Factor for 000651.SZ: 1.80
+Enhanced Profitability Factor for 000651.SZ: -1.50
+Enhanced Investment Factor for 000651.SZ: 1.50
 Enhanced News Effect Factor for 000651.SZ: -5.00
 Report for 000651.SZ generated.
 Target Return Distribution - Mean: 0.917, Median: 1.067, Variance: 0.504
@@ -3204,11 +3204,11 @@ First 10 Predictions for 600039.SH: [ 8.6700283e-03  1.2020431e-03 -1.7000921e-0
 First 10 True Values for 600039.SH: [0. 0. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_600039.SH.png
 Sentiment Score for 600039.SH: -0.9640
-Enhanced Market Factor for 600039.SH: -1.10
-Enhanced Size Factor for 600039.SH: 4.30
-Enhanced Valuation Factor for 600039.SH: -0.70
+Enhanced Market Factor for 600039.SH: -1.50
+Enhanced Size Factor for 600039.SH: 3.80
+Enhanced Valuation Factor for 600039.SH: -0.90
 Enhanced Profitability Factor for 600039.SH: -3.40
-Enhanced Investment Factor for 600039.SH: 2.80
+Enhanced Investment Factor for 600039.SH: 2.50
 Enhanced News Effect Factor for 600039.SH: -5.00
 Report for 600039.SH generated.
 Target Return Distribution - Mean: 0.572, Median: 0.005, Variance: 0.973
@@ -3285,11 +3285,11 @@ First 10 Predictions for 300024.SZ: [-0.11167562 -0.09361598]
 First 10 True Values for 300024.SZ: [0. 0.]
 Regression prediction visualization saved to img\regression_distribution_300024.SZ.png
 Sentiment Score for 300024.SZ: -0.9640
-Enhanced Market Factor for 300024.SZ: 2.40
-Enhanced Size Factor for 300024.SZ: -3.80
-Enhanced Valuation Factor for 300024.SZ: -0.00
-Enhanced Profitability Factor for 300024.SZ: -1.50
-Enhanced Investment Factor for 300024.SZ: 1.80
+Enhanced Market Factor for 300024.SZ: 3.10
+Enhanced Size Factor for 300024.SZ: -3.90
+Enhanced Valuation Factor for 300024.SZ: 0.00
+Enhanced Profitability Factor for 300024.SZ: -1.60
+Enhanced Investment Factor for 300024.SZ: 1.50
 Enhanced News Effect Factor for 300024.SZ: -5.00
 Report for 300024.SZ generated.
 Target Return Distribution - Mean: -0.103, Median: -0.103, Variance: 0.000
@@ -3359,11 +3359,11 @@ First 10 True Values for 000661.SZ: [2.]
 Regression prediction visualization saved to img\regression_distribution_000661.SZ.png
 Sentiment Score for 000661.SZ: -0.9605
 Enhanced Market Factor for 000661.SZ: 5.00
-Enhanced Size Factor for 000661.SZ: 4.70
-Enhanced Valuation Factor for 000661.SZ: 0.50
-Enhanced Profitability Factor for 000661.SZ: 4.70
-Enhanced Investment Factor for 000661.SZ: 2.80
-Enhanced News Effect Factor for 000661.SZ: -4.70
+Enhanced Size Factor for 000661.SZ: 4.60
+Enhanced Valuation Factor for 000661.SZ: 0.00
+Enhanced Profitability Factor for 000661.SZ: 5.00
+Enhanced Investment Factor for 000661.SZ: 3.10
+Enhanced News Effect Factor for 000661.SZ: -3.60
 Report for 000661.SZ generated.
 Target Return Distribution - Mean: 1.559, Median: 1.559, Variance: 0.000
 Processing stock: 603718.SH
@@ -3465,10 +3465,10 @@ First 10 Predictions for 300014.SZ: [1.1838105  1.1655753  1.1658567  1.1648358 
 First 10 True Values for 300014.SZ: [1. 1. 1. 1. 0. 1. 0. 0. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_300014.SZ.png
 Sentiment Score for 300014.SZ: -0.9640
-Enhanced Market Factor for 300014.SZ: 3.10
-Enhanced Size Factor for 300014.SZ: 3.50
-Enhanced Valuation Factor for 300014.SZ: 0.50
-Enhanced Profitability Factor for 300014.SZ: -3.00
+Enhanced Market Factor for 300014.SZ: 3.50
+Enhanced Size Factor for 300014.SZ: 3.90
+Enhanced Valuation Factor for 300014.SZ: -0.00
+Enhanced Profitability Factor for 300014.SZ: -4.10
 Enhanced Investment Factor for 300014.SZ: 5.00
 Enhanced News Effect Factor for 300014.SZ: -5.00
 Report for 300014.SZ generated.
@@ -3674,11 +3674,11 @@ First 10 Predictions for 600006.SH: [1.6654553 1.7150939 1.6668543]
 First 10 True Values for 600006.SH: [2. 2. 2.]
 Regression prediction visualization saved to img\regression_distribution_600006.SH.png
 Sentiment Score for 600006.SH: -0.9640
-Enhanced Market Factor for 600006.SH: -0.70
+Enhanced Market Factor for 600006.SH: -1.70
 Enhanced Size Factor for 600006.SH: 3.20
 Enhanced Valuation Factor for 600006.SH: -0.40
 Enhanced Profitability Factor for 600006.SH: 0.40
-Enhanced Investment Factor for 600006.SH: 0.00
+Enhanced Investment Factor for 600006.SH: 0.50
 Enhanced News Effect Factor for 600006.SH: -5.00
 Report for 600006.SH generated.
 Target Return Distribution - Mean: 1.682, Median: 1.667, Variance: 0.001
@@ -3807,12 +3807,12 @@ First 10 Predictions for 002385.SZ: [2.1388369]
 First 10 True Values for 002385.SZ: [1.]
 Regression prediction visualization saved to img\regression_distribution_002385.SZ.png
 Sentiment Score for 002385.SZ: -0.9590
-Enhanced Market Factor for 002385.SZ: 1.80
-Enhanced Size Factor for 002385.SZ: 2.80
-Enhanced Valuation Factor for 002385.SZ: 0.40
-Enhanced Profitability Factor for 002385.SZ: -3.40
-Enhanced Investment Factor for 002385.SZ: 3.50
-Enhanced News Effect Factor for 002385.SZ: -4.60
+Enhanced Market Factor for 002385.SZ: 3.10
+Enhanced Size Factor for 002385.SZ: 3.50
+Enhanced Valuation Factor for 002385.SZ: 0.50
+Enhanced Profitability Factor for 002385.SZ: -2.60
+Enhanced Investment Factor for 002385.SZ: 4.70
+Enhanced News Effect Factor for 002385.SZ: -5.00
 Report for 002385.SZ generated.
 Target Return Distribution - Mean: 2.139, Median: 2.139, Variance: 0.000
 Processing stock: 002361.SZ
@@ -3969,11 +3969,11 @@ First 10 Predictions for 002567.SZ: [0.27576852]
 First 10 True Values for 002567.SZ: [0.]
 Regression prediction visualization saved to img\regression_distribution_002567.SZ.png
 Sentiment Score for 002567.SZ: -0.9640
-Enhanced Market Factor for 002567.SZ: -2.80
+Enhanced Market Factor for 002567.SZ: -1.20
 Enhanced Size Factor for 002567.SZ: -5.00
-Enhanced Valuation Factor for 002567.SZ: 1.60
+Enhanced Valuation Factor for 002567.SZ: 1.90
 Enhanced Profitability Factor for 002567.SZ: -5.00
-Enhanced Investment Factor for 002567.SZ: 3.50
+Enhanced Investment Factor for 002567.SZ: 3.20
 Enhanced News Effect Factor for 002567.SZ: -5.00
 Report for 002567.SZ generated.
 Target Return Distribution - Mean: 0.276, Median: 0.276, Variance: 0.000
@@ -4212,12 +4212,12 @@ First 10 Predictions for 600745.SH: [2.1097908]
 First 10 True Values for 600745.SH: [2.]
 Regression prediction visualization saved to img\regression_distribution_600745.SH.png
 Sentiment Score for 600745.SH: -0.9640
-Enhanced Market Factor for 600745.SH: -1.70
-Enhanced Size Factor for 600745.SH: 3.40
+Enhanced Market Factor for 600745.SH: -0.80
+Enhanced Size Factor for 600745.SH: 3.60
 Enhanced Valuation Factor for 600745.SH: -0.00
 Enhanced Profitability Factor for 600745.SH: 5.00
 Enhanced Investment Factor for 600745.SH: 5.00
-Enhanced News Effect Factor for 600745.SH: -4.60
+Enhanced News Effect Factor for 600745.SH: -4.70
 Report for 600745.SH generated.
 Target Return Distribution - Mean: 2.110, Median: 2.110, Variance: 0.000
 Processing stock: 000822.SZ
@@ -4293,10 +4293,10 @@ First 10 Predictions for 002100.SZ: [1.9617894]
 First 10 True Values for 002100.SZ: [2.]
 Regression prediction visualization saved to img\regression_distribution_002100.SZ.png
 Sentiment Score for 002100.SZ: -0.9640
-Enhanced Market Factor for 002100.SZ: -5.00
+Enhanced Market Factor for 002100.SZ: -3.60
 Enhanced Size Factor for 002100.SZ: -5.00
-Enhanced Valuation Factor for 002100.SZ: -1.50
-Enhanced Profitability Factor for 002100.SZ: 1.70
+Enhanced Valuation Factor for 002100.SZ: -1.60
+Enhanced Profitability Factor for 002100.SZ: 1.10
 Enhanced Investment Factor for 002100.SZ: 5.00
 Enhanced News Effect Factor for 002100.SZ: -5.00
 Report for 002100.SZ generated.
@@ -4352,12 +4352,12 @@ First 10 Predictions for 002074.SZ: [0.12719183 0.12256688]
 First 10 True Values for 002074.SZ: [0. 0.]
 Regression prediction visualization saved to img\regression_distribution_002074.SZ.png
 Sentiment Score for 002074.SZ: -0.9640
-Enhanced Market Factor for 002074.SZ: 3.00
-Enhanced Size Factor for 002074.SZ: 3.40
-Enhanced Valuation Factor for 002074.SZ: 0.90
-Enhanced Profitability Factor for 002074.SZ: -3.70
+Enhanced Market Factor for 002074.SZ: 3.10
+Enhanced Size Factor for 002074.SZ: 3.60
+Enhanced Valuation Factor for 002074.SZ: 0.00
+Enhanced Profitability Factor for 002074.SZ: -3.50
 Enhanced Investment Factor for 002074.SZ: 5.00
-Enhanced News Effect Factor for 002074.SZ: -5.00
+Enhanced News Effect Factor for 002074.SZ: -3.80
 Report for 002074.SZ generated.
 Target Return Distribution - Mean: 0.125, Median: 0.125, Variance: 0.000
 Processing stock: 002466.SZ
@@ -4385,9 +4385,9 @@ First 10 True Values for 002466.SZ: [0. 2.]
 Regression prediction visualization saved to img\regression_distribution_002466.SZ.png
 Sentiment Score for 002466.SZ: -0.9635
 Enhanced Market Factor for 002466.SZ: -5.00
-Enhanced Size Factor for 002466.SZ: 4.30
-Enhanced Valuation Factor for 002466.SZ: 0.40
-Enhanced Profitability Factor for 002466.SZ: -4.70
+Enhanced Size Factor for 002466.SZ: 4.50
+Enhanced Valuation Factor for 002466.SZ: 0.30
+Enhanced Profitability Factor for 002466.SZ: -4.10
 Enhanced Investment Factor for 002466.SZ: 0.00
 Enhanced News Effect Factor for 002466.SZ: -5.00
 Report for 002466.SZ generated.
@@ -4599,9 +4599,9 @@ First 10 Predictions for 603259.SH: [0.32612714 0.32788974 0.33031046 0.33347595
 First 10 True Values for 603259.SH: [0. 0. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_603259.SH.png
 Sentiment Score for 603259.SH: -0.9640
-Enhanced Market Factor for 603259.SH: 3.30
-Enhanced Size Factor for 603259.SH: 3.90
-Enhanced Valuation Factor for 603259.SH: 0.50
+Enhanced Market Factor for 603259.SH: 3.10
+Enhanced Size Factor for 603259.SH: 3.60
+Enhanced Valuation Factor for 603259.SH: 0.00
 Enhanced Profitability Factor for 603259.SH: 5.00
 Enhanced Investment Factor for 603259.SH: 5.00
 Enhanced News Effect Factor for 603259.SH: -5.00
@@ -4644,8 +4644,8 @@ First 10 Predictions for 300750.SZ: [2.123203   0.29178834 0.34300065 1.3788143 
 First 10 True Values for 300750.SZ: [2. 0. 0. 1. 1. 1. 1. 1. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_300750.SZ.png
 Sentiment Score for 300750.SZ: -0.9640
-Enhanced Market Factor for 300750.SZ: -1.00
-Enhanced Size Factor for 300750.SZ: 4.10
+Enhanced Market Factor for 300750.SZ: -1.70
+Enhanced Size Factor for 300750.SZ: 3.80
 Enhanced Valuation Factor for 300750.SZ: 0.50
 Enhanced Profitability Factor for 300750.SZ: 5.00
 Enhanced Investment Factor for 300750.SZ: 5.00
@@ -5172,9 +5172,9 @@ First 10 Predictions for 002468.SZ: [0.369073]
 First 10 True Values for 002468.SZ: [0.]
 Regression prediction visualization saved to img\regression_distribution_002468.SZ.png
 Sentiment Score for 002468.SZ: -0.9639
-Enhanced Market Factor for 002468.SZ: 2.20
-Enhanced Size Factor for 002468.SZ: -4.50
-Enhanced Valuation Factor for 002468.SZ: -1.40
+Enhanced Market Factor for 002468.SZ: 2.30
+Enhanced Size Factor for 002468.SZ: -4.20
+Enhanced Valuation Factor for 002468.SZ: -1.50
 Enhanced Profitability Factor for 002468.SZ: -5.00
 Enhanced Investment Factor for 002468.SZ: 5.00
 Enhanced News Effect Factor for 002468.SZ: -5.00
@@ -5226,11 +5226,11 @@ First 10 Predictions for 601066.SH: [1.1091042  0.14238295 1.1639696  0.16264716
 First 10 True Values for 601066.SH: [1. 0. 1. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_601066.SH.png
 Sentiment Score for 601066.SH: -0.9640
-Enhanced Market Factor for 601066.SH: -1.80
-Enhanced Size Factor for 601066.SH: -4.00
-Enhanced Valuation Factor for 601066.SH: 0.40
-Enhanced Profitability Factor for 601066.SH: 4.90
-Enhanced Investment Factor for 601066.SH: 0.40
+Enhanced Market Factor for 601066.SH: -0.80
+Enhanced Size Factor for 601066.SH: -4.20
+Enhanced Valuation Factor for 601066.SH: -0.40
+Enhanced Profitability Factor for 601066.SH: 4.30
+Enhanced Investment Factor for 601066.SH: 0.50
 Enhanced News Effect Factor for 601066.SH: -5.00
 Report for 601066.SH generated.
 Target Return Distribution - Mean: 0.916, Median: 1.109, Variance: 0.489
@@ -5297,9 +5297,9 @@ First 10 True Values for 600438.SH: [2. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_600438.SH.png
 Sentiment Score for 600438.SH: -0.9640
 Enhanced Market Factor for 600438.SH: -1.60
-Enhanced Size Factor for 600438.SH: 3.50
-Enhanced Valuation Factor for 600438.SH: 0.00
-Enhanced Profitability Factor for 600438.SH: -3.30
+Enhanced Size Factor for 600438.SH: 3.40
+Enhanced Valuation Factor for 600438.SH: -0.00
+Enhanced Profitability Factor for 600438.SH: -3.70
 Enhanced Investment Factor for 600438.SH: 5.00
 Enhanced News Effect Factor for 600438.SH: -5.00
 Report for 600438.SH generated.
@@ -5784,8 +5784,8 @@ Sentiment Score for 601633.SH: -0.9639
 Enhanced Market Factor for 601633.SH: -1.60
 Enhanced Size Factor for 601633.SH: 4.30
 Enhanced Valuation Factor for 601633.SH: 1.50
-Enhanced Profitability Factor for 601633.SH: -0.40
-Enhanced Investment Factor for 601633.SH: 0.40
+Enhanced Profitability Factor for 601633.SH: 0.70
+Enhanced Investment Factor for 601633.SH: 0.00
 Enhanced News Effect Factor for 601633.SH: -5.00
 Report for 601633.SH generated.
 Target Return Distribution - Mean: 1.100, Median: 1.531, Variance: 0.606
@@ -5824,10 +5824,10 @@ First 10 Predictions for 000591.SZ: [0.37617913 0.37944984 0.4313883  0.44039375
 First 10 True Values for 000591.SZ: [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_000591.SZ.png
 Sentiment Score for 000591.SZ: -0.9635
-Enhanced Market Factor for 000591.SZ: -3.30
-Enhanced Size Factor for 000591.SZ: 4.70
-Enhanced Valuation Factor for 000591.SZ: -0.40
-Enhanced Profitability Factor for 000591.SZ: -1.40
+Enhanced Market Factor for 000591.SZ: -3.50
+Enhanced Size Factor for 000591.SZ: 4.20
+Enhanced Valuation Factor for 000591.SZ: -0.30
+Enhanced Profitability Factor for 000591.SZ: -1.20
 Enhanced Investment Factor for 000591.SZ: 5.00
 Enhanced News Effect Factor for 000591.SZ: -5.00
 Report for 000591.SZ generated.
@@ -6133,10 +6133,10 @@ First 10 True Values for 002812.SZ: [0.]
 Regression prediction visualization saved to img\regression_distribution_002812.SZ.png
 Sentiment Score for 002812.SZ: -0.9640
 Enhanced Market Factor for 002812.SZ: -5.00
-Enhanced Size Factor for 002812.SZ: 4.10
+Enhanced Size Factor for 002812.SZ: 3.80
 Enhanced Valuation Factor for 002812.SZ: -0.00
-Enhanced Profitability Factor for 002812.SZ: -5.00
-Enhanced Investment Factor for 002812.SZ: 2.90
+Enhanced Profitability Factor for 002812.SZ: -4.30
+Enhanced Investment Factor for 002812.SZ: 2.80
 Enhanced News Effect Factor for 002812.SZ: -5.00
 Report for 002812.SZ generated.
 Target Return Distribution - Mean: 0.088, Median: 0.088, Variance: 0.000
@@ -6312,9 +6312,9 @@ First 10 True Values for 600900.SH: [1. 0.]
 Regression prediction visualization saved to img\regression_distribution_600900.SH.png
 Sentiment Score for 600900.SH: -0.9640
 Enhanced Market Factor for 600900.SH: 5.00
-Enhanced Size Factor for 600900.SH: -1.40
-Enhanced Valuation Factor for 600900.SH: -0.00
-Enhanced Profitability Factor for 600900.SH: 5.00
+Enhanced Size Factor for 600900.SH: -1.20
+Enhanced Valuation Factor for 600900.SH: 0.50
+Enhanced Profitability Factor for 600900.SH: 3.90
 Enhanced Investment Factor for 600900.SH: 5.00
 Enhanced News Effect Factor for 600900.SH: -5.00
 Report for 600900.SH generated.
@@ -6494,10 +6494,10 @@ First 10 Predictions for 600859.SH: [0.05526683 0.04549005 0.03948844]
 First 10 True Values for 600859.SH: [0. 0. 0.]
 Regression prediction visualization saved to img\regression_distribution_600859.SH.png
 Sentiment Score for 600859.SH: -0.9611
-Enhanced Market Factor for 600859.SH: 2.40
-Enhanced Size Factor for 600859.SH: -4.70
-Enhanced Valuation Factor for 600859.SH: -1.10
-Enhanced Profitability Factor for 600859.SH: -3.90
+Enhanced Market Factor for 600859.SH: 1.50
+Enhanced Size Factor for 600859.SH: -4.20
+Enhanced Valuation Factor for 600859.SH: -0.50
+Enhanced Profitability Factor for 600859.SH: -3.40
 Enhanced Investment Factor for 600859.SH: 2.00
 Enhanced News Effect Factor for 600859.SH: -5.00
 Report for 600859.SH generated.
@@ -6659,9 +6659,9 @@ Regression prediction visualization saved to img\regression_distribution_601607.
 Sentiment Score for 601607.SH: -0.9640
 Enhanced Market Factor for 601607.SH: 5.00
 Enhanced Size Factor for 601607.SH: -4.30
-Enhanced Valuation Factor for 601607.SH: 0.80
-Enhanced Profitability Factor for 601607.SH: -4.90
-Enhanced Investment Factor for 601607.SH: 3.20
+Enhanced Valuation Factor for 601607.SH: 0.40
+Enhanced Profitability Factor for 601607.SH: -3.60
+Enhanced Investment Factor for 601607.SH: 3.30
 Enhanced News Effect Factor for 601607.SH: -5.00
 Report for 601607.SH generated.
 Target Return Distribution - Mean: 0.933, Median: 0.933, Variance: 1.372
@@ -6826,8 +6826,8 @@ Sentiment Score for 000413.SZ: -0.9639
 Enhanced Market Factor for 000413.SZ: -5.00
 Enhanced Size Factor for 000413.SZ: -5.00
 Enhanced Valuation Factor for 000413.SZ: -1.00
-Enhanced Profitability Factor for 000413.SZ: -4.40
-Enhanced Investment Factor for 000413.SZ: 1.60
+Enhanced Profitability Factor for 000413.SZ: -3.40
+Enhanced Investment Factor for 000413.SZ: 1.80
 Enhanced News Effect Factor for 000413.SZ: -5.00
 Report for 000413.SZ generated.
 Target Return Distribution - Mean: 0.784, Median: 0.425, Variance: 1.053
@@ -7126,7 +7126,7 @@ Regression prediction visualization saved to img\regression_distribution_002456.
 Sentiment Score for 002456.SZ: -0.9640
 Enhanced Market Factor for 002456.SZ: 0.00
 Enhanced Size Factor for 002456.SZ: -5.00
-Enhanced Valuation Factor for 002456.SZ: 0.40
+Enhanced Valuation Factor for 002456.SZ: 0.30
 Enhanced Profitability Factor for 002456.SZ: -5.00
 Enhanced Investment Factor for 002456.SZ: 5.00
 Enhanced News Effect Factor for 002456.SZ: -5.00
@@ -7760,9 +7760,9 @@ First 10 Predictions for 600733.SH: [ 0.8734988  -0.21013586  2.067064  ]
 First 10 True Values for 600733.SH: [1. 0. 2.]
 Regression prediction visualization saved to img\regression_distribution_600733.SH.png
 Sentiment Score for 600733.SH: -0.9639
-Enhanced Market Factor for 600733.SH: -5.00
-Enhanced Size Factor for 600733.SH: 2.90
-Enhanced Valuation Factor for 600733.SH: 1.90
+Enhanced Market Factor for 600733.SH: -4.80
+Enhanced Size Factor for 600733.SH: 2.50
+Enhanced Valuation Factor for 600733.SH: 1.80
 Enhanced Profitability Factor for 600733.SH: -5.00
 Enhanced Investment Factor for 600733.SH: 5.00
 Enhanced News Effect Factor for 600733.SH: -5.00
@@ -8038,9 +8038,9 @@ Regression prediction visualization saved to img\regression_distribution_002647.
 Sentiment Score for 002647.SZ: -0.9598
 Enhanced Market Factor for 002647.SZ: -5.00
 Enhanced Size Factor for 002647.SZ: -5.00
-Enhanced Valuation Factor for 002647.SZ: -0.50
+Enhanced Valuation Factor for 002647.SZ: -0.00
 Enhanced Profitability Factor for 002647.SZ: -5.00
-Enhanced Investment Factor for 002647.SZ: 0.00
+Enhanced Investment Factor for 002647.SZ: 0.40
 Enhanced News Effect Factor for 002647.SZ: -5.00
 Report for 002647.SZ generated.
 Target Return Distribution - Mean: 1.077, Median: 1.077, Variance: 0.345
@@ -9998,10 +9998,10 @@ First 10 Predictions for 000100.SZ: [1.7869027 1.8019147 0.0440233]
 First 10 True Values for 000100.SZ: [2. 2. 0.]
 Regression prediction visualization saved to img\regression_distribution_000100.SZ.png
 Sentiment Score for 000100.SZ: -0.9638
-Enhanced Market Factor for 000100.SZ: -1.20
+Enhanced Market Factor for 000100.SZ: -1.70
 Enhanced Size Factor for 000100.SZ: -4.90
-Enhanced Valuation Factor for 000100.SZ: -0.50
-Enhanced Profitability Factor for 000100.SZ: -3.50
+Enhanced Valuation Factor for 000100.SZ: -1.00
+Enhanced Profitability Factor for 000100.SZ: -3.40
 Enhanced Investment Factor for 000100.SZ: 5.00
 Enhanced News Effect Factor for 000100.SZ: -5.00
 Report for 000100.SZ generated.
