@@ -177,7 +177,7 @@ def compute_profitability_factor(df, news_text=""):
         prev_val = df[col].iloc[-2]
         change_pct = ((current_val / prev_val) - 1) * 100 if prev_val != 0 else 0
         base_effect = change_pct * 0.05  # Scale down
-    elif "净亏" in news_text or "亏损" in news_text:
+    elif "net loss" in news_text or "loss" in news_text:
         base_effect = -1.8
     elif profit_increases:
         base_effect = min(sum(profit_increases) / 20, 2.5)
